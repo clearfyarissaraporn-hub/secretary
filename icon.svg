@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#C9B8F6"/><stop offset="0.55" stop-color="#E7C6F0"/><stop offset="1" stop-color="#FBD3E2"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8E6BE0"/><stop offset="1" stop-color="#D86FA8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <circle cx="256" cy="250" r="230" fill="url(#glow)"/>
+  <!-- clouds -->
+  <g fill="#FFFFFF" opacity="0.85">
+    <circle cx="70" cy="440" r="46"/><circle cx="130" cy="462" r="40"/><circle cx="20" cy="470" r="36"/>
+    <circle cx="450" cy="448" r="48"/><circle cx="388" cy="470" r="36"/><circle cx="505" cy="470" r="34"/>
+  </g>
+  <!-- sparkles -->
+  <g fill="#FFF3B0">
+    <path d="M86 92 l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8z"/>
+    <path d="M430 118 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/>
+    <path d="M448 330 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M62 300 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+  </g>
+  <!-- angel wings -->
+  <g fill="#FFFFFF" stroke="#B9A3EE" stroke-width="6" stroke-linejoin="round">
+    <path d="M128 250 C 70 230, 40 180, 52 140 C 80 170, 110 180, 140 186 C 104 196, 86 214, 80 232 C 100 222, 120 222, 140 226 C 110 236, 100 246, 98 262 C 112 256, 124 254, 140 256 Z"/>
+    <path d="M384 250 C 442 230, 472 180, 460 140 C 432 170, 402 180, 372 186 C 408 196, 426 214, 432 232 C 412 222, 392 222, 372 226 C 402 236, 412 246, 414 262 C 400 256, 388 254, 372 256 Z"/>
+  </g>
+  <!-- calendar -->
+  <g>
+    <rect x="132" y="138" width="248" height="250" rx="44" fill="#FFFFFF" stroke="#7A4CC2" stroke-width="10"/>
+    <path d="M132 182 a44 44 0 0 1 44 -44 h160 a44 44 0 0 1 44 44 v30 h-248z" fill="url(#band)"/>
+    <rect x="127" y="205" width="258" height="10" fill="#7A4CC2"/>
+    <rect x="186" y="104" width="22" height="62" rx="11" fill="#FFD6E7" stroke="#7A4CC2" stroke-width="8"/>
+    <rect x="304" y="104" width="22" height="62" rx="11" fill="#FFD6E7" stroke="#7A4CC2" stroke-width="8"/>
+    <!-- nurse cross on band -->
+    <rect x="243" y="152" width="26" height="46" rx="5" fill="#FFFFFF"/>
+    <rect x="233" y="162" width="46" height="26" rx="5" fill="#FFFFFF"/>
+    <!-- kawaii face -->
+    <ellipse cx="208" cy="288" rx="15" ry="19" fill="#3B2F63"/>
+    <ellipse cx="304" cy="288" rx="15" ry="19" fill="#3B2F63"/>
+    <circle cx="213" cy="281" r="5.5" fill="#FFFFFF"/>
+    <circle cx="309" cy="281" r="5.5" fill="#FFFFFF"/>
+    <ellipse cx="180" cy="326" rx="20" ry="12" fill="#F8A9C8" opacity="0.9"/>
+    <ellipse cx="332" cy="326" rx="20" ry="12" fill="#F8A9C8" opacity="0.9"/>
+    <path d="M238 320 q18 22 36 0" fill="none" stroke="#3B2F63" stroke-width="9" stroke-linecap="round"/>
+    <!-- little heart -->
+    <path d="M334 352 c-8 -12 -26 -6 -22 8 c3 10 22 20 22 20 s19 -10 22 -20 c4 -14 -14 -20 -22 -8z" fill="#E1679B"/>
+  </g>
+</svg>

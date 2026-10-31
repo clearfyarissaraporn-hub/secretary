@@ -41,7 +41,7 @@
 
 1. **สมัครบัญชี** ที่ [github.com](https://github.com) (ฟรี)
 2. **สร้าง repository**: กด **+** มุมขวาบน › **New repository**
-   - Repository name: `secretary-app` (หรือชื่ออื่นเป็นภาษาอังกฤษ)
+   - Repository name: `secretary` (ชื่อนี้จะเป็นท้ายลิงก์เว็บไซต์)
    - เลือก **Public** (GitHub Pages แบบฟรีต้องเป็น Public)
    - กด **Create repository**
 3. **อัปโหลดไฟล์**: ในหน้า repository กด **uploading an existing file** (หรือ **Add file › Upload files**)
@@ -51,12 +51,15 @@
    - Source: **Deploy from a branch**
    - Branch: **main** และโฟลเดอร์ **/ (root)** › กด **Save**
 5. **รอ 1–3 นาที** แล้วรีเฟรชหน้า Settings › Pages จะขึ้นลิงก์แบบนี้
-   `https://ชื่อผู้ใช้.github.io/secretary-app/`
+   `https://ชื่อผู้ใช้.github.io/secretary/`
 6. เปิดลิงก์นั้น ใช้งานได้ทันที
 
 > ⚠️ **ห้ามอัปไฟล์สำรอง (`secretary-backup-….json`) หรือไฟล์ Excel/PDF ที่ดาวน์โหลดจากแอปขึ้น GitHub** เพราะ repository เป็น Public ทุกคนเปิดดูได้
 
 ---
+
+### เปลี่ยนชื่อลิงก์ภายหลัง
+Settings › General › **Repository name** › พิมพ์ชื่อใหม่ (เช่น `secretary`) › **Rename** แล้วรอ 1–3 นาที ลิงก์จะเปลี่ยนเป็น `https://ชื่อผู้ใช้.github.io/ชื่อใหม่/` ข้อมูลในเครื่องยังอยู่ แต่ต้องลบไอคอนแอปเดิมแล้วติดตั้งใหม่จากลิงก์ใหม่
 
 ## ติดตั้งเป็นแอปบนมือถือ
 
