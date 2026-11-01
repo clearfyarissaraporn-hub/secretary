@@ -378,6 +378,18 @@ nav.tabbar a svg{width:24px;height:24px}
 .ptab.rla{font-size:14px}.ptab.rla th{font-size:15px;height:30px}
 .ptab.rla td{height:28px}
 .fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.lgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 8px}
+.ltile{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px}
+.lbox{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;border:none;box-shadow:0 3px 10px rgba(122,76,194,.18);text-decoration:none;cursor:pointer;padding:0;overflow:hidden}
+.lbox.add{background:var(--surface-solid,#fff);border:2px dashed var(--field);font-size:28px;color:var(--muted);box-shadow:none}
+.lname{font-size:12px;text-align:center;line-height:1.2;max-width:76px;overflow-wrap:anywhere}
+.ldel{position:absolute;top:-6px;right:2px;z-index:2;width:24px;height:24px;border-radius:12px;border:none;background:var(--life);color:#fff;font-size:16px;line-height:1;cursor:pointer}
+.iconpick{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+.iconpick label{cursor:pointer}.iconpick input,.cpick input{position:absolute;opacity:0;pointer-events:none}
+.iconpick span{display:flex;align-items:center;justify-content:center;height:40px;border-radius:12px;font-size:22px;background:var(--soft)}
+.iconpick input:checked + span{outline:3px solid var(--primary);background:var(--primary-tint)}
+.cpick span{display:block;width:36px;height:36px;border-radius:18px;border:2px solid #fff;box-shadow:0 0 0 1px var(--field);cursor:pointer}
+.cpick input:checked + span{box-shadow:0 0 0 3px var(--primary)}
 .rowlist{background:var(--surface);border-radius:16px;padding:10px 14px;margin-bottom:10px}
 .rowlist summary{cursor:pointer;font-weight:600;min-height:32px;display:flex;align-items:center}
 </style>
@@ -435,7 +447,7 @@ const ICON = {
   x:'<path d="M6 6l12 12M18 6L6 18"/>'
 };
 
-const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['config','set','ตั้งค่า'],['links','link','ลิงก์'],['timesheet','ts','ใบเวร'],['guide','guide','คู่มือ']];
+const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['config','set','ตั้งค่า'],['links','link','แอป'],['timesheet','ts','ใบเวร'],['guide','guide','คู่มือ']];
 const PATIENT = /(\bHN\b|\bAN\b\s*\d|เตียง\s*\d|ผู้ป่วย|คนไข้|เลขประจำตัวผู้ป่วย)/i;
 const LS_STATE = 'tmm-state-v1', LS_SYNC = 'tmm-sync-v1';
 
@@ -1191,7 +1203,8 @@ function viewConfig(){
     <button type="button" class="btn small" data-act="clean-now">ล้างข้อมูลเก่าตอนนี้</button>
   </div></div>
 
-  ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div></div>` : `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow meta" style="padding:12px 14px">แอปบน claude.ai ติดตั้งลงหน้าจอไม่ได้ ให้ใช้เวอร์ชัน GitHub (ดู README) แล้วเปิดใน Chrome</div></div>`}
+  ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div>
+      <div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><span style="display:block;font-weight:600">แจ้งเตือนของแอป</span><span class="meta">${'Notification' in window ? (Notification.permission === 'denied' ? 'ถูกบล็อกอยู่ เปิดได้ที่ Chrome › การตั้งค่าเว็บไซต์ › การแจ้งเตือน' : S.settings.noti && Notification.permission === 'granted' ? 'เปิดอยู่ · เด้งเตือนนัดของวันนี้เมื่อเปิดแอป และทุก 5 นาทีระหว่างเปิดอยู่' : 'เด้งเตือนนัดในแถบแจ้งเตือนของมือถือ') : 'เครื่องนี้ไม่รองรับ'}</span></span>${'Notification' in window && Notification.permission !== 'denied' ? (S.settings.noti && Notification.permission === 'granted' ? '<button type="button" class="btn small" data-act="noti-off">ปิด</button>' : '<button type="button" class="btn small primary" data-act="noti-on">เปิดแจ้งเตือน</button>') : ''}</div></div>` : `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow meta" style="padding:12px 14px">แอปบน claude.ai ติดตั้งลงหน้าจอไม่ได้ ให้ใช้เวอร์ชัน GitHub (ดู README) แล้วเปิดใน Chrome</div></div>`}
 
   <h2 class="group-t">ส่งออกข้อมูล</h2>
   <div class="list"><div class="lrow" style="flex-wrap:wrap;padding:12px 14px;gap:6px">
@@ -1260,7 +1273,7 @@ function viewGuide(){
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
     ['สำรองข้อมูล','ตั้งค่า › ดาวน์โหลดไฟล์สำรอง เก็บไว้เดือนละครั้ง']
   ];
-  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['ลิงก์','ทางลัดไปแอปอื่น เช่น รายรับรายจ่าย'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['คู่มือ','หน้านี้']];
+  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['คู่มือ','หน้านี้']];
   const faq = [
     ['ข้อมูลเก็บที่ไหน','ในเบราว์เซอร์ของเครื่องที่ใช้ ไม่ได้ส่งขึ้นเซิร์ฟเวอร์ (ยกเว้นเปิดซิงก์บน claude.ai ซึ่งเข้ารหัสก่อนส่ง)'],
     ['ย้ายเครื่อง / ย้ายจาก claude.ai ไป GitHub','เครื่องเดิม: ตั้งค่า › ดาวน์โหลดไฟล์สำรอง › เครื่องใหม่: ตั้งค่า › นำเข้าไฟล์สำรอง แล้วใส่โลโก้และพื้นหลังใหม่'],
@@ -1288,18 +1301,31 @@ function viewGuide(){
   <section class="card"><h2>ถ้าติดปัญหา</h2><table class="map"><tbody>${faq.map(r => `<tr><th scope="row" style="width:40%">${r[0]}</th><td style="text-align:left;font-weight:400;color:var(--ink)">${r[1]}</td></tr>`).join('')}</tbody></table></section>
   </div>`;
 }
+const LINK_ICONS = ['💰','🛒','🧾','🏪','💳','📒','📊','🏥','💊','🩺','📚','🎮','🐰','🐱','🐻','🦄','🌸','🍓','⭐','☁️','💜','🎀','📦','🗓️'];
+const LINK_COLORS = ['#E8DEFC','#FBDDE8','#D8E9FB','#D9F2E8','#FCF1CF','#FDE2D2'];
+let linkEdit = false;
+function linkTile(l){
+  const icon = l.img ? `<img src="${l.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:18px">` : `<span style="font-size:32px;line-height:1">${esc(l.icon || '🔗')}</span>`;
+  return `<div class="ltile">${linkEdit ? `<button type="button" class="ldel" data-act="link-del" data-id="${l.id}" aria-label="ลบ ${esc(l.name)}">×</button><button type="button" class="lbox" data-act="link-edit" data-id="${l.id}" style="background:${l.color || LINK_COLORS[0]}" aria-label="แก้ ${esc(l.name)}">${icon}</button>` : `<a class="lbox" href="${esc(l.url)}" target="_blank" rel="noopener" style="background:${l.color || LINK_COLORS[0]}">${icon}</a>`}<span class="lname">${esc(l.name)}</span></div>`;
+}
+function linkSheet(l){
+  l = l || {};
+  openSheet(`${sheetHead(l.id ? 'แก้ไอคอนแอป' : 'เพิ่มแอป')}
+  <form data-form="link-add" data-id="${l.id || ''}" style="display:flex;flex-direction:column;gap:12px">
+    <label class="f">ชื่อ<input class="field" name="name" required value="${esc(l.name || '')}" placeholder="เช่น ชำดี POS"></label>
+    <label class="f">ลิงก์ (https://…)<input class="field" name="url" type="url" required value="${esc(l.url || '')}" placeholder="https://"></label>
+    <fieldset><legend>ไอคอน</legend><div class="iconpick">${LINK_ICONS.map(e => `<label><input type="radio" name="icon" value="${e}"${(l.icon || '💰') === e && !l.img ? ' checked' : ''}><span>${e}</span></label>`).join('')}</div></fieldset>
+    <fieldset><legend>สีพื้นไอคอน</legend><div class="row" style="gap:8px;flex-wrap:wrap">${LINK_COLORS.map(c => `<label class="cpick"><input type="radio" name="color" value="${c}"${(l.color || LINK_COLORS[0]) === c ? ' checked' : ''}><span style="background:${c}"></span></label>`).join('')}</div></fieldset>
+    <label class="btn small" style="cursor:pointer;align-self:flex-start">ใช้รูปของฉันเป็นไอคอน${l.img ? ' (มีแล้ว)' : ''}<input type="file" accept="image/*" name="img" class="sr"></label>
+    ${l.img ? '<label class="chip" style="align-self:flex-start"><input type="checkbox" name="noimg">เลิกใช้รูป กลับไปใช้ไอคอน</label>' : ''}
+    <button class="btn primary" type="submit">${l.id ? 'บันทึก' : 'เพิ่มแอป'}</button>
+  </form>`);
+}
 function viewLinks(){
-  return `<header class="top"><div><h1>ลิงก์แอปอื่น</h1><div class="sub">แตะเพื่อเปิดแอปหรือเว็บที่ใช้ประจำ</div></div></header>
-  <div class="list">${S.links.length ? S.links.map(l => `<div class="lrow"><span class="grow"><span style="font-weight:500">${esc(l.name)}</span><span class="meta" style="overflow-wrap:anywhere">${esc(l.url)}</span></span>
-    <a class="btn small" href="${esc(l.url)}" target="_blank" rel="noopener">เปิด</a>
-    <button type="button" class="btn small danger" data-act="link-del" data-id="${l.id}" aria-label="ลบ ${esc(l.name)}">ลบ</button></div>`).join('') : '<div class="lrow empty">ยังไม่มีลิงก์ เพิ่มแอปรายรับรายจ่ายหรือ POS ของร้านได้ด้านล่าง</div>'}</div>
-  <form class="card" data-form="link-add">
-    <h2>เพิ่มลิงก์</h2>
-    <label class="f">ชื่อ<input class="field" name="name" required placeholder="เช่น รายรับรายจ่าย"></label>
-    <label class="f">ลิงก์ (https://…)<input class="field" name="url" type="url" required placeholder="https://"></label>
-    <button class="btn primary" type="submit">เพิ่มลิงก์</button>
-  </form>
-  <p class="sub" style="padding:0 4px">รุ่นนี้เปิดลิงก์ได้อย่างเดียว ยังไม่ดึงยอดสรุปจากแอปอื่นมาแสดง</p>`;
+  return `<header class="top"><div><h1>แอปของฉัน</h1><div class="sub">แตะไอคอนเพื่อเปิดแอปหรือเว็บ</div></div><button type="button" class="btn small" data-act="link-mode">${linkEdit ? 'เสร็จ' : 'แก้ไข'}</button></header>
+  <section class="card"><div class="lgrid">${S.links.map(linkTile).join('')}<div class="ltile"><button type="button" class="lbox add" data-act="link-new" aria-label="เพิ่มแอป">＋</button><span class="lname">เพิ่มแอป</span></div></div>
+  ${S.links.length ? '' : '<p class="meta" style="margin:0">ยังไม่มีแอป กด ＋ เพื่อเพิ่ม เช่น รายรับรายจ่าย หรือ POS ของร้าน</p>'}</section>
+  <p class="sub" style="padding:0 4px">${linkEdit ? 'แตะไอคอนเพื่อแก้ แตะ × เพื่อลบ' : 'กด “แก้ไข” เพื่อเปลี่ยนไอคอน สี หรือลบ'}</p>`;
 }
 
 let hoursScrolled = false;
@@ -2157,12 +2183,23 @@ function claimPapers(form, ym){
   const rows = finalRows(form, ym);
   if (false){ const f = rows[0]; [[0,'1'],[1,pf.id],[3,pf.name ? (/^(นาย|นาง|น\.ส\.|นส\.)/.test(pf.name) ? pf.name : pf.name) : ''],[4,(pf.pos || '').replace(/\s*ห้องผ่าตัด$/,'')]].forEach(([i, v]) => { if (!(f.edited && f.edited[i] != null) && !f.c[i]) f.c[i] = v || ''; }); }
   const total = rows.reduce((a, r) => a + [7,8,9,11,12,13,14].reduce((x, i) => x + num(r.c[i]), 0), 0);
-  const pages = Math.max(3, Math.ceil(rows.length / PER_PAGE));
   const [y,m] = ym.split('-').map(Number);
   const monTxt = `${new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long'})}   ${y + 543}`;
+  /* ใบเบิกค่าเวร: แยกค่าเวร 2,000 (8-8) อย่างน้อย 1 แผ่น และ Stand By 200 อย่างน้อย 2 แผ่น · ใบเบิกค่าเคส: อย่างน้อย 3 แผ่น */
+  const groups = form === 'shift'
+    ? [{rows: rows.filter(r => r.key.endsWith(':8-00') || (r.extra && num(r.c[11]))), min:1}, {rows: rows.filter(r => !(r.key.endsWith(':8-00') || (r.extra && num(r.c[11])))), min:2}]
+    : [{rows, min:3}];
+  const pf2 = S.settings.profile;
+  const slices = [];
+  groups.forEach(g => {
+    if (form === 'shift' && g.rows.length){ const f = g.rows[0]; [[0,'1'],[1,pf2.id],[3,pf2.name],[4,(pf2.pos || '').replace(/\s*ห้องผ่าตัด$/,'')]].forEach(([i, v]) => { if (!(f.edited && f.edited[i] != null) && !f.c[i]) f.c[i] = v || ''; }); }
+    const n = Math.max(g.min, Math.ceil(g.rows.length / PER_PAGE));
+    for (let k = 0; k < n; k++) slices.push(g.rows.slice(k * PER_PAGE, (k + 1) * PER_PAGE));
+  });
+  const pages = slices.length;
   let html = '';
   for (let p = 0; p < pages; p++){
-    const slice = rows.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
+    const slice = slices[p];
     let body = slice.map(r => `<tr data-act="frow" data-fk="${form}" data-ym="${ym}" data-rk="${esc(r.key)}">${r.c.map((_, i) => cell(form, ym, r, i)).join('')}</tr>`).join('');
     for (let k = slice.length; k < PER_PAGE; k++) body += `<tr data-act="frow-new" data-fk="${form}" data-ym="${ym}">${CLAIM_COLS.map(() => '<td></td>').join('')}</tr>`;
     html += `<div class="paper land"><div class="pin">
@@ -2277,7 +2314,8 @@ async function formXlsx(kind){
   } else {
     aoa.push([fmeta('claimTitle')], [E.meta.month || ''], [fmeta('claimDept')], CLAIM_COLS);
     const P = claimPapers(kind, ym);
-    const rows = applyEdits(kind, ym, kind === 'shift' ? claimShiftRows(ym) : claimCaseRows(ym), 16);
+    let rows = finalRows(kind, ym);
+    if (kind === 'shift'){ const isA = r => r.key.endsWith(':8-00') || (r.extra && num(r.c[11])); rows = rows.filter(isA).concat(rows.filter(r => !isA(r))); }
     rows.forEach(r => aoa.push(r.c.map((v, i) => [7,8,9,10,11,12,13,14].includes(i) && v !== '' ? num(v) : v)));
     
   }
@@ -2380,6 +2418,28 @@ async function exportIcs(){
   catch(e){ toast('ดาวน์โหลดไม่สำเร็จ', true); }
 }
 
+
+/* ---------- แจ้งเตือนของแอป (เวอร์ชัน GitHub ที่ติดตั้งแล้ว): เด้งเมื่อเปิดแอปและระหว่างเปิดอยู่ ---------- */
+const Noti = {
+  ok(){ return STANDALONE && 'Notification' in window && Notification.permission === 'granted'; },
+  async enable(){
+    if (!('Notification' in window)){ toast('เครื่องนี้ไม่รองรับการแจ้งเตือนจากเว็บ', true); return; }
+    const r = await Notification.requestPermission();
+    S.settings.noti = r === 'granted'; commit(r === 'granted' ? 'เปิดแจ้งเตือนของแอป' : 'ไม่อนุญาตแจ้งเตือน', {msg: r === 'granted' ? 'เปิดแจ้งเตือนแล้ว' : 'ยังไม่ได้อนุญาต เปิดได้ที่การตั้งค่าเว็บไซต์ของ Chrome', silent:false});
+    if (r === 'granted') this.check(true);
+  },
+  async check(test){
+    if (!this.ok() || !S.settings.noti) return;
+    let sent = {}; try{ sent = JSON.parse(localStorage.getItem('tmm-noti-v1') || '{}'); }catch(e){}
+    const t = today(); if (sent.d !== t) sent = {d:t, ids:[]};
+    const reg = navigator.serviceWorker ? await navigator.serviceWorker.getRegistration().catch(() => null) : null;
+    const show = (title, body, tag) => { try{ if (reg) reg.showNotification(title, {body, tag, icon:'icon-192.png', badge:'icon-192.png'}); else new Notification(title, {body, tag, icon:'icon-192.png'}); }catch(e){} };
+    if (test) show('เลขาส่วนตัว', 'แจ้งเตือนพร้อมใช้งานแล้ว', 'test');
+    dueToday().forEach(a => { if (sent.ids.includes(a.id)) return; show('เตือน: ' + a.title, `${shortDay(a.date)}${a.time ? ' ' + a.time : ''}${a.place ? ' · ' + a.place : ''}`, a.id); sent.ids.push(a.id); });
+    try{ localStorage.setItem('tmm-noti-v1', JSON.stringify(sent)); }catch(e){}
+  }
+};
+
 function patientCheck(text, form, proceed){
   if (!S.settings.patientWarn || !PATIENT.test(text) || form.dataset.pwOk) return proceed();
   form.querySelector('#pw').innerHTML = `<div class="banner appt" style="margin:0"><div>ข้อความนี้ดูเหมือนมีข้อมูลผู้ป่วย แนะนำไม่จดในแอปนี้<div class="row" style="margin-top:8px"><button type="button" class="btn small" id="pw-edit">กลับไปแก้</button><button type="button" class="btn small" id="pw-go">บันทึกต่อ</button></div></div></div>`;
@@ -2439,6 +2499,11 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'noti-on': Noti.enable(); break;
+    case 'noti-off': S.settings.noti = false; commit('ปิดแจ้งเตือนของแอป', {msg:'ปิดแล้ว'}); break;
+    case 'link-new': linkSheet(); break;
+    case 'link-edit': linkSheet(S.links.find(x => x.id === id)); break;
+    case 'link-mode': linkEdit = !linkEdit; render(); break;
     case 'hadj': { const f = el.closest('form'); if (!f) break;
       if (el.dataset.k === 'clear'){ f.elements.plus.value = ''; f.elements.minus.value = ''; }
       else { const inp = f.elements[el.dataset.k]; inp.value = String(Math.round(((Number(inp.value) || 0) + Number(el.dataset.n)) * 100) / 100); }
@@ -2683,7 +2748,17 @@ document.addEventListener('submit', e => {
   } else if (kind === 'link-add'){
     const name = String(fd.get('name') || '').trim(), url = String(fd.get('url') || '').trim();
     if (!/^https?:\/\//i.test(url)){ toast('ลิงก์ต้องขึ้นต้นด้วย https://', true); return; }
-    S.links.push({id:uid(), name, url}); commit('เพิ่มลิงก์: ' + name, {msg:'เพิ่มลิงก์แล้ว'});
+    const file = fd.get('img');
+    const save = img => {
+      const data = {name, url, icon: fd.get('icon') || '💰', color: fd.get('color') || LINK_COLORS[0]};
+      const old = f.dataset.id ? S.links.find(x => x.id === f.dataset.id) : null;
+      if (img) data.img = img; else if (old && old.img && !fd.get('noimg')) data.img = old.img;
+      if (old){ Object.keys(old).forEach(k => { if (k !== 'id') delete old[k]; }); Object.assign(old, data); } else S.links.push(Object.assign({id:uid()}, data));
+      closeSheet(); commit((old ? 'แก้แอป: ' : 'เพิ่มแอป: ') + name, {msg: old ? 'บันทึกแล้ว' : 'เพิ่มแอปแล้ว'});
+    };
+    if (file && file.size){
+      const rd = new FileReader(); rd.onload = () => { const im = new Image(); im.onload = () => { const c = document.createElement('canvas'); c.width = c.height = 128; const sc = Math.max(128 / im.width, 128 / im.height); c.getContext('2d').drawImage(im, (128 - im.width * sc) / 2, (128 - im.height * sc) / 2, im.width * sc, im.height * sc); save(c.toDataURL('image/png')); }; im.onerror = () => toast('ใช้รูปนี้ไม่ได้', true); im.src = rd.result; }; rd.readAsDataURL(file);
+    } else save(null);
   } else if (kind === 'sync-on'){
     Sync.on(String(fd.get('pass') || ''), !!fd.get('remember'));
   }
@@ -2874,6 +2949,8 @@ render();
 if (!storageOK) toast('เครื่องนี้ไม่อนุญาตให้เก็บข้อมูล สิ่งที่จดจะหายเมื่อปิดหน้า', true);
 Sync.boot();
 setInterval(() => { if (route === 'myday' && !$('#layer').innerHTML) render(); }, 60000);
+setTimeout(() => Noti.check(), 1500); setInterval(() => Noti.check(), 300000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) Noti.check(); });
 })();
 </script>
 </body>
