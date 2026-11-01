@@ -411,6 +411,8 @@ let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 const IS_IOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
 window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if (typeof render === 'function') try{ render(); }catch(err){} });
+let relInstalled = false;
+if (STANDALONE && !IS_INSTALLED && navigator.getInstalledRelatedApps) navigator.getInstalledRelatedApps().then(a => { if (a && a.length){ relInstalled = true; try{ render(); }catch(err){} } }).catch(() => {});
 window.addEventListener('appinstalled', () => { installEvt = null; try{ toast('ติดตั้งแอปแล้ว ดูไอคอนบนหน้าจอมือถือ'); render(); }catch(err){} });
 if (STANDALONE){
   const mime = n => /\.pdf$/i.test(n) ? 'application/pdf' : /\.xlsx$/i.test(n) ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' : /\.ics$/i.test(n) ? 'text/calendar' : /\.json$/i.test(n) ? 'application/json' : 'application/octet-stream';
@@ -883,7 +885,8 @@ function viewMyDay(){
      ${types.some(isWorkType) ? `<section class="card" style="gap:8px"><div class="row between"><h2>หน้าที่วันนี้</h2><span class="sub">เลือกได้หลายอย่าง</span></div>
        <div class="wrap">${ASSIGNS.map(a => `<label class="chip"><input type="checkbox" data-act="assign" data-k="${esc(a)}"${(S.assign[t] || []).includes(a) ? ' checked' : ''}>${esc(a)}</label>`).join('')}</div></section>` : ''}`
      : `<section class="card"><div class="row between"><span class="sub">วันนี้ยังไม่ได้ลงเวร</span><button type="button" class="btn small" data-act="set-shift" data-d="${t}">ลงเวร</button></div></section>`}
-  ${STANDALONE && !IS_INSTALLED ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>ติดตั้งแอปลงหน้าจอ</b><span class="meta">${installEvt ? 'กดปุ่มแล้วเลือก ติดตั้ง' : IS_IOS ? 'Safari › ปุ่มแชร์ › เพิ่มไปยังหน้าจอโฮม' : 'Chrome › เมนู ⋮ › ติดตั้งแอป / เพิ่มลงในหน้าจอหลัก'}</span></span>${installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>'}</section>` : ''}
+  ${STANDALONE && !IS_INSTALLED && relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>แอปติดตั้งในเครื่องแล้ว</b><span class="meta">ปัดหน้าจอขึ้นเปิดลิ้นชักแอป แล้วหา “เลขาส่วนตัว”</span></span><button type="button" class="btn small" data-act="install-help">ไม่เจอแอป</button></section>` : ''}
+  ${STANDALONE && !IS_INSTALLED && !relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>ติดตั้งแอปลงหน้าจอ</b><span class="meta">${installEvt ? 'กดปุ่มแล้วเลือก ติดตั้ง' : IS_IOS ? 'Safari › ปุ่มแชร์ › เพิ่มไปยังหน้าจอโฮม' : 'Chrome › เมนู ⋮ › ติดตั้งแอป / เพิ่มลงในหน้าจอหลัก'}</span></span>${installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>'}</section>` : ''}
   ${(() => { const ym = t.slice(0,7); const {H, P, all} = monthSummary(ym); if (!H.filled && !H.otCount) return ''; const neg = H.diff != null && H.diff < 0;
     return `<section class="card" style="gap:6px"><div class="row between"><h2>เดือนนี้</h2><button type="button" class="btn small" data-act="share">ส่งออก</button></div>
       <div class="row" style="flex-wrap:wrap;gap:6px;font-size:13.5px"><span class="tag" style="background:var(--primary-tint);color:var(--primary-ink)">ชม. ${hrs(H.total)}${H.std != null ? ' / ' + hrs(H.std) : ''}</span>${H.diff != null ? `<span class="tag" style="background:${neg ? 'var(--life-t)' : 'var(--money-t)'};color:${neg ? 'var(--life-i)' : 'var(--money-i)'}">${neg ? 'ขาด' : 'เกิน'} ${hrs(Math.abs(H.diff))} ชม.</span>` : ''}<span class="tag" style="background:var(--money-t);color:var(--money-i)">ค่าเวร+OT ${baht(all)}</span></div>
@@ -2512,14 +2515,15 @@ document.addEventListener('click', e => {
       (S.coHol || []).filter(h => h[2] && h[0].startsWith(ym)).forEach(h => { if (all) delete S.holCredit[h[0]]; else S.holCredit[h[0]] = true; });
       commit(all ? 'ยกเลิกนับวันหยุดบริษัท ' + ym : 'นับวันหยุดบริษัท ' + ym, {msg: all ? 'ยกเลิกแล้ว' : 'นับวันหยุดบริษัทแล้ว'}); break; }
     case 'install': if (installEvt){ installEvt.prompt(); installEvt.userChoice.then(r => { if (r.outcome !== 'accepted') toast('ยังไม่ได้ติดตั้ง กดใหม่ได้ทุกเมื่อ'); installEvt = null; render(); }); } break;
-    case 'install-help': openSheet(`${sheetHead('วิธีติดตั้งแอปลงหน้าจอ')}
+    case 'install-help': openSheet(`${sheetHead('ติดตั้ง / หาแอปไม่เจอ')}
+      <p style="margin:0;font-size:14.5px"><b>ถ้า Chrome ขึ้นว่า “ติดตั้งแอปนี้แล้ว”</b> แปลว่าแอปอยู่ในเครื่องแล้ว แต่ไอคอนอาจไม่ได้อยู่บนหน้าจอหลัก</p>
       <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:14.5px">
-        <li>ต้องเปิดผ่านลิงก์ <b>https://…github.io/…</b> ใน <b>Chrome</b> (ไม่ใช่ในแอป Claude, LINE หรือแอปไฟล์)</li>
-        <li>Android: กด <b>⋮</b> มุมขวาบน › <b>ติดตั้งแอป</b> หรือ <b>เพิ่มลงในหน้าจอหลัก</b> › <b>ติดตั้ง</b></li>
+        <li>ปัดหน้าจอขึ้นเพื่อเปิด<b>ลิ้นชักแอป</b> พิมพ์ค้นหา <b>เลขาส่วนตัว</b> ถ้าเจอ กดค้าง › <b>เพิ่มไปยังหน้าจอหลัก</b></li>
+        <li>ถ้าไม่เจอ หรือกดแล้วไม่เปิด: <b>ตั้งค่ามือถือ › แอปพลิเคชัน › เลขาส่วนตัว › ถอนการติดตั้ง</b></li>
+        <li>ปิด Chrome ให้สนิท แล้วเปิดลิงก์แอปใหม่ › กด <b>ติดตั้ง</b> อีกครั้ง</li>
         <li>iPhone: Safari › ปุ่มแชร์ › <b>เพิ่มไปยังหน้าจอโฮม</b></li>
-        <li>ถ้าเคยติดตั้งตัวเก่า ให้กดค้างที่ไอคอนเดิม › ถอนการติดตั้ง/ลบ ก่อน แล้วติดตั้งใหม่ ไอคอนใหม่จะขึ้น</li>
-        <li>ถ้ายังไม่มีเมนูติดตั้ง ให้ปิด Chrome แล้วเปิดลิงก์ใหม่อีกครั้ง หรือรอ 1–2 นาทีหลังอัปไฟล์ขึ้น GitHub</li>
-      </ol>`); break;
+      </ol>
+      <div class="banner appt" style="margin:0"><div><b>ห้ามกด “ลบข้อมูลและรีเซ็ตสิทธิ์”</b> ในการตั้งค่าเว็บไซต์ของ Chrome เพราะจะลบข้อมูลของทุกแอปบนเว็บนี้ (รวมชำดี POS) ถ้าจำเป็นต้องกด ให้ดาวน์โหลดไฟล์สำรองของทุกแอปก่อน</div></div>`); break;
     case 'ics': exportIcs(); break;
     case 'exp-all': exportAll(el.dataset.k); break;
     case 'go-form': tsTab = el.dataset.k; tsMonth = el.dataset.m || today().slice(0,7); if (route === 'timesheet') render(); else location.hash = '#timesheet'; window.scrollTo(0,0); break;
