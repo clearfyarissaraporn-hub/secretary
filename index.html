@@ -552,12 +552,12 @@ function defaultRoutines(){
 function defaults(){
   return {
     schema:7,
-    appts:[], captures:[], shifts:{}, routineLog:{}, cases:{}, hours:{}, assign:{}, extra:{}, formEdits:{}, formMeta:{}, links:[], audit:[],
+    appts:[], captures:[], shifts:{}, routineLog:{}, cases:{}, hours:{}, assign:{}, extra:{}, holCredit:{}, formEdits:{}, formMeta:{}, links:[], audit:[],
     stdHours:Object.assign({}, STD_HOURS), coHol:defaultCoHol(),
     routines:defaultRoutines(),
     shiftTypes:SHIFT_TYPES(),
     settings:{remind:{d1:true, morning:false, h2:false}, stopAfter:'20:00', patientWarn:true,
-      theme:'auto', accent:'lavender', skin:'angel', bg:'angel', bgColor:'lavender', cardAlpha:70, font:'plex', check:'heart', deductRate:'', push:false,
+      theme:'auto', accent:'lavender', skin:'angel', bg:'angel', bgColor:'lavender', cardAlpha:70, font:'plex', check:'heart', deductRate:'', push:false, holHours:8,
       otRule:{majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true},
       profile:{name:'', id:'', pos:'พยาบาลวิชาชีพ ห้องผ่าตัด', dept:'OR'}, gcal:{holiday:true, primary:false}, keepDays:90, lastClean:'',
       rosterName:'', rosterCodes:ROSTER_CODES}
@@ -625,7 +625,7 @@ function migrate(p){
   const out = Object.assign(d, p);
   out.settings = Object.assign(defaults().settings, p.settings || {});
   out.settings.gcal = Object.assign({holiday:false, primary:false}, out.settings.gcal || {});
-  out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
+  out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; out.holCredit = out.holCredit || {}; if (out.settings.holHours == null) out.settings.holHours = 8; NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
   out.settings.otRule = Object.assign({majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true}, out.settings.otRule || {});
   if (out.settings.otRule.nightTo === '08:00') out.settings.otRule.nightTo = '05:00';
   out.settings.profile = Object.assign(defaults().settings.profile, out.settings.profile || {});
@@ -994,6 +994,8 @@ function viewCalendar(){
       ${g.map(e => `<div class="row" style="padding:10px;border-radius:12px;background:var(--gcal-t);color:var(--gcal-i)"><strong style="width:96px;font-size:13px">${e.time ? esc(e.time) : 'ทั้งวัน'}</strong><span style="flex:1;color:var(--ink)">${esc(e.title)}</span><span style="font-size:11.5px">${e.src === 'holiday' ? 'วันหยุดไทย' : 'Google'}</span></div>`).join('')}
       ${items.length ? `<div>${items.map(apptItem).join('')}</div>` : (types.length || g.length || (S.cases[calSel] || []).length ? '' : '<div class="empty">ว่าง ไม่มีเวรหรือนัด</div>')}
       ${(S.cases[calSel] || []).length ? `<div><div class="meta" style="font-weight:600;margin-top:4px">เคส${otForDay(calSel).length ? ' · OT ' + baht(otMoneyDay(calSel)) : ''}</div>${caseListHtml(calSel)}</div>` : ''}
+      ${S.holCredit[calSel] ? `<div class="row" style="padding:8px 10px;border-radius:12px;background:var(--money-t);color:var(--money-i);font-size:13px">วันหยุดประจำปี +${hrs(Number(S.settings.holHours) || 0)} ชม. (ดูเอง ไม่ลงใบเบิก)</div>` : ''}
+      ${(() => { const e = S.extra[calSel] || {}; const p = Number(e.plus) || (e.plus == null && e.h > 0 ? e.h : 0), m = Number(e.minus) || (e.minus == null && e.h < 0 ? -e.h : 0); return p || m ? `<div class="meta">${p ? 'ชั่วโมงพิเศษ +' + p + ' ชม.' : ''}${p && m ? ' · ' : ''}${m ? 'ลา −' + m + ' ชม.' : ''}</div>` : ''; })()}
       ${(S.extra[calSel] || {}).note ? `<div class="meta">ใบเวร: ${esc(S.extra[calSel].note)}</div>` : ''}
       <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small" data-act="case-new" data-d="${calSel}">+ เคส / OT</button><button type="button" class="btn small" data-act="ts-day" data-d="${calSel}">เปิดใบเวรวันนี้</button></div>
     </section>`;
@@ -1126,6 +1128,7 @@ function viewConfig(){
   <h2 class="group-t">ชั่วโมงทำงานและการหักเงิน</h2>
   <form class="list" data-form="std-hours">
     <div class="lrow" style="flex-wrap:wrap;padding:10px 14px"><span class="grow">หักเงินชั่วโมงละ (บาท)</span><input class="field" type="number" inputmode="decimal" min="0" step="0.01" name="rate" value="${esc(st.deductRate || '')}" placeholder="ยังไม่ได้ใส่" style="width:140px"></div>
+    <div class="lrow" style="flex-wrap:wrap;padding:10px 14px"><span class="grow">วันหยุดประจำปีนับวันละ (ชม.)</span><input class="field" type="text" inputmode="decimal" name="holHours" value="${esc(st.holHours != null ? st.holHours : 8)}" style="width:140px"></div>
     <div class="lrow meta" style="font-size:12.5px">ชั่วโมงมาตรฐานรายเดือน (Standard Hours) ใช้คิดว่าทำงานขาดหรือเกินกี่ชั่วโมง</div>
     <div class="lrow" style="flex-wrap:wrap;gap:6px;padding:10px 14px">${stdMonths().map(m => `<label class="f" style="width:calc(33% - 6px)">${esc(parse(m + '-01').toLocaleDateString('th-TH',{month:'short', year:'2-digit'}))}<input class="field" type="number" inputmode="decimal" min="0" step="0.5" name="m-${m}" value="${esc(S.stdHours[m] != null ? S.stdHours[m] : '')}" style="padding:0 8px"></label>`).join('')}</div>
     <div class="lrow" style="justify-content:flex-end"><button class="btn primary small" type="submit">บันทึกชั่วโมงและอัตรา</button></div>
@@ -1251,7 +1254,7 @@ function viewGuide(){
     ['นึกอะไรได้','ปุ่ม + มุมขวาล่าง จดเป็นกิจกรรมหรือไอเดีย']
   ];
   const monthEnd = [
-    ['ตรวจใบลงเวลา','ใบเวร › ใบลงเวลา แตะวันเพื่อเพิ่มชั่วโมง หมายเหตุ หรือเคส'],
+    ['ตรวจใบลงเวลา','ใบเวร › ใบลงเวลา แตะวัน: “เพิ่มชั่วโมง” (ทำงานพิเศษ) / “ลดชั่วโมง” (ลารายชั่วโมง) / ติ๊ก “วันหยุดประจำปี” (+8 ชม. ดูเอง ไม่ลงใบเบิก)'],
     ['ทำฟอร์มส่งโรงพยาบาล','ใบเวร › RLA/OT, ค่าเวร, ค่าเคส แตะแถวหรือ “แก้ทีละแถว” เพื่อแก้ แตะหัว/ลายเซ็น/มุมล่างเพื่อแก้ข้อความ'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
@@ -1350,12 +1353,14 @@ function captureSheet(kind){
     <button class="btn primary" type="submit">บันทึก</button>
   </form>`);
 }
+const holBox = d => `<label class="tickrow" style="margin:0"><input type="checkbox" name="hol"${S.holCredit[d] ? ' checked' : ''}><span><b>วันหยุดประจำปี (+${hrs(Number(S.settings.holHours) || 0)} ชม.)</b><small>นับชั่วโมงไว้ดูเอง ไม่นับเป็นเวร ไม่ลงใบเบิกค่าเวร ค่าเคส OT หรือ RLA${isCoHoliday(d) ? ' · วันนี้เป็นวันหยุดบริษัท' : ''}</small></span></label>`;
 function shiftSheet(d){
   const cur = shiftsOn(d);
   openSheet(`${sheetHead('ลงเวร ' + thDate(d,{weekday:'short',day:'numeric',month:'short'}))}
   <form data-form="shift" data-d="${d}" style="display:flex;flex-direction:column;gap:12px">
     <p class="meta" style="margin:0">ติ๊กได้ 2 ช่อง เช่น 8-16 + STD (ช่องเหลืองที่เขียน 8-16) หรือ หยุด + STD · ในปฏิทินจะมีจุด 2 สี · เวรแก้ได้จากหน้านี้เท่านั้น</p>
     <div class="wrap">${Object.keys(S.shiftTypes).map(k => `<label class="chip"><input type="checkbox" name="t" value="${esc(k)}"${cur.includes(k) ? ' checked' : ''}>${esc(typeLabel(k))}</label>`).join('')}</div>
+    ${holBox(d)}
     <button class="btn primary" type="submit">บันทึกเวร</button>
   </form>`);
 }
@@ -1646,20 +1651,25 @@ const typeHours = k => { const t = S.shiftTypes[k]; return t && t.hours !== '' &
 const typeDesc = k => (S.shiftTypes[k] && S.shiftTypes[k].desc) || typeLabel(k);
 function hoursFor(ym){
   const [y,m] = ym.split('-').map(Number); const days = new Date(y, m, 0).getDate();
-  const rows = []; let total = 0, ot = 0, otMoney = 0, otCount = 0;
+  const rows = []; let total = 0, ot = 0, otMoney = 0, otCount = 0, plusT = 0, minusT = 0, holT = 0, holDays = 0;
   for (let i = 1; i <= days; i++){
     const d = `${ym}-${pad(i)}`; const types = shiftsOn(d); const ex = S.extra[d] || {};
     const base = types.reduce((a, k) => a + typeHours(k), 0);
-    const h = base + (Number(ex.h) || 0);
-    total += h; ot += Number(ex.ot) || 0;
+    const plus = Number(ex.plus) || (Number(ex.h) > 0 && ex.plus == null ? Number(ex.h) : 0);
+    const minus = Number(ex.minus) || (Number(ex.h) < 0 && ex.minus == null ? -Number(ex.h) : 0);
+    const hol = S.holCredit[d] ? (Number(S.settings.holHours) || 0) : 0;
+    const hForm = base + plus - minus;
+    const h = hForm + hol;
+    total += h; ot += Number(ex.ot) || 0; plusT += plus; minusT += minus; holT += hol; if (hol) holDays++;
     const om = otMoneyDay(d); otMoney += om; otCount += otForDay(d).length;
-    rows.push({d, types, base, h, ex, om});
+    rows.push({d, types, base, h, hForm, plus, minus, hol, ex, om});
   }
   const std = S.stdHours[ym] != null && S.stdHours[ym] !== '' ? Number(S.stdHours[ym]) : null;
   const diff = std != null ? total - std : null;
   const rate = Number(S.settings.deductRate) || 0;
   const deduct = diff != null && diff < 0 && rate ? -diff * rate : 0;
-  return {rows, total, ot, otMoney, otCount, std, diff, rate, deduct, filled: rows.filter(r => r.types.length).length, days};
+  const coDays = rows.filter(r => isCoHoliday(r.d)).length;
+  return {rows, total, ot, otMoney, otCount, std, diff, rate, deduct, plusT, minusT, holT, holDays, coDays, filled: rows.filter(r => r.types.length).length, days};
 }
 const hrs = n => (Math.round(n * 100) / 100).toLocaleString('th-TH', {maximumFractionDigits:2});
 /* ---------- OT เรียกเคส: Major 0–90 นาที 800 · Minor 0–60 นาที 400 · ทุก 60 นาทีถัดไป +400 · เริ่ม 23:00 ขึ้นไป +400 ---------- */
@@ -1698,6 +1708,9 @@ function hoursCard(ym){
     <div class="row between"><h2>ชั่วโมงทำงานเดือนนี้</h2><div class="row" style="gap:4px"><button type="button" class="btn small" data-act="go-form" data-k="ts" data-m="${ym}">ใบลงเวลา</button><button type="button" class="btn small" data-act="go-form" data-k="shift" data-m="${ym}">ใบเบิก</button></div></div>
     ${H.filled ? `<table class="pay" style="border-collapse:collapse;width:100%"><tbody>
       <tr><th scope="row">ชั่วโมงที่ทำ (จาก ${H.filled} วันที่ลงเวร)</th><td>${hrs(H.total)} ชม.</td></tr>
+      ${H.plusT ? `<tr><th scope="row">· ชั่วโมงพิเศษ</th><td style="color:var(--money-i)">+${hrs(H.plusT)} ชม.</td></tr>` : ''}
+      ${H.minusT ? `<tr><th scope="row">· ลารายชั่วโมง</th><td style="color:var(--life-i)">−${hrs(H.minusT)} ชม.</td></tr>` : ''}
+      ${H.holT ? `<tr><th scope="row">· วันหยุดประจำปี ${H.holDays} วัน</th><td style="color:var(--money-i)">+${hrs(H.holT)} ชม.</td></tr>` : ''}
       <tr><th scope="row">ชั่วโมงมาตรฐาน</th><td>${H.std != null ? hrs(H.std) + ' ชม.' : '<a href="#config">ใส่ในตั้งค่า</a>'}</td></tr>
       ${H.diff != null ? `<tr class="total"><th scope="row">${neg ? 'ขาด' : 'เกิน'}</th><td style="color:${neg ? 'var(--life-i)' : 'var(--money-i)'}">${neg ? '−' : '+'}${hrs(Math.abs(H.diff))} ชม.</td></tr>` : ''}
       ${neg ? `<tr><th scope="row">หักเงินประมาณ</th><td style="color:var(--life-i)">${H.rate ? baht(H.deduct) : '<a href="#config">ใส่อัตราหักต่อชั่วโมง</a>'}</td></tr>` : ''}
@@ -1705,7 +1718,8 @@ function hoursCard(ym){
       ${H.otCount && pay.total ? `<tr class="total"><th scope="row">ค่าเวร + OT</th><td>${baht(pay.total + H.otMoney)}</td></tr>` : ''}
       ${pay.total ? `<tr><th scope="row">ค่าเวร (ข้างบน)</th><td>${baht(pay.total)}</td></tr>` : ''}
     </tbody></table>
-    <p class="meta" style="margin:0">นับชั่วโมงตามที่ตั้งไว้ต่อเวร (ตั้งค่า › เวรและค่าเวร) บวกชั่วโมงเพิ่มที่ลงในใบลงเวลา${H.filled < H.days ? ' · ยังลงเวรไม่ครบเดือน ตัวเลขยังไม่ใช่ยอดจริง' : ''}</p>`
+    ${H.coDays ? `<div class="row" style="gap:8px;flex-wrap:wrap"><span class="meta grow">เดือนนี้มีวันหยุดบริษัท ${H.coDays} วัน · นับแล้ว ${H.holDays} วัน (+${hrs(Number(S.settings.holHours) || 0)} ชม./วัน ดูเองเท่านั้น ไม่ลงใบเบิก)</span><button type="button" class="btn small" data-act="hol-month" data-m="${ym}">${H.holDays >= H.coDays ? 'ยกเลิกนับวันหยุด' : 'นับวันหยุดบริษัททั้งเดือน'}</button></div>` : ''}
+    <p class="meta" style="margin:0">นับชั่วโมงตามที่ตั้งไว้ต่อเวร บวกชั่วโมงพิเศษ ลบลารายชั่วโมง และบวกวันหยุดประจำปีที่ติ๊กไว้${H.filled < H.days ? ' · ยังลงเวรไม่ครบเดือน ตัวเลขยังไม่ใช่ยอดจริง' : ''}</p>`
     : `<div class="empty">ลงตารางเวรของเดือนนี้ก่อน แล้วแอปจะคิดชั่วโมงเทียบมาตรฐานให้</div>`}
   </section>`;
 }
@@ -1726,7 +1740,7 @@ function viewTimesheetMain(){
     const chips = r.types.length ? r.types.map(k => `<span class="tchip t-${esc(k)}">${esc(k === '8-00' ? '8-8' : k === 'OFF' ? 'หยุด' : k === 'VAC' ? 'ลา' : k === 'SICK' ? 'ป่วย' : k)}</span>`).join('') : '<span class="meta">—</span>';
     const desc = r.types.map(typeDesc).join(' / ');
     const nc = (S.cases[r.d] || []).length;
-    const extra = [r.ex.h ? (r.ex.h > 0 ? '+' : '') + r.ex.h + ' ชม.' : '', nc ? nc + ' เคส' : '', r.om ? 'OT ' + baht(r.om) : '', r.ex.note || ''].filter(Boolean).join(' · ');
+    const extra = [r.plus ? '+' + r.plus + ' ชม.' : '', r.minus ? 'ลา −' + r.minus + ' ชม.' : '', r.hol ? 'วันหยุดประจำปี +' + r.hol : '', nc ? nc + ' เคส' : '', r.om ? 'OT ' + baht(r.om) : '', r.ex.note || ''].filter(Boolean).join(' · ');
     return `<button type="button" class="tsrow${r.d === today() ? ' now' : ''}" data-act="ts-day" data-d="${r.d}">
       <span class="tsd"${hol ? ' style="color:var(--life-i)"' : ''}><b>${dt.getDate()}</b><small>${esc(dt.toLocaleDateString('th-TH',{weekday:'short'}))}</small></span>
       <span class="tsc">${chips}</span>
@@ -1762,9 +1776,13 @@ function tsDaySheet(d){
   openSheet(`${sheetHead('ใบเวร · ' + thDate(d))}
   <form data-form="tsday" data-d="${d}" style="display:flex;flex-direction:column;gap:12px">
     <fieldset><legend>เวร</legend><div class="wrap">${Object.keys(S.shiftTypes).map(k => `<label class="chip"><input type="checkbox" name="t" value="${esc(k)}"${cur.includes(k) ? ' checked' : ''}>${esc(typeLabel(k))}</label>`).join('')}</div></fieldset>
+    ${holBox(d)}
     <div class="row" style="align-items:flex-start">
-      <label class="f" style="flex:1">ชั่วโมงเพิ่ม/ลด<input class="field" type="number" inputmode="decimal" step="0.5" name="h" value="${esc(ex.h || '')}" placeholder="เช่น 6 หรือ -2"></label>
+      <label class="f" style="flex:1">เพิ่มชั่วโมง (ทำงานพิเศษ)<input class="field" type="text" inputmode="decimal" name="plus" value="${esc(ex.plus != null ? (ex.plus || '') : (Number(ex.h) > 0 ? ex.h : ''))}" placeholder="0"></label>
+      <label class="f" style="flex:1">ลดชั่วโมง (ลารายชั่วโมง)<input class="field" type="text" inputmode="decimal" name="minus" value="${esc(ex.minus != null ? (ex.minus || '') : (Number(ex.h) < 0 ? -ex.h : ''))}" placeholder="0"></label>
     </div>
+    <div class="row" style="gap:6px;flex-wrap:wrap"><span class="meta" style="width:100%">แตะเพื่อเพิ่ม/ลดทีละช่วง</span>${[1,2,4,6,8].map(n => `<button type="button" class="btn small" data-act="hadj" data-k="plus" data-n="${n}">+${n}</button>`).join('')}${[0.5,1,2,4].map(n => `<button type="button" class="btn small" data-act="hadj" data-k="minus" data-n="${n}">−${n}</button>`).join('')}<button type="button" class="btn small ghost" data-act="hadj" data-k="clear">ล้าง</button></div>
+    <p class="meta" id="hsum" style="margin:0"></p>
     <label class="f">หมายเหตุ / เหตุผล<input class="field" name="note" value="${esc(ex.note || '')}" placeholder="เช่น เตรียม HA 16:00–22:00"></label>
     <div id="pw" role="alert"></div>
     <button class="btn primary" type="submit">บันทึกวันนี้</button>
@@ -2076,7 +2094,7 @@ function rlaRows(ym){
     const work = ts.some(isWorkType);
     c[1] = !ts.length ? '' : ts.includes('OFF') ? 'OFF' : work ? '08.00 - 16.00' : ts.includes('STD') ? 'Standby' : ts.map(typeDesc).join(' / ');
     c[2] = !ts.length ? '' : ts.includes('OFF') ? 'OFF' : work ? '08:00 - 16:00' : ts.includes('STD') ? 'Standby' : ts.map(typeDesc).join(' / ');
-    c[3] = r.h ? hrs(r.h) : '';
+    c[3] = r.hForm ? hrs(r.hForm) : '';
     c[6] = ts.map(k => k === 'OFF' ? 'OFF' : codeName(k)).join('/');
     const cm = [];
     if (ts.includes('8-00')) cm.push('เวรเหมา 16-08');
@@ -2421,6 +2439,13 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'hadj': { const f = el.closest('form'); if (!f) break;
+      if (el.dataset.k === 'clear'){ f.elements.plus.value = ''; f.elements.minus.value = ''; }
+      else { const inp = f.elements[el.dataset.k]; inp.value = String(Math.round(((Number(inp.value) || 0) + Number(el.dataset.n)) * 100) / 100); }
+      const p2 = Number(f.elements.plus.value) || 0, m2 = Number(f.elements.minus.value) || 0; const hs = f.querySelector('#hsum'); if (hs) hs.textContent = `สุทธิวันนี้ ${p2 - m2 >= 0 ? '+' : '−'}${Math.abs(p2 - m2)} ชม.`; break; }
+    case 'hol-month': { const ym = el.dataset.m; const H = hoursFor(ym); const all = H.holDays >= H.coDays;
+      (S.coHol || []).filter(h => h[2] && h[0].startsWith(ym)).forEach(h => { if (all) delete S.holCredit[h[0]]; else S.holCredit[h[0]] = true; });
+      commit(all ? 'ยกเลิกนับวันหยุดบริษัท ' + ym : 'นับวันหยุดบริษัท ' + ym, {msg: all ? 'ยกเลิกแล้ว' : 'นับวันหยุดบริษัทแล้ว'}); break; }
     case 'install': if (installEvt){ installEvt.prompt(); installEvt.userChoice.then(r => { if (r.outcome !== 'accepted') toast('ยังไม่ได้ติดตั้ง กดใหม่ได้ทุกเมื่อ'); installEvt = null; render(); }); } break;
     case 'install-help': openSheet(`${sheetHead('วิธีติดตั้งแอปลงหน้าจอ')}
       <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:14.5px">
@@ -2573,6 +2598,7 @@ document.addEventListener('submit', e => {
   } else if (kind === 'shift'){
     const d = f.dataset.d; let ts = fd.getAll('t');
     if (ts.length) S.shifts[d] = {types:ts}; else delete S.shifts[d];
+    if (fd.get('hol')) S.holCredit[d] = true; else delete S.holCredit[d];
     closeSheet(); commit((ts.length ? 'ลงเวร' + ts.join('+') + ' ' : 'ลบเวร ') + thDate(d,{day:'numeric',month:'short'}));
   } else if (kind === 'case'){
     const op = String(fd.get('op') || '').trim(); const surgeon = String(fd.get('surgeon') || '').trim(); const note = String(fd.get('note') || '').trim();
@@ -2604,6 +2630,7 @@ document.addEventListener('submit', e => {
     readRosterFile(f);
   } else if (kind === 'std-hours'){
     S.settings.deductRate = fd.get('rate') ? String(Math.max(0, Number(fd.get('rate')) || 0)) : '';
+    if (fd.get('holHours') != null) S.settings.holHours = Math.max(0, Number(fd.get('holHours')) || 0);
     for (const [k, v] of fd.entries()){ if (k.startsWith('m-')){ const m = k.slice(2); if (v === '') delete S.stdHours[m]; else S.stdHours[m] = Math.max(0, Number(v) || 0); } }
     commit('แก้ชั่วโมงมาตรฐานและอัตราหัก', {msg:'บันทึกแล้ว'});
   } else if (kind === 'profile'){
@@ -2639,8 +2666,11 @@ document.addEventListener('submit', e => {
     const note = String(fd.get('note') || '').trim();
     patientCheck(note, f, () => {
       if (ts.length) S.shifts[d] = {types:ts}; else delete S.shifts[d];
-      const ex = {h: fd.get('h') ? Number(fd.get('h')) : 0, ot: (S.extra[d] || {}).ot || 0, note};
-      if (ex.h || ex.ot || ex.note) S.extra[d] = ex; else delete S.extra[d];
+      const num2 = v => Math.max(0, Number(String(v || '').replace(/[^\d.]/g, '')) || 0);
+      const plus = num2(fd.get('plus')), minus = num2(fd.get('minus'));
+      const ex = {plus, minus, h: plus - minus, ot: (S.extra[d] || {}).ot || 0, note};
+      if (plus || minus || ex.ot || ex.note) S.extra[d] = ex; else delete S.extra[d];
+      if (fd.get('hol')) S.holCredit[d] = true; else delete S.holCredit[d];
       closeSheet(); commit('ใบลงเวลา ' + thDate(d,{day:'numeric',month:'short'}), {msg:'บันทึกแล้ว'});
     });
   } else if (kind === 'roster'){
