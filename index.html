@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.8</title>
+<title>เลขาส่วนตัว v1.9</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -394,6 +394,29 @@ nav.tabbar a svg{width:24px;height:24px}
 .cpick input:checked + span{box-shadow:0 0 0 3px var(--primary)}
 .rowlist{background:var(--surface);border-radius:16px;padding:10px 14px;margin-bottom:10px}
 .rowlist summary{cursor:pointer;font-weight:600;min-height:32px;display:flex;align-items:center}
+.teamwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+.teamgrid{border-collapse:separate;border-spacing:2px;font-size:11px}
+.teamgrid th,.teamgrid td{min-width:34px;height:34px;text-align:center;border-radius:6px;padding:0 2px;cursor:pointer}
+.teamgrid thead th{background:var(--soft);font-weight:600;line-height:1.05}
+.teamgrid thead th b{display:block;font-size:12px}.teamgrid thead th small{font-size:9.5px;color:var(--muted)}
+.teamgrid thead th.now{background:var(--primary);color:#fff}.teamgrid thead th.now small{color:#fff}
+.teamgrid thead th.hol b{color:var(--life-i)}
+.teamgrid .tname{position:sticky;left:0;z-index:2;min-width:96px;max-width:96px;text-align:left;padding:2px 6px;background:var(--surface-solid,#fff);box-shadow:2px 0 4px rgba(0,0,0,.06)}
+.teamgrid .tname b{display:block;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.teamgrid .tname small{font-size:9.5px;color:var(--muted)}
+.teamgrid .tname.me{background:var(--primary-tint)}
+.teamgrid td{background:#F4F1FA;color:#3B2F63;font-weight:600}
+.teamgrid td.sel{outline:2px solid var(--primary);outline-offset:-2px}
+.cw{background:#FFFFFF !important;color:#3B2F63 !important;box-shadow:inset 0 0 0 1px #C9C0E2}
+.cs{background:#FFE15A !important;color:#4A3B00 !important}
+.cm{background:#FFB36B !important;color:#4A2600 !important}
+.c8{background:#3E6FC4 !important;color:#fff !important}
+.cx{background:#E0566B !important;color:#fff !important}
+.cv{background:#BFE9D6 !important;color:#1D6049 !important}
+.tcode{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:24px;border-radius:7px;font-size:11.5px;font-weight:700;padding:0 6px}
+
+nav.tabbar .in{grid-template-columns:repeat(8,minmax(0,1fr)) !important}
+nav.tabbar a{font-size:10px !important;margin:0 !important;padding-left:0 !important;padding-right:0 !important}
+nav.tabbar a svg{width:23px !important;height:23px !important}
 </style>
 </head>
 <body>
@@ -408,7 +431,7 @@ nav.tabbar a svg{width:24px;height:24px}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.8';
+const APP_VERSION = '1.9';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -448,11 +471,12 @@ const ICON = {
   guide:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" fill="#C9EEDF"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/><path d="M12 6.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z" fill="#FFD36B" stroke="none"/>',
   link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/><path d="M19 2.5l.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z" fill="#FFD36B" stroke="none"/><path d="M4.5 17.5l.4 1 1 .4-1 .4-.4 1-.4-1-1-.4 1-.4z" fill="#F6A6C8" stroke="none"/>',
   ts:'<path d="M8 3h8v3H8z" fill="#FBD3BE"/><rect x="5" y="4.5" width="14" height="17" rx="2.5" fill="#FFF4C7"/><path d="M8 3h8v3H8z"/><path d="M8.5 11h7M8.5 14.5h4"/><path d="M15.5 18.6l-1.4-1.3a.8.8 0 0 1 1.4-1 .8.8 0 0 1 1.4 1z" fill="#E1679B" stroke="none"/>',
+  team:'<circle cx="8.5" cy="8" r="3.4" fill="#FFD6E7"/><circle cx="16" cy="9" r="2.9" fill="#D8E6FF"/><path d="M2.5 19.5c.6-3.4 3-5.4 6-5.4s5.4 2 6 5.4z" fill="#E8DEFC"/><path d="M14.6 14.4c.5-.2 1-.3 1.6-.3 2.6 0 4.5 1.8 5 4.9h-5.1" fill="#D9F2E8"/><path d="M12 6.2l-.9-.8a.6.6 0 0 1 .9-.8.6.6 0 0 1 .9.8z" fill="#E1679B" stroke="none"/>',
   lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   x:'<path d="M6 6l12 12M18 6L6 18"/>'
 };
 
-const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['config','set','ตั้งค่า'],['links','link','แอป'],['timesheet','ts','ใบเวร'],['guide','guide','คู่มือ']];
+const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['config','set','ตั้งค่า'],['links','link','แอป'],['timesheet','ts','ใบเวร'],['guide','guide','คู่มือ']];
 const PATIENT = /(\bHN\b|\bAN\b\s*\d|เตียง\s*\d|ผู้ป่วย|คนไข้|เลขประจำตัวผู้ป่วย)/i;
 const LS_STATE = 'tmm-state-v1', LS_SYNC = 'tmm-sync-v1';
 
@@ -571,7 +595,7 @@ function defaultRoutines(){
 function defaults(){
   return {
     schema:7,
-    appts:[], captures:[], shifts:{}, routineLog:{}, cases:{}, hours:{}, assign:{}, extra:{}, holCredit:{}, formEdits:{}, formMeta:{}, links:[], audit:[],
+    appts:[], captures:[], shifts:{}, routineLog:{}, cases:{}, hours:{}, assign:{}, extra:{}, holCredit:{}, team:{members:[], months:{}, swaps:[]}, formEdits:{}, formMeta:{}, links:[], audit:[],
     stdHours:Object.assign({}, STD_HOURS), coHol:defaultCoHol(),
     routines:defaultRoutines(),
     shiftTypes:SHIFT_TYPES(),
@@ -644,7 +668,7 @@ function migrate(p){
   const out = Object.assign(d, p);
   out.settings = Object.assign(defaults().settings, p.settings || {});
   out.settings.gcal = Object.assign({holiday:false, primary:false}, out.settings.gcal || {});
-  out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; out.holCredit = out.holCredit || {}; if (out.settings.holHours == null) out.settings.holHours = 8; if (out.shiftTypes && out.shiftTypes.STDM && out.shiftTypes.STDM.label === 'สแตนด์บายเช้า วันหยุด (STD เช้า)'){ out.shiftTypes.STDM = Object.assign({}, SHIFT_TYPES().STDM); } if (out.shiftTypes && !out.shiftTypes.STDM){ const def = SHIFT_TYPES().STDM, nt = {}; Object.keys(out.shiftTypes).forEach(k => { nt[k] = out.shiftTypes[k]; if (k === 'STD') nt.STDM = def; }); if (!nt.STDM) nt.STDM = def; out.shiftTypes = nt; } NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
+  out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; out.team = out.team || {members:[], months:{}, swaps:[]}; out.holCredit = out.holCredit || {}; if (out.settings.holHours == null) out.settings.holHours = 8; if (out.shiftTypes && out.shiftTypes.STDM && out.shiftTypes.STDM.label === 'สแตนด์บายเช้า วันหยุด (STD เช้า)'){ out.shiftTypes.STDM = Object.assign({}, SHIFT_TYPES().STDM); } if (out.shiftTypes && !out.shiftTypes.STDM){ const def = SHIFT_TYPES().STDM, nt = {}; Object.keys(out.shiftTypes).forEach(k => { nt[k] = out.shiftTypes[k]; if (k === 'STD') nt.STDM = def; }); if (!nt.STDM) nt.STDM = def; out.shiftTypes = nt; } NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
   out.settings.otRule = Object.assign({majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true}, out.settings.otRule || {});
   if (out.settings.otRule.nightTo === '08:00') out.settings.otRule.nightTo = '05:00';
   out.settings.profile = Object.assign(defaults().settings.profile, out.settings.profile || {});
@@ -891,6 +915,7 @@ function viewMyDay(){
      ${types.some(isWorkType) ? `<section class="card" style="gap:8px"><div class="row between"><h2>หน้าที่วันนี้</h2><span class="sub">เลือกได้หลายอย่าง</span></div>
        <div class="wrap">${ASSIGNS.map(a => `<label class="chip"><input type="checkbox" data-act="assign" data-k="${esc(a)}"${(S.assign[t] || []).includes(a) ? ' checked' : ''}>${esc(a)}</label>`).join('')}</div></section>` : ''}`
      : `<section class="card"><div class="row between"><span class="sub">วันนี้ยังไม่ได้ลงเวร</span><button type="button" class="btn small" data-act="set-shift" data-d="${t}">ลงเวร</button></div></section>`}
+  ${dutyCard(t)}
   ${Updater.hasNew() ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px;background:var(--money-t)"><span style="font-size:26px">✨</span><span class="grow"><b>มีเวอร์ชันใหม่ v${esc(Updater.latest)}</b><span class="meta">ข้อมูลจะสำรองให้อัตโนมัติก่อนอัปเดต</span></span><button type="button" class="btn primary small" data-act="app-update">อัปเดตเลย</button></section>` : ''}
   ${STANDALONE && !IS_INSTALLED && relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>แอปติดตั้งในเครื่องแล้ว</b><span class="meta">ปัดหน้าจอขึ้นเปิดลิ้นชักแอป แล้วหา “เลขาส่วนตัว”</span></span><button type="button" class="btn small" data-act="install-help">ไม่เจอแอป</button></section>` : ''}
   ${STANDALONE && !IS_INSTALLED && !relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>ติดตั้งแอปลงหน้าจอ</b><span class="meta">${installEvt ? 'กดปุ่มแล้วเลือก ติดตั้ง' : IS_IOS ? 'Safari › ปุ่มแชร์ › เพิ่มไปยังหน้าจอโฮม' : 'Chrome › เมนู ⋮ › ติดตั้งแอป / เพิ่มลงในหน้าจอหลัก'}</span></span>${installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>'}</section>` : ''}
@@ -1283,16 +1308,22 @@ function viewGuide(){
     ['ตรวจเวรและค่าเวร','ตั้งค่า › เวรและค่าเวร: 8-8 = 2,000 · STD = 200 · STD เช้า = +100 · ชั่วโมงที่นับเวรละ 8'],
     ['ใส่อัตราหักเงินต่อชั่วโมง','ตั้งค่า › ชั่วโมงทำงานและการหักเงิน (ชั่วโมงมาตรฐานรายเดือนใส่ไว้ให้แล้ว)'],
     ['ตรวจอัตรา OT','ตั้งค่า › อัตรา OT เรียกเคส: ติ๊กเคสที่ทำ Major/Minor และค่ายามวิกาล แล้วกดบันทึก'],
+    ['เพิ่มแอปที่ใช้บ่อย','เมนู แอป › ＋ เพิ่มแอป เลือกไอคอนน่ารัก สี หรือใช้รูปของตัวเอง (เช่น ชำดี POS รายรับรายจ่าย)'],
+    ['ตั้งการเตือน','ตั้งค่า › การเตือนนัด: claude.ai ใช้ “เด้งเตือนบนมือถือจริง” · GitHub ใช้ “แจ้งเตือนจริงแม้ปิดแอป (Push)” หรือ “ไฟล์ปฏิทิน (.ics)”'],
     ['ใส่โลโก้ฟอร์ม','ใบเวร › แท็บค่าเวร › เปลี่ยนโลโก้ (ครอปจากรูปฟอร์มจริง)'],
     ['แต่งแอป','ตั้งค่า › ธีมและสี (ล่างสุด): พื้นหลัง สีพาสเทล ฟอนต์ ช่องติ๊ก ความใสของกรอบ']
   ];
   const monthStart = [
     ['ลงตารางเวรทั้งเดือน','ตาราง › ลงตารางเวร › “จากไฟล์” เลือกไฟล์ตารางเวรของแผนก ใส่รหัสพนักงาน ตรวจแล้วกดลงเวร หรือ “ลงทั้งเดือน” แตะวันละไม่เกิน 2 ช่อง'],
-    ['ตรวจปฏิทิน','จุดม่วง 8-16 · เหลือง STD · น้ำเงิน 8-8 · แดง หยุด วันที่ติ๊ก 2 ช่องมี 2 จุด ตัวเลขสีชมพู = วันหยุดบริษัท'],
-    ['ใส่นัดของเดือน','นัดหมาย › + นัดใหม่ ตั้งเตือนก่อน 1 วันให้อัตโนมัติ']
+    ['ตรวจปฏิทิน','จุดม่วง 8-16 · เหลือง STD · ส้ม STD เช้า · น้ำเงิน 8-8 · แดง หยุด วันที่ติ๊ก 2 ช่องมี 2 จุด ตัวเลขสีชมพู = วันหยุดบริษัท'],
+    ['วันหยุดที่มี STD 24 ชม.','แตะ “+STD เช้า” แอปติ๊ก STD ให้ด้วย รวม 300 บาท (200 + 100) ใช้ได้เฉพาะวันที่ไม่มี 8-16 หรือ 8-8'],
+    ['ใส่นัดของเดือน','นัดหมาย › + นัดใหม่ ตั้งเตือนก่อน 1 วันให้อัตโนมัติ'],
+    ['ลงตารางเวรทีม','เมนู ทีม › นำเข้าจากไฟล์ตารางเวร (ไฟล์เดียวกับของแผนก) ได้เวรเพื่อนทุกคน แตะชื่อเพื่อใส่เบอร์โทร']
   ];
   const daily = [
     ['เปิด My day','ดูเวรวันนี้ การ์ด “เดือนนี้” (ชั่วโมงขาด/เกิน ค่าเวร+OT) และสิ่งที่ห้ามลืม'],
+    ['ดูว่าวันนี้อยู่เวรกับใคร','การ์ด “วันนี้อยู่เวรกับ” บน My day มีเวรของแต่ละคนและปุ่มโทร ใช้ประกอบงาน Incharge วันที่อยู่ 8-8'],
+    ['ขอแลกเวร','ทีม › สลับเวร เลือกคนและวัน ดูผลก่อน คัดลอกข้อความ/โทร/SMS หาเพื่อน ตกลงแล้วกดบันทึก ตารางทั้งสองคนเปลี่ยนทันที ย้อนกลับได้'],
     ['เลือกหน้าที่วันนี้','OR1 / OR2 / Sterile / Temp&Gas / เวชภัณฑ์ / Incharge / Stand by'],
     ['ติ๊กรูทีน และ Incharge','กาง “Incharge ทำงาน” ติ๊กช่อง ทำ / ไม่ได้ทำ / N/A ข้อที่ต้องลงรายละเอียดมีช่องให้พิมพ์'],
     ['เพิ่มเคส','+ เคส: ติ๊ก Major หรือ Minor ใส่เวลา ถ้าถูกเรียกนอกเวลาติ๊ก “เคส OT” (และค่ายามวิกาลถ้าได้) แอปคิดเงินให้'],
@@ -1302,12 +1333,14 @@ function viewGuide(){
   const monthEnd = [
     ['ตรวจใบลงเวลา','ใบเวร › ใบลงเวลา แตะวัน: “เพิ่มชั่วโมง” (ทำงานพิเศษ) / “ลดชั่วโมง” (ลารายชั่วโมง) / ติ๊ก “วันหยุดประจำปี” (+8 ชม. ดูเอง ไม่ลงใบเบิก)'],
     ['ทำฟอร์มส่งโรงพยาบาล','ใบเวร › RLA/OT, ค่าเวร, ค่าเคส แตะแถวหรือ “แก้ทีละแถว” เพื่อแก้ แตะหัว/ลายเซ็น/มุมล่างเพื่อแก้ข้อความ'],
+    ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
     ['สำรองข้อมูล','แอปบันทึกทุกครั้งที่แก้ และสำรองอัตโนมัติวันละครั้ง (เวอร์ชัน GitHub) · ดาวน์โหลดไฟล์สำรองเก็บไว้เดือนละครั้ง']
   ];
-  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['คู่มือ','หน้านี้']];
+  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน และวันนี้อยู่เวรกับใคร'],['ทีม','ตารางเวรเพื่อนทั้งทีม เบอร์โทร ใครอยู่เวรวันไหน และสลับเวร'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['คู่มือ','หน้านี้']];
   const faq = [
+    ['ข้อมูลเพื่อนในทีม','ชื่อ เบอร์ และเวรเพื่อนเก็บในเครื่องนี้เท่านั้น ไม่อยู่ในไฟล์บน GitHub ขอความยินยอมเพื่อนก่อนเก็บเบอร์'],
     ['ข้อมูลเก็บที่ไหน','ในเบราว์เซอร์ของเครื่องที่ใช้ ไม่ได้ส่งขึ้นเซิร์ฟเวอร์ (ยกเว้นเปิดซิงก์บน claude.ai ซึ่งเข้ารหัสก่อนส่ง)'],
     ['แอปไม่อัปเดต','ตั้งค่า › เวอร์ชันและอัปเดต › ตรวจหาอัปเดต › อัปเดตเลย (สำรองข้อมูลให้ก่อนอัตโนมัติ)'],
     ['อยากให้เด้งแม้ปิดแอป','ตั้งค่า › การเตือนนัด › แจ้งเตือนจริงแม้ปิดแอป › วิธีตั้ง'],
@@ -1317,8 +1350,19 @@ function viewGuide(){
     ['ตัวเลขชั่วโมงหรือเงินแปลก','ตรวจ ตั้งค่า › เวรและค่าเวร (หยุด/STD ต้องไม่มีชั่วโมง) และอัตรา OT'],
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
+  const changes = [
+    ['v1.9','หน้า “ทีม”: ตารางเวรเพื่อน นำเข้าจากไฟล์ ใส่เบอร์โทร สลับเวรได้จริง (ย้อนกลับได้) · การ์ด “วันนี้อยู่เวรกับ” บน My day'],
+    ['v1.8.1','คู่มืออัปเดตตามทุกการแก้ไข · เพิ่มหัวข้อ “มีอะไรใหม่”'],
+    ['v1.8','ปุ่มอัปเดตเวอร์ชันล่าสุด · สำรองอัตโนมัติวันละครั้งและก่อนอัปเดต (กู้คืนได้ 5 ชุด) · แจ้งเตือนจริงแม้ปิดแอป (Push) · เวร “STD เช้า” +100 บาท'],
+    ['v1.7','เวอร์ชัน GitHub แสดงเฉพาะวิธีเตือนที่ใช้ได้จริง'],
+    ['v1.6','บอกเมื่อแอปติดตั้งในเครื่องแล้ว และวิธีหาแอปในลิ้นชัก'],
+    ['v1.5','ใบเบิกค่าเวรแยกแผ่น 8-8 / Stand By · หน้า “แอปของฉัน” แบบไอคอน · แจ้งเตือนของแอป'],
+    ['v1.4','วันหยุดประจำปี +8 ชม. (ดูเอง) · ช่องเพิ่ม/ลดชั่วโมงแยกกัน'],
+    ['v1.3','เปลี่ยนชื่อ 8-00 เป็น 8-8'],
+    ['v1.2','ปุ่มติดตั้งแอป · ไอคอนน่ารัก']
+  ];
   return `<div class="guide">
-  <header class="top"><div><h1>คู่มือใช้งาน</h1><div class="sub">v1.0 · ${STANDALONE ? 'เวอร์ชัน GitHub' : 'เวอร์ชัน claude.ai'}</div></div></header>
+  <header class="top"><div><h1>คู่มือใช้งาน</h1><div class="sub">v${APP_VERSION} · ${STANDALONE ? 'เวอร์ชัน GitHub' : 'เวอร์ชัน claude.ai'}</div></div></header>
   ${sec('ครั้งแรก (ทำครั้งเดียว)', first)}
   ${sec('ต้นเดือน', monthStart)}
   ${sec('ทุกวัน', daily)}
@@ -1327,12 +1371,14 @@ function viewGuide(){
   <section class="card"><h2>สีในตารางเวร</h2><div class="wrap">
     <span class="tag" style="background:#EFE9FD;color:#3B2F63;border:1px solid #7A5BD0">● 8-16 ทำงาน 08–16</span>
     <span class="tag" style="background:#FFE78A;color:#4A3B00">● STD สแตนด์บาย</span>
+    <span class="tag" style="background:#FFC58A;color:#4A2600">● STD เช้า (+100)</span>
     <span class="tag" style="background:#3E6FC4;color:#fff">● 8-8 ทำงาน 08–08</span>
     <span class="tag" style="background:#E0566B;color:#fff">● หยุด</span></div></section>
   <section class="card"><h2>claude.ai กับ GitHub ต่างกันอย่างไร</h2><table class="map"><tbody>
     <tr><th scope="row">ใช้ได้ทั้งสองแบบ</th><td style="text-align:left;font-weight:400;color:var(--ink)">ทุกเมนู ฟอร์ม PDF/Excel ส่งออก สำรอง วันหยุดบริษัท ธีม</td></tr>
-    <tr><th scope="row">เฉพาะ claude.ai</th><td style="text-align:left;font-weight:400;color:var(--ink)">ซิงก์มือถือ+คอม, ปฏิทิน Gmail, เด้งเตือนผ่าน Google, อ่านตารางเวรจากรูป</td></tr>
-    <tr><th scope="row">เฉพาะ GitHub</th><td style="text-align:left;font-weight:400;color:var(--ink)">ติดตั้งเป็นแอปบนหน้าจอ, ใช้ออฟไลน์ได้, ไฟล์ปฏิทิน .ics</td></tr></tbody></table></section>
+    <tr><th scope="row">เฉพาะ claude.ai</th><td style="text-align:left;font-weight:400;color:var(--ink)">ซิงก์มือถือ+คอม, ปฏิทิน Gmail, เด้งเตือนผ่าน Google, อ่านตารางเวรจากรูป · อัปเดตเองทันทีทุกครั้ง</td></tr>
+    <tr><th scope="row">เฉพาะ GitHub</th><td style="text-align:left;font-weight:400;color:var(--ink)">ติดตั้งเป็นแอปบนหน้าจอ, ใช้ออฟไลน์ได้, ไฟล์ปฏิทิน .ics, แจ้งเตือนจริงแม้ปิดแอป (Push), ปุ่มอัปเดต + สำรองอัตโนมัติ</td></tr></tbody></table></section>
+  <section class="card"><h2>มีอะไรใหม่</h2><table class="map"><tbody>${changes.map(r => `<tr><th scope="row" style="width:22%">${r[0]}</th><td style="text-align:left;font-weight:400;color:var(--ink)">${r[1]}</td></tr>`).join('')}</tbody></table></section>
   <section class="card"><h2>ถ้าติดปัญหา</h2><table class="map"><tbody>${faq.map(r => `<tr><th scope="row" style="width:40%">${r[0]}</th><td style="text-align:left;font-weight:400;color:var(--ink)">${r[1]}</td></tr>`).join('')}</tbody></table></section>
   </div>`;
 }
@@ -1366,7 +1412,7 @@ function viewLinks(){
 let hoursScrolled = false;
 function render(){
   renderTabs();
-  const v = {myday:viewMyDay, appt:viewAppt, calendar:viewCalendar, config:viewConfig, guide:viewGuide, links:viewLinks, timesheet:viewTimesheet}[route];
+  const v = {myday:viewMyDay, appt:viewAppt, calendar:viewCalendar, config:viewConfig, guide:viewGuide, links:viewLinks, timesheet:viewTimesheet, team:viewTeam}[route];
   const hs = $('#hours'); const keep = hs ? hs.scrollTop : null;
   $('#view').innerHTML = v();
   $('#fab').hidden = route !== 'myday';
@@ -2613,6 +2659,179 @@ function pushSetupSheet(){
     <p class="meta" style="margin:0">ชื่อเมนูใน Cloudflare อาจต่างเล็กน้อยตามรุ่นหน้าเว็บ · เปิดลิงก์ Worker ในเบราว์เซอร์ ถ้าขึ้นว่า “เซิร์ฟเวอร์แจ้งเตือนพร้อมใช้งาน” แปลว่าขั้น 2–3 ถูกแล้ว</p>`);
 }
 
+/* ---------- ตารางเวรทีม: ดูเวรเพื่อน ใครอยู่เวรวันนี้ เบอร์โทร และสลับเวรได้จริง ---------- */
+let teamMonth = today().slice(0,7), teamDay = today();
+const TEAM_CODES = [['8-16','8-16'],['STD','STD'],['STDM','STD เช้า'],['8-00','8-8'],['OFF','หยุด'],['VAC','ลา']];
+function team(){ S.team = S.team || {members:[], months:{}, swaps:[]}; S.team.members = S.team.members || []; S.team.months = S.team.months || {}; S.team.swaps = S.team.swaps || []; return S.team; }
+function meMember(){ const T = team(); let m = T.members.find(x => x.me); if (!m){ m = {id:'me', empId:S.settings.profile.id || '', name:S.settings.profile.name || 'ฉัน', phone:'', me:true}; T.members.unshift(m); } return m; }
+function teamCodes(mid, d){
+  const m = team().members.find(x => x.id === mid); if (!m) return [];
+  if (m.me) return shiftsOn(d).slice();
+  const mo = team().months[d.slice(0,7)] || {}; return ((mo[mid] || {})[d.slice(8)] || []).slice();
+}
+function setTeamCodes(mid, d, codes){
+  const m = team().members.find(x => x.id === mid); if (!m) return;
+  if (m.me){ if (codes.length) S.shifts[d] = {types:codes}; else delete S.shifts[d]; return; }
+  const T = team(); const ym = d.slice(0,7); T.months[ym] = T.months[ym] || {}; T.months[ym][mid] = T.months[ym][mid] || {};
+  if (codes.length) T.months[ym][mid][d.slice(8)] = codes; else delete T.months[ym][mid][d.slice(8)];
+}
+const codeClass = cs => cs.includes('8-00') ? 'c8' : cs.includes('OFF') ? 'cx' : cs.includes('STDM') ? 'cm' : cs.includes('STD') ? 'cs' : (cs.includes('VAC') || cs.includes('SICK')) ? 'cv' : cs.length ? 'cw' : '';
+const codeText = cs => cs.filter(k => !(k === 'STD' && cs.includes('STDM'))).map(k => k === 'STDM' ? 'STD+' : codeName(k)).join('/');
+const onDutyCodes = cs => cs.some(k => ['8-16','8-00','STD','STDM'].includes(k));
+const telBtn = (m, small) => m.phone ? `<a class="btn small${small ? ' ghost' : ''}" href="tel:${esc(m.phone.replace(/[^\d+]/g, ''))}" aria-label="โทรหา ${esc(m.name)}">📞${small ? '' : ' โทร'}</a>` : '';
+function dutyList(d, exceptMe){
+  return team().members.filter(m => !(exceptMe && m.me)).map(m => ({m, cs: teamCodes(m.id, d)})).filter(x => onDutyCodes(x.cs))
+    .sort((a, b) => (b.cs.includes('8-00') - a.cs.includes('8-00')) || (b.cs.includes('8-16') - a.cs.includes('8-16')));
+}
+function dutyCard(d){
+  if (team().members.filter(m => !m.me).length === 0) return '';
+  const L = dutyList(d, true); const mine = shiftsOn(d);
+  return `<section class="card" style="gap:6px"><div class="row between"><h2>${d === today() ? 'วันนี้' : esc(thDate(d,{day:'numeric',month:'short'}))}อยู่เวรกับ</h2><a class="btn small" href="#team">ตารางทีม</a></div>
+    ${mine.includes('8-00') ? '<p class="meta" style="margin:0">คุณอยู่เวร 8-8 · ทีมด้านล่างใช้ประกอบงาน Incharge</p>' : ''}
+    ${L.length ? L.map(x => `<div class="row" style="gap:8px;padding:6px 0;border-top:1px solid var(--soft)"><span class="tcode ${codeClass(x.cs)}">${esc(codeText(x.cs))}</span><span class="grow">${esc(x.m.name)}</span>${telBtn(x.m, true)}</div>`).join('') : '<p class="meta" style="margin:0">ยังไม่มีข้อมูลเวรของเพื่อนวันนี้</p>'}
+  </section>`;
+}
+function viewTeam(){
+  const T = team(); meMember();
+  const [y,m] = teamMonth.split('-').map(Number); const days = new Date(y, m, 0).getDate();
+  const head = Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const dt = parse(d); const hol = isCoHoliday(d); return `<th class="${d === today() ? 'now' : ''}${hol ? ' hol' : ''}" data-act="team-day" data-d="${d}"><b>${i+1}</b><small>${esc(dt.toLocaleDateString('th-TH',{weekday:'narrow'}))}</small></th>`; }).join('');
+  const rows = T.members.map(mm => `<tr><th class="tname${mm.me ? ' me' : ''}" data-act="team-member" data-id="${mm.id}"><b>${esc(mm.name || '(ไม่มีชื่อ)')}</b><small>${esc(mm.empId || '')}${mm.phone ? ' · 📞' : ''}</small></th>${Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const cs = teamCodes(mm.id, d); return `<td class="${codeClass(cs)}${d === teamDay ? ' sel' : ''}" data-act="team-cell" data-id="${mm.id}" data-d="${d}">${esc(codeText(cs))}</td>`; }).join('')}</tr>`).join('');
+  const D = dutyList(teamDay, false);
+  return `<header class="top" style="flex-direction:column;align-items:stretch;gap:8px">
+    <div class="row between"><div><h1>ตารางเวรทีม</h1><div class="sub">ดูเวรเพื่อน ขอแลกเวร และเบอร์ติดต่อ</div></div></div>
+    <div class="row between"><button type="button" class="btn small" data-act="team-mon" data-d="-1" aria-label="เดือนก่อน">‹</button><strong>${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}</strong><button type="button" class="btn small" data-act="team-mon" data-d="1" aria-label="เดือนถัดไป">›</button></div>
+  </header>
+  <section class="card" style="gap:6px">
+    <div class="row between"><h2>${teamDay === today() ? 'วันนี้' : esc(thDate(teamDay,{weekday:'short', day:'numeric', month:'short'}))} อยู่เวร ${D.length} คน</h2><button type="button" class="btn small primary" data-act="team-swap" data-d="${teamDay}">สลับเวร</button></div>
+    ${D.length ? D.map(x => `<div class="row" style="gap:8px;padding:6px 0;border-top:1px solid var(--soft)"><span class="tcode ${codeClass(x.cs)}">${esc(codeText(x.cs))}</span><span class="grow">${esc(x.m.name)}${x.m.me ? ' (ฉัน)' : ''}</span>${x.m.me ? '' : telBtn(x.m, true)}</div>`).join('') : '<p class="meta" style="margin:0">ยังไม่มีใครลงเวรวันนี้ แตะหัววันที่ในตารางเพื่อเลือกวัน</p>'}
+  </section>
+  <section class="card" style="padding:8px 6px">
+    <div class="teamwrap"><table class="teamgrid"><thead><tr><th class="tname">ชื่อ</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="wrap" style="padding:6px 4px 0;gap:6px">${[['cw','8-16'],['cs','STD / 8-16+STD'],['cm','STD เช้า'],['c8','8-8'],['cx','หยุด']].map(([c,l]) => `<span class="row" style="gap:4px;font-size:11.5px"><span class="tcode ${c}" style="min-width:18px;height:14px"></span>${l}</span>`).join('')}</div>
+    <p class="meta" style="margin:4px">แตะช่องเพื่อแก้เวร · แตะชื่อเพื่อแก้ชื่อ รหัส เบอร์โทร · แตะหัววันที่เพื่อดูว่าใครอยู่เวร · แถวของคุณคือเวรจริงของคุณ (แก้แล้วค่าเวรเปลี่ยนตาม)</p>
+  </section>
+  <div class="row" style="flex-wrap:wrap;gap:6px;padding:0 4px 8px">
+    <button type="button" class="btn small primary" data-act="team-import">นำเข้าจากไฟล์ตารางเวร</button>
+    <button type="button" class="btn small" data-act="team-add">+ เพิ่มเพื่อน</button>
+    <button type="button" class="btn small" data-act="team-history">ประวัติการแลกเวร (${T.swaps.length})</button>
+  </div>
+  <p class="sub" style="padding:0 4px">ข้อมูลเพื่อนเก็บในเครื่องนี้เท่านั้น ไม่ได้อัปขึ้น GitHub</p>`;
+}
+function teamCellSheet(mid, d){
+  const mm = team().members.find(x => x.id === mid); if (!mm) return;
+  const cur = teamCodes(mid, d);
+  openSheet(`${sheetHead(esc(mm.name) + ' · ' + thDate(d,{weekday:'short', day:'numeric', month:'short'}))}
+    <form data-form="team-cell" data-id="${mid}" data-d="${d}" style="display:flex;flex-direction:column;gap:12px">
+      <fieldset><legend>เวร (ติ๊กได้ 2 ช่อง)</legend><div class="wrap">${TEAM_CODES.map(([k, l]) => `<label class="chip"><input type="checkbox" name="t" value="${k}"${cur.includes(k) ? ' checked' : ''}>${l}</label>`).join('')}</div></fieldset>
+      ${mm.me ? '<p class="meta" style="margin:0">นี่คือเวรจริงของคุณ แก้แล้วค่าเวร ชั่วโมง และใบเบิกเปลี่ยนตาม</p>' : ''}
+      <div class="row"><button type="button" class="btn" data-act="team-swap" data-d="${d}" data-id="${mm.me ? '' : mid}">สลับเวร…</button><button class="btn primary" type="submit" style="flex:1">บันทึก</button></div>
+    </form>`);
+}
+function teamMemberSheet(mid){
+  const mm = mid ? team().members.find(x => x.id === mid) : {};
+  openSheet(`${sheetHead(mid ? 'ข้อมูลเพื่อน' : 'เพิ่มเพื่อนในทีม')}
+    <form data-form="team-member" data-id="${mid || ''}" style="display:flex;flex-direction:column;gap:12px">
+      <label class="f">ชื่อ<input class="field" name="name" required value="${esc(mm.name || '')}"></label>
+      <div class="row"><label class="f" style="flex:1">รหัสพนักงาน<input class="field" name="empId" inputmode="numeric" value="${esc(mm.empId || '')}"></label><label class="f" style="flex:1">เบอร์โทร<input class="field" name="phone" type="tel" inputmode="tel" value="${esc(mm.phone || '')}" placeholder="08x-xxx-xxxx"></label></div>
+      ${mm.me ? '<p class="meta" style="margin:0">แถวนี้คือคุณ ชื่อและรหัสในฟอร์มแก้ได้ที่ ตั้งค่า › ข้อมูลในใบลงเวลา</p>' : ''}
+      <div class="row">${mid && !mm.me ? `<button type="button" class="btn danger" data-act="team-del" data-id="${mid}">ลบ</button>` : ''}${mm.phone ? telBtn(mm) : ''}<button class="btn primary" type="submit" style="flex:1">บันทึก</button></div>
+    </form>`);
+}
+function teamSwapSheet(d, otherId){
+  const T = team(); const me = meMember();
+  const others = T.members.filter(x => !x.me);
+  if (!others.length){ toast('เพิ่มเพื่อนหรือนำเข้าตารางเวรทีมก่อน', true); return; }
+  const opt = (sel) => T.members.map(x => `<option value="${x.id}"${x.id === sel ? ' selected' : ''}>${esc(x.name)}${x.me ? ' (ฉัน)' : ''}</option>`).join('');
+  openSheet(`${sheetHead('สลับเวร')}
+    <form data-form="team-swap" style="display:flex;flex-direction:column;gap:12px">
+      <div class="row" style="align-items:flex-start"><label class="f" style="flex:1">คนที่ 1<select class="field" name="a">${opt(me.id)}</select></label><label class="f" style="flex:1">วันของคนที่ 1<input class="field" type="date" name="d1" value="${d}"></label></div>
+      <div class="row" style="align-items:flex-start"><label class="f" style="flex:1">คนที่ 2<select class="field" name="b">${opt(otherId || others[0].id)}</select></label><label class="f" style="flex:1">วันของคนที่ 2<input class="field" type="date" name="d2" value="${d}"></label></div>
+      <div id="swap-prev" class="calc"></div>
+      <label class="f">ข้อความขอแลกเวร (แก้ได้)<textarea class="field" name="msg" rows="3"></textarea></label>
+      <div class="row" style="flex-wrap:wrap;gap:6px"><button type="button" class="btn small" data-act="swap-copy">คัดลอกข้อความ</button><span id="swap-call"></span></div>
+      <button class="btn primary" type="submit">ตกลงแลกแล้ว · บันทึกการสลับ</button>
+      <p class="meta" style="margin:0">บันทึกแล้วตารางของทั้งสองคนเปลี่ยนทันที (ถ้าเป็นเวรของคุณ ค่าเวรและใบเบิกเปลี่ยนตาม) ย้อนกลับได้ในประวัติการแลกเวร</p>
+    </form>`, sh => swapPreview(sh.querySelector('form')));
+}
+function swapPlan(f){
+  const fd = new FormData(f); const a = fd.get('a'), b = fd.get('b'), d1 = fd.get('d1'), d2 = fd.get('d2') || d1;
+  const dates = [...new Set([d1, d2].filter(Boolean))];
+  return {a, b, d1, d2, dates, before: dates.map(d => ({d, A: teamCodes(a, d), B: teamCodes(b, d)}))};
+}
+function swapPreview(f){
+  if (!f) return; const P = swapPlan(f); const T = team();
+  const A = T.members.find(x => x.id === P.a) || {}, B = T.members.find(x => x.id === P.b) || {};
+  const box = f.querySelector('#swap-prev');
+  if (P.a === P.b){ box.innerHTML = '<span style="color:var(--life-i)">เลือกคนละคน</span>'; return; }
+  box.innerHTML = P.before.map(x => `<div><b>${esc(thDate(x.d,{weekday:'short', day:'numeric', month:'short'}))}</b><br>${esc(A.name)}: ${esc(codeText(x.A) || 'ว่าง')} → <b>${esc(codeText(x.B) || 'ว่าง')}</b><br>${esc(B.name)}: ${esc(codeText(x.B) || 'ว่าง')} → <b>${esc(codeText(x.A) || 'ว่าง')}</b></div>`).join('<hr style="border:none;border-top:1px solid var(--line);margin:6px 0">');
+  const t = f.elements.msg; if (!t.dataset.touched){
+    const giver = A.me ? 'ฉัน' : A.name;
+    t.value = `สวัสดีค่ะ ${B.name} ${giver === 'ฉัน' ? 'ขอ' : giver + ' ขอ'}แลกเวรนะคะ: ` + P.before.map(x => `${thDate(x.d,{day:'numeric', month:'short'})} ${codeText(x.A) || 'ว่าง'} ↔ ${codeText(x.B) || 'ว่าง'}`).join(', ') + ' สะดวกไหมคะ';
+  }
+  const call = f.querySelector('#swap-call'); call.innerHTML = (B.phone ? telBtn(B) + ` <a class="btn small" href="sms:${esc(B.phone.replace(/[^\d+]/g, ''))}?body=${encodeURIComponent(t.value)}">💬 SMS</a>` : '<span class="meta">ใส่เบอร์โทรเพื่อนได้ที่ชื่อในตาราง</span>');
+}
+async function readTeamFile(f){
+  const fd = new FormData(f); const file = fd.get('file'); const ymSel = String(fd.get('ym') || ''); const mine = !!fd.get('mine');
+  if (!file || !file.size) return;
+  const out = f.querySelector('#tf-out'); out.innerHTML = '<p class="meta">กำลังอ่านไฟล์…</p>';
+  try{
+    let rows = [], ym = null;
+    if (/\.xlsx?$/i.test(file.name)){
+      await loadScript(XLSX_URL);
+      const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array', cellStyles:true});
+      for (const name of wb.SheetNames){
+        const ws = wb.Sheets[name]; if (!ws['!ref']) continue; const R = window.XLSX.utils.decode_range(ws['!ref']); let headText = '';
+        for (let r = R.s.r; r <= R.e.r; r++){
+          const cells = []; for (let c = R.s.c; c <= R.e.c; c++){ const cell = ws[window.XLSX.utils.encode_cell({r, c})]; const v = cell && cell.v != null ? String(cell.v) : ''; if (r < R.s.r + 4) headText += ' ' + v; const fg = cell && cell.s && (cell.s.fgColor || (cell.s.fill && cell.s.fill.fgColor)); cells.push({text:v, color: fg && fg.rgb ? fg.rgb : ''}); }
+          rows.push(cells);
+        }
+        ym = ym || findYm(headText); if (rows.length) break;
+      }
+    } else {
+      const text = await file.text();
+      const cls = {}; text.replace(/\.([\w-]+)\s*\{([^}]*)\}/g, (_, k, body) => { const m = body.match(/background(?:-color)?\s*:\s*([^;]+)/i); if (m) cls[k] = m[1].trim(); return ''; });
+      const doc = new DOMParser().parseFromString(text, 'text/html'); ym = findYm(doc.body ? doc.body.textContent : text);
+      rows = [...doc.querySelectorAll('tr')].map(tr => [...tr.children].map(td => { let color = ''; (td.getAttribute('class') || '').split(/\s+/).forEach(c => { if (cls[c]) color = cls[c]; }); const st = (td.getAttribute('style') || '').match(/background(?:-color)?\s*:\s*([^;]+)/i); if (st) color = st[1]; if (!color && td.getAttribute('bgcolor')) color = td.getAttribute('bgcolor'); return {text: td.textContent.replace(/\s+/g, ' ').trim(), color}; }));
+    }
+    ym = ym || ymSel;
+    const people = [];
+    rows.forEach(cells => {
+      const idIdx = cells.findIndex(c => /^\d{5,7}$/.test(c.text));
+      if (idIdx < 0 || !cells[idIdx + 1] || !cells[idIdx + 1].text || codeToTypes(cells[idIdx + 1].text, '')) return;
+      const {list} = cellsToShifts(cells.slice(idIdx + 2), ym);
+      if (list.length) people.push({empId: cells[idIdx].text, name: cells[idIdx + 1].text, list});
+    });
+    if (!people.length){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>อ่านรายชื่อในไฟล์ไม่ได้ ลองไฟล์ .html หรือ .xlsx ตัวอื่นของแผนก</div></div>'; return; }
+    const T = team(); const me = meMember(); let added = 0, mineDays = 0;
+    people.forEach(p => {
+      const isMe = (S.settings.profile.id && p.empId === S.settings.profile.id) || (me.empId && p.empId === me.empId);
+      if (isMe){ if (mine){ p.list.forEach(x => { S.shifts[x.date] = {types:x.types}; mineDays++; }); } return; }
+      let mm = T.members.find(x => !x.me && x.empId === p.empId);
+      if (!mm){ mm = {id:'t' + uid(), empId:p.empId, name:p.name, phone:''}; T.members.push(mm); added++; }
+      else if (!mm.name) mm.name = p.name;
+      T.months[ym] = T.months[ym] || {}; T.months[ym][mm.id] = {};
+      p.list.forEach(x => { T.months[ym][mm.id][x.date.slice(8)] = x.types; });
+    });
+    teamMonth = ym; closeSheet();
+    commit('นำเข้าตารางเวรทีม ' + ym + ' (' + people.length + ' คน)', {msg:`นำเข้าแล้ว ${people.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''}${mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}`});
+  }catch(e){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>อ่านไฟล์นี้ไม่ได้</div></div>'; }
+}
+function teamImportSheet(){
+  openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
+    <form data-form="team-file" style="display:flex;flex-direction:column;gap:12px">
+      <p class="meta" style="margin:0">ใช้ไฟล์ตารางเวรของแผนก (.html หรือ .xlsx) แอปอ่านทุกคนในไฟล์ รวมสีช่อง (เหลือง = +STD) อ่านในเครื่อง ไม่ส่งไฟล์ไปที่ไหน</p>
+      <label class="f">ไฟล์ตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls" required style="padding:8px"></label>
+      <label class="f">เดือน (ใช้เมื่อไฟล์ไม่ได้บอกเดือน)<input class="field" type="month" name="ym" value="${esc(teamMonth)}"></label>
+      <label class="chip" style="align-self:flex-start"><input type="checkbox" name="mine">อัปเดตเวรของฉันจากไฟล์นี้ด้วย</label>
+      <button class="btn primary" type="submit">นำเข้า</button><div id="tf-out" aria-live="polite"></div>
+    </form>`);
+}
+function teamHistorySheet(){
+  const T = team();
+  openSheet(`${sheetHead('ประวัติการแลกเวร')}
+    ${T.swaps.length ? T.swaps.slice().reverse().map((x, i) => { const idx = T.swaps.length - 1 - i; return `<div class="row" style="gap:8px;padding:8px 0;border-top:1px solid var(--soft)"><span class="grow"><b style="font-size:14px">${esc(x.aName)} ↔ ${esc(x.bName)}</b><span class="meta" style="display:block">${x.before.map(b => esc(thDate(b.d,{day:'numeric', month:'short'})) + ' ' + esc(codeText(b.A) || 'ว่าง') + ' ↔ ' + esc(codeText(b.B) || 'ว่าง')).join(' · ')}${x.undone ? ' · ย้อนกลับแล้ว' : ''}</span></span>${x.undone ? '' : `<button type="button" class="btn small" data-act="swap-undo" data-i="${idx}">ย้อนกลับ</button>`}</div>`; }).join('') : '<p class="meta">ยังไม่มีการแลกเวร</p>'}`);
+}
+
 function patientCheck(text, form, proceed){
   if (!S.settings.patientWarn || !PATIENT.test(text) || form.dataset.pwOk) return proceed();
   form.querySelector('#pw').innerHTML = `<div class="banner appt" style="margin:0"><div>ข้อความนี้ดูเหมือนมีข้อมูลผู้ป่วย แนะนำไม่จดในแอปนี้<div class="row" style="margin-top:8px"><button type="button" class="btn small" id="pw-edit">กลับไปแก้</button><button type="button" class="btn small" id="pw-go">บันทึกต่อ</button></div></div></div>`;
@@ -2672,6 +2891,18 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'team-mon': { const [y,m] = teamMonth.split('-').map(Number); teamMonth = ymd(new Date(y, m-1+Number(el.dataset.d), 1)).slice(0,7); teamDay = teamMonth === today().slice(0,7) ? today() : teamMonth + '-01'; render(); break; }
+    case 'team-day': teamDay = el.dataset.d; render(); break;
+    case 'team-cell': teamDay = el.dataset.d; teamCellSheet(el.dataset.id, el.dataset.d); break;
+    case 'team-member': teamMemberSheet(el.dataset.id); break;
+    case 'team-add': teamMemberSheet(null); break;
+    case 'team-del': confirmSheet('ลบเพื่อนคนนี้และเวรทั้งหมดของเขา?', 'ลบ', () => { const T = team(); T.members = T.members.filter(x => x.id !== el.dataset.id); Object.values(T.months).forEach(mo => { delete mo[el.dataset.id]; }); commit('ลบเพื่อนในทีม', {msg:'ลบแล้ว'}); }, true); break;
+    case 'team-swap': teamSwapSheet(el.dataset.d || teamDay, el.dataset.id || ''); break;
+    case 'team-import': teamImportSheet(); break;
+    case 'team-history': teamHistorySheet(); break;
+    case 'swap-copy': { const f = el.closest('form'); const ta = f && f.elements.msg; if (!ta) break; ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => toast('คัดลอกแล้ว ไปวางใน LINE ได้เลย'), () => toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok)); else toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); break; }
+    case 'swap-undo': { const T = team(); const x = T.swaps[Number(el.dataset.i)]; if (!x || x.undone) break;
+      confirmSheet('ย้อนการแลกเวรนี้ กลับเป็นเวรเดิมของทั้งสองคน?', 'ย้อนกลับ', () => { x.before.forEach(b => { setTeamCodes(x.a, b.d, b.A); setTeamCodes(x.b, b.d, b.B); }); x.undone = true; closeSheet(); commit('ย้อนการแลกเวร ' + x.aName + ' ↔ ' + x.bName, {msg:'ย้อนกลับแล้ว'}); }); break; }
     case 'app-check': Updater.check(true); break;
     case 'app-update': Updater.update(); break;
     case 'bak-restore': { const b = AutoBak.list()[Number(el.dataset.i)]; if (!b) break; confirmSheet('กู้คืนข้อมูลจาก ' + b.at.slice(0,16).replace('T',' ') + ' ? ข้อมูลตอนนี้จะถูกสำรองไว้ก่อน', 'กู้คืน', () => AutoBak.restore(Number(el.dataset.i))); break; }
@@ -2778,6 +3009,7 @@ document.addEventListener('click', e => {
   }
 });
 document.addEventListener('change', e => {
+  { const sf = e.target.closest && e.target.closest('form[data-form="team-swap"]'); if (sf && e.target.name !== 'msg') swapPreview(sf); }
   const el = e.target;
   if (el.dataset && el.dataset.act === 'bg'){ S.settings.bg = el.value; S.settings.skin = el.value === 'plain' ? 'plain' : 'angel'; Theme.apply(); commit('เปลี่ยนพื้นหลัง', {msg:'เปลี่ยนแล้ว'}); if (el.value === 'custom' && !Theme.customBg()) setTimeout(() => { const u = document.querySelector('[data-act=bg-upload]'); if (u) u.click(); }, 80); return; }
   if (el.dataset && el.dataset.act === 'bg-upload' && el.files && el.files[0]){ Theme.upload(el.files[0]); return; }
@@ -2803,6 +3035,7 @@ document.addEventListener('change', e => {
   if (el.dataset && el.dataset.act === 'import' && el.files && el.files[0]) Backup.import(el.files[0], el);
 });
 document.addEventListener('input', e => { const el = e.target;
+  const sf = el.closest && el.closest('form[data-form="team-swap"]'); if (sf){ if (el.name === 'msg') el.dataset.touched = '1'; swapPreview(sf); }
   const cf = el.closest && el.closest('form[data-form="case"]'); if (cf) updateCaseCalc(cf);
   const of = el.closest && el.closest('form[data-form="ot-add"]');
   if (of){ const nb = of.querySelector('input[name=night]'); if (nb){ if (el === nb) nb.dataset.touched = '1'; else if (el.name === 'start' && !nb.dataset.touched) nb.checked = isNightStart(el.value); }
@@ -2888,6 +3121,25 @@ document.addEventListener('submit', e => {
     commit('เพิ่มวันหยุดบริษัท ' + n, {msg:'เพิ่มวันหยุดแล้ว'});
   } else if (kind === 'wpush'){
     WPush.connect(fd.get('url'), fd.get('key'));
+  } else if (kind === 'team-cell'){
+    let ts = fd.getAll('t'); if (ts.includes('STDM') && !ts.includes('STD')) ts.push('STD');
+    if (ts.filter(k => k !== 'STDM').length > 2){ toast('ติ๊กได้สูงสุด 2 ช่อง', true); return; }
+    setTeamCodes(f.dataset.id, f.dataset.d, ts); closeSheet();
+    const mm = team().members.find(x => x.id === f.dataset.id);
+    commit('แก้เวรทีม: ' + (mm ? mm.name : '') + ' ' + f.dataset.d, {msg:'บันทึกแล้ว'});
+  } else if (kind === 'team-member'){
+    const T = team(); const data = {name:String(fd.get('name') || '').trim(), empId:String(fd.get('empId') || '').trim(), phone:String(fd.get('phone') || '').trim()};
+    if (f.dataset.id){ const mm = T.members.find(x => x.id === f.dataset.id); if (mm) Object.assign(mm, data); }
+    else T.members.push(Object.assign({id:'t' + uid()}, data));
+    closeSheet(); commit((f.dataset.id ? 'แก้ข้อมูลเพื่อน: ' : 'เพิ่มเพื่อน: ') + data.name, {msg:'บันทึกแล้ว'});
+  } else if (kind === 'team-swap'){
+    const P = swapPlan(f); if (P.a === P.b){ toast('เลือกคนละคน', true); return; }
+    const T = team(); const A = T.members.find(x => x.id === P.a), B = T.members.find(x => x.id === P.b);
+    P.before.forEach(x => { setTeamCodes(P.a, x.d, x.B); setTeamCodes(P.b, x.d, x.A); });
+    T.swaps.push({at:new Date().toISOString(), a:P.a, b:P.b, aName:A.name, bName:B.name, before:P.before, msg:String(fd.get('msg') || '')});
+    closeSheet(); commit('แลกเวร ' + A.name + ' ↔ ' + B.name, {msg:'สลับเวรแล้ว ย้อนกลับได้ในประวัติ'});
+  } else if (kind === 'team-file'){
+    readTeamFile(f);
   } else if (kind === 'frow'){
     const form = f.dataset.fk, ym = f.dataset.ym, rk = f.dataset.rk;
     const before = finalRows(form, ym).find(x => x.key === rk); if (!before) return;
