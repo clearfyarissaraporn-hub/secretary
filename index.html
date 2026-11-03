@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.11</title>
+<title>เลขาส่วนตัว v1.13</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -422,6 +422,19 @@ nav.tabbar a svg{width:24px;height:24px}
 nav.tabbar .in{grid-template-columns:repeat(8,minmax(0,1fr)) !important}
 nav.tabbar a{font-size:10px !important;margin:0 !important;padding-left:0 !important;padding-right:0 !important}
 nav.tabbar a svg{width:23px !important;height:23px !important}
+.mtiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.mtile{border-radius:14px;padding:10px 8px;background:var(--soft);display:flex;flex-direction:column;gap:2px;min-width:0}
+.mtile small{font-size:11.5px;color:var(--muted)}.mtile b{font-size:17px;overflow-wrap:anywhere}.mtile span{font-size:10.5px;color:var(--muted)}
+.mtile.in{background:var(--money-t)}.mtile.out{background:var(--life-t)}
+.mbar{display:grid;grid-template-columns:118px minmax(0,1fr) 84px;gap:8px;align-items:center;padding:4px 0;font-size:13px}
+.mbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mbt{height:10px;border-radius:6px;background:var(--soft);overflow:hidden;display:block}.mbt span{display:block;height:100%;border-radius:6px}
+.mbv{text-align:right;font-weight:600}.mbv small{display:block;font-weight:400;font-size:10.5px;color:var(--muted)}
+.ybar{display:grid;grid-template-columns:40px minmax(0,1fr) 78px;gap:8px;align-items:center;font-size:12.5px;padding:3px 0}
+.ybt{display:flex;flex-direction:column;gap:2px}.ybt span{display:block;height:7px;border-radius:4px;min-width:2px}.ybt .i{background:var(--money)}.ybt .o{background:var(--life)}
+.ybar .meta{text-align:right}
+nav.tabbar .in{grid-template-columns:repeat(9,minmax(0,1fr)) !important}
+nav.tabbar a{font-size:9.5px !important;margin:0 !important;letter-spacing:-.2px}
+nav.tabbar a svg{width:22px !important;height:22px !important}
 </style>
 </head>
 <body>
@@ -436,7 +449,7 @@ nav.tabbar a svg{width:23px !important;height:23px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.11';
+const APP_VERSION = '1.13';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -475,13 +488,14 @@ const ICON = {
   set:'<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" fill="#E3D7FB"/><path d="M12 14.6l-2-1.9a1.2 1.2 0 0 1 2-1.4 1.2 1.2 0 0 1 2 1.4z" fill="#E1679B" stroke="none"/>',
   guide:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" fill="#C9EEDF"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/><path d="M12 6.5l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z" fill="#FFD36B" stroke="none"/>',
   link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/><path d="M19 2.5l.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z" fill="#FFD36B" stroke="none"/><path d="M4.5 17.5l.4 1 1 .4-1 .4-.4 1-.4-1-1-.4 1-.4z" fill="#F6A6C8" stroke="none"/>',
+  money:'<rect x="3" y="6" width="18" height="14" rx="3.5" fill="#D9F2E8"/><path d="M3 9.5h18"/><path d="M6 6l9-3 1.4 3" fill="#FFE08A"/><rect x="14.5" y="11.5" width="6.5" height="5" rx="2" fill="#F9C9DE"/><circle cx="17.3" cy="14" r=".9" fill="currentColor" stroke="none"/>',
   ts:'<path d="M8 3h8v3H8z" fill="#FBD3BE"/><rect x="5" y="4.5" width="14" height="17" rx="2.5" fill="#FFF4C7"/><path d="M8 3h8v3H8z"/><path d="M8.5 11h7M8.5 14.5h4"/><path d="M15.5 18.6l-1.4-1.3a.8.8 0 0 1 1.4-1 .8.8 0 0 1 1.4 1z" fill="#E1679B" stroke="none"/>',
   team:'<circle cx="8.5" cy="8" r="3.4" fill="#FFD6E7"/><circle cx="16" cy="9" r="2.9" fill="#D8E6FF"/><path d="M2.5 19.5c.6-3.4 3-5.4 6-5.4s5.4 2 6 5.4z" fill="#E8DEFC"/><path d="M14.6 14.4c.5-.2 1-.3 1.6-.3 2.6 0 4.5 1.8 5 4.9h-5.1" fill="#D9F2E8"/><path d="M12 6.2l-.9-.8a.6.6 0 0 1 .9-.8.6.6 0 0 1 .9.8z" fill="#E1679B" stroke="none"/>',
   lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   x:'<path d="M6 6l12 12M18 6L6 18"/>'
 };
 
-const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['config','set','ตั้งค่า'],['links','link','แอป'],['timesheet','ts','ใบเวร'],['guide','guide','คู่มือ']];
+const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['config','set','ตั้งค่า'],['links','link','แอป'],['timesheet','ts','ใบเวร'],['money','money','เงิน'],['guide','guide','คู่มือ']];
 const PATIENT = /(\bHN\b|\bAN\b\s*\d|เตียง\s*\d|ผู้ป่วย|คนไข้|เลขประจำตัวผู้ป่วย)/i;
 const LS_STATE = 'tmm-state-v1', LS_SYNC = 'tmm-sync-v1';
 
@@ -600,7 +614,7 @@ function defaultRoutines(){
 function defaults(){
   return {
     schema:7,
-    appts:[], captures:[], shifts:{}, routineLog:{}, cases:{}, hours:{}, assign:{}, extra:{}, holCredit:{}, team:{members:[], months:{}, swaps:[]}, formEdits:{}, formMeta:{}, links:[], audit:[],
+    appts:[], captures:[], shifts:{}, routineLog:{}, cases:{}, hours:{}, assign:{}, extra:{}, holCredit:{}, money:{items:[]}, team:{members:[], months:{}, swaps:[]}, formEdits:{}, formMeta:{}, links:[], audit:[],
     stdHours:Object.assign({}, STD_HOURS), coHol:defaultCoHol(),
     routines:defaultRoutines(),
     shiftTypes:SHIFT_TYPES(),
@@ -673,7 +687,7 @@ function migrate(p){
   const out = Object.assign(d, p);
   out.settings = Object.assign(defaults().settings, p.settings || {});
   out.settings.gcal = Object.assign({holiday:false, primary:false}, out.settings.gcal || {});
-  out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; out.team = out.team || {members:[], months:{}, swaps:[]}; out.holCredit = out.holCredit || {}; if (out.settings.holHours == null) out.settings.holHours = 8; if (out.shiftTypes && out.shiftTypes.STDM && out.shiftTypes.STDM.label === 'สแตนด์บายเช้า วันหยุด (STD เช้า)'){ out.shiftTypes.STDM = Object.assign({}, SHIFT_TYPES().STDM); } if (out.shiftTypes && !out.shiftTypes.STDM){ const def = SHIFT_TYPES().STDM, nt = {}; Object.keys(out.shiftTypes).forEach(k => { nt[k] = out.shiftTypes[k]; if (k === 'STD') nt.STDM = def; }); if (!nt.STDM) nt.STDM = def; out.shiftTypes = nt; } NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
+  out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; out.money = out.money || {items:[]}; out.money.items = out.money.items || []; out.team = out.team || {members:[], months:{}, swaps:[]}; out.holCredit = out.holCredit || {}; if (out.settings.holHours == null) out.settings.holHours = 8; if (out.shiftTypes && out.shiftTypes.STDM && out.shiftTypes.STDM.label === 'สแตนด์บายเช้า วันหยุด (STD เช้า)'){ out.shiftTypes.STDM = Object.assign({}, SHIFT_TYPES().STDM); } if (out.shiftTypes && !out.shiftTypes.STDM){ const def = SHIFT_TYPES().STDM, nt = {}; Object.keys(out.shiftTypes).forEach(k => { nt[k] = out.shiftTypes[k]; if (k === 'STD') nt.STDM = def; }); if (!nt.STDM) nt.STDM = def; out.shiftTypes = nt; } NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
   out.settings.otRule = Object.assign({majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true}, out.settings.otRule || {});
   if (out.settings.otRule.nightTo === '08:00') out.settings.otRule.nightTo = '05:00';
   out.settings.profile = Object.assign(defaults().settings.profile, out.settings.profile || {});
@@ -1269,6 +1283,9 @@ function viewConfig(){
   ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div>
       <div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><span style="display:block;font-weight:600">แจ้งเตือนของแอป</span><span class="meta">${'Notification' in window ? (Notification.permission === 'denied' ? 'ถูกบล็อกอยู่ เปิดได้ที่ Chrome › การตั้งค่าเว็บไซต์ › การแจ้งเตือน' : S.settings.noti && Notification.permission === 'granted' ? 'เปิดอยู่ · เด้งเตือนนัดของวันนี้เมื่อเปิดแอป และทุก 5 นาทีระหว่างเปิดอยู่' : 'เด้งเตือนนัดในแถบแจ้งเตือนของมือถือ') : 'เครื่องนี้ไม่รองรับ'}</span></span>${'Notification' in window && Notification.permission !== 'denied' ? (S.settings.noti && Notification.permission === 'granted' ? '<button type="button" class="btn small" data-act="noti-off">ปิด</button>' : '<button type="button" class="btn small primary" data-act="noti-on">เปิดแจ้งเตือน</button>') : ''}</div></div>` : `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow meta" style="padding:12px 14px">แอปบน claude.ai ติดตั้งลงหน้าจอไม่ได้ ให้ใช้เวอร์ชัน GitHub (ดู README) แล้วเปิดใน Chrome</div></div>`}
 
+  <h2 class="group-t">สรุปตัวฉันให้ AI วิเคราะห์</h2>
+  <div class="list"><div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🔮</span><span class="grow"><b>รู้จักตัวเองแบบไม่โกหก</b><span class="meta" style="display:block">รวมเวร ชั่วโมงงาน เคส รูทีน นัด ไอเดีย และเวลาว่าง 30 วัน จัดเป็นหมวด พร้อมคำสั่งวางถาม AI ได้ทันที</span></span><button type="button" class="btn small primary" data-act="ai-open">สร้างข้อความ</button></div></div>
+
   <h2 class="group-t">ส่งออกข้อมูล</h2>
   <div class="list"><div class="lrow" style="flex-wrap:wrap;padding:12px 14px;gap:6px">
     <button type="button" class="btn small primary" data-act="exp-all" data-k="month">Excel เดือนนี้</button>
@@ -1340,10 +1357,12 @@ function viewGuide(){
     ['ทำฟอร์มส่งโรงพยาบาล','ใบเวร › RLA/OT, ค่าเวร, ค่าเคส แตะแถวหรือ “แก้ทีละแถว” เพื่อแก้ แตะหัว/ลายเซ็น/มุมล่างเพื่อแก้ข้อความ'],
     ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
+    ['สรุปเงินของเดือน','เมนู เงิน: ค่าเวรและค่าเคส OT ขึ้นให้อัตโนมัติ · + รายรับ (เงินเดือน ร้าน Affiliate) · + รายจ่าย (ติ๊ก “ประจำทุกเดือน” สำหรับค่าเช่า ผ่อน บิล) · ดูสรุป/รายการ/ทั้งปี'],
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
+    ['รู้จักตัวเองกับ AI','ตั้งค่า › สรุปตัวฉันให้ AI วิเคราะห์: เลือกเรื่องที่อยากให้ช่วย (รู้จักตัวเอง / หาเวลาทำไอเดีย / ขยายขีดจำกัด) เขียน “เกี่ยวกับฉัน” › สร้างข้อความ › คัดลอกไปวางใน Claude ทำเดือนละครั้ง'],
     ['สำรองข้อมูล','แอปบันทึกทุกครั้งที่แก้ และสำรองอัตโนมัติวันละครั้ง (เวอร์ชัน GitHub) · ดาวน์โหลดไฟล์สำรองเก็บไว้เดือนละครั้ง']
   ];
-  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน และวันนี้อยู่เวรกับใคร'],['ทีม','ตารางเวรเพื่อนทั้งทีม เบอร์โทร ใครอยู่เวรวันไหน และสลับเวร'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['คู่มือ','หน้านี้']];
+  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน และวันนี้อยู่เวรกับใคร'],['ทีม','ตารางเวรเพื่อนทั้งทีม เบอร์โทร ใครอยู่เวรวันไหน และสลับเวร'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['เงิน','รายรับ (ค่าเวร ค่าเคสอัตโนมัติ + พิมพ์เอง) รายจ่ายแยกหมวด สรุปรายเดือนและทั้งปี'],['คู่มือ','หน้านี้']];
   const faq = [
     ['ข้อมูลเพื่อนในทีม','ชื่อ เบอร์ และเวรเพื่อนเก็บในเครื่องนี้เท่านั้น ไม่อยู่ในไฟล์บน GitHub ขอความยินยอมเพื่อนก่อนเก็บเบอร์'],
     ['ข้อมูลเก็บที่ไหน','ในเบราว์เซอร์ของเครื่องที่ใช้ ไม่ได้ส่งขึ้นเซิร์ฟเวอร์ (ยกเว้นเปิดซิงก์บน claude.ai ซึ่งเข้ารหัสก่อนส่ง)'],
@@ -1356,6 +1375,8 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.13','หน้า “เงิน” ถัดจากใบเวร: รายรับอัตโนมัติจากค่าเวร/ค่าเคส + พิมพ์เอง · รายจ่ายแยกหมวด รายการประจำ · สรุปเดือน/ปี · รวมใน AI และ Excel'],
+    ['v1.12','สรุปตัวฉันให้ AI: รวมทุกหมวดชีวิต + คำสั่งวิเคราะห์แบบตรงไปตรงมา + เวลาว่าง 30 วัน · คัดลอก/ดาวน์โหลด .md .json'],
     ['v1.11','รวมตารางเวรหลายแผนก (OR + วิสัญญีแบบ ช/บ/ด) · อัปไฟล์ทีละไฟล์แล้วรวมกับของเดิม · แก้รายชื่อ: ลบ/เรียง/ระบุแผนก · วางผลจาก Claude ได้แม้ตอบหลายก้อน'],
     ['v1.10','นำเข้าตารางเวรทีมจาก PDF และรูปภาพ · ดูรายชื่อก่อนนำเข้า · วางผลจาก Claude ได้'],
     ['v1.9','หน้า “ทีม”: ตารางเวรเพื่อน นำเข้าจากไฟล์ ใส่เบอร์โทร สลับเวรได้จริง (ย้อนกลับได้) · การ์ด “วันนี้อยู่เวรกับ” บน My day'],
@@ -1419,7 +1440,7 @@ function viewLinks(){
 let hoursScrolled = false;
 function render(){
   renderTabs();
-  const v = {myday:viewMyDay, appt:viewAppt, calendar:viewCalendar, config:viewConfig, guide:viewGuide, links:viewLinks, timesheet:viewTimesheet, team:viewTeam}[route];
+  const v = {myday:viewMyDay, appt:viewAppt, calendar:viewCalendar, config:viewConfig, guide:viewGuide, links:viewLinks, timesheet:viewTimesheet, team:viewTeam, money:viewMoney}[route];
   const hs = $('#hours'); const keep = hs ? hs.scrollTop : null;
   $('#view').innerHTML = v();
   $('#fab').hidden = route !== 'myday';
@@ -2474,6 +2495,7 @@ async function exportAll(scope){
   Object.keys(S.cases).filter(inScope).sort().forEach(d => S.cases[d].forEach(c => caseRows.push([d, c.cls || '', c.ot ? 'ใช่' : '', c.night ? 'ใช่' : '', c.start || '', c.end || '', caseMins(c), c.room || '', c.op || c.what || '', c.anes || '', c.role || '', c.surgeon || '', c.ot ? otAmount(c).total : '', c.note || ''])));
   add('เคสและ OT', caseRows, [11,8,7,8,7,7,6,7,22,10,10,14,11,24]);
   add('นัดหมาย', [['วันที่','เวลา','ประเภท','เรื่อง','สถานที่/ติดตาม','ระบบ','เตือน','เสร็จแล้ว']].concat(S.appts.filter(a => scope === 'all' || inScope(a.date)).sort((a, b) => (a.date + (a.time || '')).localeCompare(b.date + (b.time || ''))).map(a => [a.date, a.time || '', KINDS[a.kind] || '', a.title, a.place || a.who || '', (SYS[a.sys] || {}).name || '', [a.remind && a.remind.d1 ? 'ก่อน 1 วัน' : '', a.remind && a.remind.morning ? 'เช้าวันนัด' : '', a.remind && a.remind.h2 ? 'ก่อน 2 ชม.' : ''].filter(Boolean).join(', '), a.done ? 'ใช่' : ''])), [11,7,10,28,20,10,20,9]);
+  add('รายรับรายจ่าย', [['วันที่','ประเภท','หมวด','จำนวน (บาท)','หมายเหตุ','ประจำ/อัตโนมัติ']].concat(months.flatMap(ym => moneyItemsFor(ym).map(i => [i.date, i.type === 'in' ? 'รายรับ' : 'รายจ่าย', i.cat, Number(i.amount) || 0, i.note || '', i.auto ? 'อัตโนมัติ' : i.recur ? 'ประจำ' : '']))), [11,8,16,12,26,10]);
   add('กิจกรรมและไอเดีย', [['วันที่จด','ประเภท','ข้อความ']].concat(S.captures.map(c => [c.at.slice(0,10), c.kind === 'activity' ? 'กิจกรรม' : 'ไอเดีย', c.text])), [11,10,50]);
   const name = 'secretary-' + (scope === 'month' ? tsMonth : scope === 'year' ? 'year-' + tsMonth.slice(0,4) : 'all') + '.xlsx';
   try{ await dl.save({filename:name, data:new Uint8Array(window.XLSX.write(wb, {type:'array', bookType:'xlsx'}))}); log('ส่งออกข้อมูล ' + name, true); writeLocal(); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }
@@ -3112,6 +3134,251 @@ function teamHistorySheet(){
     ${T.swaps.length ? T.swaps.slice().reverse().map((x, i) => { const idx = T.swaps.length - 1 - i; return `<div class="row" style="gap:8px;padding:8px 0;border-top:1px solid var(--soft)"><span class="grow"><b style="font-size:14px">${esc(x.aName)} ↔ ${esc(x.bName)}</b><span class="meta" style="display:block">${x.before.map(b => esc(thDate(b.d,{day:'numeric', month:'short'})) + ' ' + esc(codeText(b.A) || 'ว่าง') + ' ↔ ' + esc(codeText(b.B) || 'ว่าง')).join(' · ')}${x.undone ? ' · ย้อนกลับแล้ว' : ''}</span></span>${x.undone ? '' : `<button type="button" class="btn small" data-act="swap-undo" data-i="${idx}">ย้อนกลับ</button>`}</div>`; }).join('') : '<p class="meta">ยังไม่มีการแลกเวร</p>'}`);
 }
 
+
+/* ---------- สรุปตัวฉันให้ AI วิเคราะห์ (จัดหมวด + คำสั่งพร้อมวาง) ---------- */
+const ABOUT_Q = [
+  ['goal','ใน 1–3 ปี อยากเป็นคนแบบไหน / ชีวิตแบบไหน'],
+  ['energy','อะไรเติมพลัง และอะไรดูดพลังมากที่สุด'],
+  ['strength','สิ่งที่ทำได้ดี หรือคนอื่นชมบ่อย'],
+  ['delay','สิ่งที่ผัดวันประกันพรุ่งบ่อย'],
+  ['fear','ความกลัว หรือข้อจำกัดที่รู้ตัว'],
+  ['money','เป้าหมายการเงิน / อาชีพ'],
+  ['body','การนอน การกิน การออกกำลังกาย (เท่าที่อยากเล่า)'],
+  ['people','คนสำคัญ และเวลาที่อยากให้เขา'],
+  ['ideas','ไอเดียที่อยากทำแต่ยังไม่ได้เริ่ม'],
+  ['other','อื่น ๆ ที่อยากให้ AI รู้']
+];
+const AI_MODES = {
+  all:['ครบทุกด้าน','วิเคราะห์ครบทุกหัวข้อด้านล่าง'],
+  self:['รู้จักตัวเองแบบไม่โกหก','เน้นหัวข้อ 1–2 และ 6 ให้ลึกที่สุด'],
+  time:['หาเวลาทำไอเดียใหม่','เน้นหัวข้อ 3–4 วางแผนเวลาจริงรายสัปดาห์'],
+  limit:['ขยายขีดจำกัด','เน้นหัวข้อ 5 ออกแบบการทดลอง 2 สัปดาห์ที่วัดผลได้']
+};
+function aiPackData(o){
+  const t = today(); const from = o.range === 'all' ? '0000-00-00' : addDays(t, -Number(o.range || 90));
+  const inR = d => d >= from && d <= t;
+  const dow = ['อา','จ','อ','พ','พฤ','ศ','ส'];
+  const D = {meta:{created: new Date().toISOString().slice(0,16).replace('T',' '), range: o.range === 'all' ? 'ทั้งหมดที่มี' : 'ย้อนหลัง ' + o.range + ' วัน (' + from + ' ถึง ' + t + ')', app:'เลขาส่วนตัว v' + APP_VERSION}};
+  const pf = S.settings.profile;
+  D.profile = {role: pf.pos || '', dept: pf.dept || '', name: o.name ? pf.name : '(ไม่ระบุ)', stopWorkAfter: S.settings.stopAfter || '', notes:'พยาบาลห้องผ่าตัด มีเวรเหมา 24 ชม. (8-8), Standby, เรียกเคส OT กลางคืน'};
+  /* งานประจำ: รายเดือน */
+  const months = [...new Set([...Object.keys(S.shifts), ...Object.keys(S.cases)].filter(inR).map(d => d.slice(0,7)))].sort();
+  D.work = months.map(ym => { const H = hoursFor(ym), P = payFor(ym);
+    const cnt = {}; Object.keys(S.shifts).filter(d => d.startsWith(ym)).forEach(d => shiftsOn(d).forEach(k => { cnt[codeName(k)] = (cnt[codeName(k)] || 0) + 1; }));
+    return {month: ym, shifts: cnt, hours: H.total, stdHours: H.std, diff: H.diff, deduct: H.deduct || 0, shiftPay: P.total, otCases: H.otCount, otPay: H.otMoney, extraPlus: H.plusT, leaveMinus: H.minusT, holidayCredit: H.holT}; });
+  /* รูปแบบเวร */
+  const days = Object.keys(S.shifts).filter(inR).sort();
+  const wd = {}; let streak = 0, maxStreak = 0, prev = null, after24 = 0, after24work = 0;
+  days.forEach(d => { const ts = shiftsOn(d); const work = ts.some(isWorkType);
+    if (work){ wd[dow[parse(d).getDay()]] = (wd[dow[parse(d).getDay()]] || 0) + 1; streak = prev && addDays(prev, 1) === d ? streak + 1 : 1; maxStreak = Math.max(maxStreak, streak); prev = d; }
+    if (ts.includes('8-00')){ after24++; if (shiftsOn(addDays(d, 1)).some(isWorkType)) after24work++; } });
+  D.pattern = {workDaysByWeekday: wd, longestWorkStreak: maxStreak, shifts24h: after24, workedDayAfter24h: after24work};
+  /* เคส */
+  const cs = []; Object.keys(S.cases).filter(inR).forEach(d => S.cases[d].forEach(c => cs.push(Object.assign({d}, c))));
+  const by = (arr, f) => arr.reduce((a, x) => { const k = f(x) || 'ไม่ระบุ'; a[k] = (a[k] || 0) + 1; return a; }, {});
+  const otc = cs.filter(c => c.ot);
+  D.cases = {total: cs.length, ot: otc.length, byType: by(cs, c => c.cls), byRole: by(cs, c => c.role), byAnes: by(cs, c => c.anes),
+    avgMinutes: cs.length ? Math.round(cs.reduce((a, c) => a + caseMins(c), 0) / cs.length) : 0,
+    otStartTime: by(otc, c => { const h = toMin(c.start || '00:00') / 60; return h < 6 ? '00–06' : h < 12 ? '06–12' : h < 18 ? '12–18' : '18–24'; }), nightPremium: otc.filter(c => c.night).length};
+  if (o.caseDetail) D.cases.list = cs.map(c => ({date: c.d, type: c.cls, ot: !!c.ot, start: c.start, end: c.end, minutes: caseMins(c), op: c.op || '', role: c.role || ''}));
+  /* หน้าที่ */
+  const asg = {}; Object.keys(S.assign || {}).filter(inR).forEach(d => (S.assign[d] || []).forEach(a => { asg[a] = (asg[a] || 0) + 1; }));
+  D.duties = asg;
+  /* รูทีน */
+  const logDays = Object.keys(S.routineLog || {}).filter(inR);
+  D.routines = S.routines.filter(r => r.type !== 'cases').map(r => {
+    if (r.items){ const st = {ทำ:0, ไม่ได้ทำ:0, NA:0}; const miss = {};
+      logDays.forEach(d => r.items.forEach((it, i) => { const v = S.routineLog[d][r.id + ':' + i]; if (v === true || v === 'do') st['ทำ']++; else if (v === 'didnt'){ st['ไม่ได้ทำ']++; const tx = parseItem(it).text; miss[tx] = (miss[tx] || 0) + 1; } else if (v === 'na') st.NA++; }));
+      return {name: r.label, group: (SYS[r.sys] || {}).name || '', checklist: st, oftenMissed: Object.entries(miss).sort((a, b) => b[1] - a[1]).slice(0, 5).map(x => x[0] + ' (' + x[1] + ')')}; }
+    const done = logDays.filter(d => S.routineLog[d][r.id] === true).length;
+    return {name: r.label, group: (SYS[r.sys] || {}).name || '', time: r.time || '', doneDays: done, trackedDays: logDays.length, rate: logDays.length ? Math.round(done * 100 / logDays.length) + '%' : '-'}; });
+  /* แผนรายชั่วโมง */
+  const hrs = {}; const notes = [];
+  Object.keys(S.hours || {}).filter(inR).sort().forEach(d => Object.entries(S.hours[d] || {}).forEach(([h, v]) => { if (!v) return; hrs[h + ':00'] = (hrs[h + ':00'] || 0) + 1; notes.push(d + ' ' + h + ':00 ' + v); }));
+  D.hourly = {filledByHour: hrs}; if (o.hourly) D.hourly.recent = notes.slice(-60);
+  /* นัด สิ่งที่ต้องทำ */
+  const ap = S.appts.filter(a => o.range === 'all' || a.date >= from);
+  D.appointments = {total: ap.length, done: ap.filter(a => a.done).length, overdue: ap.filter(a => !a.done && a.date < t).length,
+    bySystem: by(ap, a => (SYS[a.sys] || {}).name), byKind: by(ap, a => KINDS[a.kind])};
+  if (o.appts) D.appointments.items = ap.map(a => ({date: a.date, time: a.time || '', kind: KINDS[a.kind] || '', system: (SYS[a.sys] || {}).name || '', title: a.title, done: !!a.done}));
+  /* ไอเดีย กิจกรรม */
+  D.ideas = (S.captures || []).map(c => ({date: (c.at || '').slice(0,10), type: c.kind === 'activity' ? 'กิจกรรม' : 'ไอเดีย', text: c.text}));
+  /* เวลาว่าง 30 วันข้างหน้า */
+  const free = [];
+  for (let i = 0; i < 30; i++){ const d = addDays(t, i); const ts = shiftsOn(d); const apn = S.appts.filter(a => a.date === d && !a.done).length;
+    let kind = !ts.length ? 'ยังไม่ลงเวร' : ts.includes('8-00') ? 'เวร 24 ชม. (ไม่ว่าง)' : ts.some(isWorkType) ? (ts.some(isStd) ? 'ทำงาน 08–16 + Standby (ว่างหลัง 16:00 แต่อาจถูกเรียก)' : 'ทำงาน 08–16 (ว่างหลัง 16:00)') : ts.some(isStd) ? 'Standby ทั้งวัน (อยู่บ้านได้ อาจถูกเรียก)' : ts.includes('OFF') ? 'วันหยุด (ว่าง)' : ts.map(typeLabel).join('+');
+    if (shiftsOn(addDays(d, -1)).includes('8-00')) kind += ' · วันหลังเวร 24 ชม. (ควรพัก)';
+    free.push(d + ' (' + dow[parse(d).getDay()] + ') ' + kind + (apn ? ' · มีนัด ' + apn : '')); }
+  D.next30days = free;
+  if (o.money !== false){
+    const mons = []; for (let k = Math.min(11, Math.ceil(Number(o.range === 'all' ? 365 : o.range) / 30)); k >= 0; k--){ const dd = new Date(); dd.setDate(1); dd.setMonth(dd.getMonth() - k); mons.push(ymd(dd).slice(0,7)); }
+    D.money = mons.map(ym => { const M2 = moneySum(ym); return {month: ym, income: M2.income, expense: M2.expense, net: M2.net, saveRate: M2.saveRate, incomeBy: Object.fromEntries(M2.inCats), expenseBy: Object.fromEntries(M2.outCats)}; }).filter(x => x.income || x.expense);
+  }
+  D.team = {members: team().members.length, departments: [...new Set(team().members.map(m => m.dept).filter(Boolean))]};
+  const ab = S.settings.aboutMe || {}; D.aboutMe = {}; ABOUT_Q.forEach(([k, q]) => { if (ab[k]) D.aboutMe[q] = ab[k]; });
+  return D;
+}
+function aiPrompt(mode){
+  const m = AI_MODES[mode] || AI_MODES.all;
+  return `คุณคือโค้ชที่ช่วยให้ฉันรู้จักตัวเองและใช้เวลาให้คุ้ม ข้อมูลด้านล่างมาจากแอปที่ฉันบันทึกชีวิตประจำวันจริง
+โหมด: ${m[0]} — ${m[1]}
+
+กติกา
+- ซื่อตรง ไม่เยินยอ ถ้าเห็นจุดอ่อนให้บอกตรง ๆ อย่างให้เกียรติ
+- ทุกข้อสรุปต้องอ้างตัวเลขหรือรายการจากข้อมูล แยก “ข้อเท็จจริงจากข้อมูล” กับ “การตีความ” และบอกระดับความมั่นใจ (สูง/กลาง/ต่ำ)
+- ข้อมูลครอบคลุมเฉพาะสิ่งที่ฉันบันทึก ถ้าไม่พอให้บอกว่าขาดอะไร และถามฉันกลับไม่เกิน 5 ข้อ
+- ไม่วินิจฉัยโรคหรือสุขภาพจิต ถ้าเห็นสัญญาณเหนื่อยล้าเรื้อรังให้บอกและแนะนำให้พักหรือปรึกษาผู้เชี่ยวชาญ
+- ฉันทำเวร 24 ชม. ห้ามแนะนำให้ใช้เวลาพักฟื้นหลังเวรไปทำงานเพิ่ม
+
+สิ่งที่ต้องทำ
+1. ภาพตัวตนจากพฤติกรรมจริง: จุดแข็ง จุดอ่อน รูปแบบที่ทำซ้ำ (ทั้งดีและไม่ดี)
+2. ภาระงานและพลังงาน: ชั่วโมงงาน เวร 24 ชม. วันพักจริง ความเสี่ยงหมดไฟ
+2.1 การเงิน: รายรับมาจากไหน พึ่งค่าเวร/OT แค่ไหน รายจ่ายหมวดไหนเกิน อัตราเก็บเงิน และความสัมพันธ์ระหว่างเวลาที่แลกกับเงิน
+3. เวลาว่างจริงใน 30 วันข้างหน้า: ช่องไหนเหมาะกับงานใช้สมอง งานเบา หรือพักจริง
+4. ไอเดียใหม่ 5 ข้อที่เข้ากับทักษะ เวลา และไอเดียที่ฉันจดไว้ แต่ละข้อมี “ก้าวแรกที่ทำเสร็จใน 30 นาที”
+5. ขีดจำกัดที่ควรขยาย 1–2 เรื่อง พร้อมการทดลอง 2 สัปดาห์ที่วัดผลได้ (ทำอะไร เมื่อไหร่ วัดอย่างไร)
+6. สิ่งที่ควรหยุดทำหรือทำน้อยลง
+7. ตารางสัปดาห์หน้าแบบลงมือได้ทันที
+
+ตอบเป็นภาษาไทย ใช้หัวข้อและตาราง กระชับ ตรงประเด็น`;
+}
+function aiMarkdown(o){
+  const D = aiPackData(o);
+  const L = []; const H = t => L.push('', '## ' + t); const kv = obj => Object.entries(obj || {}).map(([k, v]) => `${k}: ${v}`).join(' · ') || '-';
+  L.push('# ข้อมูลของฉันสำหรับให้ AI วิเคราะห์', '', aiPrompt(o.mode), '', '---', '', `สร้างเมื่อ ${D.meta.created} · ช่วงข้อมูล: ${D.meta.range} · จาก ${D.meta.app}`);
+  H('1. โปรไฟล์งาน'); L.push(`- ตำแหน่ง: ${D.profile.role || '-'} · แผนก: ${D.profile.dept || '-'} · ชื่อ: ${D.profile.name}`, `- ตั้งใจหยุดรับงานหลัง: ${D.profile.stopWorkAfter || '-'}`, `- ${D.profile.notes}`);
+  H('2. งานประจำรายเดือน');
+  L.push('| เดือน | เวร | ชม.ที่ทำ | ชม.มาตรฐาน | ขาด/เกิน | ค่าเวร | OT (เคส/บาท) |', '|---|---|---|---|---|---|---|');
+  D.work.forEach(w => L.push(`| ${w.month} | ${kv(w.shifts)} | ${hrs(w.hours)} | ${w.stdHours != null ? hrs(w.stdHours) : '-'} | ${w.diff != null ? (w.diff > 0 ? '+' : '') + hrs(w.diff) : '-'} | ${w.shiftPay} | ${w.otCases}/${w.otPay} |`));
+  if (!D.work.length) L.push('| ยังไม่มีข้อมูลเวร | | | | | | |');
+  H('3. รูปแบบเวร'); L.push(`- วันทำงานตามวันในสัปดาห์: ${kv(D.pattern.workDaysByWeekday)}`, `- ทำงานติดกันนานสุด: ${D.pattern.longestWorkStreak} วัน`, `- เวร 24 ชม.: ${D.pattern.shifts24h} ครั้ง · วันถัดไปยังต้องทำงาน: ${D.pattern.workedDayAfter24h} ครั้ง`);
+  H('4. เคสผ่าตัดและ OT'); L.push(`- ทั้งหมด ${D.cases.total} เคส · OT ${D.cases.ot} เคส · ค่ายามวิกาล ${D.cases.nightPremium} ครั้ง · เฉลี่ย ${D.cases.avgMinutes} นาที/เคส`, `- ประเภท: ${kv(D.cases.byType)}`, `- หน้าที่: ${kv(D.cases.byRole)}`, `- เวลาเริ่มเคส OT: ${kv(D.cases.otStartTime)}`);
+  if (D.cases.list) D.cases.list.slice(-40).forEach(c => L.push(`- ${c.date} ${c.start || ''}${c.end ? '–' + c.end : ''} ${c.type || ''}${c.ot ? ' OT' : ''} ${c.minutes} นาที ${c.op}`));
+  H('5. หน้าที่ที่ได้รับ'); L.push('- ' + kv(D.duties));
+  H('6. รูทีนประจำวัน'); D.routines.forEach(r => L.push(r.checklist ? `- ${r.name}: ทำ ${r.checklist['ทำ']} · ไม่ได้ทำ ${r.checklist['ไม่ได้ทำ']} · N/A ${r.checklist.NA}${r.oftenMissed.length ? ' · พลาดบ่อย: ' + r.oftenMissed.join(', ') : ''}` : `- ${r.name}${r.time ? ' (' + r.time + ')' : ''}: ทำ ${r.doneDays}/${r.trackedDays} วัน (${r.rate})`));
+  H('7. แผนรายชั่วโมง'); L.push('- ช่วงที่จดบ่อย: ' + kv(D.hourly.filledByHour)); (D.hourly.recent || []).forEach(n => L.push('- ' + n));
+  H('8. นัดหมายและสิ่งที่ต้องทำ'); L.push(`- ทั้งหมด ${D.appointments.total} · เสร็จ ${D.appointments.done} · เลยกำหนดยังไม่เสร็จ ${D.appointments.overdue}`, `- แยกตามด้านชีวิต: ${kv(D.appointments.bySystem)}`, `- ประเภท: ${kv(D.appointments.byKind)}`);
+  (D.appointments.items || []).slice(-60).forEach(a => L.push(`- ${a.date} ${a.time} [${a.system}/${a.kind}] ${a.title}${a.done ? ' ✓' : ''}`));
+  H('9. ไอเดียและกิจกรรมที่จดไว้'); if (!D.ideas.length) L.push('- ยังไม่ได้จด'); D.ideas.forEach(i => L.push(`- ${i.date} [${i.type}] ${i.text}`));
+  H('10. เวลาใน 30 วันข้างหน้า'); D.next30days.forEach(x => L.push('- ' + x));
+  if (D.money){ H('11. การเงิน (รายรับ รายจ่าย)'); if (!D.money.length) L.push('- ยังไม่ได้บันทึก');
+    D.money.forEach(x => L.push(`- ${x.month}: รับ ${Math.round(x.income)} · จ่าย ${Math.round(x.expense)} · คงเหลือ ${Math.round(x.net)}${x.saveRate != null ? ' (' + x.saveRate + '%)' : ''}`, `  - รายรับ: ${kv(x.incomeBy)}`, `  - รายจ่าย: ${kv(x.expenseBy)}`)); }
+  H('12. ทีม'); L.push(`- เพื่อนร่วมงานในตาราง ${D.team.members} คน · แผนก: ${D.team.departments.join(', ') || '-'}`);
+  H('13. เกี่ยวกับฉัน (เขียนเอง)'); const ab = Object.entries(D.aboutMe); if (!ab.length) L.push('- ยังไม่ได้เขียน (AI ควรถามข้อมูลส่วนนี้)'); ab.forEach(([q, a]) => L.push(`- **${q}:** ${a}`));
+  return {md: L.join('\n'), data: D};
+}
+let aiLast = null;
+function aiOpts(){ return Object.assign({range:'90', mode:'all', name:false, caseDetail:false, hourly:true, appts:true}, S.settings.aiPack || {}); }
+function aiSheet(){
+  const o = aiOpts(); const ab = S.settings.aboutMe || {};
+  openSheet(`${sheetHead('สรุปตัวฉันให้ AI วิเคราะห์')}
+    <p class="meta" style="margin:0">รวมข้อมูลจากทุกหน้า จัดเป็นหมวด พร้อมคำสั่งให้ AI วิเคราะห์แบบตรงไปตรงมา ช่วยหาเวลาทำไอเดียใหม่ และขยายขีดจำกัด · คัดลอกไปวางใน Claude ได้ทันที</p>
+    <form data-form="aipack" style="display:flex;flex-direction:column;gap:12px">
+      <fieldset><legend>อยากให้ AI ช่วยเรื่องไหน</legend><div class="wrap">${Object.entries(AI_MODES).map(([k, v]) => `<label class="chip"><input type="radio" name="mode" value="${k}"${o.mode === k ? ' checked' : ''}>${v[0]}</label>`).join('')}</div></fieldset>
+      <label class="f">ช่วงข้อมูล<select class="field" name="range">${[['30','30 วัน'],['90','90 วัน'],['180','180 วัน'],['365','1 ปี'],['all','ทั้งหมด']].map(([v, l]) => `<option value="${v}"${o.range === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+      <fieldset><legend>ใส่รายละเอียดเพิ่ม (ปิดไว้ = เป็นตัวเลขสรุปเท่านั้น)</legend><div class="wrap">
+        <label class="chip"><input type="checkbox" name="appts"${o.appts ? ' checked' : ''}>ชื่อนัด/สิ่งที่ต้องทำ</label>
+        <label class="chip"><input type="checkbox" name="hourly"${o.hourly ? ' checked' : ''}>ข้อความในแผนรายชั่วโมง</label>
+        <label class="chip"><input type="checkbox" name="caseDetail"${o.caseDetail ? ' checked' : ''}>รายการเคสทีละเคส</label>
+        <label class="chip"><input type="checkbox" name="money"${o.money !== false ? ' checked' : ''}>รายรับรายจ่าย</label>
+        <label class="chip"><input type="checkbox" name="name"${o.name ? ' checked' : ''}>ชื่อของฉัน</label></div></fieldset>
+      <details${Object.keys(ab).length ? '' : ' open'}><summary style="cursor:pointer;font-weight:600">เกี่ยวกับฉัน (เขียนเอง เพื่อให้ AI รู้จักครบทุกด้าน)</summary>
+        <p class="meta">แอปรู้แค่สิ่งที่บันทึก ส่วนนี้ช่วยเติมด้านอื่นของชีวิต ตอบสั้น ๆ ได้ ข้ามข้อที่ไม่อยากตอบ</p>
+        ${ABOUT_Q.map(([k, q]) => `<label class="f">${q}<textarea class="field" name="ab_${k}" rows="2">${esc(ab[k] || '')}</textarea></label>`).join('')}
+      </details>
+      <button class="btn primary" type="submit">สร้างข้อความสำหรับ AI</button>
+    </form>
+    <div id="ai-out"></div>`);
+}
+function aiShowResult(){
+  const box = $('#ai-out'); if (!box || !aiLast) return;
+  box.innerHTML = `<p style="margin:0 0 6px"><b>พร้อมแล้ว</b> · ${aiLast.md.length.toLocaleString('th-TH')} ตัวอักษร</p>
+    <textarea class="field" id="ai-txt" rows="10" readonly>${esc(aiLast.md)}</textarea>
+    <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:8px"><button type="button" class="btn primary" data-act="ai-copy">คัดลอกไปวางใน AI</button><button type="button" class="btn small" data-act="ai-md">ดาวน์โหลด .md</button><button type="button" class="btn small" data-act="ai-json">ดาวน์โหลด .json</button>${navigator.share ? '<button type="button" class="btn small" data-act="ai-share">แชร์…</button>' : ''}</div>
+    <p class="meta" style="margin:6px 0 0">วิธีใช้: เปิดแอป Claude › แชตใหม่ › วางข้อความ › ส่ง · ทำซ้ำเดือนละครั้งเพื่อดูความเปลี่ยนแปลง · ตรวจก่อนส่งว่าไม่มีข้อมูลผู้ป่วยหรือข้อมูลของคนอื่น</p>`;
+  box.scrollIntoView({block:'start', behavior:'smooth'});
+}
+
+
+/* ---------- เงิน: รายรับ (ค่าเวร ค่าเคส อัตโนมัติ + พิมพ์เอง) · รายจ่าย · สรุป ---------- */
+const IN_CATS = ['เงินเดือน','ร้านค้า (กำไร)','Affiliate','โบนัส','ดอกเบี้ย/ปันผล','อื่น ๆ'];
+const OUT_CATS = ['อาหาร','เดินทาง','บ้าน/ค่าเช่า','บิล น้ำ ไฟ เน็ต','บัตรเครดิต/ผ่อน','ช้อปปิ้ง','สุขภาพ','ครอบครัว','ออม/ลงทุน','ต้นทุนร้าน','บันเทิง/ท่องเที่ยว','อื่น ๆ'];
+const CAT_ICON = {'เงินเดือน':'💼','ค่าเวร':'🏥','ค่าเคส OT':'🩺','ร้านค้า (กำไร)':'🏪','Affiliate':'🔗','โบนัส':'🎁','ดอกเบี้ย/ปันผล':'📈','อาหาร':'🍜','เดินทาง':'🚗','บ้าน/ค่าเช่า':'🏠','บิล น้ำ ไฟ เน็ต':'💡','บัตรเครดิต/ผ่อน':'💳','ช้อปปิ้ง':'🛍️','สุขภาพ':'💊','ครอบครัว':'👨‍👩‍👧','ออม/ลงทุน':'🐷','ต้นทุนร้าน':'📦','บันเทิง/ท่องเที่ยว':'🎡','หักขาดชั่วโมง':'⏱️','อื่น ๆ':'✨'};
+let moneyMonth = today().slice(0,7), moneyTab = 'sum';
+const moneyS = () => { S.money = S.money || {items:[]}; S.money.items = S.money.items || []; S.money.opt = Object.assign({autoShift:true, autoOT:true, autoDeduct:false}, S.money.opt || {}); return S.money; };
+const fmtB = n => (n < 0 ? '−' : '') + '฿' + Math.abs(Math.round(n)).toLocaleString('th-TH');
+function moneyItemsFor(ym){
+  const M = moneyS(); const out = [];
+  M.items.forEach(it => {
+    if (it.recur){ const end = it.endYm || '9999-12'; if (ym >= it.date.slice(0,7) && ym <= end) out.push(Object.assign({}, it, {date: ym + it.date.slice(7), virtual: ym !== it.date.slice(0,7)})); }
+    else if (it.date.startsWith(ym)) out.push(it);
+  });
+  const H = hoursFor(ym), P = payFor(ym);
+  if (M.opt.autoShift && P.total) out.push({id:'auto-shift', auto:true, type:'in', cat:'ค่าเวร', amount:P.total, date: ym + '-28', note:'จากตารางเวร (ประมาณ)'});
+  if (M.opt.autoOT && H.otMoney) out.push({id:'auto-ot', auto:true, type:'in', cat:'ค่าเคส OT', amount:H.otMoney, date: ym + '-28', note: H.otCount + ' เคส จากหน้าเคส'});
+  if (M.opt.autoDeduct && H.deduct) out.push({id:'auto-ded', auto:true, type:'out', cat:'หักขาดชั่วโมง', amount:H.deduct, date: ym + '-28', note:'ประมาณจากชั่วโมงที่ขาด'});
+  return out.sort((a, b) => b.date.localeCompare(a.date));
+}
+function moneySum(ym){
+  const L = moneyItemsFor(ym); const inc = L.filter(i => i.type === 'in'), exp = L.filter(i => i.type === 'out');
+  const tot = a => a.reduce((x, i) => x + (Number(i.amount) || 0), 0);
+  const byCat = a => { const m = {}; a.forEach(i => { m[i.cat] = (m[i.cat] || 0) + (Number(i.amount) || 0); }); return Object.entries(m).sort((x, y) => y[1] - x[1]); };
+  const ti = tot(inc), te = tot(exp);
+  return {list:L, income:ti, expense:te, net:ti - te, saveRate: ti ? Math.round((ti - te) * 100 / ti) : null, inCats:byCat(inc), outCats:byCat(exp), saved: tot(exp.filter(i => i.cat === 'ออม/ลงทุน'))};
+}
+function barList(cats, total, color){
+  return cats.map(([c, v]) => `<div class="mbar"><span class="mbl">${CAT_ICON[c] || '•'} ${esc(c)}</span><span class="mbt"><span style="width:${total ? Math.max(3, Math.round(v * 100 / total)) : 0}%;background:${color}"></span></span><span class="mbv">${fmtB(v)}<small>${total ? Math.round(v * 100 / total) : 0}%</small></span></div>`).join('') || '<div class="empty">ยังไม่มีรายการ</div>';
+}
+function viewMoney(){
+  const M = moneyS(); const [y,m] = moneyMonth.split('-').map(Number);
+  const prevYm = ymd(new Date(y, m - 2, 1)).slice(0,7);
+  const A = moneySum(moneyMonth), B = moneySum(prevYm);
+  const diff = (a, b) => b ? `${a >= b ? '▲' : '▼'} ${Math.abs(Math.round((a - b) * 100 / b))}% จากเดือนก่อน` : '';
+  const tabs = `<div class="tstabs" style="grid-template-columns:repeat(3,minmax(0,1fr))">${[['sum','สรุป'],['list','รายการ'],['year','ทั้งปี']].map(([k, l]) => `<button type="button" data-act="mtab" data-k="${k}" aria-pressed="${moneyTab === k}">${l}</button>`).join('')}</div>`;
+  const head = `<header class="top" style="flex-direction:column;align-items:stretch;gap:8px"><div class="row between"><h1>เงินของฉัน</h1><div class="row" style="gap:4px"><button type="button" class="btn small" data-act="m-mon" data-d="-1" aria-label="เดือนก่อน">‹</button><button type="button" class="btn small" data-act="m-mon" data-d="1" aria-label="เดือนถัดไป">›</button></div></div><div class="sub">${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}</div></header>`;
+  const addBtns = `<div class="row" style="gap:8px"><button type="button" class="btn primary" data-act="m-add" data-k="in" style="flex:1">+ รายรับ</button><button type="button" class="btn" data-act="m-add" data-k="out" style="flex:1;background:var(--life-t);color:var(--life-i);border-color:transparent">+ รายจ่าย</button></div>`;
+  let body = '';
+  if (moneyTab === 'sum'){
+    body = `<section class="card"><div class="mtiles">
+        <div class="mtile in"><small>รายรับ</small><b>${fmtB(A.income)}</b><span>${diff(A.income, B.income)}</span></div>
+        <div class="mtile out"><small>รายจ่าย</small><b>${fmtB(A.expense)}</b><span>${diff(A.expense, B.expense)}</span></div>
+        <div class="mtile net"><small>คงเหลือ</small><b style="color:${A.net < 0 ? 'var(--life-i)' : 'var(--money-i)'}">${fmtB(A.net)}</b><span>${A.saveRate != null ? 'เก็บได้ ' + A.saveRate + '% ของรายรับ' : ''}</span></div></div>
+      ${addBtns}</section>
+      <section class="card"><h2>รายรับแยกตามที่มา</h2>${barList(A.inCats, A.income, 'var(--money)')}</section>
+      <section class="card"><h2>รายจ่ายแยกหมวด</h2>${barList(A.outCats, A.expense, 'var(--life)')}
+        ${A.outCats.length ? `<p class="meta" style="margin:0">จ่ายมากสุด: ${esc(A.outCats[0][0])} ${fmtB(A.outCats[0][1])}${A.saved ? ' · ออม/ลงทุน ' + fmtB(A.saved) : ''}</p>` : ''}</section>
+      <section class="card"><h2>ดึงอัตโนมัติจากงาน</h2>
+        ${[['autoShift','ค่าเวร จากตารางเวร'],['autoOT','ค่าเคส OT จากหน้าเคส'],['autoDeduct','หักขาดชั่วโมง (เป็นรายจ่ายประมาณ)']].map(([k, l]) => `<label class="lrow" style="padding:6px 0"><span class="grow">${l}</span><input type="checkbox" role="switch" data-act="m-opt" data-k="${k}"${M.opt[k] ? ' checked' : ''}></label>`).join('')}
+        <p class="meta" style="margin:0">ยอดอัตโนมัติเป็นตัวเลขประมาณก่อนหักภาษี ถ้าสลิปจริงต่างไป ปิดสวิตช์แล้วพิมพ์ยอดจริงเป็นรายรับเองได้</p></section>`;
+  } else if (moneyTab === 'list'){
+    const groups = {}; A.list.forEach(i => { (groups[i.date] = groups[i.date] || []).push(i); });
+    body = `<section class="card">${addBtns}</section><section class="card" style="gap:0">${Object.keys(groups).sort().reverse().map(d => `<div class="meta" style="font-weight:600;padding:10px 0 4px">${esc(thDate(d,{weekday:'short', day:'numeric', month:'short'}))}</div>${groups[d].map(i => `<button type="button" class="item" data-act="m-edit" data-id="${i.id}"${i.auto ? ' disabled' : ''}><span style="font-size:22px;width:30px">${CAT_ICON[i.cat] || '•'}</span><span class="grow"><span class="title">${esc(i.cat)}${i.recur ? ' 🔁' : ''}${i.auto ? ' · อัตโนมัติ' : ''}</span><span class="meta">${esc(i.note || '')}</span></span><b style="color:${i.type === 'in' ? 'var(--money-i)' : 'var(--life-i)'}">${i.type === 'in' ? '+' : '−'}${fmtB(i.amount).replace('−','')}</b></button>`).join('')}`).join('') || '<div class="empty">ยังไม่มีรายการเดือนนี้</div>'}</section>`;
+  } else {
+    const rows = Array.from({length:12}, (_, k) => { const ym = `${y}-${pad(k + 1)}`; const S2 = moneySum(ym); return {ym, ...S2}; });
+    const mx = Math.max(1, ...rows.map(r => Math.max(r.income, r.expense)));
+    const ti = rows.reduce((a, r) => a + r.income, 0), te = rows.reduce((a, r) => a + r.expense, 0);
+    body = `<section class="card"><h2>ปี ${y + 543}</h2><div class="mtiles"><div class="mtile in"><small>รายรับทั้งปี</small><b>${fmtB(ti)}</b></div><div class="mtile out"><small>รายจ่ายทั้งปี</small><b>${fmtB(te)}</b></div><div class="mtile net"><small>คงเหลือ</small><b>${fmtB(ti - te)}</b><span>${ti ? 'เก็บได้ ' + Math.round((ti - te) * 100 / ti) + '%' : ''}</span></div></div>
+      ${rows.map(r => `<div class="ybar"><span>${esc(parse(r.ym + '-01').toLocaleDateString('th-TH',{month:'short'}))}</span><span class="ybt"><span class="i" style="width:${Math.round(r.income * 100 / mx)}%"></span><span class="o" style="width:${Math.round(r.expense * 100 / mx)}%"></span></span><span class="meta">${r.income || r.expense ? fmtB(r.net) : ''}</span></div>`).join('')}
+      <div class="row" style="gap:10px;font-size:12px"><span><span class="dot" style="background:var(--money)"></span> รายรับ</span><span><span class="dot" style="background:var(--life)"></span> รายจ่าย</span></div></section>`;
+  }
+  return head + tabs + body + `<p class="sub" style="padding:0 4px">ข้อมูลเงินเก็บในเครื่องนี้ · รวมอยู่ใน “สรุปตัวฉันให้ AI” และไฟล์ Excel ส่งออก</p>`;
+}
+function moneySheet(type, it){
+  it = it || {}; type = it.type || type || 'out';
+  const cats = type === 'in' ? IN_CATS : OUT_CATS;
+  openSheet(`${sheetHead((it.id ? 'แก้' : 'เพิ่ม') + (type === 'in' ? 'รายรับ' : 'รายจ่าย'))}
+    <form data-form="money" data-id="${it.id || ''}" data-type="${type}" style="display:flex;flex-direction:column;gap:12px">
+      <label class="f">จำนวนเงิน (บาท)<input class="field" name="amount" type="text" inputmode="decimal" required value="${esc(it.amount || '')}" placeholder="0" style="font-size:24px;font-weight:700"></label>
+      <fieldset><legend>หมวด</legend><div class="wrap">${cats.map(c => `<label class="chip"><input type="radio" name="cat" value="${esc(c)}"${(it.cat || cats[0]) === c ? ' checked' : ''}>${CAT_ICON[c] || ''} ${esc(c)}</label>`).join('')}</div></fieldset>
+      <label class="f">วันที่<input class="field" name="date" type="date" required value="${esc(it.date || (moneyMonth === today().slice(0,7) ? today() : moneyMonth + '-01'))}"></label>
+      <label class="f">หมายเหตุ<input class="field" name="note" value="${esc(it.note || '')}" placeholder="${type === 'in' ? 'เช่น เงินเดือน พ.ย.' : 'เช่น ข้าวกลางวัน'}"></label>
+      <label class="chip" style="align-self:flex-start"><input type="checkbox" name="recur"${it.recur ? ' checked' : ''}>รายการประจำทุกเดือน${type === 'out' ? ' (ค่าเช่า ผ่อน บิล)' : ' (เงินเดือน)'}</label>
+      ${it.recur ? `<label class="f">หยุดรายการประจำหลังเดือน (เว้นว่าง = ต่อไปเรื่อย ๆ)<input class="field" name="endYm" type="month" value="${esc(it.endYm || '')}"></label>` : ''}
+      <div id="pw" role="alert"></div>
+      <div class="row">${it.id ? `<button type="button" class="btn danger" data-act="m-del" data-id="${it.id}">ลบ</button>` : ''}<button class="btn primary" type="submit" style="flex:1">บันทึก</button></div>
+    </form>`);
+}
+
 function patientCheck(text, form, proceed){
   if (!S.settings.patientWarn || !PATIENT.test(text) || form.dataset.pwOk) return proceed();
   form.querySelector('#pw').innerHTML = `<div class="banner appt" style="margin:0"><div>ข้อความนี้ดูเหมือนมีข้อมูลผู้ป่วย แนะนำไม่จดในแอปนี้<div class="row" style="margin-top:8px"><button type="button" class="btn small" id="pw-edit">กลับไปแก้</button><button type="button" class="btn small" id="pw-go">บันทึกต่อ</button></div></div></div>`;
@@ -3124,7 +3391,7 @@ document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
   if (!el) return;
   const act = el.dataset.act, id = el.dataset.id;
-  if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push'].includes(act)) return;
+  if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push','m-opt'].includes(act)) return;
   if (el.tagName === 'INPUT' && el.type !== 'checkbox') return;
   switch(act){
     case 'close': closeSheet(); break;
@@ -3171,6 +3438,17 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'mtab': moneyTab = el.dataset.k; render(); break;
+    case 'm-mon': { const [y,m] = moneyMonth.split('-').map(Number); moneyMonth = ymd(new Date(y, m - 1 + Number(el.dataset.d), 1)).slice(0,7); render(); break; }
+    case 'm-add': moneySheet(el.dataset.k); break;
+    case 'm-edit': { const it = moneyS().items.find(x => x.id === id); if (it) moneySheet(it.type, it); break; }
+    case 'm-del': confirmSheet('ลบรายการนี้?', 'ลบ', () => { const M = moneyS(); M.items = M.items.filter(x => x.id !== id); commit('ลบรายการเงิน', {msg:'ลบแล้ว'}); }, true); break;
+    case 'm-opt': moneyS().opt[el.dataset.k] = el.checked; commit('ตั้งค่าเงินอัตโนมัติ', {silent:true}); break;
+    case 'ai-open': aiSheet(); break;
+    case 'ai-copy': { const ta = $('#ai-txt'); if (!ta) break; const done = ok => toast(ok ? 'คัดลอกแล้ว ไปวางในแชต Claude ได้เลย' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => done(true), () => { ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} done(ok); }); else { ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} done(ok); } break; }
+    case 'ai-md': case 'ai-json': { if (!aiLast) break; const isMd = act === 'ai-md'; (async () => { const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null; if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
+      try{ await dl.save({filename:'my-profile-' + today() + (isMd ? '.md' : '.json'), data: isMd ? aiLast.md : JSON.stringify(aiLast.data, null, 2), mimeType: isMd ? 'text/markdown' : 'application/json'}); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); } })(); break; }
+    case 'ai-share': { const ta = $('#ai-txt'); if (ta && navigator.share) navigator.share({text: ta.value}).catch(() => {}); break; }
     case 'team-mon': { const [y,m] = teamMonth.split('-').map(Number); teamMonth = ymd(new Date(y, m-1+Number(el.dataset.d), 1)).slice(0,7); teamDay = teamMonth === today().slice(0,7) ? today() : teamMonth + '-01'; render(); break; }
     case 'team-day': teamDay = el.dataset.d; render(); break;
     case 'team-cell': teamDay = el.dataset.d; teamCellSheet(el.dataset.id, el.dataset.d); break;
@@ -3404,6 +3682,23 @@ document.addEventListener('submit', e => {
     const d = fd.get('d'), n = String(fd.get('n') || '').trim(); if (!d || !n) return;
     S.coHol = (S.coHol || []).filter(h => h[0] !== d); S.coHol.push([d, n, true]);
     commit('เพิ่มวันหยุดบริษัท ' + n, {msg:'เพิ่มวันหยุดแล้ว'});
+  } else if (kind === 'money'){
+    const amount = Math.round((Number(String(fd.get('amount') || '').replace(/[^\d.]/g, '')) || 0) * 100) / 100;
+    if (!amount){ toast('ใส่จำนวนเงิน', true); return; }
+    const data = {type: f.dataset.type === 'in' ? 'in' : 'out', amount, cat: fd.get('cat') || 'อื่น ๆ', date: fd.get('date') || today(), note: String(fd.get('note') || '').trim(), recur: !!fd.get('recur')};
+    if (data.recur && fd.get('endYm')) data.endYm = fd.get('endYm');
+    const M = moneyS(); const old = f.dataset.id ? M.items.find(x => x.id === f.dataset.id) : null;
+    if (old){ Object.keys(old).forEach(k => { if (k !== 'id') delete old[k]; }); Object.assign(old, data); } else M.items.push(Object.assign({id:uid()}, data));
+    moneyMonth = data.date.slice(0,7); closeSheet();
+    commit((old ? 'แก้' : 'เพิ่ม') + (data.type === 'in' ? 'รายรับ ' : 'รายจ่าย ') + data.cat, {msg:'บันทึกแล้ว ' + fmtB(amount)});
+  } else if (kind === 'aipack'){
+    const o = {mode: fd.get('mode') || 'all', range: fd.get('range') || '90', appts: !!fd.get('appts'), hourly: !!fd.get('hourly'), caseDetail: !!fd.get('caseDetail'), name: !!fd.get('name'), money: !!fd.get('money')};
+    const ab = {}; ABOUT_Q.forEach(([k]) => { const v = String(fd.get('ab_' + k) || '').trim(); if (v) ab[k] = v; });
+    const txt = Object.values(ab).join(' ');
+    patientCheck(txt, f, () => {
+      S.settings.aiPack = o; S.settings.aboutMe = ab; writeLocal();
+      aiLast = aiMarkdown(o); log('สร้างสรุปตัวฉันให้ AI', true); writeLocal(); aiShowResult();
+    });
   } else if (kind === 'wpush'){
     WPush.connect(fd.get('url'), fd.get('key'));
   } else if (kind === 'team-cell'){
