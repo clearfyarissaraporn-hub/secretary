@@ -1,7 +1,7 @@
 /* เลขาส่วนตัว · service worker
    - ไฟล์ของแอปโหลดจากเน็ตแบบไม่ใช้แคชของเบราว์เซอร์ (no-store) ทุกครั้ง เพื่อให้อัปเดตทันที ถ้าไม่มีเน็ตใช้ของที่เก็บไว้
    - รับแจ้งเตือน (Push) จากเซิร์ฟเวอร์ Cloudflare ของคุณ แล้วเด้งแม้ปิดแอป */
-const CACHE = 'secretary-v1.9';
+const CACHE = 'secretary-v1.10';
 const CFG = 'tmm-cfg';
 const CORE = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => Promise.all(CORE.map(u => fetch(u, {cache:'no-store'}).then(r => c.put(u, r)).catch(() => {})))).then(() => self.skipWaiting())); });
@@ -13,7 +13,7 @@ self.addEventListener('fetch', e => {
     if (url.pathname.endsWith('version.json')) return; /* ให้ตรวจเวอร์ชันจากเน็ตตรง ๆ */
     e.respondWith(fetch(req, {cache:'no-store'}).then(r => { if (r.ok){ const copy = r.clone(); caches.open(CACHE).then(c => c.put(url.pathname.endsWith('/') ? './' : req, copy)); } return r; })
       .catch(() => caches.match(req, {ignoreSearch:true}).then(r => r || caches.match('./index.html') || caches.match('./'))));
-  } else if (/cdnjs\.cloudflare\.com|fonts\.(googleapis|gstatic)\.com/.test(url.host)){
+  } else if (/cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net|fonts\.(googleapis|gstatic)\.com/.test(url.host)){
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(req, copy)); return r; })));
   }
 });

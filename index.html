@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.9</title>
+<title>เลขาส่วนตัว v1.10</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -431,7 +431,7 @@ nav.tabbar a svg{width:23px !important;height:23px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.9';
+const APP_VERSION = '1.10';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -1318,7 +1318,7 @@ function viewGuide(){
     ['ตรวจปฏิทิน','จุดม่วง 8-16 · เหลือง STD · ส้ม STD เช้า · น้ำเงิน 8-8 · แดง หยุด วันที่ติ๊ก 2 ช่องมี 2 จุด ตัวเลขสีชมพู = วันหยุดบริษัท'],
     ['วันหยุดที่มี STD 24 ชม.','แตะ “+STD เช้า” แอปติ๊ก STD ให้ด้วย รวม 300 บาท (200 + 100) ใช้ได้เฉพาะวันที่ไม่มี 8-16 หรือ 8-8'],
     ['ใส่นัดของเดือน','นัดหมาย › + นัดใหม่ ตั้งเตือนก่อน 1 วันให้อัตโนมัติ'],
-    ['ลงตารางเวรทีม','เมนู ทีม › นำเข้าจากไฟล์ตารางเวร (ไฟล์เดียวกับของแผนก) ได้เวรเพื่อนทุกคน แตะชื่อเพื่อใส่เบอร์โทร']
+    ['ลงตารางเวรทีม','เมนู ทีม › นำเข้าจากไฟล์ตารางเวร รับ .html .xlsx .pdf และรูปภาพ ตรวจรายชื่อก่อนนำเข้า · เวอร์ชัน GitHub อ่านรูป: “ให้ Claude อ่านรูปให้” คัดลอกคำสั่งไปแอป Claude แล้ววางผลกลับ · แตะชื่อเพื่อใส่เบอร์โทร']
   ];
   const daily = [
     ['เปิด My day','ดูเวรวันนี้ การ์ด “เดือนนี้” (ชั่วโมงขาด/เกิน ค่าเวร+OT) และสิ่งที่ห้ามลืม'],
@@ -1351,6 +1351,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.10','นำเข้าตารางเวรทีมจาก PDF และรูปภาพ · ดูรายชื่อก่อนนำเข้า · วางผลจาก Claude ได้'],
     ['v1.9','หน้า “ทีม”: ตารางเวรเพื่อน นำเข้าจากไฟล์ ใส่เบอร์โทร สลับเวรได้จริง (ย้อนกลับได้) · การ์ด “วันนี้อยู่เวรกับ” บน My day'],
     ['v1.8.1','คู่มืออัปเดตตามทุกการแก้ไข · เพิ่มหัวข้อ “มีอะไรใหม่”'],
     ['v1.8','ปุ่มอัปเดตเวอร์ชันล่าสุด · สำรองอัตโนมัติวันละครั้งและก่อนอัปเดต (กู้คืนได้ 5 ชุด) · แจ้งเตือนจริงแม้ปิดแอป (Push) · เวร “STD เช้า” +100 บาท'],
@@ -2770,15 +2771,143 @@ function swapPreview(f){
   }
   const call = f.querySelector('#swap-call'); call.innerHTML = (B.phone ? telBtn(B) + ` <a class="btn small" href="sms:${esc(B.phone.replace(/[^\d+]/g, ''))}?body=${encodeURIComponent(t.value)}">💬 SMS</a>` : '<span class="meta">ใส่เบอร์โทรเพื่อนได้ที่ชื่อในตาราง</span>');
 }
+/* ---------- นำเข้าตารางเวรทีม: .html / .xlsx / .pdf / รูปภาพ / วางผลจาก Claude ---------- */
+const PDFJS_URL = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+const PDFJS_WORKER = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+let teamPending = null;
+async function loadPdfJs(){
+  if (window._pdfjs) return window._pdfjs;
+  const lib = await import(PDFJS_URL);
+  if (!globalThis.pdfjsWorker) globalThis.pdfjsWorker = await import(PDFJS_WORKER);
+  lib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+  window._pdfjs = lib; return lib;
+}
+function teamPrompt(ym){
+  const [y,m] = (ym || teamMonth).split('-').map(Number);
+  return `อ่านรูปตารางเวรพยาบาลทั้งทีม เดือน ${m}/${y} (ค.ศ.) ทุกแถวที่มีรหัสพนักงาน
+กติกา: ช่องสีเหลืองที่เขียน 8-16 = ["8-16","STD"] · ช่องสีขาวที่เขียน 8-16 = ["8-16"] · STD = ["STD"] · 8-00 หรือ 8-8 หรือช่องสีน้ำเงิน = ["8-00"] · X หรือช่องสีแดง = ["OFF"]
+ตัวเลขหรือตัวอักษรเล็ก ๆ ที่เขียนด้วยมือเพิ่มไม่ต้องสนใจ · ช่องที่ขีดฆ่าแล้วเขียนใหม่ให้ใช้ค่าที่เขียนใหม่ · ช่องที่อ่านไม่ออกให้ข้าม
+ตอบเป็น JSON อย่างเดียว รูปแบบ: {"month":"${y}-${pad(m)}","rows":[{"id":"รหัสพนักงาน","name":"ชื่อ","days":{"1":["8-16","STD"],"2":["OFF"]}}]}`;
+}
+function peopleFromJson(v, ymSel){
+  if (typeof v === 'string'){ const a = v.indexOf('{'), b = v.lastIndexOf('}'); if (a < 0 || b < a) throw new Error('ไม่พบข้อมูล JSON'); v = JSON.parse(v.slice(a, b + 1)); }
+  const ym = /^\d{4}-\d{2}$/.test(v && v.month || '') ? v.month : ymSel;
+  const [y,m] = ym.split('-').map(Number); const days = new Date(y, m, 0).getDate();
+  const ok = ['8-16','STD','8-00','OFF','STDM','VAC','SICK'];
+  const people = (v && Array.isArray(v.rows) ? v.rows : []).map(r => {
+    const list = [];
+    Object.keys(r.days || {}).forEach(dk => {
+      const d = Number(dk); if (!(d >= 1 && d <= days)) return;
+      let ts = (Array.isArray(r.days[dk]) ? r.days[dk] : [r.days[dk]]).map(x => String(x).trim().toUpperCase().replace('8-8', '8-00').replace(/^X$/, 'OFF'));
+      ts = ts.filter(x => ok.includes(x)).slice(0, 2);
+      if (ts.length) list.push({date:`${ym}-${pad(d)}`, types:ts});
+    });
+    return {empId:String(r.id || '').replace(/\D/g, ''), name:String(r.name || '').trim(), list};
+  }).filter(p => (p.empId || p.name) && p.list.length);
+  return {ym, people};
+}
+function peopleFromCells(rows, ym){
+  const people = [];
+  rows.forEach(cells => {
+    const idIdx = cells.findIndex(c => /^\d{5,7}$/.test(c.text));
+    if (idIdx < 0 || !cells[idIdx + 1] || !cells[idIdx + 1].text || codeToTypes(cells[idIdx + 1].text, '')) return;
+    const {list} = cellsToShifts(cells.slice(idIdx + 2), ym);
+    if (list.length) people.push({empId: cells[idIdx].text, name: cells[idIdx + 1].text, list});
+  });
+  return people;
+}
+/* PDF ที่มีข้อความ: อ่านรหัสเวรจากข้อความ และอ่านสีช่องจากภาพของหน้า */
+async function peopleFromPdf(buf, ymSel){
+  const lib = await loadPdfJs();
+  const doc = await lib.getDocument({data:new Uint8Array(buf), isEvalSupported:false}).promise;
+  let people = [], ym = null, firstCanvas = null, allText = '';
+  for (let pn = 1; pn <= Math.min(doc.numPages, 4); pn++){
+    const page = await doc.getPage(pn);
+    const vp = page.getViewport({scale:2});
+    const cv = document.createElement('canvas'); cv.width = Math.ceil(vp.width); cv.height = Math.ceil(vp.height);
+    const ctx = cv.getContext('2d', {willReadFrequently:true});
+    await page.render({canvasContext:ctx, viewport:vp}).promise;
+    if (!firstCanvas) firstCanvas = cv;
+    const tc = await page.getTextContent();
+    const items = tc.items.filter(it => it.str && it.str.trim()).map(it => {
+      const [x, yb] = vp.convertToViewportPoint(it.transform[4], it.transform[5]);
+      const h = Math.abs(it.transform[3]) * 2 || 16, w = (it.width || 0) * 2;
+      return {t: it.str.trim(), x, y: yb - h / 2, w, h};
+    });
+    allText += ' ' + items.map(i => i.t).join(' ');
+    ym = ym || findYm(allText) || ymSel;
+    const [yy,mm] = ym.split('-').map(Number); const nd = new Date(yy, mm, 0).getDate();
+    /* หัวตาราง: แถวที่มีตัวเลข 1..31 มากที่สุด */
+    const nums = items.filter(i => /^\d{1,2}$/.test(i.t) && +i.t >= 1 && +i.t <= 31);
+    const groups = [];
+    nums.forEach(i => { const g = groups.find(g => Math.abs(g.y - i.y) < 6); if (g) g.list.push(i); else groups.push({y:i.y, list:[i]}); });
+    const head = groups.map(g => ({y:g.y, map:new Map(g.list.map(i => [+i.t, i.x + i.w / 2]))})).sort((a, b) => b.map.size - a.map.size)[0];
+    if (!head || head.map.size < Math.min(25, nd - 3)) continue;
+    const xs = [...head.map.keys()].sort((a, b) => a - b);
+    const colW = (head.map.get(xs[xs.length - 1]) - head.map.get(xs[0])) / Math.max(1, xs[xs.length - 1] - xs[0]);
+    const dayX = d => head.map.has(d) ? head.map.get(d) : head.map.get(xs[0]) + (d - xs[0]) * colW;
+    const firstX = dayX(1) - colW / 2;
+    const dayList = [...head.map.entries()].sort((a, b) => a[0] - b[0]);
+    const nearestDay = x => { let best = null, bd = 1e9; dayList.forEach(([d, hx]) => { const dd = Math.abs(hx - x); if (dd < bd){ bd = dd; best = d; } }); return bd < colW * 0.75 ? best : null; };
+    const ids = items.filter(i => /^\d{5,7}$/.test(i.t) && i.y > head.y + 4).sort((a, b) => a.y - b.y);
+    const gaps = ids.slice(1).map((i, k) => i.y - ids[k].y).filter(v => v > 4);
+    const rowH = gaps.length ? Math.min(...gaps) : 40;
+    const rowOf = it => { let best = null, bd = 1e9; ids.forEach(id => { const dd = Math.abs(id.y - it.y); if (dd < bd){ bd = dd; best = id; } }); return bd < Math.max(rowH * 0.8, 16) ? best : null; };
+    const PUA = {'\uf705':'่','\uf706':'้','\uf707':'๊','\uf708':'๋','\uf709':'์','\uf70a':'่','\uf70b':'้','\uf70c':'๊','\uf70d':'๋','\uf70e':'์','\uf710':'ั','\uf711':'ิ','\uf712':'ี','\uf713':'ึ','\uf714':'ื','\uf715':'ํ','\uf716':'็'};
+    const fixTh = t => t.replace(/[\uf700-\uf8ff]/g, ch => PUA[ch] || '');
+    ids.forEach(idI => {
+      const row = items.filter(i => i !== idI && rowOf(i) === idI);
+      const nameParts = row.filter(i => i.x + i.w <= firstX + 2 && i.x >= idI.x + idI.w - 2 && !/^\d+$/.test(i.t)).sort((a, b) => a.x - b.x);
+      let name = ''; nameParts.forEach((it, k) => { const prev = nameParts[k - 1]; name += (prev && it.x - (prev.x + prev.w) > 3 ? ' ' : '') + fixTh(it.t); });
+      name = name.replace(/\s+/g, ' ').trim();
+      /* ข้อความในแถวอาจติดกันหลายช่อง เช่น "8-00STD8-16" → แยกเป็นทีละรหัส แล้ววางตามตำแหน่ง */
+      const byDay = {};
+      row.filter(i => i.x + i.w > firstX).forEach(it => {
+        const raw = it.t; const re = /8-16|8-00|8-8|STD|OFF|X/gi; let m, prev = 0;
+        while ((m = re.exec(raw))){
+          const mid = it.x + it.w * ((m.index + m[0].length / 2) / raw.length);
+          let d = nearestDay(mid); if (!d) continue;
+          if (prev && d <= prev) d = prev + 1;   /* รหัสที่ติดกันในข้อความเดียว = คนละวันเรียงกัน */
+          prev = d;
+          if (!byDay[d]) byDay[d] = {code: m[0].toUpperCase(), y: it.y};
+        }
+      });
+      const list = [];
+      Object.keys(byDay).map(Number).sort((a, b) => a - b).forEach(d => {
+        if (d > nd) return;
+        const cx = dayX(d); const lw = d > 1 && head.map.has(d - 1) ? Math.min(colW * 2, cx - dayX(d - 1)) : colW; const sx = Math.round(cx - lw * 0.42), sy = Math.round(byDay[d].y);
+        /* อ่านสีพื้นช่องจากหลายจุด (ข้อความอาจทับจุดเดียว) แล้วเลือกสีที่เจอมากที่สุด */
+        const pts = [[cx, sy - rowH * 0.3], [cx, sy + rowH * 0.3], [sx, sy], [cx + lw * 0.42, sy], [sx, sy - rowH * 0.25], [cx + lw * 0.42, sy + rowH * 0.25]];
+        const cnt = {};
+        pts.forEach(([px0, py0]) => { const x0 = Math.round(px0), y0 = Math.round(py0); if (x0 < 0 || y0 < 0 || x0 >= cv.width || y0 >= cv.height) return; const px = ctx.getImageData(x0, y0, 1, 1).data; const k = colorKind('#' + [px[0], px[1], px[2]].map(n => n.toString(16).padStart(2, '0')).join('')); cnt[k] = (cnt[k] || 0) + 1; });
+        const best = ['yellow','blue','red'].filter(k => cnt[k]).sort((p1, p2) => cnt[p2] - cnt[p1])[0] || (cnt.white ? 'white' : '');
+        const color = {yellow:'#ffff00', blue:'#2e75b6', red:'#ff0000', white:'#ffffff'}[best] || '';
+        const ts = codeToTypes(byDay[d].code, color);
+        if (ts) list.push({date:`${ym}-${pad(d)}`, types:ts});
+      });
+      if (list.length) people.push({empId:idI.t, name, list});
+    });
+    if (people.length) break;
+  }
+  return {ym: ym || ymSel, people, canvas:firstCanvas};
+}
+async function aiReadImages(blobs, ym){
+  let sample = null; try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
+  if (!sample) return null;
+  const v = await sample.json(teamPrompt(ym), {images:blobs, modelTier:'default'});
+  return peopleFromJson(v, ym);
+}
+const canvasBlob = cv => new Promise(res => cv.toBlob(b => res(b), 'image/jpeg', 0.9));
 async function readTeamFile(f){
-  const fd = new FormData(f); const file = fd.get('file'); const ymSel = String(fd.get('ym') || ''); const mine = !!fd.get('mine');
+  const fd = new FormData(f); const file = fd.get('file'); const ymSel = String(fd.get('ym') || teamMonth); const mine = !!fd.get('mine');
   if (!file || !file.size) return;
   const out = f.querySelector('#tf-out'); out.innerHTML = '<p class="meta">กำลังอ่านไฟล์…</p>';
+  const fail = msg => { out.innerHTML = `<div class="banner appt" style="margin:0"><div>${msg}</div></div>`; };
   try{
-    let rows = [], ym = null;
+    let res = null;
     if (/\.xlsx?$/i.test(file.name)){
       await loadScript(XLSX_URL);
-      const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array', cellStyles:true});
+      const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array', cellStyles:true}); let rows = [], ym = null;
       for (const name of wb.SheetNames){
         const ws = wb.Sheets[name]; if (!ws['!ref']) continue; const R = window.XLSX.utils.decode_range(ws['!ref']); let headText = '';
         for (let r = R.s.r; r <= R.e.r; r++){
@@ -2787,44 +2916,80 @@ async function readTeamFile(f){
         }
         ym = ym || findYm(headText); if (rows.length) break;
       }
-    } else {
+      ym = ym || ymSel; res = {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ Excel'};
+    } else if (/\.html?$|\.xhtml$/i.test(file.name) || /html/.test(file.type)){
       const text = await file.text();
       const cls = {}; text.replace(/\.([\w-]+)\s*\{([^}]*)\}/g, (_, k, body) => { const m = body.match(/background(?:-color)?\s*:\s*([^;]+)/i); if (m) cls[k] = m[1].trim(); return ''; });
-      const doc = new DOMParser().parseFromString(text, 'text/html'); ym = findYm(doc.body ? doc.body.textContent : text);
-      rows = [...doc.querySelectorAll('tr')].map(tr => [...tr.children].map(td => { let color = ''; (td.getAttribute('class') || '').split(/\s+/).forEach(c => { if (cls[c]) color = cls[c]; }); const st = (td.getAttribute('style') || '').match(/background(?:-color)?\s*:\s*([^;]+)/i); if (st) color = st[1]; if (!color && td.getAttribute('bgcolor')) color = td.getAttribute('bgcolor'); return {text: td.textContent.replace(/\s+/g, ' ').trim(), color}; }));
-    }
-    ym = ym || ymSel;
-    const people = [];
-    rows.forEach(cells => {
-      const idIdx = cells.findIndex(c => /^\d{5,7}$/.test(c.text));
-      if (idIdx < 0 || !cells[idIdx + 1] || !cells[idIdx + 1].text || codeToTypes(cells[idIdx + 1].text, '')) return;
-      const {list} = cellsToShifts(cells.slice(idIdx + 2), ym);
-      if (list.length) people.push({empId: cells[idIdx].text, name: cells[idIdx + 1].text, list});
-    });
-    if (!people.length){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>อ่านรายชื่อในไฟล์ไม่ได้ ลองไฟล์ .html หรือ .xlsx ตัวอื่นของแผนก</div></div>'; return; }
-    const T = team(); const me = meMember(); let added = 0, mineDays = 0;
-    people.forEach(p => {
-      const isMe = (S.settings.profile.id && p.empId === S.settings.profile.id) || (me.empId && p.empId === me.empId);
-      if (isMe){ if (mine){ p.list.forEach(x => { S.shifts[x.date] = {types:x.types}; mineDays++; }); } return; }
-      let mm = T.members.find(x => !x.me && x.empId === p.empId);
-      if (!mm){ mm = {id:'t' + uid(), empId:p.empId, name:p.name, phone:''}; T.members.push(mm); added++; }
-      else if (!mm.name) mm.name = p.name;
-      T.months[ym] = T.months[ym] || {}; T.months[ym][mm.id] = {};
-      p.list.forEach(x => { T.months[ym][mm.id][x.date.slice(8)] = x.types; });
-    });
-    teamMonth = ym; closeSheet();
-    commit('นำเข้าตารางเวรทีม ' + ym + ' (' + people.length + ' คน)', {msg:`นำเข้าแล้ว ${people.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''}${mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}`});
-  }catch(e){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>อ่านไฟล์นี้ไม่ได้</div></div>'; }
+      const doc = new DOMParser().parseFromString(text, 'text/html'); const ym = findYm(doc.body ? doc.body.textContent : text) || ymSel;
+      const rows = [...doc.querySelectorAll('tr')].map(tr => [...tr.children].map(td => { let color = ''; (td.getAttribute('class') || '').split(/\s+/).forEach(c => { if (cls[c]) color = cls[c]; }); const st = (td.getAttribute('style') || '').match(/background(?:-color)?\s*:\s*([^;]+)/i); if (st) color = st[1]; if (!color && td.getAttribute('bgcolor')) color = td.getAttribute('bgcolor'); return {text: td.textContent.replace(/\s+/g, ' ').trim(), color}; }));
+      res = {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ HTML'};
+    } else if (/\.pdf$/i.test(file.name) || file.type === 'application/pdf'){
+      out.innerHTML = '<p class="meta">กำลังอ่าน PDF… (ครั้งแรกต้องต่อเน็ตเพื่อโหลดตัวอ่าน)</p>';
+      let P; try{ P = await peopleFromPdf(await file.arrayBuffer(), ymSel); }catch(e){ return fail('เปิด PDF ไม่ได้ (ต่อเน็ตแล้วลองใหม่ หรือไฟล์อาจมีรหัสผ่าน) · ' + esc(String(e && e.message || e).slice(0, 120))); }
+      if (P.people.length) res = {ym:P.ym, people:P.people, how:'ไฟล์ PDF'};
+      else {
+        out.innerHTML = '<p class="meta">PDF นี้เป็นภาพสแกน กำลังให้ Claude อ่าน…</p>';
+        const r = P.canvas ? await aiReadImages([await canvasBlob(P.canvas)], P.ym || ymSel).catch(() => null) : null;
+        if (!r) return fail(STANDALONE ? 'PDF นี้เป็นภาพสแกน ต้องให้ Claude อ่าน: ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง' : 'อ่าน PDF นี้ไม่ได้ ลองถ่ายรูปให้ชัดขึ้น');
+        res = Object.assign(r, {how:'Claude อ่านจาก PDF'});
+      }
+    } else if (/^image\//.test(file.type) || /\.(jpe?g|png|webp|heic)$/i.test(file.name)){
+      if (STANDALONE) return fail('เวอร์ชัน GitHub อ่านรูปเองไม่ได้ ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง (ส่งรูปให้ Claude ในแอป Claude แล้ววางผลกลับมา)');
+      out.innerHTML = '<p class="meta">Claude กำลังอ่านรูปตาราง อาจใช้เวลาครึ่งนาที…</p>';
+      let r = null; try{ r = await aiReadImages([file], ymSel); }catch(e){ return fail(e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตาราง แล้วลองใหม่'); }
+      if (!r) return fail('หน้านี้ส่งรูปให้ Claude ไม่ได้ ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง');
+      res = Object.assign(r, {how:'Claude อ่านจากรูป'});
+    } else return fail('ใช้ไฟล์ .html .xlsx .pdf หรือรูปภาพ');
+    if (!res.people.length) return fail('ไม่พบรายชื่อพร้อมรหัสพนักงานในไฟล์ ลองไฟล์อื่น หรือใช้ “ให้ Claude อ่านรูปให้”');
+    teamPreview(out, res, mine);
+  }catch(e){ fail('อ่านไฟล์นี้ไม่ได้'); }
+}
+function teamPreview(out, res, mine){
+  teamPending = {ym:res.ym, people:res.people, mine};
+  const [y,m] = res.ym.split('-').map(Number);
+  out.innerHTML = `<p style="margin:0 0 6px"><b>${esc(res.how || '')} · ${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))} · พบ ${res.people.length} คน</b></p>
+    <p class="meta" style="margin:0 0 6px">ติ๊กออกคนที่ไม่ต้องการ ตรวจจำนวนวันแล้วกดนำเข้า แก้รายช่องได้ภายหลังในตาราง${/Claude/.test(res.how || '') ? ' · Claude อาจอ่านบางช่องผิด ตรวจในตารางอีกครั้ง' : ''}</p>
+    <div class="preview">${res.people.map((p, i) => { const isMe = S.settings.profile.id && p.empId === S.settings.profile.id; return `<label><input type="checkbox" data-i="${i}" checked style="width:20px;height:20px;margin:0"><span class="grow"><b>${esc(p.name || '(ไม่มีชื่อ)')}</b>${isMe ? ' (ฉัน)' : ''}<span class="meta">${esc(p.empId)} · ${p.list.length} วัน · ${esc(p.list.slice(0, 4).map(x => +x.date.slice(8) + ':' + x.types.map(codeName).join('+')).join(' '))}${p.list.length > 4 ? ' …' : ''}</span></span></label>`; }).join('')}</div>
+    <button type="button" class="btn primary" data-act="team-apply" style="margin-top:10px;width:100%">นำเข้าคนที่เลือก</button>`;
+}
+function applyTeamPending(){
+  const P = teamPending; if (!P) return;
+  const picked = [...document.querySelectorAll('#tf-out .preview input[type=checkbox]')].filter(x => x.checked).map(x => P.people[Number(x.dataset.i)]);
+  if (!picked.length){ toast('ยังไม่ได้เลือกใคร', true); return; }
+  const T = team(); const me = meMember(); let added = 0, mineDays = 0; const ym = P.ym;
+  picked.forEach(p => {
+    const isMe = (S.settings.profile.id && p.empId === S.settings.profile.id) || (me.empId && p.empId === me.empId);
+    if (isMe){ if (P.mine){ p.list.forEach(x => { S.shifts[x.date] = {types:x.types}; mineDays++; }); } return; }
+    let mm = T.members.find(x => !x.me && ((p.empId && x.empId === p.empId) || (!p.empId && x.name === p.name)));
+    if (!mm){ mm = {id:'t' + uid(), empId:p.empId, name:p.name, phone:''}; T.members.push(mm); added++; }
+    else if (!mm.name) mm.name = p.name;
+    T.months[ym] = T.months[ym] || {}; T.months[ym][mm.id] = {};
+    p.list.forEach(x => { T.months[ym][mm.id][x.date.slice(8)] = x.types; });
+  });
+  teamMonth = ym; teamPending = null; closeSheet();
+  commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน)', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}`});
 }
 function teamImportSheet(){
   openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
     <form data-form="team-file" style="display:flex;flex-direction:column;gap:12px">
-      <p class="meta" style="margin:0">ใช้ไฟล์ตารางเวรของแผนก (.html หรือ .xlsx) แอปอ่านทุกคนในไฟล์ รวมสีช่อง (เหลือง = +STD) อ่านในเครื่อง ไม่ส่งไฟล์ไปที่ไหน</p>
-      <label class="f">ไฟล์ตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls" required style="padding:8px"></label>
+      <p class="meta" style="margin:0">รับไฟล์ <b>.html .xlsx .pdf</b> และ<b>รูปภาพ</b> · .html/.xlsx/PDF ที่มีข้อความ อ่านในเครื่อง รวมสีช่อง (เหลือง = +STD) · รูปภาพและ PDF สแกน${STANDALONE ? ' ต้องให้ Claude อ่าน (ด้านล่าง)' : ' ให้ Claude อ่าน'}</p>
+      <label class="f">ไฟล์หรือรูปตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls,.pdf,application/pdf,image/*" required style="padding:8px"></label>
       <label class="f">เดือน (ใช้เมื่อไฟล์ไม่ได้บอกเดือน)<input class="field" type="month" name="ym" value="${esc(teamMonth)}"></label>
       <label class="chip" style="align-self:flex-start"><input type="checkbox" name="mine">อัปเดตเวรของฉันจากไฟล์นี้ด้วย</label>
-      <button class="btn primary" type="submit">นำเข้า</button><div id="tf-out" aria-live="polite"></div>
-    </form>`);
+      <button class="btn primary" type="submit">อ่านไฟล์</button><div id="tf-out" aria-live="polite"></div>
+    </form>
+    <details style="border-top:1px solid var(--line);padding-top:10px"><summary style="cursor:pointer;font-weight:600">ให้ Claude อ่านรูปให้ (ใช้ได้ทุกเวอร์ชัน)</summary>
+      <ol style="margin:8px 0;padding-left:20px;font-size:13.5px;display:flex;flex-direction:column;gap:4px">
+        <li>กด <b>คัดลอกคำสั่ง</b> › เปิดแอป Claude › ส่ง<b>รูปตารางเวร</b>พร้อมวางคำสั่ง</li>
+        <li>คัดลอกคำตอบของ Claude ทั้งหมด › กลับมาวางในช่องด้านล่าง › <b>อ่านผล</b></li>
+      </ol>
+      <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small" data-act="team-prompt">คัดลอกคำสั่ง</button></div>
+      <form data-form="team-paste" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <textarea class="field" name="txt" rows="4" placeholder='วางคำตอบจาก Claude ที่นี่ (ขึ้นต้นด้วย { "month": … )'></textarea>
+        <label class="chip" style="align-self:flex-start"><input type="checkbox" name="mine">อัปเดตเวรของฉันด้วย</label>
+        <button class="btn small primary" type="submit" style="align-self:flex-start">อ่านผล</button><div id="tp-out"></div>
+      </form>
+    </details>`);
 }
 function teamHistorySheet(){
   const T = team();
@@ -2899,6 +3064,9 @@ document.addEventListener('click', e => {
     case 'team-del': confirmSheet('ลบเพื่อนคนนี้และเวรทั้งหมดของเขา?', 'ลบ', () => { const T = team(); T.members = T.members.filter(x => x.id !== el.dataset.id); Object.values(T.months).forEach(mo => { delete mo[el.dataset.id]; }); commit('ลบเพื่อนในทีม', {msg:'ลบแล้ว'}); }, true); break;
     case 'team-swap': teamSwapSheet(el.dataset.d || teamDay, el.dataset.id || ''); break;
     case 'team-import': teamImportSheet(); break;
+    case 'team-apply': applyTeamPending(); break;
+    case 'team-prompt': { const txt = teamPrompt(teamMonth); const done = ok => toast(ok ? 'คัดลอกคำสั่งแล้ว ไปวางในแอป Claude พร้อมรูป' : 'คัดลอกไม่ได้ ลองกดค้างที่ข้อความ', !ok);
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => done(true), () => done(false)); else done(false); break; }
     case 'team-history': teamHistorySheet(); break;
     case 'swap-copy': { const f = el.closest('form'); const ta = f && f.elements.msg; if (!ta) break; ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => toast('คัดลอกแล้ว ไปวางใน LINE ได้เลย'), () => toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok)); else toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); break; }
     case 'swap-undo': { const T = team(); const x = T.swaps[Number(el.dataset.i)]; if (!x || x.undone) break;
@@ -3140,6 +3308,11 @@ document.addEventListener('submit', e => {
     closeSheet(); commit('แลกเวร ' + A.name + ' ↔ ' + B.name, {msg:'สลับเวรแล้ว ย้อนกลับได้ในประวัติ'});
   } else if (kind === 'team-file'){
     readTeamFile(f);
+  } else if (kind === 'team-paste'){
+    const out = f.querySelector('#tp-out');
+    try{ const r = peopleFromJson(String(fd.get('txt') || ''), teamMonth); if (!r.people.length) throw new Error('ไม่พบรายชื่อ');
+      const box = document.getElementById('tf-out'); teamPreview(box || out, Object.assign(r, {how:'ผลจาก Claude'}), !!fd.get('mine')); (box || out).scrollIntoView({block:'center'}); }
+    catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>อ่านผลไม่ได้: ${esc(e.message || 'รูปแบบไม่ถูกต้อง')} · คัดลอกคำตอบของ Claude ให้ครบทั้งหมด</div></div>`; }
   } else if (kind === 'frow'){
     const form = f.dataset.fk, ym = f.dataset.ym, rk = f.dataset.rk;
     const before = finalRows(form, ym).find(x => x.key === rk); if (!before) return;
