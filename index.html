@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.10</title>
+<title>เลขาส่วนตัว v1.11</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -396,7 +396,12 @@ nav.tabbar a svg{width:24px;height:24px}
 .rowlist summary{cursor:pointer;font-weight:600;min-height:32px;display:flex;align-items:center}
 .teamwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
 .teamgrid{border-collapse:separate;border-spacing:2px;font-size:11px}
-.teamgrid th,.teamgrid td{min-width:34px;height:34px;text-align:center;border-radius:6px;padding:0 2px;cursor:pointer}
+.teamgrid th,.teamgrid td.raw{font-size:8.5px;line-height:1.05;word-break:break-all;white-space:normal;max-width:46px}
+.teamgrid .ttools{display:flex;gap:3px;margin-top:3px}
+.teamgrid .ttools button{min-width:26px;height:24px;border-radius:7px;border:1px solid var(--field);background:var(--surface-solid,#fff);font-size:12px;cursor:pointer;padding:0}
+.teamgrid .ttools button.x{background:var(--life);color:#fff;border-color:var(--life)}
+.teamgrid tr.tsep th,.teamgrid tr.tsep td{height:20px;background:var(--primary-tint);font-size:11px;font-weight:700;color:var(--primary-ink);cursor:default}
+.teamgrid td{min-width:34px;height:34px;text-align:center;border-radius:6px;padding:0 2px;cursor:pointer}
 .teamgrid thead th{background:var(--soft);font-weight:600;line-height:1.05}
 .teamgrid thead th b{display:block;font-size:12px}.teamgrid thead th small{font-size:9.5px;color:var(--muted)}
 .teamgrid thead th.now{background:var(--primary);color:#fff}.teamgrid thead th.now small{color:#fff}
@@ -431,7 +436,7 @@ nav.tabbar a svg{width:23px !important;height:23px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.10';
+const APP_VERSION = '1.11';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -1318,7 +1323,7 @@ function viewGuide(){
     ['ตรวจปฏิทิน','จุดม่วง 8-16 · เหลือง STD · ส้ม STD เช้า · น้ำเงิน 8-8 · แดง หยุด วันที่ติ๊ก 2 ช่องมี 2 จุด ตัวเลขสีชมพู = วันหยุดบริษัท'],
     ['วันหยุดที่มี STD 24 ชม.','แตะ “+STD เช้า” แอปติ๊ก STD ให้ด้วย รวม 300 บาท (200 + 100) ใช้ได้เฉพาะวันที่ไม่มี 8-16 หรือ 8-8'],
     ['ใส่นัดของเดือน','นัดหมาย › + นัดใหม่ ตั้งเตือนก่อน 1 วันให้อัตโนมัติ'],
-    ['ลงตารางเวรทีม','เมนู ทีม › นำเข้าจากไฟล์ตารางเวร รับ .html .xlsx .pdf และรูปภาพ ตรวจรายชื่อก่อนนำเข้า · เวอร์ชัน GitHub อ่านรูป: “ให้ Claude อ่านรูปให้” คัดลอกคำสั่งไปแอป Claude แล้ววางผลกลับ · แตะชื่อเพื่อใส่เบอร์โทร']
+    ['ลงตารางเวรทีม','เมนู ทีม › นำเข้าจากไฟล์ตารางเวร รับ .html .xlsx .pdf และรูปภาพ ตรวจรายชื่อก่อนนำเข้า · อัปทีละไฟล์ได้ (เช่น OR แล้วตามด้วยวิสัญญี) ระบบรวมกับของเดิม ไม่ลบคนอื่น · “แก้รายชื่อ” เพื่อลบ ✕ หรือเรียง ↑↓ · เวอร์ชัน GitHub อ่านรูป: “ให้ Claude อ่านรูปให้” คัดลอกคำสั่งไปแอป Claude แล้ววางผลกลับ · แตะชื่อเพื่อใส่เบอร์โทร']
   ];
   const daily = [
     ['เปิด My day','ดูเวรวันนี้ การ์ด “เดือนนี้” (ชั่วโมงขาด/เกิน ค่าเวร+OT) และสิ่งที่ห้ามลืม'],
@@ -1351,6 +1356,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.11','รวมตารางเวรหลายแผนก (OR + วิสัญญีแบบ ช/บ/ด) · อัปไฟล์ทีละไฟล์แล้วรวมกับของเดิม · แก้รายชื่อ: ลบ/เรียง/ระบุแผนก · วางผลจาก Claude ได้แม้ตอบหลายก้อน'],
     ['v1.10','นำเข้าตารางเวรทีมจาก PDF และรูปภาพ · ดูรายชื่อก่อนนำเข้า · วางผลจาก Claude ได้'],
     ['v1.9','หน้า “ทีม”: ตารางเวรเพื่อน นำเข้าจากไฟล์ ใส่เบอร์โทร สลับเวรได้จริง (ย้อนกลับได้) · การ์ด “วันนี้อยู่เวรกับ” บน My day'],
     ['v1.8.1','คู่มืออัปเดตตามทุกการแก้ไข · เพิ่มหัวข้อ “มีอะไรใหม่”'],
@@ -2663,7 +2669,25 @@ function pushSetupSheet(){
 /* ---------- ตารางเวรทีม: ดูเวรเพื่อน ใครอยู่เวรวันนี้ เบอร์โทร และสลับเวรได้จริง ---------- */
 let teamMonth = today().slice(0,7), teamDay = today();
 const TEAM_CODES = [['8-16','8-16'],['STD','STD'],['STDM','STD เช้า'],['8-00','8-8'],['OFF','หยุด'],['VAC','ลา']];
-function team(){ S.team = S.team || {members:[], months:{}, swaps:[]}; S.team.members = S.team.members || []; S.team.months = S.team.months || {}; S.team.swaps = S.team.swaps || []; return S.team; }
+function team(){ S.team = S.team || {members:[], months:{}, swaps:[]}; S.team.members = S.team.members || []; S.team.months = S.team.months || {}; S.team.swaps = S.team.swaps || []; S.team.raw = S.team.raw || {}; return S.team; }
+let teamEdit = false;
+function teamRaw(mid, d){ const r = team().raw[d.slice(0,7)]; return r && r[mid] ? (r[mid][d.slice(8)] || '') : ''; }
+function setTeamRaw(mid, d, v){ const T = team(); const ym = d.slice(0,7); if (v){ T.raw[ym] = T.raw[ym] || {}; T.raw[ym][mid] = T.raw[ym][mid] || {}; T.raw[ym][mid][d.slice(8)] = v; } else if (T.raw[ym] && T.raw[ym][mid]) delete T.raw[ym][mid][d.slice(8)]; }
+/* ตารางแบบ 3 แถวต่อคน (วิสัญญี): ช=08-16 · บ=16-00 · ด=00-08 · AN/RR=เวรเหมา · SA/SR=Standby */
+function anesToTypes(codes){
+  const C = codes.map(c => String(c || '').replace(/\s+/g, '').trim()).filter(Boolean);
+  if (!C.length) return null;
+  const has = re => C.some(c => re.test(c));
+  if (has(/^(VAC|BDL|AL|ลา)/i)) return ['VAC'];
+  const ch = has(/^ช/), maha = has(/^[บด].*(AN|RR)$/i), stb = has(/(SA|SR)$/i);
+  if (maha) return ['8-00'];
+  if (ch && stb) return ['8-16','STD'];
+  if (ch) return ['8-16'];
+  if (stb) return ['STD'];
+  if (has(/^(OFF|X)/i)) return ['OFF'];
+  return null;
+}
+const isAnesCode = c => /^[ชบด]/.test(String(c || '').trim()) || /(SA|SR|AN|RR)$/i.test(String(c || '').trim());
 function meMember(){ const T = team(); let m = T.members.find(x => x.me); if (!m){ m = {id:'me', empId:S.settings.profile.id || '', name:S.settings.profile.name || 'ฉัน', phone:'', me:true}; T.members.unshift(m); } return m; }
 function teamCodes(mid, d){
   const m = team().members.find(x => x.id === mid); if (!m) return [];
@@ -2675,6 +2699,7 @@ function setTeamCodes(mid, d, codes){
   if (m.me){ if (codes.length) S.shifts[d] = {types:codes}; else delete S.shifts[d]; return; }
   const T = team(); const ym = d.slice(0,7); T.months[ym] = T.months[ym] || {}; T.months[ym][mid] = T.months[ym][mid] || {};
   if (codes.length) T.months[ym][mid][d.slice(8)] = codes; else delete T.months[ym][mid][d.slice(8)];
+  setTeamRaw(mid, d, '');
 }
 const codeClass = cs => cs.includes('8-00') ? 'c8' : cs.includes('OFF') ? 'cx' : cs.includes('STDM') ? 'cm' : cs.includes('STD') ? 'cs' : (cs.includes('VAC') || cs.includes('SICK')) ? 'cv' : cs.length ? 'cw' : '';
 const codeText = cs => cs.filter(k => !(k === 'STD' && cs.includes('STDM'))).map(k => k === 'STDM' ? 'STD+' : codeName(k)).join('/');
@@ -2696,7 +2721,14 @@ function viewTeam(){
   const T = team(); meMember();
   const [y,m] = teamMonth.split('-').map(Number); const days = new Date(y, m, 0).getDate();
   const head = Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const dt = parse(d); const hol = isCoHoliday(d); return `<th class="${d === today() ? 'now' : ''}${hol ? ' hol' : ''}" data-act="team-day" data-d="${d}"><b>${i+1}</b><small>${esc(dt.toLocaleDateString('th-TH',{weekday:'narrow'}))}</small></th>`; }).join('');
-  const rows = T.members.map(mm => `<tr><th class="tname${mm.me ? ' me' : ''}" data-act="team-member" data-id="${mm.id}"><b>${esc(mm.name || '(ไม่มีชื่อ)')}</b><small>${esc(mm.empId || '')}${mm.phone ? ' · 📞' : ''}</small></th>${Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const cs = teamCodes(mm.id, d); return `<td class="${codeClass(cs)}${d === teamDay ? ' sel' : ''}" data-act="team-cell" data-id="${mm.id}" data-d="${d}">${esc(codeText(cs))}</td>`; }).join('')}</tr>`).join('');
+  let lastDept = null;
+  const rows = T.members.map((mm, mi) => {
+    const dp = mm.me ? '' : (mm.dept || '');
+    const sep = !mm.me && dp !== lastDept && T.members.some(x => !x.me && (x.dept || '') !== (T.members.find(z => !z.me) || {}).dept) ? `<tr class="tsep"><th class="tname" colspan="1">${esc(dp || 'ไม่ระบุแผนก')}</th><td colspan="${days}"></td></tr>` : '';
+    if (!mm.me) lastDept = dp;
+    const tools = teamEdit ? `<span class="ttools">${mi > 0 ? `<button type="button" data-act="team-up" data-id="${mm.id}" aria-label="เลื่อนขึ้น">↑</button>` : ''}${mi < T.members.length - 1 ? `<button type="button" data-act="team-down" data-id="${mm.id}" aria-label="เลื่อนลง">↓</button>` : ''}${mm.me ? '' : `<button type="button" class="x" data-act="team-del" data-id="${mm.id}" aria-label="ลบ ${esc(mm.name)}">✕</button>`}</span>` : '';
+    return `${sep}<tr><th class="tname${mm.me ? ' me' : ''}" data-act="team-member" data-id="${mm.id}"><b>${esc(mm.name || '(ไม่มีชื่อ)')}</b><small>${esc(mm.empId || '')}${dp ? ' · ' + esc(dp) : ''}${mm.phone ? ' · 📞' : ''}</small>${tools}</th>${Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const cs = teamCodes(mm.id, d); const raw = mm.me ? '' : teamRaw(mm.id, d); return `<td class="${codeClass(cs)}${raw ? ' raw' : ''}${d === teamDay ? ' sel' : ''}" data-act="team-cell" data-id="${mm.id}" data-d="${d}"${raw ? ` title="${esc(raw)}"` : ''}>${esc(raw ? raw.replace(/\s+/g, '/') : codeText(cs))}</td>`; }).join('')}</tr>`;
+  }).join('');
   const D = dutyList(teamDay, false);
   return `<header class="top" style="flex-direction:column;align-items:stretch;gap:8px">
     <div class="row between"><div><h1>ตารางเวรทีม</h1><div class="sub">ดูเวรเพื่อน ขอแลกเวร และเบอร์ติดต่อ</div></div></div>
@@ -2709,11 +2741,12 @@ function viewTeam(){
   <section class="card" style="padding:8px 6px">
     <div class="teamwrap"><table class="teamgrid"><thead><tr><th class="tname">ชื่อ</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>
     <div class="wrap" style="padding:6px 4px 0;gap:6px">${[['cw','8-16'],['cs','STD / 8-16+STD'],['cm','STD เช้า'],['c8','8-8'],['cx','หยุด']].map(([c,l]) => `<span class="row" style="gap:4px;font-size:11.5px"><span class="tcode ${c}" style="min-width:18px;height:14px"></span>${l}</span>`).join('')}</div>
-    <p class="meta" style="margin:4px">แตะช่องเพื่อแก้เวร · แตะชื่อเพื่อแก้ชื่อ รหัส เบอร์โทร · แตะหัววันที่เพื่อดูว่าใครอยู่เวร · แถวของคุณคือเวรจริงของคุณ (แก้แล้วค่าเวรเปลี่ยนตาม)</p>
+    <p class="meta" style="margin:4px">ช่องตัวเล็ก = รหัสเดิมของแผนกอื่น (เช่น ชSA/บRR/ดRR) สีตามความหมาย · แตะช่องเพื่อแก้เวร · แตะชื่อเพื่อแก้ชื่อ รหัส เบอร์โทร · แตะหัววันที่เพื่อดูว่าใครอยู่เวร · แถวของคุณคือเวรจริงของคุณ (แก้แล้วค่าเวรเปลี่ยนตาม)</p>
   </section>
   <div class="row" style="flex-wrap:wrap;gap:6px;padding:0 4px 8px">
     <button type="button" class="btn small primary" data-act="team-import">นำเข้าจากไฟล์ตารางเวร</button>
-    <button type="button" class="btn small" data-act="team-add">+ เพิ่มเพื่อน</button>
+    <button type="button" class="btn small" data-act="team-add">+ เพิ่มรายชื่อ</button>
+    <button type="button" class="btn small${teamEdit ? ' primary' : ''}" data-act="team-edit">${teamEdit ? 'เสร็จ' : 'แก้รายชื่อ (ลบ/เรียง)'}</button>
     <button type="button" class="btn small" data-act="team-history">ประวัติการแลกเวร (${T.swaps.length})</button>
   </div>
   <p class="sub" style="padding:0 4px">ข้อมูลเพื่อนเก็บในเครื่องนี้เท่านั้น ไม่ได้อัปขึ้น GitHub</p>`;
@@ -2734,6 +2767,7 @@ function teamMemberSheet(mid){
     <form data-form="team-member" data-id="${mid || ''}" style="display:flex;flex-direction:column;gap:12px">
       <label class="f">ชื่อ<input class="field" name="name" required value="${esc(mm.name || '')}"></label>
       <div class="row"><label class="f" style="flex:1">รหัสพนักงาน<input class="field" name="empId" inputmode="numeric" value="${esc(mm.empId || '')}"></label><label class="f" style="flex:1">เบอร์โทร<input class="field" name="phone" type="tel" inputmode="tel" value="${esc(mm.phone || '')}" placeholder="08x-xxx-xxxx"></label></div>
+      ${mm.me ? '' : `<div class="row"><label class="f" style="flex:1">แผนก<input class="field" name="dept" value="${esc(mm.dept || '')}" placeholder="OR / วิสัญญี"></label><label class="f" style="flex:1">ตำแหน่ง<input class="field" name="pos" value="${esc(mm.pos || '')}"></label></div>`}
       ${mm.me ? '<p class="meta" style="margin:0">แถวนี้คือคุณ ชื่อและรหัสในฟอร์มแก้ได้ที่ ตั้งค่า › ข้อมูลในใบลงเวลา</p>' : ''}
       <div class="row">${mid && !mm.me ? `<button type="button" class="btn danger" data-act="team-del" data-id="${mid}">ลบ</button>` : ''}${mm.phone ? telBtn(mm) : ''}<button class="btn primary" type="submit" style="flex:1">บันทึก</button></div>
     </form>`);
@@ -2787,24 +2821,82 @@ function teamPrompt(ym){
   return `อ่านรูปตารางเวรพยาบาลทั้งทีม เดือน ${m}/${y} (ค.ศ.) ทุกแถวที่มีรหัสพนักงาน
 กติกา: ช่องสีเหลืองที่เขียน 8-16 = ["8-16","STD"] · ช่องสีขาวที่เขียน 8-16 = ["8-16"] · STD = ["STD"] · 8-00 หรือ 8-8 หรือช่องสีน้ำเงิน = ["8-00"] · X หรือช่องสีแดง = ["OFF"]
 ตัวเลขหรือตัวอักษรเล็ก ๆ ที่เขียนด้วยมือเพิ่มไม่ต้องสนใจ · ช่องที่ขีดฆ่าแล้วเขียนใหม่ให้ใช้ค่าที่เขียนใหม่ · ช่องที่อ่านไม่ออกให้ข้าม
-ตอบเป็น JSON อย่างเดียว รูปแบบ: {"month":"${y}-${pad(m)}","rows":[{"id":"รหัสพนักงาน","name":"ชื่อ","days":{"1":["8-16","STD"],"2":["OFF"]}}]}`;
+ถ้าเป็นตารางแบบ 1 คนมี 3 แถว (ช 08-16 / บ 16-00 / ด 00-08) ให้ใส่รหัสตามที่เขียนในแต่ละแถวของวันนั้น เช่น ["ชSA","บRR","ดRR"] หรือ ["OFF"] และใส่ "dept" เป็นชื่อแผนก
+ตอบเป็น JSON ก้อนเดียว ห้ามแบ่งหลายก้อน รูปแบบ: {"month":"${y}-${pad(m)}","rows":[{"id":"รหัสพนักงาน","name":"ชื่อ","dept":"แผนก","days":{"1":["8-16","STD"],"2":["OFF"]}}]}`;
+}
+function extractJsonObjects(text){
+  const out = []; let i = 0;
+  while ((i = text.indexOf('{', i)) >= 0){
+    let depth = 0, inStr = false, esc2 = false, k = i;
+    for (; k < text.length; k++){
+      const ch = text[k];
+      if (inStr){ if (esc2) esc2 = false; else if (ch === '\\') esc2 = true; else if (ch === '"') inStr = false; continue; }
+      if (ch === '"') inStr = true; else if (ch === '{') depth++; else if (ch === '}'){ depth--; if (depth === 0) break; }
+    }
+    if (depth !== 0) break;
+    try{ const o = JSON.parse(text.slice(i, k + 1)); if (o && (Array.isArray(o.rows) || o.days || o.id)) out.push(o); }catch(e){}
+    i = k + 1;
+  }
+  return out;
 }
 function peopleFromJson(v, ymSel){
-  if (typeof v === 'string'){ const a = v.indexOf('{'), b = v.lastIndexOf('}'); if (a < 0 || b < a) throw new Error('ไม่พบข้อมูล JSON'); v = JSON.parse(v.slice(a, b + 1)); }
-  const ym = /^\d{4}-\d{2}$/.test(v && v.month || '') ? v.month : ymSel;
+  let objs;
+  if (typeof v === 'string'){
+    objs = extractJsonObjects(v.replace(/[“”]/g, '"'));
+    if (!objs.length) throw new Error('ไม่พบข้อมูล JSON ในข้อความ');
+  } else objs = [v];
+  /* รวมหลายก้อน (Claude อาจตอบแยกเป็นหลายส่วน) */
+  const rowsAll = []; let month = '';
+  objs.forEach(o => { if (Array.isArray(o.rows)) rowsAll.push(...o.rows); else if (o.days) rowsAll.push(o); if (!month && /^\d{4}-\d{2}$/.test(o.month || '')) month = o.month; });
+  const ym = month || ymSel;
   const [y,m] = ym.split('-').map(Number); const days = new Date(y, m, 0).getDate();
   const ok = ['8-16','STD','8-00','OFF','STDM','VAC','SICK'];
-  const people = (v && Array.isArray(v.rows) ? v.rows : []).map(r => {
-    const list = [];
+  const map = new Map();
+  rowsAll.forEach(r => {
+    const empId = String(r.id || '').replace(/\D/g, ''); const name = String(r.name || '').trim();
+    const key = empId || name; if (!key) return;
+    const p = map.get(key) || {empId, name, pos:String(r.pos || r.position || '').trim(), dept:String(r.dept || '').trim(), list:[]};
     Object.keys(r.days || {}).forEach(dk => {
       const d = Number(dk); if (!(d >= 1 && d <= days)) return;
-      let ts = (Array.isArray(r.days[dk]) ? r.days[dk] : [r.days[dk]]).map(x => String(x).trim().toUpperCase().replace('8-8', '8-00').replace(/^X$/, 'OFF'));
-      ts = ts.filter(x => ok.includes(x)).slice(0, 2);
-      if (ts.length) list.push({date:`${ym}-${pad(d)}`, types:ts});
+      const arr = (Array.isArray(r.days[dk]) ? r.days[dk] : [r.days[dk]]).map(x => String(x).trim()).filter(Boolean);
+      let ts, raw = '';
+      if (arr.some(isAnesCode)){ ts = anesToTypes(arr); raw = arr.join(' '); }
+      else { ts = arr.map(x => x.toUpperCase().replace('8-8', '8-00').replace(/^X$/, 'OFF')).filter(x => ok.includes(x)).slice(0, 2); }
+      if (ts && ts.length){ const date = `${ym}-${pad(d)}`; p.list = p.list.filter(x => x.date !== date); p.list.push({date, types:ts, raw}); }
     });
-    return {empId:String(r.id || '').replace(/\D/g, ''), name:String(r.name || '').trim(), list};
-  }).filter(p => (p.empId || p.name) && p.list.length);
-  return {ym, people};
+    map.set(key, p);
+  });
+  return {ym, people:[...map.values()].filter(p => p.list.length)};
+}
+/* ตารางแผนกที่ 1 คน = 3 แถว (ช/บ/ด) เช่น วิสัญญี */
+function peopleFromAnesRows(rows, ym, titleText){
+  const hi = rows.findIndex(cells => cells.filter(c => /^\d{1,2}$/.test(c.text) && +c.text >= 1 && +c.text <= 31).length >= 25);
+  if (hi < 0) return [];
+  const colDay = {}; rows[hi].forEach((c, ci) => { if (/^\d{1,2}$/.test(c.text)) colDay[ci] = +c.text; });
+  const shiftRe = /^[ชบด]\s*\(/;
+  if (!rows.some(cells => cells.some(c => shiftRe.test(c.text)))) return [];
+  const dept = /วิสัญญี|anes/i.test(titleText || '') ? 'วิสัญญี' : '';
+  const [y,m] = ym.split('-').map(Number); const nd = new Date(y, m, 0).getDate();
+  const owners = new Map();
+  rows.forEach((cells, ri) => {
+    if (ri <= hi || !cells.some(c => shiftRe.test(c.text))) return;
+    let owner = null;
+    for (let k = ri; k >= Math.max(hi + 1, ri - 2) && !owner; k--){
+      const idc = rows[k].findIndex(c => /^\d{5,7}$/.test(c.text));
+      if (idc >= 0){
+        const nameCell = rows[k].slice(idc + 1).find(c => c.text && !shiftRe.test(c.text) && !/^\d+$/.test(c.text));
+        const nm = nameCell ? nameCell.raw || nameCell.text : '';
+        const lines = String(nm).split(/\n+/).map(t => t.trim()).filter(Boolean);
+        owner = {empId: rows[k][idc].text, name: (lines[0] || '').replace(/\s+/g, ' '), pos: lines.slice(1).join(' ')};
+      }
+    }
+    if (!owner) return;
+    const o = owners.get(owner.empId) || Object.assign(owner, {dept, codes:{}});
+    Object.keys(colDay).forEach(ci => { const t = (cells[ci] || {}).text || ''; const d = colDay[ci]; if (t && d <= nd){ (o.codes[d] = o.codes[d] || []).push(t); } });
+    owners.set(owner.empId, o);
+  });
+  return [...owners.values()].map(o => ({empId:o.empId, name:o.name, pos:o.pos, dept:o.dept,
+    list: Object.keys(o.codes).map(Number).sort((a, b) => a - b).map(d => ({date:`${ym}-${pad(d)}`, types: anesToTypes(o.codes[d]), raw: o.codes[d].join(' ')})).filter(x => x.types)})).filter(p => p.list.length);
 }
 function peopleFromCells(rows, ym){
   const people = [];
@@ -2907,22 +2999,39 @@ async function readTeamFile(f){
     let res = null;
     if (/\.xlsx?$/i.test(file.name)){
       await loadScript(XLSX_URL);
-      const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array', cellStyles:true}); let rows = [], ym = null;
+      const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array', cellStyles:true}); let rows = [], ym = null, wbTitle = '';
       for (const name of wb.SheetNames){
         const ws = wb.Sheets[name]; if (!ws['!ref']) continue; const R = window.XLSX.utils.decode_range(ws['!ref']); let headText = '';
         for (let r = R.s.r; r <= R.e.r; r++){
-          const cells = []; for (let c = R.s.c; c <= R.e.c; c++){ const cell = ws[window.XLSX.utils.encode_cell({r, c})]; const v = cell && cell.v != null ? String(cell.v) : ''; if (r < R.s.r + 4) headText += ' ' + v; const fg = cell && cell.s && (cell.s.fgColor || (cell.s.fill && cell.s.fill.fgColor)); cells.push({text:v, color: fg && fg.rgb ? fg.rgb : ''}); }
+          const cells = []; for (let c = R.s.c; c <= R.e.c; c++){ const cell = ws[window.XLSX.utils.encode_cell({r, c})]; const v = cell && cell.v != null ? String(cell.v).trim() : ''; if (r < R.s.r + 4) headText += ' ' + v; const fg = cell && cell.s && (cell.s.fgColor || (cell.s.fill && cell.s.fill.fgColor)); cells.push({text:v.replace(/\s*\n\s*/g, ' '), raw:v, color: fg && fg.rgb ? fg.rgb : ''}); }
           rows.push(cells);
         }
-        ym = ym || findYm(headText); if (rows.length) break;
+        ym = ym || findYm(headText); if (rows.length){ wbTitle = headText; break; }
       }
-      ym = ym || ymSel; res = {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ Excel'};
+      ym = ym || ymSel; const an = peopleFromAnesRows(rows, ym, wbTitle);
+      res = an.length ? {ym, people: an, how:'ไฟล์ Excel (แบบ ช/บ/ด)'} : {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ Excel'};
     } else if (/\.html?$|\.xhtml$/i.test(file.name) || /html/.test(file.type)){
       const text = await file.text();
       const cls = {}; text.replace(/\.([\w-]+)\s*\{([^}]*)\}/g, (_, k, body) => { const m = body.match(/background(?:-color)?\s*:\s*([^;]+)/i); if (m) cls[k] = m[1].trim(); return ''; });
       const doc = new DOMParser().parseFromString(text, 'text/html'); const ym = findYm(doc.body ? doc.body.textContent : text) || ymSel;
-      const rows = [...doc.querySelectorAll('tr')].map(tr => [...tr.children].map(td => { let color = ''; (td.getAttribute('class') || '').split(/\s+/).forEach(c => { if (cls[c]) color = cls[c]; }); const st = (td.getAttribute('style') || '').match(/background(?:-color)?\s*:\s*([^;]+)/i); if (st) color = st[1]; if (!color && td.getAttribute('bgcolor')) color = td.getAttribute('bgcolor'); return {text: td.textContent.replace(/\s+/g, ' ').trim(), color}; }));
-      res = {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ HTML'};
+      /* อ่านตารางเป็นตารางจริง (คำนึงถึงช่องที่ผสานแถว/คอลัมน์ เช่น รหัสและชื่อที่กินสูง 3 แถว) */
+      const rows = []; const occ = [];
+      [...doc.querySelectorAll('tr')].forEach((tr, r) => {
+        occ[r] = occ[r] || []; const out = []; let c = 0;
+        [...tr.children].forEach(td => {
+          while (occ[r][c]){ out[c] = {text:'', raw:'', color:''}; c++; }
+          let color = ''; (td.getAttribute('class') || '').split(/\s+/).forEach(k => { if (cls[k]) color = cls[k]; }); const st = (td.getAttribute('style') || '').match(/background(?:-color)?\s*:\s*([^;]+)/i); if (st) color = st[1]; if (!color && td.getAttribute('bgcolor')) color = td.getAttribute('bgcolor');
+          const raw = td.innerHTML.replace(/<br\s*\/?>/gi, '\n').replace(/<\/(p|div)>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
+          const cell = {text: raw.replace(/\s+/g, ' ').trim(), raw, color};
+          const rs = Math.max(1, +td.getAttribute('rowspan') || 1), cs = Math.max(1, +td.getAttribute('colspan') || 1);
+          for (let a = 0; a < cs; a++){ out[c + a] = a ? {text:'', raw:'', color} : cell; for (let k = 1; k < rs; k++){ occ[r + k] = occ[r + k] || []; occ[r + k][c + a] = true; } }
+          c += cs;
+        });
+        for (let k = 0; k < out.length; k++) if (!out[k]) out[k] = {text:'', raw:'', color:''};
+        rows.push(out);
+      });
+      const an = peopleFromAnesRows(rows, ym, doc.body ? doc.body.textContent.slice(0, 400) : '');
+      res = an.length ? {ym, people: an, how:'ไฟล์ HTML (แบบ ช/บ/ด)'} : {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ HTML'};
     } else if (/\.pdf$/i.test(file.name) || file.type === 'application/pdf'){
       out.innerHTML = '<p class="meta">กำลังอ่าน PDF… (ครั้งแรกต้องต่อเน็ตเพื่อโหลดตัวอ่าน)</p>';
       let P; try{ P = await peopleFromPdf(await file.arrayBuffer(), ymSel); }catch(e){ return fail('เปิด PDF ไม่ได้ (ต่อเน็ตแล้วลองใหม่ หรือไฟล์อาจมีรหัสผ่าน) · ' + esc(String(e && e.message || e).slice(0, 120))); }
@@ -2945,29 +3054,35 @@ async function readTeamFile(f){
   }catch(e){ fail('อ่านไฟล์นี้ไม่ได้'); }
 }
 function teamPreview(out, res, mine){
-  teamPending = {ym:res.ym, people:res.people, mine};
+  teamPending = {ym:res.ym, people:res.people, mine, dept:(res.people[0] && res.people[0].dept) || (/^ไฟล์ (HTML|Excel|PDF)$/.test(res.how || '') ? 'OR' : '')};
   const [y,m] = res.ym.split('-').map(Number);
   out.innerHTML = `<p style="margin:0 0 6px"><b>${esc(res.how || '')} · ${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))} · พบ ${res.people.length} คน</b></p>
     <p class="meta" style="margin:0 0 6px">ติ๊กออกคนที่ไม่ต้องการ ตรวจจำนวนวันแล้วกดนำเข้า แก้รายช่องได้ภายหลังในตาราง${/Claude/.test(res.how || '') ? ' · Claude อาจอ่านบางช่องผิด ตรวจในตารางอีกครั้ง' : ''}</p>
     <div class="preview">${res.people.map((p, i) => { const isMe = S.settings.profile.id && p.empId === S.settings.profile.id; return `<label><input type="checkbox" data-i="${i}" checked style="width:20px;height:20px;margin:0"><span class="grow"><b>${esc(p.name || '(ไม่มีชื่อ)')}</b>${isMe ? ' (ฉัน)' : ''}<span class="meta">${esc(p.empId)} · ${p.list.length} วัน · ${esc(p.list.slice(0, 4).map(x => +x.date.slice(8) + ':' + x.types.map(codeName).join('+')).join(' '))}${p.list.length > 4 ? ' …' : ''}</span></span></label>`; }).join('')}</div>
+    <label class="f" style="margin-top:8px">แผนกของคนในไฟล์นี้<input class="field" id="tf-dept" value="${esc(teamPending.dept)}" placeholder="เช่น OR หรือ วิสัญญี"></label>
+    <label class="chip" style="align-self:flex-start;margin-top:6px"><input type="checkbox" id="tf-replace">ล้างเวรเดิมทั้งเดือนของคนในไฟล์ก่อน (ปกติ: รวมกับของเดิม)</label>
     <button type="button" class="btn primary" data-act="team-apply" style="margin-top:10px;width:100%">นำเข้าคนที่เลือก</button>`;
 }
 function applyTeamPending(){
   const P = teamPending; if (!P) return;
   const picked = [...document.querySelectorAll('#tf-out .preview input[type=checkbox]')].filter(x => x.checked).map(x => P.people[Number(x.dataset.i)]);
   if (!picked.length){ toast('ยังไม่ได้เลือกใคร', true); return; }
-  const T = team(); const me = meMember(); let added = 0, mineDays = 0; const ym = P.ym;
+  const dept = (document.getElementById('tf-dept') || {}).value || P.dept || '';
+  const replace = !!(document.getElementById('tf-replace') || {}).checked;
+  const T = team(); const me = meMember(); let added = 0, mineDays = 0, cells = 0; const ym = P.ym;
+  const badName = n => !n || /^[ชบด]\s*\(/.test(n);
   picked.forEach(p => {
     const isMe = (S.settings.profile.id && p.empId === S.settings.profile.id) || (me.empId && p.empId === me.empId);
     if (isMe){ if (P.mine){ p.list.forEach(x => { S.shifts[x.date] = {types:x.types}; mineDays++; }); } return; }
     let mm = T.members.find(x => !x.me && ((p.empId && x.empId === p.empId) || (!p.empId && x.name === p.name)));
-    if (!mm){ mm = {id:'t' + uid(), empId:p.empId, name:p.name, phone:''}; T.members.push(mm); added++; }
-    else if (!mm.name) mm.name = p.name;
-    T.months[ym] = T.months[ym] || {}; T.months[ym][mm.id] = {};
-    p.list.forEach(x => { T.months[ym][mm.id][x.date.slice(8)] = x.types; });
+    if (!mm){ mm = {id:'t' + uid(), empId:p.empId, name:p.name, phone:'', dept, pos:p.pos || ''}; T.members.push(mm); added++; }
+    else { if (badName(mm.name) && p.name) mm.name = p.name; if (!mm.dept && dept) mm.dept = dept; if (!mm.pos && p.pos) mm.pos = p.pos; }
+    T.months[ym] = T.months[ym] || {};
+    if (replace || !T.months[ym][mm.id]){ T.months[ym][mm.id] = {}; if (T.raw[ym]) delete T.raw[ym][mm.id]; }
+    p.list.forEach(x => { T.months[ym][mm.id][x.date.slice(8)] = x.types; setTeamRaw(mm.id, x.date, x.raw || ''); cells++; });
   });
   teamMonth = ym; teamPending = null; closeSheet();
-  commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน)', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}`});
+  commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน' + (dept ? ' · ' + dept : '') + ')', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''} · ${cells} ช่อง${replace ? '' : ' รวมกับของเดิม'}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}`});
 }
 function teamImportSheet(){
   openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
@@ -3061,7 +3176,9 @@ document.addEventListener('click', e => {
     case 'team-cell': teamDay = el.dataset.d; teamCellSheet(el.dataset.id, el.dataset.d); break;
     case 'team-member': teamMemberSheet(el.dataset.id); break;
     case 'team-add': teamMemberSheet(null); break;
-    case 'team-del': confirmSheet('ลบเพื่อนคนนี้และเวรทั้งหมดของเขา?', 'ลบ', () => { const T = team(); T.members = T.members.filter(x => x.id !== el.dataset.id); Object.values(T.months).forEach(mo => { delete mo[el.dataset.id]; }); commit('ลบเพื่อนในทีม', {msg:'ลบแล้ว'}); }, true); break;
+    case 'team-edit': teamEdit = !teamEdit; render(); break;
+    case 'team-up': case 'team-down': { const T = team(); const i = T.members.findIndex(x => x.id === el.dataset.id); const j = act === 'team-up' ? i - 1 : i + 1; if (i < 0 || j < 0 || j >= T.members.length) break; [T.members[i], T.members[j]] = [T.members[j], T.members[i]]; commit('เรียงรายชื่อทีม', {silent:true}); break; }
+    case 'team-del': confirmSheet('ลบรายชื่อนี้และเวรทั้งหมดของเขา?', 'ลบ', () => { const T = team(); T.members = T.members.filter(x => x.id !== el.dataset.id); Object.values(T.months).forEach(mo => { delete mo[el.dataset.id]; }); Object.values(T.raw || {}).forEach(mo => { delete mo[el.dataset.id]; }); closeSheet(); commit('ลบรายชื่อในทีม', {msg:'ลบแล้ว'}); }, true); break;
     case 'team-swap': teamSwapSheet(el.dataset.d || teamDay, el.dataset.id || ''); break;
     case 'team-import': teamImportSheet(); break;
     case 'team-apply': applyTeamPending(); break;
@@ -3297,6 +3414,7 @@ document.addEventListener('submit', e => {
     commit('แก้เวรทีม: ' + (mm ? mm.name : '') + ' ' + f.dataset.d, {msg:'บันทึกแล้ว'});
   } else if (kind === 'team-member'){
     const T = team(); const data = {name:String(fd.get('name') || '').trim(), empId:String(fd.get('empId') || '').trim(), phone:String(fd.get('phone') || '').trim()};
+    if (fd.get('dept') !== null){ data.dept = String(fd.get('dept') || '').trim(); data.pos = String(fd.get('pos') || '').trim(); }
     if (f.dataset.id){ const mm = T.members.find(x => x.id === f.dataset.id); if (mm) Object.assign(mm, data); }
     else T.members.push(Object.assign({id:'t' + uid()}, data));
     closeSheet(); commit((f.dataset.id ? 'แก้ข้อมูลเพื่อน: ' : 'เพิ่มเพื่อน: ') + data.name, {msg:'บันทึกแล้ว'});
