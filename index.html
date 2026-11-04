@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.13</title>
+<title>เลขาส่วนตัว v1.15</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -449,7 +449,7 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.13';
+const APP_VERSION = '1.15';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -1229,6 +1229,7 @@ function viewConfig(){
     <label class="row" style="gap:10px;min-height:44px;cursor:pointer"><input type="checkbox" name="nightOn"${R.nightOn !== false ? ' checked' : ''}><span style="font-weight:600">ค่ายามวิกาล ${esc(R.nightFrom)}–${esc(R.nightTo)} น. +${esc(R.night)} บาท</span></label>
     <div class="row" style="flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted)">ช่วงเวลา ${n('nightFrom', R.nightFrom, 120)} – ${n('nightTo', R.nightTo, 120)}</div>
     <div class="row" style="flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted)">ยอดค่ายามวิกาล ${n('night', R.night, 80)} บาท</div>`; })()}
+    <label class="row" style="gap:10px;min-height:40px;cursor:pointer"><input type="checkbox" name="on88"${st.otRule.on88 !== false ? ' checked' : ''}><span><b>วันเวร 8-8 เคสหลัง 16:00 นับเป็นเคส OT</b><span class="meta" style="display:block">ใช้ตอนแอปติ๊ก OT ให้อัตโนมัติ (ตามใบเบิกจริง พ.ย. 69)</span></span></label>
     <button class="btn primary small" type="submit" style="align-self:flex-end">บันทึกอัตรา OT</button></div></form>
 
   <h2 class="group-t">ข้อมูลในใบลงเวลา</h2>
@@ -1357,6 +1358,7 @@ function viewGuide(){
     ['ทำฟอร์มส่งโรงพยาบาล','ใบเวร › RLA/OT, ค่าเวร, ค่าเคส แตะแถวหรือ “แก้ทีละแถว” เพื่อแก้ แตะหัว/ลายเซ็น/มุมล่างเพื่อแก้ข้อความ'],
     ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
+    ['นำเข้าเคสจากไฟล์แผนก','ดาวน์โหลดสำเนา “ลงทะเบียนเคสผ่าตัด” (.xlsx) จาก SharePoint เดือนละครั้ง › ใบเวร › ค่าเคส › นำเข้าเคสจาก Excel › แอปรู้จักไฟล์นี้เอง เลือกเดือน › ดูตัวอย่าง › นำเข้า (ไม่ซ้ำ ไม่อ่านชื่อผู้ป่วย) · ไฟล์แบบอื่นจับคู่คอลัมน์เอง · OT ติ๊กให้เองตามช่วง STD 16:00–08:00 และวันหยุด'],
     ['สรุปเงินของเดือน','เมนู เงิน: ค่าเวรและค่าเคส OT ขึ้นให้อัตโนมัติ · + รายรับ (เงินเดือน ร้าน Affiliate) · + รายจ่าย (ติ๊ก “ประจำทุกเดือน” สำหรับค่าเช่า ผ่อน บิล) · ดูสรุป/รายการ/ทั้งปี'],
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
     ['รู้จักตัวเองกับ AI','ตั้งค่า › สรุปตัวฉันให้ AI วิเคราะห์: เลือกเรื่องที่อยากให้ช่วย (รู้จักตัวเอง / หาเวลาทำไอเดีย / ขยายขีดจำกัด) เขียน “เกี่ยวกับฉัน” › สร้างข้อความ › คัดลอกไปวางใน Claude ทำเดือนละครั้ง'],
@@ -1375,6 +1377,8 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.15','อ่านไฟล์ “ลงทะเบียนเคสผ่าตัด” ของ OR ได้เลย: ทุกแผ่น/เดือน คัดเคสที่ชื่อคุณอยู่ใน Scrub/Circulate · แก้วันที่สลับวัน/เดือนในไฟล์ · ไม่อ่านชื่อผู้ป่วย'],
+    ['v1.14','ฟอร์มเคส: Type / Theatre start / Theatre finish / Total time · OT ติ๊กให้เองตามกติกา STD (16:00–08:00, วันหยุด) · ช่อง HN · นำเข้าเคสจาก Excel/CSV ของแผนก · เลือกหมายเหตุใบเบิกค่าเคส'],
     ['v1.13','หน้า “เงิน” ถัดจากใบเวร: รายรับอัตโนมัติจากค่าเวร/ค่าเคส + พิมพ์เอง · รายจ่ายแยกหมวด รายการประจำ · สรุปเดือน/ปี · รวมใน AI และ Excel'],
     ['v1.12','สรุปตัวฉันให้ AI: รวมทุกหมวดชีวิต + คำสั่งวิเคราะห์แบบตรงไปตรงมา + เวลาว่าง 30 วัน · คัดลอก/ดาวน์โหลด .md .json'],
     ['v1.11','รวมตารางเวรหลายแผนก (OR + วิสัญญีแบบ ช/บ/ด) · อัปไฟล์ทีละไฟล์แล้วรวมกับของเดิม · แก้รายชื่อ: ลบ/เรียง/ระบุแผนก · วางผลจาก Claude ได้แม้ตอบหลายก้อน'],
@@ -1508,20 +1512,20 @@ function caseSheet(c, d){
   openSheet(`${sheetHead((c.id ? 'แก้เคส · ' : 'เพิ่มเคส · ') + thDate(d,{weekday:'short',day:'numeric',month:'short'}))}
   <form data-form="case" data-id="${c.id || ''}" data-d="${d}" style="display:flex;flex-direction:column;gap:12px">
     <p class="meta" style="margin:0">ไม่ต้องใส่ชื่อหรืออายุผู้ป่วย</p>
-    <fieldset><legend>ประเภทเคส (ติ๊ก 1 ช่อง)</legend>
+    <fieldset><legend>Type (ติ๊ก 1 ช่อง)</legend>
       ${R.majorOn === false && R.minorOn === false && !c.cls ? '<p class="meta" style="margin:0">ยังไม่ได้เปิด “ทำเคส Major/Minor” ที่ ตั้งค่า › อัตรา OT เรียกเคส</p>' : ''}
       ${R.majorOn === false && c.cls !== 'major' ? '' : box('major', c.cls === 'major', 'Major', `${R.majorMins} นาทีแรก ฿${R.majorFirst} · ทุก ${R.nextMins} นาทีถัดไป +฿${R.next}`, ' data-act="cls"')}
       ${R.minorOn === false && c.cls !== 'minor' ? '' : box('minor', c.cls === 'minor', 'Minor', `${R.minorMins} นาทีแรก ฿${R.minorFirst} · ทุก ${R.nextMins} นาทีถัดไป +฿${R.next}`, ' data-act="cls"')}
     </fieldset>
     <fieldset><legend>คิดเงิน OT</legend>
-      ${box('ot', c.ot, 'เคส OT (ถูกเรียกมาทำนอกเวลา)', 'ติ๊กเมื่อต้องการให้คิดค่า OT ของเคสนี้')}
+      ${box('ot', c.ot, 'เคส OT (ถูกเรียกมาทำนอกเวลา)', 'OT = หลัง 16:00–08:00 น. ของวัน STD / 8-8 และวันหยุด · แอปติ๊กให้เองตามเวลา Theatre start แก้เองได้', ' data-act="ot-touch"')}
       ${R.nightOn !== false ? box('night', c.night, `ค่ายามวิกาล ${esc(R.nightFrom)}–${esc(R.nightTo)} น. +฿${esc(R.night)}`, 'ติ๊กเองเมื่อได้ค่ายามวิกาล') : ''}
     </fieldset>
     <div class="row" style="align-items:flex-start">
-      <label class="f" style="flex:1">เริ่ม / ถูกเรียก<input class="field" type="time" name="start" value="${esc(c.start || '')}"></label>
-      <label class="f" style="flex:1">เลิก<input class="field" type="time" name="end" value="${esc(c.end || '')}"></label>
+      <label class="f" style="flex:1">Theatre start<input class="field" type="time" name="start" value="${esc(c.start || '')}"></label>
+      <label class="f" style="flex:1">Theatre finish<input class="field" type="time" name="end" value="${esc(c.end || '')}"></label>
     </div>
-    <label class="f">ถ้ายังไม่รู้เวลาเลิก: ใช้เวลาประมาณ (นาที)<input class="field" type="number" inputmode="numeric" min="5" step="5" name="mins" value="${esc(c.mins || 60)}"></label>
+    <label class="f">Total time (นาที) · คิดเองจาก start–finish ถ้ายังไม่รู้เวลาเลิกให้ใส่ประมาณ<input class="field" type="number" inputmode="numeric" min="5" step="5" name="mins" value="${esc(c.mins || 60)}"></label>
     <div class="wrap">${[30,60,90,120,180].map(n => `<button type="button" class="btn small" data-act="mins" data-n="${n}">${n} นาที</button>`).join('')}</div>
     <div class="calc" id="case-calc" aria-live="polite"></div>
     <fieldset><legend>ห้อง</legend>${radios('room', ['OR1','OR2','อื่น ๆ'], c.room || 'OR1')}</fieldset>
@@ -1529,6 +1533,7 @@ function caseSheet(c, d){
     <fieldset><legend>Anesthesia</legend>${radios('anes', ['GA','LA','อื่น ๆ'], c.anes || '')}</fieldset>
     <fieldset><legend>หน้าที่ของคุณ</legend>${radios('role', ['Scrub','Circulate','Incharge'], c.role || '')}</fieldset>
     <label class="f">Surgeon (ไม่บังคับ)<input class="field" name="surgeon" value="${esc(c.surgeon || '')}"></label>
+    <label class="f">HN (ไม่บังคับ · เก็บในเครื่องนี้ ไม่ส่งให้ AI)<input class="field" name="hn" value="${esc(c.hn || '')}" inputmode="text" autocomplete="off"></label>
     <label class="f">รายละเอียด / หมายเหตุ<textarea class="field" name="note" rows="2" placeholder="พิมพ์รายละเอียดเพิ่มได้">${esc(c.note || '')}</textarea></label>
     <div id="pw" role="alert"></div>
     <div class="row">${c.id ? `<button type="button" class="btn danger" data-act="case-del" data-id="${c.id}" data-d="${d}">ลบ</button>` : '<button type="button" class="btn" data-act="close">ยกเลิก</button>'}<button class="btn primary" type="submit" style="flex:1">บันทึกเคส</button></div>
@@ -1538,7 +1543,20 @@ function caseFromForm(f){
   const fd = new FormData(f);
   return {cls: fd.get('major') ? 'major' : fd.get('minor') ? 'minor' : '', ot: !!fd.get('ot'), night: !!fd.get('night'), start: fd.get('start') || '', end: fd.get('end') || '', mins: Math.max(5, Number(fd.get('mins')) || 60)};
 }
+/* OT = ช่วง Standby: หลัง 16:00–08:00 ของวันที่มี STD และวันหยุด · ไม่นับระหว่างเวร 8-16 และเวรเหมา 8-8 */
+function otAuto(date, start){
+  if (!date || !start) return null;
+  const ref = start < '08:00' ? addDays(date, -1) : date;
+  const ts = shiftsOn(ref);
+  if (ts.includes('8-00')) return S.settings.otRule.on88 !== false && (start >= '16:00' || start < '08:00');
+  const off = !ts.length || ts.every(k => ['OFF','VAC','SICK'].includes(k)) || isCoHoliday(ref);
+  if (off) return true;
+  const after16 = start >= '16:00' || start < '08:00';
+  if (ts.some(isStd)) return after16 || !ts.some(isWorkType);
+  return false;
+}
 function updateCaseCalc(f){
+  if (f && f.dataset.d){ const ob = f.querySelector('input[name=ot]'); const st = (f.querySelector('input[name=start]') || {}).value; if (ob && !ob.dataset.touched && st){ const a = otAuto(f.dataset.d, st); if (a != null) ob.checked = a; } }
   const box = f && f.querySelector('#case-calc'); if (!box) return;
   const c = caseFromForm(f); const m = caseMins(c);
   if (!c.ot){ box.innerHTML = `<span class="meta">ใช้เวลา ${m} นาที · ไม่คิด OT (ติ๊ก “เคส OT” เพื่อคิดเงิน)</span>`; return; }
@@ -1908,7 +1926,7 @@ function viewTimesheetMain(){
       <tr class="total"><th scope="row">ค่าเวร + OT</th><td>${baht(payFor(tsMonth).total + H.otMoney)}</td></tr>
     </tbody></table>
     <p class="meta" style="margin:0">แตะวันเพื่อแก้เวร ลงชั่วโมงเพิ่ม/ลด (เช่น เตรียม HA 16–22 = +6) เคส OT และหมายเหตุ · นับชั่วโมงเฉพาะเวรละ 8 ชม. เวรเหมาบ่าย-ดึก 16–08 และ STD ไม่นับ</p>
-    <div class="row" style="flex-wrap:wrap"><button type="button" class="btn primary small" data-act="ts-xlsx">ดาวน์โหลด Excel</button><button type="button" class="btn small" data-act="share">ส่งออก / แชร์</button><button type="button" class="btn small" data-act="tstab" data-k="rla">ไปฟอร์ม RLA</button><button type="button" class="btn small" data-act="tstab" data-k="shift">ไปใบเบิกค่าเวร</button><button type="button" class="btn small" data-act="tstab" data-k="case">ไปใบเบิกค่าเคส</button><button type="button" class="btn small" data-act="roster">ลงตารางเวร</button></div>
+    <div class="row" style="flex-wrap:wrap"><button type="button" class="btn primary small" data-act="ts-xlsx">ดาวน์โหลด Excel</button><button type="button" class="btn small" data-act="share">ส่งออก / แชร์</button><button type="button" class="btn small" data-act="case-import">นำเข้าเคสจาก Excel</button><button type="button" class="btn small" data-act="tstab" data-k="rla">ไปฟอร์ม RLA</button><button type="button" class="btn small" data-act="tstab" data-k="shift">ไปใบเบิกค่าเวร</button><button type="button" class="btn small" data-act="tstab" data-k="case">ไปใบเบิกค่าเคส</button><button type="button" class="btn small" data-act="roster">ลงตารางเวร</button></div>
   </section>`;
 }
 function tsDaySheet(d){
@@ -2222,7 +2240,7 @@ function claimCaseRows(ym){
     S.cases[d].filter(c => c.ot).sort((a, b) => (a.start || '').localeCompare(b.start || '')).forEach(c => {
       const a = otAmount(c); const r = Array(16).fill('');
       r[5] = dmy(d); r[6] = (c.start || '') + (c.end ? '–' + c.end : '');
-      r[12] = money(a.total - a.night); r[14] = money(a.night); r[15] = c.note || '';
+      r[12] = money(a.total - a.night); r[14] = money(a.night); const rm = S.settings.caseRemark || 'note'; r[15] = rm === 'hn' ? (c.hn || '') : rm === 'opdoc' ? [c.op, c.surgeon].filter(Boolean).join(' ') : (c.note || [c.op, c.surgeon].filter(Boolean).join(' '));
       out.push({key:d + ':' + c.id, c:r});
     });
   });
@@ -2362,6 +2380,7 @@ function viewForm(kind){
       <button type="button" class="btn small" data-act="form-zoom">${formZoom ? 'ย่อให้พอดีจอ' : 'ขยายฟอร์ม'}</button>
       <label class="btn small" style="cursor:pointer">เปลี่ยนโลโก้<input type="file" accept="image/*" data-act="logo-upload" class="sr"></label>
       ${logoUrl() ? '<button type="button" class="btn small ghost" data-act="logo-del">ลบโลโก้</button>' : ''}
+      ${kind === 'case' ? `<button type="button" class="btn small primary" data-act="case-import">นำเข้าเคสจาก Excel</button><label class="row" style="gap:6px;font-size:13px">หมายเหตุใช้<select class="field" data-act="case-remark" style="min-height:34px;padding:0 6px">${[['note','รายละเอียด (หรือ Op+แพทย์)'],['opdoc','Operation + แพทย์'],['hn','HN']].map(([k, l]) => `<option value="${k}"${(S.settings.caseRemark || 'note') === k ? ' selected' : ''}>${l}</option>`).join('')}</select></label>` : ''}
       <button type="button" class="btn small ghost" data-act="form-reset" data-k="${kind}">ล้างที่แก้เอง</button>
     </div>
     <p class="meta" style="margin:0">แตะแถวในฟอร์ม (หรือ “แก้ทีละแถว”) เพื่อพิมพ์แก้ · แตะแถวว่างเพื่อเพิ่มแถวใหม่ · แตะหัวกระดาษ ลายเซ็น หรือมุมล่าง เพื่อแก้ข้อความ${kind === 'case' ? ' · ช่องหมายเหตุเก็บในเครื่องนี้' : ''}</p>
@@ -3379,6 +3398,208 @@ function moneySheet(type, it){
     </form>`);
 }
 
+
+/* ---------- นำเข้าเคสจากไฟล์ Excel/CSV ของแผนก (ดาวน์โหลดจาก SharePoint เดือนละครั้ง) ---------- */
+const CASE_FIELDS = [['date','วันที่ *',/date|วันที่|วัน\/เดือน/i],['start','Theatre start *',/start|เริ่ม|theatre\s*in|เข้าห้อง|in\b/i],['end','Theatre finish',/finish|end|เลิก|เสร็จ|out\b|ออก/i],['type','Type (Major/Minor)',/type|major|minor|ประเภท|ชนิด/i],['op','Operation',/operation|procedure|ผ่าตัด|หัตถการ|\bop\b/i],['surgeon','Surgeon',/surgeon|แพทย์|doctor|\bdr\b/i],['hn','HN',/\bhn\b/i],['anes','Anesthesia',/anes|ระงับ|ga\/la/i],['role','หน้าที่ (Scrub/Circulate)',/role|หน้าที่|scrub|circ/i],['who','คอลัมน์ชื่อพยาบาล (ใช้คัดเฉพาะของฉัน)',/nurse|พยาบาล|staff|ผู้ปฏิบัติ|ชื่อ|name/i]];
+let caseImp = null;
+function csvParse(text){
+  const rows = []; let row = [], cur = '', q = false;
+  for (let i = 0; i < text.length; i++){
+    const ch = text[i];
+    if (q){ if (ch === '"'){ if (text[i + 1] === '"'){ cur += '"'; i++; } else q = false; } else cur += ch; continue; }
+    if (ch === '"') q = true; else if (ch === ','){ row.push(cur); cur = ''; } else if (ch === '\n' || ch === '\r'){ if (ch === '\r' && text[i + 1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; } else cur += ch;
+  }
+  if (cur || row.length){ row.push(cur); rows.push(row); }
+  return rows.map(r => r.map(c => c.trim()));
+}
+function parseDateAny(v){
+  if (v == null || v === '') return null;
+  if (typeof v === 'number' && v > 20000 && v < 80000){ const d = new Date(Math.round((v - 25569) * 86400e3)); return d.toISOString().slice(0,10); }
+  const t = String(v).trim();
+  let m = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/); if (m) return `${m[1]}-${pad(+m[2])}-${pad(+m[3])}`;
+  m = t.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})/);
+  if (m){ let y = +m[3]; if (y < 100) y = y >= 60 ? 2500 + y : 2000 + y; if (y > 2400) y -= 543; return `${y}-${pad(+m[2])}-${pad(+m[1])}`; }
+  return null;
+}
+function parseTimeAny(v){
+  if (v == null || v === '') return '';
+  if (typeof v === 'number'){ const f = v % 1; const mins = Math.round(f * 1440) % 1440; return `${pad(Math.floor(mins / 60))}:${pad(mins % 60)}`; }
+  const m = String(v).match(/(\d{1,2})[:.](\d{2})/); return m ? `${pad(+m[1] % 24)}:${m[2]}` : '';
+}
+async function readCaseFile(file){
+  if (/\.csv$/i.test(file.name) || /csv|text\/plain/.test(file.type)) return csvParse(await file.text());
+  await loadScript(XLSX_URL);
+  const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array'});
+  let best = null;
+  wb.SheetNames.forEach(n => { const rows = window.XLSX.utils.sheet_to_json(wb.Sheets[n], {header:1, raw:true, defval:''}); if (!best || rows.length > best.length) best = rows; });
+  return best || [];
+}
+function guessHeader(rows){
+  let hi = 0, bestScore = -1;
+  rows.slice(0, 20).forEach((r, i) => { const score = r.filter(c => typeof c === 'string' && c.trim() && CASE_FIELDS.some(f => f[2].test(c))).length; if (score > bestScore){ bestScore = score; hi = i; } });
+  return hi;
+}
+
+/* ---------- ไฟล์ “ลงทะเบียนเคสผ่าตัด” ของ OR (1 แผ่น = 1 เดือน, มีคอลัมน์ Scrub/Circulate/Theatre start) ---------- */
+const TH_MON_ABBR = [['มีค',3],['มิย',6],['เมย',4],['มค',1],['กพ',2],['พค',5],['กค',7],['สค',8],['กย',9],['ตค',10],['พย',11],['ธค',12]];
+function sheetYm(name){
+  const t = String(name || '').replace(/[\s.]/g, '');
+  const mm = TH_MON_ABBR.find(([a]) => t.includes(a)); const yd = (t.match(/(\d{2,4})/) || [])[1];
+  if (!mm || !yd) return null;
+  let y = +yd; if (y < 100) y = y >= 60 ? 2500 + y - 543 : 2000 + y; else if (y > 2400) y -= 543;
+  return `${y}-${pad(mm[1])}`;
+}
+function regDate(v, ym){
+  const [Y, M] = ym.split('-').map(Number); const nd = new Date(Y, M, 0).getDate();
+  let d = null;
+  if (typeof v === 'number' && v > 20000){ const x = new Date(Math.round((v - 25569) * 86400e3)); const mo = x.getUTCMonth() + 1, da = x.getUTCDate(); d = mo === M ? da : da === M ? mo : null; }
+  else if (v){ const t = String(v).trim(); const m = t.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-]/); if (m && +m[2] === M) d = +m[1]; else { const m2 = t.match(/^(\d{1,2})[\/.\-]/); if (m2) d = +m2[1]; } }
+  return d && d >= 1 && d <= nd ? `${ym}-${pad(d)}` : null;
+}
+const normH = h => String(h || '').replace(/[\s\u00a0]+/g, ' ').trim().toLowerCase();
+function isOrRegister(rows){ const h = (rows[0] || []).map(normH); return h.includes('theatre start') && h.some(x => x.startsWith('scrub')) && h.some(x => x.startsWith('circulate')); }
+function regParse(sheet, who, withHn){
+  const ym = sheetYm(sheet.name); if (!ym) return {ym:null, list:[]};
+  const h = (sheet.rows[0] || []).map(normH);
+  const col = n => h.indexOf(n); const cols = pre => h.map((x, i) => x.startsWith(pre) ? i : -1).filter(i => i >= 0);
+  const iDate = col('วันที่'), iOp = col('operation'), iType = col('type'), iRoom = col('room'), iAn = col('under anes'), iSt = col('theatre start'), iEn = col('theatre finish'), iHn = col('hn');
+  const iSc = cols('scrub'), iCi = cols('circulate'), iDr = cols('dr.');
+  const keys = [who, who.slice(0, 5)].filter(k => k && k.length >= 3);
+  const list = [];
+  sheet.rows.slice(1).forEach(r => {
+    const has = idxs => idxs.some(i => keys.some(k => String(r[i] || '').includes(k)));
+    const asScrub = has(iSc), asCirc = has(iCi);
+    if (!asScrub && !asCirc) return;
+    const date = regDate(r[iDate], ym); const start = parseTimeAny(r[iSt]);
+    if (!date || !start) return;
+    const ty = String(r[iType] || '').toLowerCase(); const an = String(r[iAn] || '').toUpperCase();
+    const surgeon = iDr.map(i => String(r[i] || '').trim()).filter(x => x && !/^n\/?a$/i.test(x))[0] || '';
+    list.push({date, start, end: parseTimeAny(r[iEn]), cls: /major/.test(ty) ? 'major' : /minor/.test(ty) ? 'minor' : '',
+      op: String(r[iOp] || '').trim(), surgeon, room: String(r[iRoom] || '').trim().toUpperCase(),
+      anes: /GA|TIVA/.test(an) ? 'GA' : /LA|SB|RB|SA|BLOCK/.test(an) ? 'LA' : an ? 'อื่น ๆ' : '', anesRaw: an,
+      role: asScrub ? 'Scrub' : 'Circulate', hn: withHn && iHn >= 0 ? String(r[iHn] || '').trim() : ''});
+  });
+  /* หลายหัตถการในห้องเดียวกันช่วงเวลาเดียวกัน = 1 เคส */
+  const merged = [];
+  list.forEach(c => { const m = merged.find(x => x.date === c.date && x.start === c.start && x.end === c.end && x.room === c.room);
+    if (!m){ merged.push(c); return; }
+    if (c.op && !m.op.includes(c.op)) m.op = m.op + ' + ' + c.op;
+    if (c.cls === 'major') m.cls = 'major'; if (c.role === 'Scrub') m.role = 'Scrub'; });
+  return {ym, list: merged};
+}
+async function readCaseBook(file){
+  if (/\.csv$/i.test(file.name) || /csv|text\/plain/.test(file.type)) return [{name: file.name, rows: csvParse(await file.text())}];
+  await loadScript(XLSX_URL);
+  const wb = window.XLSX.read(await file.arrayBuffer(), {type:'array'});
+  return wb.SheetNames.map(n => ({name: n, rows: window.XLSX.utils.sheet_to_json(wb.Sheets[n], {header:1, raw:true, defval:''}).filter(r => r.some(c => c !== '' && c != null)).slice(0, 2000)}));
+}
+function regUI(){
+  const out = $('#ci-out'); const B = caseImp.book.filter(sh => isOrRegister(sh.rows) && sheetYm(sh.name));
+  const who = (S.settings.caseMap && S.settings.caseMap.who) || (S.settings.profile.name || '').split(' ')[0] || '';
+  const months = B.map(sh => ({sh, ym: sheetYm(sh.name)})).sort((a, b) => a.ym.localeCompare(b.ym));
+  out.innerHTML = `<form data-form="reg-imp" style="display:flex;flex-direction:column;gap:10px">
+    <p style="margin:0"><b>พบไฟล์ลงทะเบียนเคส OR · ${months.length} เดือน</b> แอปอ่านเฉพาะคอลัมน์ที่จำเป็น (วันที่ เวลา Type Operation แพทย์ ห้อง Scrub/Circulate) <b>ไม่อ่านชื่อผู้ป่วย</b></p>
+    <label class="f">ชื่อของคุณในคอลัมน์ Scrub/Circulate<input class="field" name="who" value="${esc(who)}"></label>
+    <fieldset><legend>เดือนที่จะนำเข้า</legend><div class="wrap">${months.map(({sh, ym}) => { const hasRoster = Object.keys(S.shifts).some(d => d.startsWith(ym)); return `<label class="chip"><input type="checkbox" name="ym" value="${esc(sh.name)}"${hasRoster ? ' checked' : ''}>${esc(parse(ym + '-01').toLocaleDateString('th-TH',{month:'short', year:'2-digit'}))}${hasRoster ? '' : ' (ยังไม่ลงเวร)'}</label>`; }).join('')}</div></fieldset>
+    <label class="chip" style="align-self:flex-start"><input type="checkbox" name="hn"${S.settings.caseMap && S.settings.caseMap.hn ? ' checked' : ''}>เก็บ HN ด้วย (เก็บในเครื่องนี้เท่านั้น)</label>
+    <button class="btn primary" type="submit">ดูตัวอย่างก่อนนำเข้า</button><div id="ci-prev"></div></form>`;
+}
+function regPreview(f){
+  const fd = new FormData(f); const who = String(fd.get('who') || '').trim(); const names = fd.getAll('ym'); const withHn = !!fd.get('hn');
+  const box = f.querySelector('#ci-prev');
+  if (!who){ box.innerHTML = '<div class="banner appt" style="margin:0"><div>ใส่ชื่อของคุณก่อน</div></div>'; return; }
+  const all = []; const perMonth = [];
+  caseImp.book.filter(sh => names.includes(sh.name)).forEach(sh => {
+    const {ym, list} = regParse(sh, who, withHn); if (!ym) return;
+    const hasRoster = Object.keys(S.shifts).some(d => d.startsWith(ym));
+    list.forEach(c => { c.ot = hasRoster ? !!otAuto(c.date, c.start) : false; const R2 = S.settings.otRule; c.night = c.ot && R2.nightOn !== false && (c.start >= R2.nightFrom || c.start < R2.nightTo);
+      c.key = c.date + '|' + c.start + '|' + c.op.toLowerCase();
+      c.dup = (S.cases[c.date] || []).some(x => x.start === c.start && String(x.op || '').toLowerCase() === c.op.toLowerCase()) || all.some(x => x.key === c.key); all.push(c); });
+    const nw = list.filter(c => !c.dup);
+    perMonth.push({ym, n:list.length, nw:nw.length, ot:nw.filter(c => c.ot).length, money:nw.filter(c => c.ot).reduce((a, c) => a + otAmount(c).total, 0), hasRoster});
+  });
+  caseImp.pending = {list: all, map:{who, hn:withHn}, who, reg:true};
+  const nw = all.filter(c => !c.dup);
+  box.innerHTML = `<table class="map" style="margin-top:6px"><tbody><tr><th>เดือน</th><td>เคสของคุณ · ใหม่ · OT · ค่าเคส</td></tr>${perMonth.map(m => `<tr><th scope="row">${esc(parse(m.ym + '-01').toLocaleDateString('th-TH',{month:'short', year:'2-digit'}))}</th><td style="text-align:left;font-weight:400">${m.n} · ใหม่ ${m.nw} · OT ${m.hasRoster ? m.ot : '— (ยังไม่ลงเวร)'} · ${m.hasRoster ? fmtB(m.money) : '-'}</td></tr>`).join('')}</tbody></table>
+    <div class="preview" style="max-height:220px">${nw.slice(0, 30).map(c => `<label><span style="width:70px">${esc(thDate(c.date,{day:'numeric',month:'short'}))}</span><span class="grow">${esc(c.start)}${c.end ? '–' + esc(c.end) : ''} ${esc(c.cls || '?')} · ${esc(c.role)}${c.ot ? ' · OT ' + fmtB(otAmount(c).total) : ''}<span class="meta">${esc([c.room, c.op, c.surgeon].filter(Boolean).join(' · '))}</span></span></label>`).join('')}${nw.length > 30 ? `<p class="meta">… อีก ${nw.length - 30} เคส</p>` : ''}</div>
+    <p class="meta" style="margin:4px 0">OT ติ๊กให้เฉพาะเดือนที่ลงตารางเวรแล้ว: หลัง 16:00–08:00 ของวัน STD / 8-8 และวันหยุด · หลายหัตถการช่วงเวลาเดียวกัน = 1 เคส · เดือนที่ยังไม่ลงเวร เคสเข้าแต่ยังไม่คิด OT (ลงเวรแล้วนำเข้าซ้ำ หรือแก้ในเคส)</p>
+    <button type="button" class="btn primary" data-act="case-imp-apply" style="width:100%"${nw.length ? '' : ' disabled'}>นำเข้า ${nw.length} เคส</button>`;
+}
+
+function caseImportSheet(){
+  openSheet(`${sheetHead('นำเข้าเคสจากไฟล์ของแผนก')}
+    <details><summary style="cursor:pointer;font-weight:600">วิธีเอาไฟล์จาก SharePoint (ทำเดือนละครั้ง หรือสัปดาห์ละครั้ง)</summary>
+      <ol style="margin:6px 0;padding-left:20px;font-size:13.5px;display:flex;flex-direction:column;gap:4px">
+        <li>เปิดลิงก์ไฟล์ของแผนกในแอป Excel หรือเบราว์เซอร์ (ล็อกอินบัญชีที่ได้รับสิทธิ์)</li>
+        <li>เมนู <b>ไฟล์ › บันทึกเป็น › ดาวน์โหลดสำเนา</b> (Download a copy) ได้ไฟล์ .xlsx · หรือ <b>ดาวน์โหลดเป็น CSV</b></li>
+        <li>กลับมาที่นี่ เลือกไฟล์ › จับคู่คอลัมน์ครั้งแรกครั้งเดียว (แอปจำไว้) › นำเข้า</li>
+        <li>อัปไฟล์เดิมซ้ำได้ เคสที่มีแล้ว (วัน + เวลา + Operation ตรงกัน) จะไม่ซ้ำ</li>
+      </ol></details>
+    <label class="f">ไฟล์ Excel หรือ CSV<input class="field" type="file" id="ci-file" accept=".xlsx,.xls,.csv,text/csv" style="padding:8px"></label>
+    <div id="ci-out"></div>`);
+  const inp = $('#ci-file'); if (inp) inp.addEventListener('change', async () => {
+    const out = $('#ci-out'); const file = inp.files && inp.files[0]; if (!file) return;
+    out.innerHTML = '<p class="meta">กำลังอ่านไฟล์…</p>';
+    try{ const book = await readCaseBook(file); if (!book.length) throw new Error('ไฟล์ว่าง');
+      if (book.some(sh => isOrRegister(sh.rows) && sheetYm(sh.name))){ caseImp = {book}; regUI(); return; }
+      const rows = book.slice().sort((a, b) => b.rows.length - a.rows.length)[0].rows; caseImp = {rows, hi: guessHeader(rows)}; caseMapUI(); }
+    catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>อ่านไฟล์ไม่ได้ (${esc(e.message || 'รูปแบบไฟล์')}) · ถ้าเป็น .xlsx ต้องต่อเน็ตครั้งแรก หรือลองบันทึกเป็น CSV</div></div>`; }
+  });
+}
+function caseMapUI(){
+  const out = $('#ci-out'); const R = caseImp; const head = (R.rows[R.hi] || []).map(c => String(c || '').trim());
+  const saved = S.settings.caseMap || {};
+  const pick = f => { const sv = saved.map && saved.map[f[0]]; if (sv && head.includes(sv)) return sv; const h = head.find(x => f[2].test(x)); return h || ''; };
+  const opts = sel => '<option value="">— ไม่มี —</option>' + head.map(h => h ? `<option value="${esc(h)}"${h === sel ? ' selected' : ''}>${esc(h)}</option>` : '').join('');
+  out.innerHTML = `<form data-form="case-imp" style="display:flex;flex-direction:column;gap:10px">
+    <label class="f">แถวหัวตาราง (แถวที่มีชื่อคอลัมน์)<select class="field" name="hi">${R.rows.slice(0, 20).map((r, i) => `<option value="${i}"${i === R.hi ? ' selected' : ''}>แถว ${i + 1}: ${esc(r.filter(Boolean).slice(0, 4).join(' | ').slice(0, 60))}</option>`).join('')}</select></label>
+    <div class="fgrid">${CASE_FIELDS.map(f => `<label class="f">${f[1]}<select class="field" name="m_${f[0]}">${opts(pick(f))}</select></label>`).join('')}</div>
+    <label class="f">คัดเฉพาะแถวที่คอลัมน์ชื่อพยาบาลมีคำว่า (เว้นว่าง = ทุกแถว)<input class="field" name="who" value="${esc(saved.who != null ? saved.who : (S.settings.profile.name || '').split(' ')[0])}"></label>
+    <button class="btn primary" type="submit">ดูตัวอย่างก่อนนำเข้า</button><div id="ci-prev"></div></form>`;
+}
+function caseRowsFromMap(fd){
+  const R = caseImp; const hi = Number(fd.get('hi')); const head = (R.rows[hi] || []).map(c => String(c || '').trim());
+  const map = {}; CASE_FIELDS.forEach(f => { map[f[0]] = fd.get('m_' + f[0]) || ''; });
+  const idx = k => map[k] ? head.indexOf(map[k]) : -1;
+  const who = String(fd.get('who') || '').trim();
+  const out = [];
+  R.rows.slice(hi + 1).forEach(r => {
+    const g = k => idx(k) >= 0 ? r[idx(k)] : '';
+    const date = parseDateAny(g('date')); const start = parseTimeAny(g('start'));
+    if (!date || !start) return;
+    if (who && map.who && !String(g('who')).includes(who)) return;
+    const end = parseTimeAny(g('end'));
+    const ty = String(g('type')).toLowerCase(); const cls = /major|ใหญ่/.test(ty) ? 'major' : /minor|เล็ก/.test(ty) ? 'minor' : '';
+    const an = String(g('anes')).toUpperCase(); const ro = String(g('role')).toLowerCase();
+    const c = {date, start, end, cls, op: String(g('op') || '').trim(), surgeon: String(g('surgeon') || '').trim(), hn: String(g('hn') || '').trim(),
+      anes: /GA/.test(an) ? 'GA' : /LA|SA|BLOCK/.test(an) ? 'LA' : an ? 'อื่น ๆ' : '', role: /scrub/.test(ro) ? 'Scrub' : /circ/.test(ro) ? 'Circulate' : /incharge/.test(ro) ? 'Incharge' : ''};
+    c.ot = !!otAuto(date, start);
+    const R2 = S.settings.otRule; c.night = c.ot && R2.nightOn !== false && (start >= R2.nightFrom || start < R2.nightTo);
+    const key = c.date + '|' + c.start + '|' + c.op.toLowerCase();
+    c.dup = (S.cases[c.date] || []).some(x => (x.date || c.date) && x.start === c.start && String(x.op || '').toLowerCase() === c.op.toLowerCase()) || out.some(x => x.key === key);
+    c.key = key; out.push(c);
+  });
+  return {list: out, map, who};
+}
+function casePreview(f){
+  const fd = new FormData(f); const res = caseRowsFromMap(fd); caseImp.pending = res;
+  const box = f.querySelector('#ci-prev'); const nw = res.list.filter(c => !c.dup);
+  if (!res.map.date || !res.map.start){ box.innerHTML = '<div class="banner appt" style="margin:0"><div>ต้องเลือกคอลัมน์ วันที่ และ Theatre start</div></div>'; return; }
+  const money = nw.filter(c => c.ot && c.cls).reduce((a, c) => a + otAmount(c).total, 0);
+  box.innerHTML = `<p style="margin:6px 0"><b>พบ ${res.list.length} เคส · ใหม่ ${nw.length} · ซ้ำ ${res.list.length - nw.length}</b> · เคส OT ${nw.filter(c => c.ot).length} · ค่าเคสประมาณ ${fmtB(money)}${nw.some(c => c.ot && !c.cls) ? ` · <span style="color:var(--life-i)">${nw.filter(c => c.ot && !c.cls).length} เคสยังไม่มี Major/Minor (แก้ทีหลังได้)</span>` : ''}</p>
+    <div class="preview">${nw.slice(0, 40).map(c => `<label><span style="width:84px">${esc(thDate(c.date,{day:'numeric',month:'short'}))}</span><span class="grow">${esc(c.start)}${c.end ? '–' + esc(c.end) : ''} ${esc(c.cls || '?')} ${c.ot ? '· OT' : ''}${c.night ? ' · ยามวิกาล' : ''}<span class="meta">${esc([c.op, c.surgeon].filter(Boolean).join(' · '))}</span></span></label>`).join('')}${nw.length > 40 ? `<p class="meta">… อีก ${nw.length - 40} เคส</p>` : ''}</div>
+    <p class="meta" style="margin:4px 0">OT ติ๊กให้ตามกติกา: ช่วง STD หลัง 16:00–08:00 และวันหยุด (ไม่นับระหว่างเวร 8-16 และเวร 8-8) · ต้องลงตารางเวรของเดือนนั้นก่อน ผลจึงจะถูก</p>
+    <button type="button" class="btn primary" data-act="case-imp-apply" style="width:100%"${nw.length ? '' : ' disabled'}>นำเข้า ${nw.length} เคส</button>`;
+}
+function caseImportApply(){
+  const P = caseImp && caseImp.pending; if (!P) return;
+  const nw = P.list.filter(c => !c.dup); let n = 0;
+  nw.forEach(c => { S.cases[c.date] = S.cases[c.date] || []; const x = {id:uid(), done:true, room:c.room || '', op:c.op, what:c.op, anes:c.anes, role:c.role, surgeon:c.surgeon, note:'', hn:c.hn, start:c.start, end:c.end, mins: c.end ? 0 : 60, cls:c.cls, ot:c.ot, night:c.night, src:'file'}; if (x.start && x.end) x.mins = caseMins(x); S.cases[c.date].push(x); n++; });
+  S.settings.caseMap = P.reg ? Object.assign({}, S.settings.caseMap || {}, {who:P.who, hn:P.map.hn}) : {map:P.map, who:P.who};
+  caseImp = null; closeSheet();
+  commit('นำเข้าเคสจากไฟล์ ' + n + ' เคส', {msg:'นำเข้า ' + n + ' เคสแล้ว · ดูได้ใน My day ตาราง ใบเวร และใบเบิกค่าเคส'});
+}
+
 function patientCheck(text, form, proceed){
   if (!S.settings.patientWarn || !PATIENT.test(text) || form.dataset.pwOk) return proceed();
   form.querySelector('#pw').innerHTML = `<div class="banner appt" style="margin:0"><div>ข้อความนี้ดูเหมือนมีข้อมูลผู้ป่วย แนะนำไม่จดในแอปนี้<div class="row" style="margin-top:8px"><button type="button" class="btn small" id="pw-edit">กลับไปแก้</button><button type="button" class="btn small" id="pw-go">บันทึกต่อ</button></div></div></div>`;
@@ -3391,7 +3612,7 @@ document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
   if (!el) return;
   const act = el.dataset.act, id = el.dataset.id;
-  if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push','m-opt'].includes(act)) return;
+  if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push','m-opt','ot-touch'].includes(act)) return;
   if (el.tagName === 'INPUT' && el.type !== 'checkbox') return;
   switch(act){
     case 'close': closeSheet(); break;
@@ -3438,6 +3659,9 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'case-import': caseImportSheet(); break;
+    case 'case-imp-apply': caseImportApply(); break;
+    case 'ot-touch': el.dataset.touched = '1'; updateCaseCalc(el.closest('form')); break;
     case 'mtab': moneyTab = el.dataset.k; render(); break;
     case 'm-mon': { const [y,m] = moneyMonth.split('-').map(Number); moneyMonth = ymd(new Date(y, m - 1 + Number(el.dataset.d), 1)).slice(0,7); render(); break; }
     case 'm-add': moneySheet(el.dataset.k); break;
@@ -3580,6 +3804,7 @@ document.addEventListener('change', e => {
   if (el.dataset && el.dataset.act === 'check'){ S.settings.check = el.value; Theme.apply(); commit('เปลี่ยนรูปช่องติ๊ก', {msg:'เปลี่ยนแล้ว'}); return; }
   if (el.dataset && el.dataset.act === 'font'){ S.settings.font = el.value; Theme.apply(); commit('เปลี่ยนฟอนต์', {msg:'เปลี่ยนฟอนต์แล้ว'}); return; }
   if (el.dataset && el.dataset.act === 'alpha'){ S.settings.cardAlpha = Number(el.value); Theme.apply(); commit('ปรับความใสของกรอบ', {silent:true}); return; }
+  if (el.dataset && el.dataset.act === 'case-remark'){ S.settings.caseRemark = el.value; commit('ตั้งหมายเหตุใบเบิกค่าเคส', {msg:'เปลี่ยนแล้ว'}); return; }
   if (el.dataset && el.dataset.act === 'keep'){ S.settings.keepDays = Number(el.value); commit('ตั้งเวลาเก็บข้อมูล ' + (el.value === '0' ? 'ไม่ลบ' : el.value + ' วัน'), {msg:'บันทึกแล้ว'}); return; }
   if (el.dataset && el.dataset.act === 'rnote'){
     const t = today(); S.routineLog[t] = S.routineLog[t] || {};
@@ -3649,7 +3874,7 @@ document.addEventListener('submit', e => {
     if (k.ot && !k.start){ toast('ใส่เวลาเริ่มของเคส OT', true); return; }
     patientCheck(op + ' ' + surgeon + ' ' + note, f, () => {
       const d = f.dataset.d || today(); S.cases[d] = S.cases[d] || [];
-      const data = Object.assign({room: fd.get('room') || '', op, what: op, anes: fd.get('anes') || '', role: fd.get('role') || '', surgeon, note}, k);
+      const data = Object.assign({room: fd.get('room') || '', op, what: op, anes: fd.get('anes') || '', role: fd.get('role') || '', surgeon, note, hn: String(fd.get('hn') || '').trim()}, k);
       if (data.start && data.end) data.mins = caseMins(data);
       let saved;
       if (f.dataset.id){ saved = S.cases[d].find(x => x.id === f.dataset.id); if (saved) Object.assign(saved, data); }
@@ -3682,6 +3907,10 @@ document.addEventListener('submit', e => {
     const d = fd.get('d'), n = String(fd.get('n') || '').trim(); if (!d || !n) return;
     S.coHol = (S.coHol || []).filter(h => h[0] !== d); S.coHol.push([d, n, true]);
     commit('เพิ่มวันหยุดบริษัท ' + n, {msg:'เพิ่มวันหยุดแล้ว'});
+  } else if (kind === 'reg-imp'){
+    regPreview(f);
+  } else if (kind === 'case-imp'){
+    casePreview(f);
   } else if (kind === 'money'){
     const amount = Math.round((Number(String(fd.get('amount') || '').replace(/[^\d.]/g, '')) || 0) * 100) / 100;
     if (!amount){ toast('ใส่จำนวนเงิน', true); return; }
@@ -3745,7 +3974,7 @@ document.addEventListener('submit', e => {
     const R = S.settings.otRule;
     ['majorFirst','majorMins','minorFirst','minorMins','next','nextMins','night'].forEach(k => { const v = fd.get(k); if (v !== null && v !== '') R[k] = Math.max(0, Number(v) || 0); });
     ['nightFrom','nightTo'].forEach(k => { const v = fd.get(k); if (v) R[k] = v; });
-    R.nightOn = !!fd.get('nightOn'); R.majorOn = !!fd.get('majorOn'); R.minorOn = !!fd.get('minorOn');
+    R.nightOn = !!fd.get('nightOn'); R.majorOn = !!fd.get('majorOn'); R.minorOn = !!fd.get('minorOn'); R.on88 = !!fd.get('on88');
     commit('แก้อัตรา OT', {msg:'บันทึกอัตรา OT แล้ว'});
   } else if (kind === 'tsday'){
     const d = f.dataset.d; let ts = fd.getAll('t');
