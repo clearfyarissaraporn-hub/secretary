@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.15</title>
+<title>เลขาส่วนตัว v1.18</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -449,7 +449,7 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.15';
+const APP_VERSION = '1.18';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -495,7 +495,7 @@ const ICON = {
   x:'<path d="M6 6l12 12M18 6L6 18"/>'
 };
 
-const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['config','set','ตั้งค่า'],['links','link','แอป'],['timesheet','ts','ใบเวร'],['money','money','เงิน'],['guide','guide','คู่มือ']];
+const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['timesheet','ts','ใบเวร'],['money','money','เงิน'],['links','link','แอป'],['guide','guide','คู่มือ'],['config','set','ตั้งค่า']];
 const PATIENT = /(\bHN\b|\bAN\b\s*\d|เตียง\s*\d|ผู้ป่วย|คนไข้|เลขประจำตัวผู้ป่วย)/i;
 const LS_STATE = 'tmm-state-v1', LS_SYNC = 'tmm-sync-v1';
 
@@ -956,7 +956,7 @@ function viewMyDay(){
     ${soon.length ? soon.map(apptItem).join('') : (overdue.length ? '' : `<div class="empty">ไม่มีนัดใน 3 วันนี้ <button type="button" class="btn ghost small" data-act="new-appt">+ นัดใหม่</button></div>`)}
   </section>
   <section class="card" style="gap:6px">
-    <div class="row between"><h2>กิจกรรม · ไอเดียใหม่</h2><button type="button" class="btn small" data-act="cap-new" data-k="${ideaTab}">+ เพิ่ม</button></div>
+    <div class="row between"><h2>กิจกรรม · ไอเดียใหม่</h2><div class="row" style="gap:4px"><button type="button" class="btn small" data-act="ai-idea">💡 Prompt สร้างไอเดีย</button><button type="button" class="btn small" data-act="cap-new" data-k="${ideaTab}">+ เพิ่ม</button></div></div>
     <div class="seg" style="grid-template-columns:repeat(2,minmax(0,1fr))" role="group" aria-label="ประเภท">
       <button type="button" data-act="idea-tab" data-k="activity" aria-pressed="${ideaTab === 'activity'}">กิจกรรม ${S.captures.filter(c => c.kind === 'activity').length}</button>
       <button type="button" data-act="idea-tab" data-k="idea" aria-pressed="${ideaTab === 'idea'}">ไอเดีย ${S.captures.filter(c => (c.kind || 'idea') === 'idea').length}</button></div>
@@ -1284,8 +1284,8 @@ function viewConfig(){
   ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div>
       <div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><span style="display:block;font-weight:600">แจ้งเตือนของแอป</span><span class="meta">${'Notification' in window ? (Notification.permission === 'denied' ? 'ถูกบล็อกอยู่ เปิดได้ที่ Chrome › การตั้งค่าเว็บไซต์ › การแจ้งเตือน' : S.settings.noti && Notification.permission === 'granted' ? 'เปิดอยู่ · เด้งเตือนนัดของวันนี้เมื่อเปิดแอป และทุก 5 นาทีระหว่างเปิดอยู่' : 'เด้งเตือนนัดในแถบแจ้งเตือนของมือถือ') : 'เครื่องนี้ไม่รองรับ'}</span></span>${'Notification' in window && Notification.permission !== 'denied' ? (S.settings.noti && Notification.permission === 'granted' ? '<button type="button" class="btn small" data-act="noti-off">ปิด</button>' : '<button type="button" class="btn small primary" data-act="noti-on">เปิดแจ้งเตือน</button>') : ''}</div></div>` : `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow meta" style="padding:12px 14px">แอปบน claude.ai ติดตั้งลงหน้าจอไม่ได้ ให้ใช้เวอร์ชัน GitHub (ดู README) แล้วเปิดใน Chrome</div></div>`}
 
-  <h2 class="group-t">สรุปตัวฉันให้ AI วิเคราะห์</h2>
-  <div class="list"><div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🔮</span><span class="grow"><b>รู้จักตัวเองแบบไม่โกหก</b><span class="meta" style="display:block">รวมเวร ชั่วโมงงาน เคส รูทีน นัด ไอเดีย และเวลาว่าง 30 วัน จัดเป็นหมวด พร้อมคำสั่งวางถาม AI ได้ทันที</span></span><button type="button" class="btn small primary" data-act="ai-open">สร้างข้อความ</button></div></div>
+  <h2 class="group-t">Prompt (คำสั่ง) ให้ AI</h2>
+  <div class="list"><div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🔮</span><span class="grow"><b>รู้จักตัวเองแบบไม่โกหก</b><span class="meta" style="display:block">รวมเวร ชั่วโมงงาน เคส รูทีน นัด ไอเดีย และเวลาว่าง 30 วัน จัดเป็นหมวด พร้อมคำสั่งวางถาม AI ได้ทันที</span></span><div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small primary" data-act="ai-open">Prompt สรุปตัวฉัน</button><button type="button" class="btn small" data-act="ai-idea">💡 Prompt สร้างไอเดีย</button></div></div></div>
 
   <h2 class="group-t">ส่งออกข้อมูล</h2>
   <div class="list"><div class="lrow" style="flex-wrap:wrap;padding:12px 14px;gap:6px">
@@ -1361,10 +1361,11 @@ function viewGuide(){
     ['นำเข้าเคสจากไฟล์แผนก','ดาวน์โหลดสำเนา “ลงทะเบียนเคสผ่าตัด” (.xlsx) จาก SharePoint เดือนละครั้ง › ใบเวร › ค่าเคส › นำเข้าเคสจาก Excel › แอปรู้จักไฟล์นี้เอง เลือกเดือน › ดูตัวอย่าง › นำเข้า (ไม่ซ้ำ ไม่อ่านชื่อผู้ป่วย) · ไฟล์แบบอื่นจับคู่คอลัมน์เอง · OT ติ๊กให้เองตามช่วง STD 16:00–08:00 และวันหยุด'],
     ['สรุปเงินของเดือน','เมนู เงิน: ค่าเวรและค่าเคส OT ขึ้นให้อัตโนมัติ · + รายรับ (เงินเดือน ร้าน Affiliate) · + รายจ่าย (ติ๊ก “ประจำทุกเดือน” สำหรับค่าเช่า ผ่อน บิล) · ดูสรุป/รายการ/ทั้งปี'],
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
-    ['รู้จักตัวเองกับ AI','ตั้งค่า › สรุปตัวฉันให้ AI วิเคราะห์: เลือกเรื่องที่อยากให้ช่วย (รู้จักตัวเอง / หาเวลาทำไอเดีย / ขยายขีดจำกัด) เขียน “เกี่ยวกับฉัน” › สร้างข้อความ › คัดลอกไปวางใน Claude ทำเดือนละครั้ง'],
+    ['Prompt สร้างไอเดีย','My day › กิจกรรม·ไอเดีย › 💡 Prompt สร้างไอเดีย (หรือ ตั้งค่า › Prompt ให้ AI › 💡 Prompt สร้างไอเดีย) › สร้าง Prompt › คัดลอก Prompt › วางใน Claude · ได้ไอเดีย 10 ข้อ ให้คะแนน เลือก 3 ข้อ แผนทดลอง 7 วันลงเวลาว่างจริง · ไอเดียที่ชอบกด + จดกลับเข้าแอป'],
+    ['Prompt สรุปตัวฉัน','ตั้งค่า › Prompt ให้ AI › Prompt สรุปตัวฉัน: เลือกเรื่อง (ครบทุกด้าน / รู้จักตัวเอง / หาเวลาทำไอเดีย / ขยายขีดจำกัด / สร้างไอเดีย) เขียน “เกี่ยวกับฉัน” › สร้าง Prompt › คัดลอก Prompt › วางใน Claude ทำเดือนละครั้ง'],
     ['สำรองข้อมูล','แอปบันทึกทุกครั้งที่แก้ และสำรองอัตโนมัติวันละครั้ง (เวอร์ชัน GitHub) · ดาวน์โหลดไฟล์สำรองเก็บไว้เดือนละครั้ง']
   ];
-  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน และวันนี้อยู่เวรกับใคร'],['ทีม','ตารางเวรเพื่อนทั้งทีม เบอร์โทร ใครอยู่เวรวันไหน และสลับเวร'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ตั้งค่า','ข้อมูลส่วนตัว อัตรา วันหยุดบริษัท ธีม ส่งออก สำรอง'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['เงิน','รายรับ (ค่าเวร ค่าเคสอัตโนมัติ + พิมพ์เอง) รายจ่ายแยกหมวด สรุปรายเดือนและทั้งปี'],['คู่มือ','หน้านี้']];
+  const menus = [['My day','งานวันนี้ รูทีน เคส รายชั่วโมง สรุปเดือน และวันนี้อยู่เวรกับใคร'],['ทีม','ตารางเวรเพื่อนทั้งทีม เบอร์โทร ใครอยู่เวรวันไหน และสลับเวร'],['นัดหมาย','นัด วันครบกำหนด เรื่องรอติดตาม และการเตือน'],['ตาราง','ปฏิทินวัน/เดือน/ปี ลงเวร ค่าเวร ชั่วโมงทำงาน'],['ใบเวร','ใบลงเวลา และฟอร์ม RLA/OT ค่าเวร ค่าเคส'],['เงิน','รายรับ (ค่าเวร ค่าเคสอัตโนมัติ + พิมพ์เอง) รายจ่ายแยกหมวด สรุปรายเดือนและทั้งปี'],['แอป','ไอคอนทางลัดไปแอปอื่น เช่น รายรับรายจ่าย ชำดี POS'],['คู่มือ','หน้านี้'],['ตั้งค่า (ขวาสุด)','Prompt ให้ AI (สรุปตัวฉัน · สร้างไอเดีย) · ข้อมูลส่วนตัว อัตราค่าเวร/OT วันหยุดบริษัท การเตือน อัปเดตแอป ส่งออก สำรอง ธีม']];
   const faq = [
     ['ข้อมูลเพื่อนในทีม','ชื่อ เบอร์ และเวรเพื่อนเก็บในเครื่องนี้เท่านั้น ไม่อยู่ในไฟล์บน GitHub ขอความยินยอมเพื่อนก่อนเก็บเบอร์'],
     ['ข้อมูลเก็บที่ไหน','ในเบราว์เซอร์ของเครื่องที่ใช้ ไม่ได้ส่งขึ้นเซิร์ฟเวอร์ (ยกเว้นเปิดซิงก์บน claude.ai ซึ่งเข้ารหัสก่อนส่ง)'],
@@ -1377,6 +1378,9 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.18','ย้าย “แอป” ไปก่อนคู่มือ · เรียกชื่อให้ตรง: Prompt สร้างไอเดีย / Prompt สรุปตัวฉัน · ข้อความที่คัดลอกขึ้นต้นด้วยชื่อ Prompt ตามเรื่องที่เลือก'],
+    ['v1.17','ย้ายเมนู “ตั้งค่า” ไปไว้ขวาสุดของแถบเมนูด้านล่าง'],
+    ['v1.16','คำสั่งสร้างไอเดียใหม่กับ AI: ปุ่ม 💡 ใน My day และตั้งค่า · ไอเดีย 10 ข้อ + ตารางคะแนน + แผนทดลอง 7 วัน'],
     ['v1.15','อ่านไฟล์ “ลงทะเบียนเคสผ่าตัด” ของ OR ได้เลย: ทุกแผ่น/เดือน คัดเคสที่ชื่อคุณอยู่ใน Scrub/Circulate · แก้วันที่สลับวัน/เดือนในไฟล์ · ไม่อ่านชื่อผู้ป่วย'],
     ['v1.14','ฟอร์มเคส: Type / Theatre start / Theatre finish / Total time · OT ติ๊กให้เองตามกติกา STD (16:00–08:00, วันหยุด) · ช่อง HN · นำเข้าเคสจาก Excel/CSV ของแผนก · เลือกหมายเหตุใบเบิกค่าเคส'],
     ['v1.13','หน้า “เงิน” ถัดจากใบเวร: รายรับอัตโนมัติจากค่าเวร/ค่าเคส + พิมพ์เอง · รายจ่ายแยกหมวด รายการประจำ · สรุปเดือน/ปี · รวมใน AI และ Excel'],
@@ -3171,7 +3175,8 @@ const AI_MODES = {
   all:['ครบทุกด้าน','วิเคราะห์ครบทุกหัวข้อด้านล่าง'],
   self:['รู้จักตัวเองแบบไม่โกหก','เน้นหัวข้อ 1–2 และ 6 ให้ลึกที่สุด'],
   time:['หาเวลาทำไอเดียใหม่','เน้นหัวข้อ 3–4 วางแผนเวลาจริงรายสัปดาห์'],
-  limit:['ขยายขีดจำกัด','เน้นหัวข้อ 5 ออกแบบการทดลอง 2 สัปดาห์ที่วัดผลได้']
+  limit:['ขยายขีดจำกัด','เน้นหัวข้อ 5 ออกแบบการทดลอง 2 สัปดาห์ที่วัดผลได้'],
+  idea:['Prompt สร้างไอเดีย','คิดไอเดีย ให้คะแนน เลือก 3 ข้อ พร้อมแผนทดลอง 7 วันลงเวลาว่างจริง']
 };
 function aiPackData(o){
   const t = today(); const from = o.range === 'all' ? '0000-00-00' : addDays(t, -Number(o.range || 90));
@@ -3238,6 +3243,24 @@ function aiPackData(o){
   return D;
 }
 function aiPrompt(mode){
+  if (mode === 'idea') return `คุณคือคู่คิดสร้างไอเดียที่ตรงไปตรงมา ข้อมูลด้านล่างมาจากแอปที่ฉันบันทึกชีวิตจริง (งาน เวลา เงิน ไอเดียที่จดไว้ และเกี่ยวกับฉัน)
+
+กติกา
+- ไอเดียต้องเริ่มได้โดยไม่ต้องลาออกจากงานประจำ และใส่ในเวลาว่างจริงของฉันได้
+- อ้างข้อมูลจริง (เวลาว่าง รายได้ ทักษะ ไอเดียที่จดไว้) ทุกครั้งที่ให้เหตุผล
+- ถ้าไอเดียที่ฉันจดไว้ไม่น่าไปต่อ บอกตรง ๆ พร้อมเหตุผล ไม่เยินยอ
+- ห้ามใช้วันหลังเวร 24 ชม. ทำงานเพิ่ม และห้ามใช้ข้อมูลผู้ป่วยในไอเดีย
+- ถ้าข้อมูลไม่พอ ถามฉันกลับก่อน ไม่เกิน 3 ข้อ
+
+สิ่งที่ต้องทำ
+1. วัตถุดิบของฉัน: สรุปทักษะ เวลาว่างต่อสัปดาห์ ทุนที่ใช้ได้ (จากรายรับรายจ่าย) ความสนใจ ใน 5 บรรทัด
+2. ไอเดีย 10 ข้อ แบ่ง 3 กลุ่ม: (ก) ต่อยอดจากทักษะและงานของฉัน (ข) ต่อยอดจากไอเดียที่ฉันจดไว้ (ค) ไอเดียใหม่นอกกรอบ
+3. ตารางให้คะแนน 1–5: เข้ากับเวลาว่าง · ทุนน้อย · ใช้ทักษะที่มี · โอกาสสร้างรายได้ · ความสนุก/ตรงใจ · รวมคะแนน
+4. เลือก 3 ข้อที่ดีที่สุด แต่ละข้อบอก: ทำไมเหมาะกับฉัน · ความเสี่ยง · การทดสอบเล็กที่สุดใน 7 วัน (ทุนไม่เกิน 500 บาท เวลาไม่เกิน 3 ชม.) · ก้าวแรกที่ทำเสร็จใน 30 นาที · วัดผลอย่างไรว่าควรไปต่อ
+5. จัดแผนทดลอง 7 วันลงในช่องเวลาว่างจริง 30 วันข้างหน้า (ระบุวันที่)
+6. ข้อความสั้น 1 บรรทัดสำหรับจดลงแอปของแต่ละไอเดียที่เลือก
+
+ตอบเป็นภาษาไทย ใช้หัวข้อและตาราง กระชับ`;
   const m = AI_MODES[mode] || AI_MODES.all;
   return `คุณคือโค้ชที่ช่วยให้ฉันรู้จักตัวเองและใช้เวลาให้คุ้ม ข้อมูลด้านล่างมาจากแอปที่ฉันบันทึกชีวิตประจำวันจริง
 โหมด: ${m[0]} — ${m[1]}
@@ -3264,7 +3287,7 @@ function aiPrompt(mode){
 function aiMarkdown(o){
   const D = aiPackData(o);
   const L = []; const H = t => L.push('', '## ' + t); const kv = obj => Object.entries(obj || {}).map(([k, v]) => `${k}: ${v}`).join(' · ') || '-';
-  L.push('# ข้อมูลของฉันสำหรับให้ AI วิเคราะห์', '', aiPrompt(o.mode), '', '---', '', `สร้างเมื่อ ${D.meta.created} · ช่วงข้อมูล: ${D.meta.range} · จาก ${D.meta.app}`);
+  L.push(o.mode === 'idea' ? '# Prompt สร้างไอเดียใหม่ (พร้อมข้อมูลจริงของฉัน)' : '# Prompt สรุปตัวฉันให้ AI วิเคราะห์ (พร้อมข้อมูลจริงของฉัน)', '', aiPrompt(o.mode), '', '## ข้อมูลของฉัน (ใช้ประกอบคำสั่งด้านบน)', '', '---', '', `สร้างเมื่อ ${D.meta.created} · ช่วงข้อมูล: ${D.meta.range} · จาก ${D.meta.app}`);
   H('1. โปรไฟล์งาน'); L.push(`- ตำแหน่ง: ${D.profile.role || '-'} · แผนก: ${D.profile.dept || '-'} · ชื่อ: ${D.profile.name}`, `- ตั้งใจหยุดรับงานหลัง: ${D.profile.stopWorkAfter || '-'}`, `- ${D.profile.notes}`);
   H('2. งานประจำรายเดือน');
   L.push('| เดือน | เวร | ชม.ที่ทำ | ชม.มาตรฐาน | ขาด/เกิน | ค่าเวร | OT (เคส/บาท) |', '|---|---|---|---|---|---|---|');
@@ -3288,12 +3311,13 @@ function aiMarkdown(o){
 }
 let aiLast = null;
 function aiOpts(){ return Object.assign({range:'90', mode:'all', name:false, caseDetail:false, hourly:true, appts:true}, S.settings.aiPack || {}); }
-function aiSheet(){
-  const o = aiOpts(); const ab = S.settings.aboutMe || {};
-  openSheet(`${sheetHead('สรุปตัวฉันให้ AI วิเคราะห์')}
-    <p class="meta" style="margin:0">รวมข้อมูลจากทุกหน้า จัดเป็นหมวด พร้อมคำสั่งให้ AI วิเคราะห์แบบตรงไปตรงมา ช่วยหาเวลาทำไอเดียใหม่ และขยายขีดจำกัด · คัดลอกไปวางใน Claude ได้ทันที</p>
+function aiSheet(modeOverride){
+  const o = aiOpts(); if (modeOverride) o.mode = modeOverride; const ab = S.settings.aboutMe || {};
+  const isIdea = o.mode === 'idea';
+  openSheet(`${sheetHead(isIdea ? '💡 Prompt สร้างไอเดีย' : 'Prompt สรุปตัวฉันให้ AI')}
+    <p class="meta" style="margin:0">${isIdea ? 'สร้าง Prompt (คำสั่ง) ให้ AI คิดไอเดียใหม่จากข้อมูลจริงของคุณ: เวลาว่าง เงิน ทักษะ ไอเดียที่จดไว้ · คัดลอกไปวางใน Claude ได้ทันที' : 'รวมข้อมูลจากทุกหน้า จัดเป็นหมวด พร้อม Prompt (คำสั่ง) ให้ AI วิเคราะห์แบบตรงไปตรงมา · คัดลอกไปวางใน Claude ได้ทันที'}</p>
     <form data-form="aipack" style="display:flex;flex-direction:column;gap:12px">
-      <fieldset><legend>อยากให้ AI ช่วยเรื่องไหน</legend><div class="wrap">${Object.entries(AI_MODES).map(([k, v]) => `<label class="chip"><input type="radio" name="mode" value="${k}"${o.mode === k ? ' checked' : ''}>${v[0]}</label>`).join('')}</div></fieldset>
+      <fieldset><legend>Prompt (คำสั่ง) ให้ AI ช่วยเรื่องไหน</legend><div class="wrap">${Object.entries(AI_MODES).map(([k, v]) => `<label class="chip"><input type="radio" name="mode" value="${k}"${o.mode === k ? ' checked' : ''}>${v[0]}</label>`).join('')}</div></fieldset>
       <label class="f">ช่วงข้อมูล<select class="field" name="range">${[['30','30 วัน'],['90','90 วัน'],['180','180 วัน'],['365','1 ปี'],['all','ทั้งหมด']].map(([v, l]) => `<option value="${v}"${o.range === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
       <fieldset><legend>ใส่รายละเอียดเพิ่ม (ปิดไว้ = เป็นตัวเลขสรุปเท่านั้น)</legend><div class="wrap">
         <label class="chip"><input type="checkbox" name="appts"${o.appts ? ' checked' : ''}>ชื่อนัด/สิ่งที่ต้องทำ</label>
@@ -3305,15 +3329,15 @@ function aiSheet(){
         <p class="meta">แอปรู้แค่สิ่งที่บันทึก ส่วนนี้ช่วยเติมด้านอื่นของชีวิต ตอบสั้น ๆ ได้ ข้ามข้อที่ไม่อยากตอบ</p>
         ${ABOUT_Q.map(([k, q]) => `<label class="f">${q}<textarea class="field" name="ab_${k}" rows="2">${esc(ab[k] || '')}</textarea></label>`).join('')}
       </details>
-      <button class="btn primary" type="submit">สร้างข้อความสำหรับ AI</button>
+      <button class="btn primary" type="submit">สร้าง Prompt</button>
     </form>
     <div id="ai-out"></div>`);
 }
 function aiShowResult(){
   const box = $('#ai-out'); if (!box || !aiLast) return;
-  box.innerHTML = `<p style="margin:0 0 6px"><b>พร้อมแล้ว</b> · ${aiLast.md.length.toLocaleString('th-TH')} ตัวอักษร</p>
+  box.innerHTML = `<p style="margin:0 0 6px"><b>Prompt พร้อมแล้ว</b> · ${aiLast.md.length.toLocaleString('th-TH')} ตัวอักษร</p>
     <textarea class="field" id="ai-txt" rows="10" readonly>${esc(aiLast.md)}</textarea>
-    <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:8px"><button type="button" class="btn primary" data-act="ai-copy">คัดลอกไปวางใน AI</button><button type="button" class="btn small" data-act="ai-md">ดาวน์โหลด .md</button><button type="button" class="btn small" data-act="ai-json">ดาวน์โหลด .json</button>${navigator.share ? '<button type="button" class="btn small" data-act="ai-share">แชร์…</button>' : ''}</div>
+    <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:8px"><button type="button" class="btn primary" data-act="ai-copy">คัดลอก Prompt</button><button type="button" class="btn small" data-act="ai-md">ดาวน์โหลด .md</button><button type="button" class="btn small" data-act="ai-json">ดาวน์โหลด .json</button>${navigator.share ? '<button type="button" class="btn small" data-act="ai-share">แชร์…</button>' : ''}</div>
     <p class="meta" style="margin:6px 0 0">วิธีใช้: เปิดแอป Claude › แชตใหม่ › วางข้อความ › ส่ง · ทำซ้ำเดือนละครั้งเพื่อดูความเปลี่ยนแปลง · ตรวจก่อนส่งว่าไม่มีข้อมูลผู้ป่วยหรือข้อมูลของคนอื่น</p>`;
   box.scrollIntoView({block:'start', behavior:'smooth'});
 }
@@ -3669,6 +3693,7 @@ document.addEventListener('click', e => {
     case 'm-del': confirmSheet('ลบรายการนี้?', 'ลบ', () => { const M = moneyS(); M.items = M.items.filter(x => x.id !== id); commit('ลบรายการเงิน', {msg:'ลบแล้ว'}); }, true); break;
     case 'm-opt': moneyS().opt[el.dataset.k] = el.checked; commit('ตั้งค่าเงินอัตโนมัติ', {silent:true}); break;
     case 'ai-open': aiSheet(); break;
+    case 'ai-idea': aiSheet('idea'); break;
     case 'ai-copy': { const ta = $('#ai-txt'); if (!ta) break; const done = ok => toast(ok ? 'คัดลอกแล้ว ไปวางในแชต Claude ได้เลย' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => done(true), () => { ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} done(ok); }); else { ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} done(ok); } break; }
     case 'ai-md': case 'ai-json': { if (!aiLast) break; const isMd = act === 'ai-md'; (async () => { const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null; if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
       try{ await dl.save({filename:'my-profile-' + today() + (isMd ? '.md' : '.json'), data: isMd ? aiLast.md : JSON.stringify(aiLast.data, null, 2), mimeType: isMd ? 'text/markdown' : 'application/json'}); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); } })(); break; }
