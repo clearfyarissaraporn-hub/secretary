@@ -1,5 +1,5 @@
 /*
- * เลขาส่วนตัว · เซิร์ฟเวอร์แจ้งเตือน (Cloudflare Worker, แผนฟรี)
+ * เลขาส่วนตัว · เซิร์ฟเวอร์แจ้งเตือน + ซิงก์หลายเครื่อง (Cloudflare Worker, แผนฟรี) · v2
  * หน้าที่: เก็บเวลาเตือนที่แอปส่งมา แล้วทุก 1 นาทีตรวจว่าถึงเวลาหรือยัง ถ้าถึงจะสั่งมือถือให้เด้งแจ้งเตือน (Web Push)
  * ต้องผูก KV namespace ชื่อตัวแปร KV และตั้ง Cron Trigger "* * * * *"
  * ไม่ต้องตั้งรหัสอะไรเอง: เซิร์ฟเวอร์สร้างกุญแจ VAPID เองครั้งแรก และเครื่องแรกที่เชื่อมจะเป็นเจ้าของ
@@ -62,7 +62,7 @@ export default {
     if (!env.KV) return json({ok: false, error: 'ยังไม่ได้ผูก KV (Settings › Bindings › KV namespace ชื่อตัวแปร KV)'}, 500);
     const url = new URL(req.url);
     try {
-      if (url.pathname === '/' ) return json({ok: true, app: 'secretary-push', message: 'เซิร์ฟเวอร์แจ้งเตือนพร้อมใช้งาน'});
+      if (url.pathname === '/' ) return json({ok: true, app: 'secretary-push', version: 2, sync: true, message: 'เซิร์ฟเวอร์แจ้งเตือนพร้อมใช้งาน · รองรับซิงก์'});
       if (url.pathname === '/vapid') return json({publicKey: (await vapid(env)).pub});
       if (url.pathname === '/sync' && req.method === 'POST') {
         const b = await req.json();
@@ -101,6 +101,34 @@ export default {
         await env.KV.put(devKey(b.dev), JSON.stringify(d));
         const status = await sendPush(env, d.sub);
         return json({ok: status >= 200 && status < 300, status});
+      }
+      /* ---------- ซิงก์หลายเครื่อง (ข้อมูลเข้ารหัสจากในแอป เซิร์ฟเวอร์เปิดอ่านไม่ได้) ---------- */
+      if (url.pathname === '/doc') {
+        const key = url.searchParams.get('key'), p = url.searchParams.get('p') || '';
+        if (!/^(vault|vault-prev|sync-test)$/.test(p)) return json({ok: false, error: 'ชื่อเอกสารไม่ถูกต้อง'}, 400);
+        if (req.method === 'GET') {
+          const owner = await env.KV.get('owner');
+          if (!owner) return new Response('null', {headers: {'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...CORS}});   /* ยังไม่มีเจ้าของ = ยังไม่มีข้อมูล */
+          if (!(await auth(env, key, false))) return json({ok: false, error: 'รหัสเจ้าของไม่ตรง'}, 403);
+          const r = await env.KV.getWithMetadata('doc:' + p);
+          if (r.value == null) return new Response('null', {headers: {'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...CORS}});
+          return new Response(r.value, {headers: {'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Rev': String((r.metadata || {}).rev || 0), ...CORS}});
+        }
+        if (req.method === 'POST') {
+          if (!(await auth(env, key, true))) return json({ok: false, error: 'รหัสเจ้าของไม่ตรง'}, 403);
+          const text = await req.text();
+          if (text.length > 20e6) return json({ok: false, error: 'ข้อมูลใหญ่เกินไป'}, 413);
+          const rev = Number(url.searchParams.get('rev') || 0), base = url.searchParams.get('base');
+          if (p === 'vault' && base != null) {
+            /* เขียนได้เฉพาะเมื่อรุ่นบนเซิร์ฟเวอร์ตรงกับที่เครื่องนี้เห็นล่าสุด ไม่งั้นแจ้งชนกัน */
+            const cur = await env.KV.getWithMetadata('doc:vault');
+            const curRev = cur.value == null ? 0 : Number((cur.metadata || {}).rev || 0);
+            if (curRev !== Number(base)) return new Response(JSON.stringify({ok: false, conflict: true, rev: curRev, doc: cur.value == null ? null : JSON.parse(cur.value)}), {status: 409, headers: {'Content-Type': 'application/json', ...CORS}});
+            if (cur.value != null) await env.KV.put('doc:vault-prev', cur.value, {metadata: {rev: curRev}});
+          }
+          await env.KV.put('doc:' + p, text, {metadata: {rev}});
+          return json({ok: true, rev});
+        }
       }
       if (url.pathname === '/status') {
         const key = url.searchParams.get('key'), dev = url.searchParams.get('dev');

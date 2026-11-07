@@ -1,7 +1,7 @@
 /* เลขาส่วนตัว · service worker
    - ไฟล์ของแอปโหลดจากเน็ตแบบไม่ใช้แคชของเบราว์เซอร์ (no-store) ทุกครั้ง เพื่อให้อัปเดตทันที ถ้าไม่มีเน็ตใช้ของที่เก็บไว้
    - รับแจ้งเตือน (Push) จากเซิร์ฟเวอร์ Cloudflare ของคุณ แล้วเด้งแม้ปิดแอป */
-const CACHE = 'secretary-v1.25';
+const CACHE = 'secretary-v1.26';
 const CFG = 'tmm-cfg';
 const CORE = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => Promise.all(CORE.map(u => fetch(u, {cache:'no-store'}).then(r => c.put(u, r)).catch(() => {})))).then(() => self.skipWaiting())); });
