@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.22</title>
+<title>เลขาส่วนตัว v1.25</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -436,6 +436,20 @@ nav.tabbar .in{grid-template-columns:repeat(9,minmax(0,1fr)) !important}
 nav.tabbar a{font-size:9.5px !important;margin:0 !important;letter-spacing:-.2px}
 nav.tabbar a svg{width:22px !important;height:22px !important}
 .bpre{white-space:pre-wrap;word-break:break-word;font-size:12px;line-height:1.5;background:var(--soft);padding:10px;border-radius:12px;max-height:50vh;overflow:auto;font-family:inherit;margin:6px 0 0}
+.teamgrid td.swp,.tovg td.swp{position:relative;box-shadow:inset 0 0 0 2px var(--primary)}
+.teamgrid td.swp::after,.tovg td.swp::after{content:'⇄';position:absolute;top:1px;right:3px;font-size:10px;font-weight:700;color:var(--primary-ink)}
+.tov{position:fixed;inset:0;z-index:60;background:var(--surface-solid,#fff);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tov-in{width:100vw;height:100vh;display:flex;flex-direction:column;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));box-sizing:border-box;gap:4px}
+.tov.rot .tov-in{width:100vh;height:100vw;transform:rotate(90deg);flex:none}
+.tov-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.tov-h .meta{flex:1;font-size:10.5px}
+.tovg{border-collapse:separate;border-spacing:1px;width:100%;table-layout:fixed;flex:1;font-size:clamp(7px,1.3vmax,12px)}
+.tovg th,.tovg td{text-align:center;padding:0;border-radius:3px;overflow:hidden;white-space:nowrap;line-height:1.15}
+.tovg thead th{font-weight:700;color:var(--muted)}.tovg thead th small{display:block;font-weight:400;font-size:.8em}
+.tovg thead th.hol{color:var(--life-i)}.tovg thead th.now{background:var(--primary);color:#fff}
+.tovg th.nm{width:4.6em;text-align:left;font-weight:600;color:var(--ink);padding-left:2px}
+.tovg tr.me th.nm{background:var(--primary-tint)}
+.tovg td{cursor:pointer;font-weight:600}
+.stdm .stdnet{display:block;font-size:11px;line-height:1.3;color:var(--muted);margin-top:2px}.stdm .stdnet b{color:var(--money-i)}
 </style>
 </head>
 <body>
@@ -450,7 +464,7 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.22';
+const APP_VERSION = '1.25';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -1063,7 +1077,7 @@ function viewCalendar(){
       ${g.map(e => `<div class="row" style="padding:10px;border-radius:12px;background:var(--gcal-t);color:var(--gcal-i)"><strong style="width:96px;font-size:13px">${e.time ? esc(e.time) : 'ทั้งวัน'}</strong><span style="flex:1;color:var(--ink)">${esc(e.title)}</span><span style="font-size:11.5px">${e.src === 'holiday' ? 'วันหยุดไทย' : 'Google'}</span></div>`).join('')}
       ${items.length ? `<div>${items.map(apptItem).join('')}</div>` : (types.length || g.length || (S.cases[calSel] || []).length ? '' : '<div class="empty">ว่าง ไม่มีเวรหรือนัด</div>')}
       ${(S.cases[calSel] || []).length ? `<div><div class="meta" style="font-weight:600;margin-top:4px">เคส${otForDay(calSel).length ? ' · OT ' + baht(otMoneyDay(calSel)) : ''}</div>${caseListHtml(calSel)}</div>` : ''}
-      ${S.holCredit[calSel] ? `<div class="row" style="padding:8px 10px;border-radius:12px;background:var(--money-t);color:var(--money-i);font-size:13px">วันหยุดประจำปี +${hrs(Number(S.settings.holHours) || 0)} ชม. (ดูเอง ไม่ลงใบเบิก)</div>` : ''}
+      ${holOn(calSel) ? `<div class="row" style="padding:8px 10px;border-radius:12px;background:var(--money-t);color:var(--money-i);font-size:13px">${isCoHoliday(calSel) ? 'วันหยุดบริษัท นับอัตโนมัติ' : 'วันหยุดประจำปี'} +${hrs(Number(S.settings.holHours) || 0)} ชม. (นับแค่ชั่วโมงทำงาน ไม่ยุ่งกับเวรและค่าเคส)</div>` : ''}
       ${(() => { const e = S.extra[calSel] || {}; const p = Number(e.plus) || (e.plus == null && e.h > 0 ? e.h : 0), m = Number(e.minus) || (e.minus == null && e.h < 0 ? -e.h : 0); return p || m ? `<div class="meta">${p ? 'ชั่วโมงพิเศษ +' + p + ' ชม.' : ''}${p && m ? ' · ' : ''}${m ? 'ลา −' + m + ' ชม.' : ''}</div>` : ''; })()}
       ${(S.extra[calSel] || {}).note ? `<div class="meta">ใบเวร: ${esc(S.extra[calSel].note)}</div>` : ''}
       <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small" data-act="case-new" data-d="${calSel}">+ เคส / OT</button><button type="button" class="btn small" data-act="ts-day" data-d="${calSel}">เปิดใบเวรวันนี้</button></div>
@@ -1216,8 +1230,9 @@ function viewConfig(){
   <form class="list" data-form="std-hours">
     <div class="lrow" style="flex-wrap:wrap;padding:10px 14px"><span class="grow">หักเงินชั่วโมงละ (บาท)</span><input class="field" type="number" inputmode="decimal" min="0" step="0.01" name="rate" value="${esc(st.deductRate || '')}" placeholder="ยังไม่ได้ใส่" style="width:140px"></div>
     <div class="lrow" style="flex-wrap:wrap;padding:10px 14px"><span class="grow">วันหยุดประจำปีนับวันละ (ชม.)</span><input class="field" type="text" inputmode="decimal" name="holHours" value="${esc(st.holHours != null ? st.holHours : 8)}" style="width:140px"></div>
-    <div class="lrow meta" style="font-size:12.5px">ชั่วโมงมาตรฐานรายเดือน (Standard Hours) ใช้คิดว่าทำงานขาดหรือเกินกี่ชั่วโมง</div>
-    <div class="lrow" style="flex-wrap:wrap;gap:6px;padding:10px 14px">${stdMonths().map(m => `<label class="f" style="width:calc(33% - 6px)">${esc(parse(m + '-01').toLocaleDateString('th-TH',{month:'short', year:'2-digit'}))}<input class="field" type="number" inputmode="decimal" min="0" step="0.5" name="m-${m}" value="${esc(S.stdHours[m] != null ? S.stdHours[m] : '')}" style="padding:0 8px"></label>`).join('')}</div>
+    <div class="lrow meta" style="font-size:12.5px">ชั่วโมงมาตรฐานรายเดือน (Standard Hours) · แอปหักวันหยุดบริษัทให้อัตโนมัติ: <b>วันทำงาน − วันหยุด = ชั่วโมงทำงานจริงของเดือน</b> · วันหยุดใช้คิดชั่วโมงเท่านั้น ไม่ยุ่งกับตารางเวรและค่าเคส</div>
+    <div class="lrow" style="flex-wrap:wrap;gap:6px;padding:10px 14px">${stdMonths().map(m => { const std = S.stdHours[m] != null && S.stdHours[m] !== '' ? Number(S.stdHours[m]) : null; const hh = Number(st.holHours != null ? st.holHours : 8) || 0; const nh = (S.coHol || []).filter(h => h[2] && h[0].startsWith(m) && holOn(h[0])).length + Object.keys(S.holCredit).filter(d => d.startsWith(m) && S.holCredit[d] === true && !isCoHoliday(d)).length;
+      return `<label class="f stdm" style="width:calc(33% - 6px)">${esc(parse(m + '-01').toLocaleDateString('th-TH',{month:'short', year:'2-digit'}))}<input class="field" type="number" inputmode="decimal" min="0" step="0.5" name="m-${m}" value="${esc(std != null ? std : '')}" style="padding:0 8px"><span class="stdnet">${std != null ? `${hrs(std / 8)} วัน − หยุด ${nh}<br><b>= ${hrs(Math.max(0, std - nh * hh))} ชม.</b>` : 'ยังไม่ใส่'}</span></label>`; }).join('')}</div>
     <div class="lrow" style="justify-content:flex-end"><button class="btn primary small" type="submit">บันทึกชั่วโมงและอัตรา</button></div>
   </form>
 
@@ -1244,7 +1259,7 @@ function viewConfig(){
     <button class="btn primary small" type="submit" style="align-self:flex-end">บันทึก</button></div></form>
 
   <h2 class="group-t">วันหยุดบริษัท</h2>
-  <div class="list">${(() => { const H = holStats(Number(today().slice(0,4))); return `<div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🏖️</span><span class="grow"><b>ปีนี้ ${H.on.length} วัน · ผ่านแล้ว ${H.past.length} · นับ +ชม. แล้ว ${H.used}</b><span class="meta" style="display:block">${H.next ? 'ถัดไป ' + esc(thDate(H.next[0],{day:'numeric', month:'short'})) + ' ' + esc(H.next[1]) : 'ไม่มีวันหยุดที่จะถึงในรายการ'}${H.pending ? ' · รอประกาศ ' + H.pending + ' วัน' : ''}</span></span><button type="button" class="btn small primary" data-act="hol-open">จัดการ</button></div>`; })()}
+  <div class="list">${(() => { const H = holStats(Number(today().slice(0,4))); return `<div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🏖️</span><span class="grow"><b>ปีนี้ ${H.on.length} วัน · นับชั่วโมงให้อัตโนมัติวันละ ${hrs(Number(S.settings.holHours) || 0)} ชม.</b><span class="meta" style="display:block">${H.next ? 'ถัดไป ' + esc(thDate(H.next[0],{day:'numeric', month:'short'})) + ' ' + esc(H.next[1]) : 'ไม่มีวันหยุดที่จะถึงในรายการ'}${H.pending ? ' · รอประกาศ ' + H.pending + ' วัน' : ''}</span></span><button type="button" class="btn small primary" data-act="hol-open">จัดการ</button></div>`; })()}
     <div class="lrow meta" style="font-size:12.5px">แก้ ลบ เพิ่ม · อ่านจากรูปประกาศ · วางรายการ · ดูว่าวันไหนนับ +ชม. แล้ว</div>
   </div>
 
@@ -1365,10 +1380,13 @@ function viewGuide(){
     ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
     ['อัตรา OT (ตั้งค่า › อัตรา OT)','Major 90 นาทีแรก ฿800 · ทุกชั่วโมงถัดไป +฿400 · Minor 60 นาทีแรก ฿400 · ทุกชั่วโมงถัดไป +฿200 · ยามวิกาล 23:00–05:00 +฿400 · เศษของชั่วโมงถัดไปนับเป็น 1 ชม. · ปิด Major/Minor = ไม่คิดเงินประเภทนั้น (รวมเคสเดิม)'],
-    ['วันหยุดบริษัท','ตั้งค่า › วันหยุดบริษัท › จัดการ: ดูทั้งปี วันไหนนับ +ชม. แล้ว · แตะวันเพื่อแก้/ลบ · + เพิ่มวันหยุด · อ่านจากรูปประกาศ (Claude อ่านให้) · วางรายการ (เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่”) · เลือก “แทนที่ทั้งปี” เมื่อได้ประกาศจริง · My day เตือนก่อนถึงวันหยุด 7 วัน'],
+    ['ชั่วโมงทำงานจริงของเดือน','ตั้งค่า › ชั่วโมงทำงาน: ใส่ชั่วโมงมาตรฐานรายเดือน แอปหักวันหยุดบริษัทให้อัตโนมัติ (วันทำงาน − วันหยุด = ชั่วโมงทำงานจริง) แสดงใต้แต่ละเดือน · หน้าตารางบอก “ต้องทำจริง” และ “ทำงานจริง” · วันหยุดใช้คิดชั่วโมงเท่านั้น ไม่ยุ่งกับตารางเวร ค่าเวร ค่าเคส และใบเบิก · ไม่นับวันไหน แตะวันนั้นในปฏิทินแล้วติ๊กออก'],
+    ['ทำงานตรงวันหยุด','ลงเวรวันนั้นตามปกติ ไม่ต้องแก้อะไร: ต้องทำจริงยังหักวันหยุด ชั่วโมงเวรนับเป็นงานจริง → เกินเพิ่ม · ได้หยุดชดเชย: ติ๊กออก “วันหยุดประจำปี” วันที่ทำ แล้วติ๊กในวันชดเชย · ถือเป็นวันปกติ: ติ๊กออกอย่างเดียว · ค่าทำงานวันหยุดใส่เองที่ เงิน › + รายรับ'],
+    ['วันหยุดบริษัท','ตั้งค่า › วันหยุดบริษัท › จัดการ: ดูทั้งปี (นับชั่วโมงให้อัตโนมัติทุกวันหยุด) · แตะวันเพื่อแก้/ลบ · + เพิ่มวันหยุด · อ่านจากรูปประกาศ (Claude อ่านให้) · วางรายการ (เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่”) · เลือก “แทนที่ทั้งปี” เมื่อได้ประกาศจริง · My day เตือนก่อนถึงวันหยุด 7 วัน'],
     ['ตรวจระบบ','ตั้งค่า › ตรวจระบบ › เริ่มตรวจ: ทดสอบเวลา ยามวิกาล ค่า OT การติ๊ก OT แลกเวร/ย้อนกลับ สำรอง/กู้คืน กับสำเนาข้อมูล และทดสอบซิงก์กับคลาวด์จริง (เอกสารทดสอบแยก) · ทำหลังอัปเดตทุกครั้ง ถ้ามี ❌ กดคัดลอกรายงานส่งมาให้แก้'],
     ['ซิงก์หลายเครื่อง (ลิงก์ claude.ai)','ใช้รหัสเดียวกันทุกเครื่อง · ก่อนเปิดใช้จริง กด “ทดสอบซิงก์” ต้องผ่านทุกข้อ · แก้พร้อมกัน: แอปล็อกก่อนเขียนและอ่านยืนยันหลังเขียน ถ้าชนกันขึ้นแถบให้เลือก ชุดที่ไม่ได้เลือกเก็บใน สำรองอัตโนมัติ · เก็บรุ่นก่อนหน้าบนคลาวด์ 1 ชุด (ดึงรุ่นก่อนหน้าจากคลาวด์) · เน็ตหลุด: ข้อมูลอยู่ในเครื่อง ลองใหม่ 15 วิ/1/5/15 นาที แล้วหยุด รอเน็ตกลับหรือกดซิงก์ตอนนี้ · ซิงก์ไม่ใช่การสำรอง ดาวน์โหลดไฟล์สำรองเก็บไว้เดือนละครั้งเสมอ'],
-    ['แลกเวรแล้วย้อนกลับ','ทีม › ประวัติการแลกเวร › ย้อนกลับ คืนเวรเดิมของทั้งสองคนครบทุกวัน รวมรหัสแผนกอื่น และเวรในปฏิทินของคุณ · ถ้าวันนั้นถูกแก้หลังแลก แอปเตือนก่อนย้อน'],
+    ['ดูตารางทีมทั้งเดือน','ทีม › 🔄 ดูทั้งเดือนในจอเดียว: หมุนเป็นแนวนอนให้เอง เห็นทุกคนครบทุกวัน · 8=8-16 · 8S=8-16+STD · S=STD · 24=8-8 · X=หยุด · ⇄=แลกแล้ว · แตะช่องเพื่อแก้'],
+    ['แลกเวรแล้วย้อนกลับ','แลกแล้วตารางทีม ปฏิทิน ค่าเวร เปลี่ยนทันที ช่องที่แลกมีกรอบและ ⇄ · นำเข้าไฟล์ตารางเวรใหม่ แอปคงการแลกไว้ให้ (ไฟล์มักยังไม่แก้ตาม) · ทีม › ประวัติการแลกเวร › ย้อนกลับ คืนเวรเดิมของทั้งสองคนครบทุกวัน รวมรหัสแผนกอื่น และเวรในปฏิทินของคุณ · ถ้าวันนั้นถูกแก้หลังแลก แอปเตือนก่อนย้อน'],
     ['พิมพ์เวลาเคส','Theatre start/finish พิมพ์ตัวเลขได้เลย เช่น 1640 = 16:40, 940 = 09:40, 23.30 = 23:30 · ค่าเคสคิดให้ทันที · ติ๊กยามวิกาลให้เองเมื่อเวลาคาบ 23:00–05:00 · ติ๊ก OT ให้ตามกติกา แก้เองได้'],
     ['นำเข้าเคสจากไฟล์แผนก','ดาวน์โหลดสำเนา “ลงทะเบียนเคสผ่าตัด” (.xlsx) จาก SharePoint เดือนละครั้ง › ใบเวร › ค่าเคส › นำเข้าเคสจาก Excel › แอปรู้จักไฟล์นี้เอง เลือกเดือน › ดูตัวอย่าง › นำเข้า (ไม่ซ้ำ ไม่อ่านชื่อผู้ป่วย) · ไฟล์แบบอื่นจับคู่คอลัมน์เอง · OT ติ๊กให้เองตามช่วง STD 16:00–08:00 และวันหยุด'],
     ['สรุปเงินของเดือน','เมนู เงิน: ค่าเวรและค่าเคส OT ขึ้นให้อัตโนมัติ · + รายรับ (เงินเดือน ร้าน Affiliate) · + รายจ่าย (ติ๊ก “ประจำทุกเดือน” สำหรับค่าเช่า ผ่อน บิล) · ดูสรุป/รายการ/ทั้งปี'],
@@ -1390,6 +1408,9 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.25','ทดสอบกรณีทำงานตรงวันหยุดครบ · แก้สรุป “ลงเวรตรงวันหยุด” ให้นับวันที่ลงเวรล่วงหน้าด้วย · ตรวจระบบเพิ่ม 5 ข้อ'],
+    ['v1.24','วันหยุดบริษัทนับชั่วโมงให้อัตโนมัติ (ไม่ต้องติ๊กเอง) · ตั้งค่าแสดงชั่วโมงทำงานจริงรายเดือน = มาตรฐาน − วันหยุด · ไม่ยุ่งกับเวรและค่าเคส · ตรวจระบบเพิ่ม 7 ข้อ'],
+    ['v1.23','แก้: นำเข้าไฟล์ตารางเวรซ้ำแล้วการแลกเวรหาย (ตอนนี้คงไว้ให้) · แก้อ่านปีจากไฟล์ผิดเมื่อชื่อเดือนอยู่ท้ายตาราง · ช่องที่แลกแล้วมี ⇄ · ดูตารางทีมทั้งเดือนในจอเดียวแบบแนวนอน'],
     ['v1.22','วันหยุดบริษัท: หน้าจัดการทั้งปี แก้/ลบ/เพิ่ม · อ่านจากรูปประกาศ · วางรายการ · สรุปวันที่นับ +ชม. แล้ว · เตือนใน My day'],
     ['v1.21','ตั้งค่า › ตรวจระบบ: ทดสอบเวลา OT แลกเวร สำรอง และซิงก์กับคลาวด์จริงบนเครื่องของคุณ · ซิงก์: ล็อก + อ่านยืนยันหลังเขียน + เก็บรุ่นก่อนหน้าบนคลาวด์ + ลองใหม่ 4 ครั้งแล้วหยุด · แก้ GitHub ดาวน์โหลดไฟล์สำรอง/.ics ไม่ได้ · นำเข้าไฟล์สำรองเก็บข้อมูลเดิมก่อน · วันหยุดบริษัทที่ทำงาน 8-16 ไม่นับ OT · แจ้งเคสข้ามเที่ยงคืน/เกิน 12 ชม.'],
     ['v1.20','อัตรา OT ใหม่: Major 90 นาที 800 + ชม.ถัดไป 400 · Minor 60 นาที 400 + ชม.ถัดไป 200 · ยามวิกาล 400 · พิมพ์เวลาเป็นตัวเลขได้ (1640 → 16:40) คิดเงินและติ๊กยามวิกาลให้เอง · ปิดประเภท Major/Minor แล้วไม่คิดเงิน · แลกเวรย้อนกลับได้ครบรวมรหัสแผนกอื่น เตือนถ้าแก้หลังแลก · ซิงก์กันเขียนทับพร้อมกัน ซิงก์เองเมื่อเน็ตกลับ เก็บชุดที่ไม่ได้เลือกไว้กู้คืน'],
@@ -1524,7 +1545,7 @@ function captureSheet(kind){
     <button class="btn primary" type="submit">บันทึก</button>
   </form>`);
 }
-const holBox = d => `<label class="tickrow" style="margin:0"><input type="checkbox" name="hol"${S.holCredit[d] ? ' checked' : ''}><span><b>วันหยุดประจำปี (+${hrs(Number(S.settings.holHours) || 0)} ชม.)</b><small>นับชั่วโมงไว้ดูเอง ไม่นับเป็นเวร ไม่ลงใบเบิกค่าเวร ค่าเคส OT หรือ RLA${isCoHoliday(d) ? ' · วันนี้เป็นวันหยุดบริษัท' : ''}</small></span></label>`;
+const holBox = d => `<label class="tickrow" style="margin:0"><input type="checkbox" name="hol"${holOn(d) ? ' checked' : ''}><span><b>วันหยุดประจำปี (+${hrs(Number(S.settings.holHours) || 0)} ชม.)</b><small>นับชั่วโมงไว้ดูเอง ไม่นับเป็นเวร ไม่ลงใบเบิกค่าเวร ค่าเคส OT หรือ RLA${isCoHoliday(d) ? ' · วันนี้เป็นวันหยุดบริษัท' : ''}</small></span></label>`;
 function shiftSheet(d){
   const cur = shiftsOn(d);
   openSheet(`${sheetHead('ลงเวร ' + thDate(d,{weekday:'short',day:'numeric',month:'short'}))}
@@ -1846,6 +1867,7 @@ const Roster = (function(){
     const picked = [...document.querySelectorAll('#layer .preview input[type=checkbox]')].filter(x => x.checked).map(x => result[Number(x.dataset.i)]);
     if (!picked.length){ toast('ยังไม่ได้เลือกวัน', true); return; }
     picked.forEach(c => { S.shifts[c.date] = {types:c.types}; });
+    const keptS = reassertSwaps([...new Set(picked.map(c => c.date.slice(0,7)))]); if (keptS) toast('คงการแลกเวรไว้ ' + keptS + ' ช่อง');
     result = null; closeSheet();
     commit('ลงเวรจากไฟล์/รูปตาราง ' + picked.length + ' วัน', {msg:'ลงเวรแล้ว ' + picked.length + ' วัน'});
   }
@@ -1860,6 +1882,10 @@ function coHolidays(){ return (S.coHol || []).slice().sort((a, b) => a[0].locale
 const isCoHoliday = d => (S.coHol || []).some(h => h[0] === d && h[2]);
 const typeHours = k => { const t = S.shiftTypes[k]; return t && t.hours !== '' && t.hours != null ? Number(t.hours) || 0 : 0; };
 const typeDesc = k => (S.shiftTypes[k] && S.shiftTypes[k].desc) || typeLabel(k);
+/* วันหยุดบริษัท = นับชั่วโมงวันหยุดประจำปีให้อัตโนมัติ · ติ๊กออกรายวันได้ (false) · วันอื่นติ๊กเพิ่มเองได้ (true)
+   ใช้กับชั่วโมงทำงานเท่านั้น ไม่ยุ่งกับเวร ค่าเวร ค่าเคส และใบเบิก */
+function holOn(d){ const v = S.holCredit[d]; return v === true || (v !== false && isCoHoliday(d)); }
+function setHolOn(d, on){ if (isCoHoliday(d)){ if (on) delete S.holCredit[d]; else S.holCredit[d] = false; } else { if (on) S.holCredit[d] = true; else delete S.holCredit[d]; } }
 function hoursFor(ym){
   const [y,m] = ym.split('-').map(Number); const days = new Date(y, m, 0).getDate();
   const rows = []; let total = 0, ot = 0, otMoney = 0, otCount = 0, plusT = 0, minusT = 0, holT = 0, holDays = 0;
@@ -1868,7 +1894,7 @@ function hoursFor(ym){
     const base = types.reduce((a, k) => a + typeHours(k), 0);
     const plus = Number(ex.plus) || (Number(ex.h) > 0 && ex.plus == null ? Number(ex.h) : 0);
     const minus = Number(ex.minus) || (Number(ex.h) < 0 && ex.minus == null ? -Number(ex.h) : 0);
-    const hol = S.holCredit[d] ? (Number(S.settings.holHours) || 0) : 0;
+    const hol = holOn(d) ? (Number(S.settings.holHours) || 0) : 0;
     const hForm = base + plus - minus;
     const h = hForm + hol;
     total += h; ot += Number(ex.ot) || 0; plusT += plus; minusT += minus; holT += hol; if (hol) holDays++;
@@ -1880,7 +1906,8 @@ function hoursFor(ym){
   const rate = Number(S.settings.deductRate) || 0;
   const deduct = diff != null && diff < 0 && rate ? -diff * rate : 0;
   const coDays = rows.filter(r => isCoHoliday(r.d)).length;
-  return {rows, total, ot, otMoney, otCount, std, diff, rate, deduct, plusT, minusT, holT, holDays, coDays, filled: rows.filter(r => r.types.length).length, days};
+  const workT = total - holT; const need = std != null ? Math.max(0, std - holT) : null;
+  return {rows, total, ot, otMoney, otCount, std, diff, rate, deduct, plusT, minusT, holT, holDays, coDays, workT, need, filled: rows.filter(r => r.types.length).length, days};
 }
 const hrs = n => (Math.round(n * 100) / 100).toLocaleString('th-TH', {maximumFractionDigits:2});
 /* ---------- OT เรียกเคส: Major 0–90 นาที 800 · Minor 0–60 นาที 400 · ทุก 60 นาทีถัดไป +400 · เริ่ม 23:00 ขึ้นไป +400 ---------- */
@@ -1924,16 +1951,17 @@ function hoursCard(ym){
       <tr><th scope="row">ชั่วโมงที่ทำ (จาก ${H.filled} วันที่ลงเวร)</th><td>${hrs(H.total)} ชม.</td></tr>
       ${H.plusT ? `<tr><th scope="row">· ชั่วโมงพิเศษ</th><td style="color:var(--money-i)">+${hrs(H.plusT)} ชม.</td></tr>` : ''}
       ${H.minusT ? `<tr><th scope="row">· ลารายชั่วโมง</th><td style="color:var(--life-i)">−${hrs(H.minusT)} ชม.</td></tr>` : ''}
-      ${H.holT ? `<tr><th scope="row">· วันหยุดประจำปี ${H.holDays} วัน</th><td style="color:var(--money-i)">+${hrs(H.holT)} ชม.</td></tr>` : ''}
+      ${H.holT ? `<tr><th scope="row">· วันหยุดบริษัท/ประจำปี ${H.holDays} วัน (อัตโนมัติ)</th><td style="color:var(--money-i)">+${hrs(H.holT)} ชม.</td></tr>` : ''}
       <tr><th scope="row">ชั่วโมงมาตรฐาน</th><td>${H.std != null ? hrs(H.std) + ' ชม.' : '<a href="#config">ใส่ในตั้งค่า</a>'}</td></tr>
+      ${H.std != null && H.holT ? `<tr><th scope="row">ต้องทำจริง (มาตรฐาน − วันหยุด ${H.holDays} วัน)</th><td>${hrs(H.need)} ชม.</td></tr><tr><th scope="row">ทำงานจริง (เวร + พิเศษ − ลา)</th><td>${hrs(H.workT)} ชม.</td></tr>` : ''}
       ${H.diff != null ? `<tr class="total"><th scope="row">${neg ? 'ขาด' : 'เกิน'}</th><td style="color:${neg ? 'var(--life-i)' : 'var(--money-i)'}">${neg ? '−' : '+'}${hrs(Math.abs(H.diff))} ชม.</td></tr>` : ''}
       ${neg ? `<tr><th scope="row">หักเงินประมาณ</th><td style="color:var(--life-i)">${H.rate ? baht(H.deduct) : '<a href="#config">ใส่อัตราหักต่อชั่วโมง</a>'}</td></tr>` : ''}
       ${H.otCount ? `<tr><th scope="row">OT เรียกเคส ${H.otCount} เคส</th><td>${baht(H.otMoney)}</td></tr>` : ''}
       ${H.otCount && pay.total ? `<tr class="total"><th scope="row">ค่าเวร + OT</th><td>${baht(pay.total + H.otMoney)}</td></tr>` : ''}
       ${pay.total ? `<tr><th scope="row">ค่าเวร (ข้างบน)</th><td>${baht(pay.total)}</td></tr>` : ''}
     </tbody></table>
-    ${H.coDays ? `<div class="row" style="gap:8px;flex-wrap:wrap"><span class="meta grow">เดือนนี้มีวันหยุดบริษัท ${H.coDays} วัน · นับแล้ว ${H.holDays} วัน (+${hrs(Number(S.settings.holHours) || 0)} ชม./วัน ดูเองเท่านั้น ไม่ลงใบเบิก)</span><button type="button" class="btn small" data-act="hol-month" data-m="${ym}">${H.holDays >= H.coDays ? 'ยกเลิกนับวันหยุด' : 'นับวันหยุดบริษัททั้งเดือน'}</button></div>` : ''}
-    <p class="meta" style="margin:0">นับชั่วโมงตามที่ตั้งไว้ต่อเวร บวกชั่วโมงพิเศษ ลบลารายชั่วโมง และบวกวันหยุดประจำปีที่ติ๊กไว้${H.filled < H.days ? ' · ยังลงเวรไม่ครบเดือน ตัวเลขยังไม่ใช่ยอดจริง' : ''}</p>`
+    ${H.coDays ? `<div class="row" style="gap:8px;flex-wrap:wrap"><span class="meta grow">เดือนนี้มีวันหยุดบริษัท ${H.coDays} วัน · นับชั่วโมงให้อัตโนมัติ ${H.rows.filter(r => isCoHoliday(r.d) && holOn(r.d)).length} วัน (${hrs(Number(S.settings.holHours) || 0)} ชม./วัน · นับแค่ชั่วโมงทำงาน ไม่ลงใบเบิก ไม่ยุ่งกับเวรและค่าเคส)</span><button type="button" class="btn small" data-act="hol-month" data-m="${ym}">${H.rows.filter(r => isCoHoliday(r.d)).every(r => holOn(r.d)) ? 'ไม่นับเดือนนี้' : 'นับวันหยุดบริษัททั้งเดือน'}</button></div>` : ''}
+    <p class="meta" style="margin:0">นับชั่วโมงตามที่ตั้งไว้ต่อเวร บวกชั่วโมงพิเศษ ลบลารายชั่วโมง และบวกวันหยุดบริษัทอัตโนมัติ (ติ๊กออกรายวันได้)${H.filled < H.days ? ' · ยังลงเวรไม่ครบเดือน ตัวเลขยังไม่ใช่ยอดจริง' : ''}</p>`
     : `<div class="empty">ลงตารางเวรของเดือนนี้ก่อน แล้วแอปจะคิดชั่วโมงเทียบมาตรฐานให้</div>`}
   </section>`;
 }
@@ -2074,7 +2102,9 @@ function whoMatch(rowText, who){
   return ids.some(id => rt.includes(id)) || parts.some(p => rt.includes(p));
 }
 function findYm(text){
-  const y = (text.match(/25\d\d/) || [])[0];
+  /* ปีต้องเป็นตัวเลขแยก (ไม่ติดตัวเลขอื่น เช่นหัววันที่ 2425262728) และอยู่ในช่วงที่เป็นไปได้ */
+  const ys = [...String(text).matchAll(/(?<!\d)(25[5-9]\d|20[2-5]\d)(?!\d)/g)].map(m => +m[1]).map(v => v > 2400 ? v : v + 543);
+  const y = ys.length ? String(ys[0]) : null;
   let mi = -1; TH_MON.forEach((mn, i) => { if (mi < 0 && text.includes(mn)) mi = i; });
   if (mi < 0){ const full = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']; full.forEach((mn, i) => { if (mi < 0 && text.includes(mn)) mi = i; }); }
   return y && mi >= 0 ? `${Number(y) - 543}-${pad(mi + 1)}` : null;
@@ -2819,18 +2849,19 @@ function viewTeam(){
   const T = team(); meMember();
   const [y,m] = teamMonth.split('-').map(Number); const days = new Date(y, m, 0).getDate();
   const head = Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const dt = parse(d); const hol = isCoHoliday(d); return `<th class="${d === today() ? 'now' : ''}${hol ? ' hol' : ''}" data-act="team-day" data-d="${d}"><b>${i+1}</b><small>${esc(dt.toLocaleDateString('th-TH',{weekday:'narrow'}))}</small></th>`; }).join('');
-  let lastDept = null;
+  let lastDept = null; const SW = activeSwapCells();
   const rows = T.members.map((mm, mi) => {
     const dp = mm.me ? '' : (mm.dept || '');
     const sep = !mm.me && dp !== lastDept && T.members.some(x => !x.me && (x.dept || '') !== (T.members.find(z => !z.me) || {}).dept) ? `<tr class="tsep"><th class="tname" colspan="1">${esc(dp || 'ไม่ระบุแผนก')}</th><td colspan="${days}"></td></tr>` : '';
     if (!mm.me) lastDept = dp;
     const tools = teamEdit ? `<span class="ttools">${mi > 0 ? `<button type="button" data-act="team-up" data-id="${mm.id}" aria-label="เลื่อนขึ้น">↑</button>` : ''}${mi < T.members.length - 1 ? `<button type="button" data-act="team-down" data-id="${mm.id}" aria-label="เลื่อนลง">↓</button>` : ''}${mm.me ? '' : `<button type="button" class="x" data-act="team-del" data-id="${mm.id}" aria-label="ลบ ${esc(mm.name)}">✕</button>`}</span>` : '';
-    return `${sep}<tr><th class="tname${mm.me ? ' me' : ''}" data-act="team-member" data-id="${mm.id}"><b>${esc(mm.name || '(ไม่มีชื่อ)')}</b><small>${esc(mm.empId || '')}${dp ? ' · ' + esc(dp) : ''}${mm.phone ? ' · 📞' : ''}</small>${tools}</th>${Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const cs = teamCodes(mm.id, d); const raw = mm.me ? '' : teamRaw(mm.id, d); return `<td class="${codeClass(cs)}${raw ? ' raw' : ''}${d === teamDay ? ' sel' : ''}" data-act="team-cell" data-id="${mm.id}" data-d="${d}"${raw ? ` title="${esc(raw)}"` : ''}>${esc(raw ? raw.replace(/\s+/g, '/') : codeText(cs))}</td>`; }).join('')}</tr>`;
+    return `${sep}<tr><th class="tname${mm.me ? ' me' : ''}" data-act="team-member" data-id="${mm.id}"><b>${esc(mm.name || '(ไม่มีชื่อ)')}</b><small>${esc(mm.empId || '')}${dp ? ' · ' + esc(dp) : ''}${mm.phone ? ' · 📞' : ''}</small>${tools}</th>${Array.from({length:days}, (_, i) => { const d = `${teamMonth}-${pad(i+1)}`; const cs = teamCodes(mm.id, d); const raw = mm.me ? '' : teamRaw(mm.id, d); const sw = SW.get(mm.id + '|' + d); return `<td class="${codeClass(cs)}${raw ? ' raw' : ''}${d === teamDay ? ' sel' : ''}${sw ? ' swp' : ''}" data-act="team-cell" data-id="${mm.id}" data-d="${d}"${raw || sw ? ` title="${esc((raw ? raw + ' · ' : '') + (sw ? 'แลกเวร ' + (sw.aName || '') + ' ↔ ' + (sw.bName || '') : ''))}"` : ''}>${esc(raw ? raw.replace(/\s+/g, '/') : codeText(cs))}</td>`; }).join('')}</tr>`;
   }).join('');
   const D = dutyList(teamDay, false);
   return `<header class="top" style="flex-direction:column;align-items:stretch;gap:8px">
     <div class="row between"><div><h1>ตารางเวรทีม</h1><div class="sub">ดูเวรเพื่อน ขอแลกเวร และเบอร์ติดต่อ</div></div></div>
     <div class="row between"><button type="button" class="btn small" data-act="team-mon" data-d="-1" aria-label="เดือนก่อน">‹</button><strong>${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}</strong><button type="button" class="btn small" data-act="team-mon" data-d="1" aria-label="เดือนถัดไป">›</button></div>
+    <button type="button" class="btn primary" data-act="tov-open">🔄 ดูทั้งเดือนในจอเดียว (แนวนอน)</button>
   </header>
   <section class="card" style="gap:6px">
     <div class="row between"><h2>${teamDay === today() ? 'วันนี้' : esc(thDate(teamDay,{weekday:'short', day:'numeric', month:'short'}))} อยู่เวร ${D.length} คน</h2><button type="button" class="btn small primary" data-act="team-swap" data-d="${teamDay}">สลับเวร</button></div>
@@ -2893,6 +2924,22 @@ function applySwap(a, b, dates, meta){
   return Object.assign({at:new Date().toISOString(), a, b, before, after}, meta || {});
 }
 function swapEditedSince(x){ const same = (p, q) => JSON.stringify(p || []) === JSON.stringify(q || []); return !!(x.after && x.after.some(a => !same(teamCodes(x.a, a.d), a.A) || !same(teamCodes(x.b, a.d), a.B))); }
+/* การแลกเวรที่ยังไม่ย้อน = ทับไฟล์ตารางเวรเสมอ (ไฟล์ของแผนกมักยังไม่ได้แก้ตามการแลก) */
+function activeSwapCells(){ const m = new Map(); (team().swaps || []).filter(x => !x.undone && x.after).forEach(x => x.after.forEach(a => { m.set(x.a + '|' + a.d, x); m.set(x.b + '|' + a.d, x); })); return m; }
+function reassertSwaps(months){
+  const T = team(); let n = 0;
+  (T.swaps || []).filter(x => !x.undone && x.after).sort((p, q) => p.at.localeCompare(q.at)).forEach(x => {
+    if (!T.members.some(m => m.id === x.a) || !T.members.some(m => m.id === x.b)) return;
+    x.after.forEach(a => {
+      if (months && !months.includes(a.d.slice(0,7))) return;
+      const b4 = (x.before || []).find(b => b.d === a.d) || {};
+      const sa = JSON.stringify(teamCodes(x.a, a.d)), sb = JSON.stringify(teamCodes(x.b, a.d));
+      if (sa !== JSON.stringify(a.A)){ setTeamCodes(x.a, a.d, a.A); setTeamRaw(x.a, a.d, b4.rB || ''); n++; }
+      if (sb !== JSON.stringify(a.B)){ setTeamCodes(x.b, a.d, a.B); setTeamRaw(x.b, a.d, b4.rA || ''); n++; }
+    });
+  });
+  return n;
+}
 function undoSwap(x){ x.before.forEach(b => { setTeamCodes(x.a, b.d, b.A); setTeamCodes(x.b, b.d, b.B); setTeamRaw(x.a, b.d, b.rA || ''); setTeamRaw(x.b, b.d, b.rB || ''); }); x.undone = true; }
 function swapPlan(f){
   const fd = new FormData(f); const a = fd.get('a'), b = fd.get('b'), d1 = fd.get('d1'), d2 = fd.get('d2') || d1;
@@ -3167,6 +3214,7 @@ function teamPreview(out, res, mine){
     <div class="preview">${res.people.map((p, i) => { const isMe = S.settings.profile.id && p.empId === S.settings.profile.id; return `<label><input type="checkbox" data-i="${i}" checked style="width:20px;height:20px;margin:0"><span class="grow"><b>${esc(p.name || '(ไม่มีชื่อ)')}</b>${isMe ? ' (ฉัน)' : ''}<span class="meta">${esc(p.empId)} · ${p.list.length} วัน · ${esc(p.list.slice(0, 4).map(x => +x.date.slice(8) + ':' + x.types.map(codeName).join('+')).join(' '))}${p.list.length > 4 ? ' …' : ''}</span></span></label>`; }).join('')}</div>
     <label class="f" style="margin-top:8px">แผนกของคนในไฟล์นี้<input class="field" id="tf-dept" value="${esc(teamPending.dept)}" placeholder="เช่น OR หรือ วิสัญญี"></label>
     <label class="chip" style="align-self:flex-start;margin-top:6px"><input type="checkbox" id="tf-replace">ล้างเวรเดิมทั้งเดือนของคนในไฟล์ก่อน (ปกติ: รวมกับของเดิม)</label>
+    ${(team().swaps || []).some(x => !x.undone) ? '<label class="chip" style="align-self:flex-start;margin-top:6px"><input type="checkbox" id="tf-keepswap" checked>คงการแลกเวรที่บันทึกไว้ (ไฟล์ยังไม่ได้แก้ตามการแลก)</label>' : ''}
     <button type="button" class="btn primary" data-act="team-apply" style="margin-top:10px;width:100%">นำเข้าคนที่เลือก</button>`;
 }
 function applyTeamPending(){
@@ -3187,8 +3235,10 @@ function applyTeamPending(){
     if (replace || !T.months[ym][mm.id]){ T.months[ym][mm.id] = {}; if (T.raw[ym]) delete T.raw[ym][mm.id]; }
     p.list.forEach(x => { T.months[ym][mm.id][x.date.slice(8)] = x.types; setTeamRaw(mm.id, x.date, x.raw || ''); cells++; });
   });
+  const keepSw = !document.getElementById('tf-keepswap') || document.getElementById('tf-keepswap').checked;
+  const kept = keepSw ? reassertSwaps([ym]) : 0;
   teamMonth = ym; teamPending = null; closeSheet();
-  commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน' + (dept ? ' · ' + dept : '') + ')', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''} · ${cells} ช่อง${replace ? '' : ' รวมกับของเดิม'}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}`});
+  commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน' + (dept ? ' · ' + dept : '') + ')', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''} · ${cells} ช่อง${replace ? '' : ' รวมกับของเดิม'}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}${kept ? ' · คงการแลกเวรไว้ ' + kept + ' ช่อง' : ''}`});
 }
 function teamImportSheet(){
   openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
@@ -3719,6 +3769,30 @@ async function runSelfTest(){
      ['08','17:00',false,'8-16 ไม่มี STD หลังเลิกงาน'],['09','10:00',false,'วัน 8-8 ในเวลางาน'],['09','17:00',true,'วัน 8-8 หลัง 16:00 (เปิดตัวเลือก)'],['10','02:00',true,'ตี 2 หลังวัน 8-8'],['13','10:00',true,'ไม่ได้ลงเวร = ถือเป็นวันหยุด'],['14','10:00',true,'ลาพักร้อน']]
       .forEach(([d, t, e, why]) => { const r = otAuto(D + d, t); add('ติ๊ก OT อัตโนมัติ', `${why} (${t}) → ${e ? 'OT' : 'ไม่ OT'}`, r === e); });
     S.settings.otRule.on88 = false; add('ติ๊ก OT อัตโนมัติ', 'ปิดตัวเลือก 8-8 → วัน 8-8 หลัง 16:00 ไม่ OT', otAuto(D + '09', '17:00') === false); S.settings.otRule.on88 = true;
+    /* 4.1) วันหยุดบริษัท → ชั่วโมงอัตโนมัติ */
+    S.coHol = (S.coHol || []).filter(h => !h[0].startsWith('2099-03')).concat([['2099-03-02','ทดสอบหยุด 1',true],['2099-03-03','ทดสอบหยุด 2',true],['2099-03-04','บริษัทไม่หยุด',false]]);
+    S.stdHours['2099-03'] = 184; S.settings.holHours = 8; Object.keys(S.holCredit).filter(k => k.startsWith('2099-03')).forEach(k => delete S.holCredit[k]);
+    Object.keys(S.shifts).filter(k => k.startsWith('2099-03')).forEach(k => delete S.shifts[k]);
+    for (let i = 5; i <= 25; i++) S.shifts['2099-03-' + pad(i)] = {types:['8-16']};
+    let HH = hoursFor('2099-03');
+    add('วันหยุดบริษัท → ชั่วโมง', 'วันหยุดบริษัทนับชั่วโมงให้อัตโนมัติ (2 วัน = 16 ชม.)', HH.holT === 16 && HH.holDays === 2);
+    add('วันหยุดบริษัท → ชั่วโมง', 'วันที่บริษัทไม่หยุด ไม่นับ', !holOn('2099-03-04'));
+    add('วันหยุดบริษัท → ชั่วโมง', 'ต้องทำจริง = 184 − 16 = 168 ชม.', HH.need === 168);
+    add('วันหยุดบริษัท → ชั่วโมง', 'ทำงาน 21 วัน × 8 = 168 ชม. → ไม่ขาด', HH.workT === 168 && HH.diff === 0);
+    setHolOn('2099-03-02', false); HH = hoursFor('2099-03');
+    add('วันหยุดบริษัท → ชั่วโมง', 'ติ๊กออกรายวันได้ (เหลือ 1 วัน = 8 ชม.)', HH.holT === 8);
+    setHolOn('2099-03-02', true); setHolOn('2099-03-10', true); HH = hoursFor('2099-03');
+    add('วันหยุดบริษัท → ชั่วโมง', 'ติ๊กวันหยุดประจำปีวันอื่นเพิ่มเองได้', HH.holT === 24);
+    S.holCredit = Object.fromEntries(Object.entries(S.holCredit).filter(([k]) => !k.startsWith('2099-03'))); S.shifts['2099-03-02'] = {types:['8-16']}; HH = hoursFor('2099-03');
+    add('ทำงานตรงวันหยุด', 'ลงเวร 8-16 วันหยุด: ต้องทำจริงยังหักวันหยุด (168) ชั่วโมงงาน +8 → เกิน 8', HH.need === 168 && HH.workT === 176 && HH.diff === 8);
+    add('ทำงานตรงวันหยุด', 'นับในสรุป “ลงเวรตรงวันหยุด”', holStats(2099).worked === 1);
+    setHolOn('2099-03-02', false); setHolOn('2099-03-08', true); HH = hoursFor('2099-03');
+    add('ทำงานตรงวันหยุด', 'หยุดชดเชย: ติ๊กออกวันหยุด ติ๊กวันชดเชย → ต้องทำจริงเท่าเดิม 168', HH.need === 168 && HH.diff === 8);
+    setHolOn('2099-03-08', false); HH = hoursFor('2099-03');
+    add('ทำงานตรงวันหยุด', 'ถือเป็นวันปกติ: ติ๊กออก → ต้องทำจริง 176 ไม่ขาดไม่เกิน', HH.need === 176 && HH.diff === 0);
+    add('ทำงานตรงวันหยุด', 'ค่าเวรวันนั้นคิดตามเวรปกติ', payFor('2099-03').total === 0);
+    delete S.shifts['2099-03-02'];
+    add('วันหยุดบริษัท → ชั่วโมง', 'ไม่ยุ่งกับเวรและค่าเวร', JSON.stringify(shiftsOn('2099-03-02')) === '[]' && payFor('2099-03').total === 0);
     /* 5) แลกเวรและย้อนกลับ */
     const T = team(); const me = meMember();
     T.members = T.members.filter(m => !String(m.id).startsWith('zz'));
@@ -3806,8 +3880,8 @@ const holPrompt = y => `อ่านรูปประกาศวันหย�
 function holStats(y){
   const t = today(); const L = coHolidays().filter(h => h[0].startsWith(String(y)));
   const on = L.filter(h => h[2]); const past = on.filter(h => h[0] < t);
-  const used = past.filter(h => S.holCredit[h[0]]).length;
-  const worked = past.filter(h => shiftsOn(h[0]).some(isWorkType)).length;
+  const used = past.filter(h => holOn(h[0])).length;
+  const worked = on.filter(h => shiftsOn(h[0]).some(isWorkType)).length;
   const next = coHolidays().find(h => h[2] && h[0] >= t);
   return {all:L, on, past, used, unused: past.length - used, worked, next, pending: L.filter(h => /รอประกาศ/.test(h[1])).length};
 }
@@ -3816,13 +3890,12 @@ function holSheet(){
   openSheet(`${sheetHead('วันหยุดบริษัท ปี ' + (y + 543))}
     <div class="row between" style="gap:6px"><button type="button" class="btn small" data-act="hol-year" data-d="-1">‹ ${y + 542}</button><b>${y + 543}</b><button type="button" class="btn small" data-act="hol-year" data-d="1">${y + 544} ›</button></div>
     <div class="mtiles"><div class="mtile in"><small>วันหยุดทั้งปี</small><b>${H.on.length} วัน</b><span>${H.all.length - H.on.length ? 'ติ๊กออก ' + (H.all.length - H.on.length) : ''}</span></div>
-      <div class="mtile"><small>ผ่านไปแล้ว</small><b>${H.past.length} วัน</b><span>ทำงานตรงวันหยุด ${H.worked}</span></div>
-      <div class="mtile net"><small>นับ +ชม. แล้ว</small><b>${H.used}/${H.past.length}</b><span>${H.unused ? 'ยังไม่ได้นับ ' + H.unused + ' วัน' : 'ครบแล้ว'}</span></div></div>
+      <div class="mtile"><small>ผ่านไปแล้ว</small><b>${H.past.length} วัน</b><span>ลงเวรตรงวันหยุด ${H.worked} วัน</span></div>
+      <div class="mtile net"><small>นับ +ชม. อัตโนมัติ</small><b>${H.on.filter(h => holOn(h[0])).length} วัน</b><span>× ${hrs(Number(S.settings.holHours) || 0)} ชม.</span></div></div>
     ${H.next ? `<p style="margin:0">ถัดไป: <b>${esc(thDate(H.next[0],{weekday:'short', day:'numeric', month:'short'}))}</b> ${esc(H.next[1])} · อีก ${Math.round((parse(H.next[0]) - parse(t)) / 864e5)} วัน</p>` : ''}
     ${H.pending ? `<div class="banner appt" style="margin:0"><div>${H.pending} วันยังเป็น “รอประกาศบริษัท” · พอได้ประกาศจริง ใช้ <b>อ่านจากรูปประกาศ</b> หรือ <b>วางรายการ</b> แล้วเลือก “แทนที่ทั้งปี”</div></div>` : ''}
     <div class="list" style="margin:0">${H.all.length ? H.all.map(h => { const past = h[0] < t; const ts = shiftsOn(h[0]); const work = ts.some(isWorkType);
-      return `<button type="button" class="item" data-act="hol-edit" data-d="${h[0]}" style="${h[2] ? '' : 'opacity:.55'}"><span style="width:76px;flex:none;font-size:13px">${esc(thDate(h[0],{weekday:'short', day:'numeric', month:'short'}))}</span><span class="grow"><span class="title">${esc(h[1])}${h[2] ? '' : ' (ไม่หยุด)'}</span><span class="meta">${past ? (S.holCredit[h[0]] ? '✓ นับ +ชม. แล้ว' : 'ยังไม่ได้นับ +ชม.') : 'ยังไม่ถึง'}${ts.length ? ' · เวร ' + esc(ts.map(codeName).join('+')) : ''}${work && h[2] ? ' · ทำงานวันหยุด' : ''}</span></span><span aria-hidden="true">›</span></button>`; }).join('') : '<div class="empty">ยังไม่มีวันหยุดของปีนี้ เพิ่มด้านล่างได้</div>'}</div>
-    ${H.unused ? `<button type="button" class="btn small" data-act="hol-credit-all" data-y="${y}">นับ +ชม. ให้วันหยุดที่ผ่านไปแล้วทั้งหมด (${H.unused} วัน)</button>` : ''}
+      return `<button type="button" class="item" data-act="hol-edit" data-d="${h[0]}" style="${h[2] ? '' : 'opacity:.55'}"><span style="width:76px;flex:none;font-size:13px">${esc(thDate(h[0],{weekday:'short', day:'numeric', month:'short'}))}</span><span class="grow"><span class="title">${esc(h[1])}${h[2] ? '' : ' (ไม่หยุด)'}</span><span class="meta">${holOn(h[0]) ? (past ? '✓ นับ +ชม. แล้ว' : 'นับ +ชม. อัตโนมัติ') : (h[2] ? 'ติ๊กออกไม่นับชั่วโมง' : 'บริษัทไม่หยุด')}${ts.length ? ' · เวร ' + esc(ts.map(codeName).join('+')) : ''}${work && h[2] ? ' · ทำงานวันหยุด' : ''}</span></span><span aria-hidden="true">›</span></button>`; }).join('') : '<div class="empty">ยังไม่มีวันหยุดของปีนี้ เพิ่มด้านล่างได้</div>'}</div>
     <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small primary" data-act="hol-edit" data-d="">+ เพิ่มวันหยุด</button><button type="button" class="btn small" data-act="hol-import" data-k="img">อ่านจากรูปประกาศ</button><button type="button" class="btn small" data-act="hol-import" data-k="text">วางรายการ</button>${H.all.length ? `<button type="button" class="btn small danger" data-act="hol-clear" data-y="${y}">ลบทั้งปี</button>` : ''}</div>
     <p class="meta" style="margin:0">วันหยุดบริษัทใช้กับ: ตัวเลขสีชมพูในปฏิทิน · ชั่วโมงทำงาน (+ชม./วัน ที่ ตั้งค่า › ชั่วโมงทำงาน) · ไม่ติ๊ก OT ผิดในวันหยุดที่ไม่ได้ทำงาน · My day เตือนก่อนถึงวันหยุด</p>`);
 }
@@ -3873,6 +3946,27 @@ function holApply(){
   S.coHol = C; holPending = null; holYear = +ys[0];
   commit('บันทึกวันหยุดบริษัท ' + pick.length + ' วัน' + (replace ? ' (แทนที่ทั้งปี)' : ''), {msg:'บันทึกวันหยุด ' + pick.length + ' วันแล้ว'});
   holSheet();
+}
+
+
+/* ---------- ดูทั้งเดือนในจอเดียว (แนวนอน) ---------- */
+const SHORT = cs => { const k = cs.slice().sort().join('+'); return ({'8-16':'8','8-16+STD':'8S','STD':'S','8-00':'24','OFF':'X','STDM':'S+','STD+STDM':'S+','OFF+STDM':'S+','VAC':'ลา','SICK':'ป่วย'})[k] || cs.map(codeName).join('+').slice(0,3); };
+function teamOverview(){
+  const T = team(); meMember(); const SW = activeSwapCells();
+  const [y,m] = teamMonth.split('-').map(Number); const days = new Date(y, m, 0).getDate();
+  const ds = Array.from({length:days}, (_, i) => `${teamMonth}-${pad(i+1)}`);
+  const ov = document.createElement('div'); ov.className = 'tov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-label', 'ตารางเวรทั้งเดือน');
+  ov.innerHTML = `<div class="tov-in"><div class="tov-h"><b>${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}</b><span class="meta">8=8-16 · 8S=8-16+STD · S=STD · S+=STD เช้า · 24=8-8 · X=หยุด · ⇄=แลกแล้ว</span><button type="button" class="btn small" data-act="tov-close">ปิด</button></div>
+    <table class="tovg" style="--n:${days}"><thead><tr><th class="nm"></th>${ds.map(d => `<th class="${isCoHoliday(d) ? 'hol' : ''}${d === today() ? ' now' : ''}">${+d.slice(8)}<small>${esc(parse(d).toLocaleDateString('th-TH',{weekday:'narrow'}))}</small></th>`).join('')}</tr></thead>
+    <tbody>${T.members.map(mm => `<tr class="${mm.me ? 'me' : ''}"><th class="nm">${esc((mm.name || '').replace(/^(นาย|นางสาว|นาง|น\.ส\.|นส\.)\s*/, '').split(' ')[0].slice(0, 9))}</th>${ds.map(d => { const cs = teamCodes(mm.id, d); const sw = SW.get(mm.id + '|' + d); return `<td class="${codeClass(cs)}${sw ? ' swp' : ''}" data-act="tov-cell" data-id="${mm.id}" data-d="${d}">${cs.length ? esc(SHORT(cs)) : ''}</td>`; }).join('')}</tr>`).join('')}</tbody></table></div>`;
+  document.body.appendChild(ov);
+  const el = document.documentElement; let locked = false;
+  /* หมุนด้วย CSS ทันทีถ้าจอตั้ง แล้วลองล็อกแนวนอนจริง (ได้ผลในแอปที่ติดตั้ง/เต็มจอ) ถ้าล็อกได้ค่อยเลิกหมุน */
+  ov.classList.toggle('rot', window.innerHeight > window.innerWidth);
+  const tryLock = async () => { try{ if (el.requestFullscreen && !document.fullscreenElement) await Promise.race([el.requestFullscreen(), new Promise((_, r) => setTimeout(r, 800))]); if (screen.orientation && screen.orientation.lock){ await Promise.race([screen.orientation.lock('landscape'), new Promise((_, r) => setTimeout(r, 800))]); locked = true; } }catch(e){} setTimeout(() => ov.classList.toggle('rot', window.innerHeight > window.innerWidth), 300); };
+  tryLock();
+  const onRs = () => ov.classList.toggle('rot', window.innerHeight > window.innerWidth); window.addEventListener('resize', onRs);
+  ov._close = () => { window.removeEventListener('resize', onRs); try{ if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); if (document.fullscreenElement) document.exitFullscreen(); }catch(e){} ov.remove(); };
 }
 
 function patientCheck(text, form, proceed){
@@ -3934,6 +4028,9 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'tov-open': teamOverview(); break;
+    case 'tov-close': { const ov = el.closest('.tov'); if (ov && ov._close) ov._close(); break; }
+    case 'tov-cell': { const ov = el.closest('.tov'); if (ov && ov._close) ov._close(); teamCellSheet(el.dataset.id, el.dataset.d); break; }
     case 'hol-open': holYear = Number(today().slice(0,4)); holSheet(); break;
     case 'hol-year': holYear += Number(el.dataset.d); holSheet(); break;
     case 'hol-edit': holEditSheet(el.dataset.d); break;
@@ -4000,9 +4097,9 @@ document.addEventListener('click', e => {
       if (el.dataset.k === 'clear'){ f.elements.plus.value = ''; f.elements.minus.value = ''; }
       else { const inp = f.elements[el.dataset.k]; inp.value = String(Math.round(((Number(inp.value) || 0) + Number(el.dataset.n)) * 100) / 100); }
       const p2 = Number(f.elements.plus.value) || 0, m2 = Number(f.elements.minus.value) || 0; const hs = f.querySelector('#hsum'); if (hs) hs.textContent = `สุทธิวันนี้ ${p2 - m2 >= 0 ? '+' : '−'}${Math.abs(p2 - m2)} ชม.`; break; }
-    case 'hol-month': { const ym = el.dataset.m; const H = hoursFor(ym); const all = H.holDays >= H.coDays;
-      (S.coHol || []).filter(h => h[2] && h[0].startsWith(ym)).forEach(h => { if (all) delete S.holCredit[h[0]]; else S.holCredit[h[0]] = true; });
-      commit(all ? 'ยกเลิกนับวันหยุดบริษัท ' + ym : 'นับวันหยุดบริษัท ' + ym, {msg: all ? 'ยกเลิกแล้ว' : 'นับวันหยุดบริษัทแล้ว'}); break; }
+    case 'hol-month': { const ym = el.dataset.m; const L = (S.coHol || []).filter(h => h[2] && h[0].startsWith(ym)); const all = L.every(h => holOn(h[0]));
+      L.forEach(h => setHolOn(h[0], !all));
+      commit(all ? 'ไม่นับวันหยุดบริษัท ' + ym : 'นับวันหยุดบริษัท ' + ym, {msg: all ? 'ไม่นับวันหยุดบริษัทเดือนนี้แล้ว' : 'นับวันหยุดบริษัทแล้ว'}); break; }
     case 'install': if (installEvt){ installEvt.prompt(); installEvt.userChoice.then(r => { if (r.outcome !== 'accepted') toast('ยังไม่ได้ติดตั้ง กดใหม่ได้ทุกเมื่อ'); installEvt = null; render(); }); } break;
     case 'install-help': openSheet(`${sheetHead('ติดตั้ง / หาแอปไม่เจอ')}
       <p style="margin:0;font-size:14.5px"><b>ถ้า Chrome ขึ้นว่า “ติดตั้งแอปนี้แล้ว”</b> แปลว่าแอปอยู่ในเครื่องแล้ว แต่ไอคอนอาจไม่ได้อยู่บนหน้าจอหลัก</p>
@@ -4160,7 +4257,7 @@ document.addEventListener('submit', e => {
   } else if (kind === 'shift'){
     const d = f.dataset.d; let ts = fd.getAll('t');
     if (ts.length) S.shifts[d] = {types:ts}; else delete S.shifts[d];
-    if (fd.get('hol')) S.holCredit[d] = true; else delete S.holCredit[d];
+    setHolOn(d, !!fd.get('hol'));
     closeSheet(); commit((ts.length ? 'ลงเวร' + ts.join('+') + ' ' : 'ลบเวร ') + thDate(d,{day:'numeric',month:'short'}));
   } else if (kind === 'case'){
     const op = String(fd.get('op') || '').trim(); const surgeon = String(fd.get('surgeon') || '').trim(); const note = String(fd.get('note') || '').trim();
@@ -4286,7 +4383,7 @@ document.addEventListener('submit', e => {
       const plus = num2(fd.get('plus')), minus = num2(fd.get('minus'));
       const ex = {plus, minus, h: plus - minus, ot: (S.extra[d] || {}).ot || 0, note};
       if (plus || minus || ex.ot || ex.note) S.extra[d] = ex; else delete S.extra[d];
-      if (fd.get('hol')) S.holCredit[d] = true; else delete S.holCredit[d];
+      setHolOn(d, !!fd.get('hol'));
       closeSheet(); commit('ใบลงเวลา ' + thDate(d,{day:'numeric',month:'short'}), {msg:'บันทึกแล้ว'});
     });
   } else if (kind === 'roster'){
