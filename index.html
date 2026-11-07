@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.21</title>
+<title>เลขาส่วนตัว v1.22</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -450,7 +450,7 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.21';
+const APP_VERSION = '1.22';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -937,6 +937,7 @@ function viewMyDay(){
        <div class="wrap">${ASSIGNS.map(a => `<label class="chip"><input type="checkbox" data-act="assign" data-k="${esc(a)}"${(S.assign[t] || []).includes(a) ? ' checked' : ''}>${esc(a)}</label>`).join('')}</div></section>` : ''}`
      : `<section class="card"><div class="row between"><span class="sub">วันนี้ยังไม่ได้ลงเวร</span><button type="button" class="btn small" data-act="set-shift" data-d="${t}">ลงเวร</button></div></section>`}
   ${dutyCard(t)}
+  ${(() => { const nx = coHolidays().find(h => h[2] && h[0] > t && h[0] <= addDays(t, 7)); return nx ? `<section class="card" style="flex-direction:row;align-items:center;gap:10px;padding:12px 14px"><span style="font-size:22px">🏖️</span><span class="grow"><b>${esc(nx[1])}</b><span class="meta" style="display:block">${esc(thDate(nx[0],{weekday:'long', day:'numeric', month:'short'}))} · อีก ${Math.round((parse(nx[0]) - parse(t)) / 864e5)} วัน · วันหยุดบริษัท</span></span><button type="button" class="btn small" data-act="hol-open">ดู</button></section>` : ''; })()}
   ${Updater.hasNew() ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px;background:var(--money-t)"><span style="font-size:26px">✨</span><span class="grow"><b>มีเวอร์ชันใหม่ v${esc(Updater.latest)}</b><span class="meta">ข้อมูลจะสำรองให้อัตโนมัติก่อนอัปเดต</span></span><button type="button" class="btn primary small" data-act="app-update">อัปเดตเลย</button></section>` : ''}
   ${STANDALONE && !IS_INSTALLED && relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>แอปติดตั้งในเครื่องแล้ว</b><span class="meta">ปัดหน้าจอขึ้นเปิดลิ้นชักแอป แล้วหา “เลขาส่วนตัว”</span></span><button type="button" class="btn small" data-act="install-help">ไม่เจอแอป</button></section>` : ''}
   ${STANDALONE && !IS_INSTALLED && !relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>ติดตั้งแอปลงหน้าจอ</b><span class="meta">${installEvt ? 'กดปุ่มแล้วเลือก ติดตั้ง' : IS_IOS ? 'Safari › ปุ่มแชร์ › เพิ่มไปยังหน้าจอโฮม' : 'Chrome › เมนู ⋮ › ติดตั้งแอป / เพิ่มลงในหน้าจอหลัก'}</span></span>${installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>'}</section>` : ''}
@@ -1243,10 +1244,8 @@ function viewConfig(){
     <button class="btn primary small" type="submit" style="align-self:flex-end">บันทึก</button></div></form>
 
   <h2 class="group-t">วันหยุดบริษัท</h2>
-  <div class="list">
-    <div class="lrow meta" style="font-size:12.5px">ติ๊กออกวันที่บริษัทไม่หยุด เพิ่มวันที่บริษัทหยุดเพิ่มได้ด้านล่าง</div>
-    ${coHolidays().filter(h => h[0] >= today().slice(0,4) + '-01-01').slice(0,40).map(h => `<label class="lrow"><span class="meta" style="width:84px;flex:none">${esc(thDate(h[0],{day:'numeric',month:'short',year:'2-digit'}))}</span><span class="grow">${esc(h[1])}</span><input type="checkbox" data-act="cohol" data-d="${h[0]}"${h[2] ? ' checked' : ''}></label>`).join('')}
-    <form class="lrow" data-form="cohol-add" style="flex-wrap:wrap;gap:6px;padding:10px 14px"><input class="field" type="date" name="d" required style="flex:1;min-width:140px"><input class="field" name="n" required placeholder="ชื่อวันหยุด" style="flex:2;min-width:140px"><button class="btn small" type="submit">เพิ่ม</button></form>
+  <div class="list">${(() => { const H = holStats(Number(today().slice(0,4))); return `<div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🏖️</span><span class="grow"><b>ปีนี้ ${H.on.length} วัน · ผ่านแล้ว ${H.past.length} · นับ +ชม. แล้ว ${H.used}</b><span class="meta" style="display:block">${H.next ? 'ถัดไป ' + esc(thDate(H.next[0],{day:'numeric', month:'short'})) + ' ' + esc(H.next[1]) : 'ไม่มีวันหยุดที่จะถึงในรายการ'}${H.pending ? ' · รอประกาศ ' + H.pending + ' วัน' : ''}</span></span><button type="button" class="btn small primary" data-act="hol-open">จัดการ</button></div>`; })()}
+    <div class="lrow meta" style="font-size:12.5px">แก้ ลบ เพิ่ม · อ่านจากรูปประกาศ · วางรายการ · ดูว่าวันไหนนับ +ชม. แล้ว</div>
   </div>
 
   <h2 class="group-t">เชื่อม Google Calendar (อ่านอย่างเดียว)</h2>
@@ -1366,6 +1365,7 @@ function viewGuide(){
     ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
     ['อัตรา OT (ตั้งค่า › อัตรา OT)','Major 90 นาทีแรก ฿800 · ทุกชั่วโมงถัดไป +฿400 · Minor 60 นาทีแรก ฿400 · ทุกชั่วโมงถัดไป +฿200 · ยามวิกาล 23:00–05:00 +฿400 · เศษของชั่วโมงถัดไปนับเป็น 1 ชม. · ปิด Major/Minor = ไม่คิดเงินประเภทนั้น (รวมเคสเดิม)'],
+    ['วันหยุดบริษัท','ตั้งค่า › วันหยุดบริษัท › จัดการ: ดูทั้งปี วันไหนนับ +ชม. แล้ว · แตะวันเพื่อแก้/ลบ · + เพิ่มวันหยุด · อ่านจากรูปประกาศ (Claude อ่านให้) · วางรายการ (เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่”) · เลือก “แทนที่ทั้งปี” เมื่อได้ประกาศจริง · My day เตือนก่อนถึงวันหยุด 7 วัน'],
     ['ตรวจระบบ','ตั้งค่า › ตรวจระบบ › เริ่มตรวจ: ทดสอบเวลา ยามวิกาล ค่า OT การติ๊ก OT แลกเวร/ย้อนกลับ สำรอง/กู้คืน กับสำเนาข้อมูล และทดสอบซิงก์กับคลาวด์จริง (เอกสารทดสอบแยก) · ทำหลังอัปเดตทุกครั้ง ถ้ามี ❌ กดคัดลอกรายงานส่งมาให้แก้'],
     ['ซิงก์หลายเครื่อง (ลิงก์ claude.ai)','ใช้รหัสเดียวกันทุกเครื่อง · ก่อนเปิดใช้จริง กด “ทดสอบซิงก์” ต้องผ่านทุกข้อ · แก้พร้อมกัน: แอปล็อกก่อนเขียนและอ่านยืนยันหลังเขียน ถ้าชนกันขึ้นแถบให้เลือก ชุดที่ไม่ได้เลือกเก็บใน สำรองอัตโนมัติ · เก็บรุ่นก่อนหน้าบนคลาวด์ 1 ชุด (ดึงรุ่นก่อนหน้าจากคลาวด์) · เน็ตหลุด: ข้อมูลอยู่ในเครื่อง ลองใหม่ 15 วิ/1/5/15 นาที แล้วหยุด รอเน็ตกลับหรือกดซิงก์ตอนนี้ · ซิงก์ไม่ใช่การสำรอง ดาวน์โหลดไฟล์สำรองเก็บไว้เดือนละครั้งเสมอ'],
     ['แลกเวรแล้วย้อนกลับ','ทีม › ประวัติการแลกเวร › ย้อนกลับ คืนเวรเดิมของทั้งสองคนครบทุกวัน รวมรหัสแผนกอื่น และเวรในปฏิทินของคุณ · ถ้าวันนั้นถูกแก้หลังแลก แอปเตือนก่อนย้อน'],
@@ -1390,6 +1390,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.22','วันหยุดบริษัท: หน้าจัดการทั้งปี แก้/ลบ/เพิ่ม · อ่านจากรูปประกาศ · วางรายการ · สรุปวันที่นับ +ชม. แล้ว · เตือนใน My day'],
     ['v1.21','ตั้งค่า › ตรวจระบบ: ทดสอบเวลา OT แลกเวร สำรอง และซิงก์กับคลาวด์จริงบนเครื่องของคุณ · ซิงก์: ล็อก + อ่านยืนยันหลังเขียน + เก็บรุ่นก่อนหน้าบนคลาวด์ + ลองใหม่ 4 ครั้งแล้วหยุด · แก้ GitHub ดาวน์โหลดไฟล์สำรอง/.ics ไม่ได้ · นำเข้าไฟล์สำรองเก็บข้อมูลเดิมก่อน · วันหยุดบริษัทที่ทำงาน 8-16 ไม่นับ OT · แจ้งเคสข้ามเที่ยงคืน/เกิน 12 ชม.'],
     ['v1.20','อัตรา OT ใหม่: Major 90 นาที 800 + ชม.ถัดไป 400 · Minor 60 นาที 400 + ชม.ถัดไป 200 · ยามวิกาล 400 · พิมพ์เวลาเป็นตัวเลขได้ (1640 → 16:40) คิดเงินและติ๊กยามวิกาลให้เอง · ปิดประเภท Major/Minor แล้วไม่คิดเงิน · แลกเวรย้อนกลับได้ครบรวมรหัสแผนกอื่น เตือนถ้าแก้หลังแลก · ซิงก์กันเขียนทับพร้อมกัน ซิงก์เองเมื่อเน็ตกลับ เก็บชุดที่ไม่ได้เลือกไว้กู้คืน'],
     ['v1.19','คู่มือ: เพิ่ม “Prompt สร้างแอปนี้ให้แผนกอื่น” คัดลอก/ดาวน์โหลดได้'],
@@ -2939,7 +2940,7 @@ function extractJsonObjects(text){
       if (ch === '"') inStr = true; else if (ch === '{') depth++; else if (ch === '}'){ depth--; if (depth === 0) break; }
     }
     if (depth !== 0) break;
-    try{ const o = JSON.parse(text.slice(i, k + 1)); if (o && (Array.isArray(o.rows) || o.days || o.id)) out.push(o); }catch(e){}
+    try{ const o = JSON.parse(text.slice(i, k + 1)); if (o && (Array.isArray(o.rows) || o.days || o.id || Array.isArray(o.holidays))) out.push(o); }catch(e){}
     i = k + 1;
   }
   return out;
@@ -3770,6 +3771,110 @@ function diagRender(){
     <button type="button" class="btn small" data-act="diag-copy" style="margin-top:6px">คัดลอกรายงาน</button>`;
 }
 
+
+/* ---------- วันหยุดบริษัท: ดู แก้ ลบ เพิ่ม วางรายการ อ่านจากรูปประกาศ ---------- */
+let holYear = Number(today().slice(0,4)), holPending = null;
+const TH_MON_FULL = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+const TH_MON_SHORT = ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+function parseThaiDate(t, defYear){
+  t = String(t || '').trim();
+  let m = t.match(/(\d{4})-(\d{1,2})-(\d{1,2})/); if (m){ let y = +m[1]; if (y > 2400) y -= 543; return `${y}-${pad(+m[2])}-${pad(+m[3])}`; }
+  m = t.match(/(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})/); if (m){ let y = +m[3]; if (y < 100) y = y >= 60 ? 2500 + y : 2000 + y; if (y > 2400) y -= 543; return `${y}-${pad(+m[2])}-${pad(+m[1])}`; }
+  const flat = t.replace(/\s+/g, ' ');
+  for (let i = 0; i < 12; i++){
+    const names = [TH_MON_FULL[i], TH_MON_SHORT[i], TH_MON_SHORT[i].replace(/\./g, '')];
+    for (const nm of names){
+      const re = new RegExp('(\\d{1,2})\\s*' + nm.replace(/\./g, '\\.') + '\\s*(\\d{2,4})?');
+      const mm = flat.match(re);
+      if (mm){ let y = mm[2] ? +mm[2] : defYear; if (y < 100) y = y >= 60 ? 2500 + y : 2000 + y; if (y > 2400) y -= 543; return `${y}-${pad(i + 1)}-${pad(+mm[1])}`; }
+    }
+  }
+  return null;
+}
+function holidaysFromText(text, year){
+  const objs = extractJsonObjects(text);
+  const out = [];
+  objs.forEach(o => (o.holidays || []).forEach(h => { const d = parseThaiDate(h.date, year); if (d) out.push([d, String(h.name || 'วันหยุดบริษัท').trim()]); }));
+  if (!out.length) String(text).split(/\n+/).forEach(line => { const d = parseThaiDate(line, year); if (!d) return;
+    const name = line.replace(/(\d{4}-\d{1,2}-\d{1,2}|\d{1,2}[\/.\-]\d{1,2}[\/.\-]\d{2,4})/, '').replace(new RegExp('\\d{1,2}\\s*(' + TH_MON_FULL.concat(TH_MON_SHORT).map(x => x.replace(/\./g, '\\.')).join('|') + ')\\s*\\d{0,4}'), '').replace(/^[\s\-–:•·|,\d.)(]+|[\s\-–:•·|,]+$/g, '').replace(/^(วัน)?(จันทร์|อังคาร|พุธ|พฤหัสบดี|พฤหัส|ศุกร์|เสาร์|อาทิตย์)(ที่)?\s*/, '').trim();
+    out.push([d, name || 'วันหยุดบริษัท']); });
+  const seen = new Set(); return out.filter(h => !seen.has(h[0]) && seen.add(h[0])).sort((a, b) => a[0].localeCompare(b[0]));
+}
+const holPrompt = y => `อ่านรูปประกาศวันหยุดประจำปีของบริษัท/โรงพยาบาล ปี ${y + 543} (ค.ศ. ${y})
+ใส่ทุกวันที่ประกาศเป็นวันหยุด ตามลำดับวันที่ ถ้ามีวันหยุดชดเชยให้ใส่แยกเป็นอีกวัน
+ตอบเป็น JSON ก้อนเดียวเท่านั้น รูปแบบ: {"holidays":[{"date":"${y}-01-01","name":"วันขึ้นปีใหม่"}]} (date เป็น ค.ศ. รูปแบบ YYYY-MM-DD)`;
+function holStats(y){
+  const t = today(); const L = coHolidays().filter(h => h[0].startsWith(String(y)));
+  const on = L.filter(h => h[2]); const past = on.filter(h => h[0] < t);
+  const used = past.filter(h => S.holCredit[h[0]]).length;
+  const worked = past.filter(h => shiftsOn(h[0]).some(isWorkType)).length;
+  const next = coHolidays().find(h => h[2] && h[0] >= t);
+  return {all:L, on, past, used, unused: past.length - used, worked, next, pending: L.filter(h => /รอประกาศ/.test(h[1])).length};
+}
+function holSheet(){
+  const y = holYear; const H = holStats(y); const t = today();
+  openSheet(`${sheetHead('วันหยุดบริษัท ปี ' + (y + 543))}
+    <div class="row between" style="gap:6px"><button type="button" class="btn small" data-act="hol-year" data-d="-1">‹ ${y + 542}</button><b>${y + 543}</b><button type="button" class="btn small" data-act="hol-year" data-d="1">${y + 544} ›</button></div>
+    <div class="mtiles"><div class="mtile in"><small>วันหยุดทั้งปี</small><b>${H.on.length} วัน</b><span>${H.all.length - H.on.length ? 'ติ๊กออก ' + (H.all.length - H.on.length) : ''}</span></div>
+      <div class="mtile"><small>ผ่านไปแล้ว</small><b>${H.past.length} วัน</b><span>ทำงานตรงวันหยุด ${H.worked}</span></div>
+      <div class="mtile net"><small>นับ +ชม. แล้ว</small><b>${H.used}/${H.past.length}</b><span>${H.unused ? 'ยังไม่ได้นับ ' + H.unused + ' วัน' : 'ครบแล้ว'}</span></div></div>
+    ${H.next ? `<p style="margin:0">ถัดไป: <b>${esc(thDate(H.next[0],{weekday:'short', day:'numeric', month:'short'}))}</b> ${esc(H.next[1])} · อีก ${Math.round((parse(H.next[0]) - parse(t)) / 864e5)} วัน</p>` : ''}
+    ${H.pending ? `<div class="banner appt" style="margin:0"><div>${H.pending} วันยังเป็น “รอประกาศบริษัท” · พอได้ประกาศจริง ใช้ <b>อ่านจากรูปประกาศ</b> หรือ <b>วางรายการ</b> แล้วเลือก “แทนที่ทั้งปี”</div></div>` : ''}
+    <div class="list" style="margin:0">${H.all.length ? H.all.map(h => { const past = h[0] < t; const ts = shiftsOn(h[0]); const work = ts.some(isWorkType);
+      return `<button type="button" class="item" data-act="hol-edit" data-d="${h[0]}" style="${h[2] ? '' : 'opacity:.55'}"><span style="width:76px;flex:none;font-size:13px">${esc(thDate(h[0],{weekday:'short', day:'numeric', month:'short'}))}</span><span class="grow"><span class="title">${esc(h[1])}${h[2] ? '' : ' (ไม่หยุด)'}</span><span class="meta">${past ? (S.holCredit[h[0]] ? '✓ นับ +ชม. แล้ว' : 'ยังไม่ได้นับ +ชม.') : 'ยังไม่ถึง'}${ts.length ? ' · เวร ' + esc(ts.map(codeName).join('+')) : ''}${work && h[2] ? ' · ทำงานวันหยุด' : ''}</span></span><span aria-hidden="true">›</span></button>`; }).join('') : '<div class="empty">ยังไม่มีวันหยุดของปีนี้ เพิ่มด้านล่างได้</div>'}</div>
+    ${H.unused ? `<button type="button" class="btn small" data-act="hol-credit-all" data-y="${y}">นับ +ชม. ให้วันหยุดที่ผ่านไปแล้วทั้งหมด (${H.unused} วัน)</button>` : ''}
+    <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small primary" data-act="hol-edit" data-d="">+ เพิ่มวันหยุด</button><button type="button" class="btn small" data-act="hol-import" data-k="img">อ่านจากรูปประกาศ</button><button type="button" class="btn small" data-act="hol-import" data-k="text">วางรายการ</button>${H.all.length ? `<button type="button" class="btn small danger" data-act="hol-clear" data-y="${y}">ลบทั้งปี</button>` : ''}</div>
+    <p class="meta" style="margin:0">วันหยุดบริษัทใช้กับ: ตัวเลขสีชมพูในปฏิทิน · ชั่วโมงทำงาน (+ชม./วัน ที่ ตั้งค่า › ชั่วโมงทำงาน) · ไม่ติ๊ก OT ผิดในวันหยุดที่ไม่ได้ทำงาน · My day เตือนก่อนถึงวันหยุด</p>`);
+}
+function holEditSheet(d){
+  const h = d ? (S.coHol || []).find(x => x[0] === d) : null;
+  openSheet(`${sheetHead(h ? 'แก้วันหยุด' : 'เพิ่มวันหยุด')}
+    <form data-form="hol-save" data-d="${esc(d || '')}" style="display:flex;flex-direction:column;gap:12px">
+      <label class="f">วันที่<input class="field" type="date" name="d" required value="${esc(h ? h[0] : '')}"></label>
+      <label class="f">ชื่อวันหยุด<input class="field" name="n" required value="${esc(h ? h[1].replace(' (รอประกาศบริษัท)', '') : '')}" placeholder="เช่น วันขึ้นปีใหม่"></label>
+      <label class="chip" style="align-self:flex-start"><input type="checkbox" name="on"${!h || h[2] ? ' checked' : ''}>บริษัทหยุดวันนี้</label>
+      <div class="row">${h ? `<button type="button" class="btn danger" data-act="hol-del" data-d="${esc(h[0])}">ลบ</button>` : ''}<button class="btn primary" type="submit" style="flex:1">บันทึก</button></div>
+    </form>`);
+}
+function holImportSheet(kind){
+  const y = holYear;
+  openSheet(`${sheetHead(kind === 'img' ? 'อ่านวันหยุดจากรูปประกาศ' : 'วางรายการวันหยุด')}
+    ${kind === 'img' ? `${STANDALONE ? '' : `<label class="f">รูปประกาศวันหยุด (ถ่ายหรือแคปหน้าจอ)<input class="field" type="file" id="hol-img" accept="image/*" style="padding:8px"></label><p class="meta" style="margin:0">Claude อ่านรูปให้ แล้วแสดงรายการให้ตรวจก่อนบันทึก</p>`}
+      <details${STANDALONE ? ' open' : ''}><summary style="cursor:pointer;font-weight:600">${STANDALONE ? 'ให้ Claude อ่านรูปให้' : 'หรือให้ Claude ในแอป Claude อ่าน'}</summary>
+        <ol style="margin:6px 0;padding-left:20px;font-size:13.5px"><li>กด <b>คัดลอกคำสั่ง</b> › เปิดแอป Claude › ส่งรูปประกาศพร้อมวางคำสั่ง</li><li>คัดลอกคำตอบทั้งหมดมาวางในช่องด้านล่าง</li></ol>
+        <button type="button" class="btn small" data-act="hol-prompt">คัดลอกคำสั่ง</button></details>` : `<p class="meta" style="margin:0">วางได้ทีละบรรทัด เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่” · “13/04/2570 สงกรานต์” · “2027-05-01 วันแรงงาน” หรือคำตอบ JSON จาก Claude</p>`}
+    <textarea class="field" id="hol-txt" rows="5" placeholder="วางรายการวันหยุด หรือคำตอบจาก Claude"></textarea>
+    <button type="button" class="btn small primary" data-act="hol-parse" style="align-self:flex-start">อ่านรายการ</button>
+    <div id="hol-out"></div>`);
+  const inp = $('#hol-img'); if (inp) inp.addEventListener('change', async () => {
+    const f = inp.files && inp.files[0]; if (!f) return; const out = $('#hol-out'); out.innerHTML = '<p class="meta">Claude กำลังอ่านรูป อาจใช้เวลาครึ่งนาที…</p>';
+    let sample = null; try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
+    if (!sample){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>หน้านี้ส่งรูปให้ Claude ไม่ได้ ใช้ “ให้ Claude ในแอป Claude อ่าน” แทน</div></div>'; return; }
+    try{ const v = await sample.json(holPrompt(y), {images:[f], modelTier:'default'}); holPreview(holidaysFromText(JSON.stringify(v), y)); }
+    catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>${e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตารางวันหยุด'}</div></div>`; }
+  });
+}
+function holPreview(list){
+  const out = $('#hol-out'); if (!out) return; holPending = list;
+  if (!list.length){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>ไม่พบวันที่ในข้อความ ลองพิมพ์แบบ “1 ม.ค. 2570 ชื่อวันหยุด” บรรทัดละวัน</div></div>'; return; }
+  const ys = [...new Set(list.map(h => h[0].slice(0,4)))];
+  out.innerHTML = `<p style="margin:6px 0"><b>พบ ${list.length} วัน</b> (ปี ${ys.map(x => +x + 543).join(', ')}) ติ๊กออกวันที่ไม่ต้องการ แก้ชื่อได้</p>
+    <div class="preview">${list.map((h, i) => `<label><input type="checkbox" data-i="${i}" checked style="width:20px;height:20px;margin:0"><span style="width:92px">${esc(thDate(h[0],{weekday:'short', day:'numeric', month:'short', year:'2-digit'}))}</span><input class="field" data-n="${i}" value="${esc(h[1])}" style="min-height:34px;flex:1"></label>`).join('')}</div>
+    <label class="chip" style="align-self:flex-start;margin-top:6px"><input type="checkbox" id="hol-replace">แทนที่วันหยุดเดิมทั้งปี ${ys.map(x => +x + 543).join(', ')} (ปกติ: เพิ่มรวมกับของเดิม)</label>
+    <button type="button" class="btn primary" data-act="hol-apply" style="width:100%;margin-top:8px">บันทึกวันหยุด</button>`;
+}
+function holApply(){
+  const L = holPending || []; const pick = [...document.querySelectorAll('#hol-out .preview input[type=checkbox]')].filter(x => x.checked).map(x => { const i = +x.dataset.i; const nm = document.querySelector(`#hol-out input[data-n="${i}"]`); return [L[i][0], (nm && nm.value.trim()) || L[i][1]]; });
+  if (!pick.length){ toast('ยังไม่ได้เลือกวัน', true); return; }
+  const replace = !!(document.getElementById('hol-replace') || {}).checked; const ys = [...new Set(pick.map(h => h[0].slice(0,4)))];
+  AutoBak.save('ก่อนแก้วันหยุดบริษัท');
+  let C = S.coHol || []; if (replace) C = C.filter(h => !ys.includes(h[0].slice(0,4)));
+  pick.forEach(([d, n]) => { C = C.filter(h => h[0] !== d); C.push([d, n, true]); });
+  S.coHol = C; holPending = null; holYear = +ys[0];
+  commit('บันทึกวันหยุดบริษัท ' + pick.length + ' วัน' + (replace ? ' (แทนที่ทั้งปี)' : ''), {msg:'บันทึกวันหยุด ' + pick.length + ' วันแล้ว'});
+  holSheet();
+}
+
 function patientCheck(text, form, proceed){
   if (!S.settings.patientWarn || !PATIENT.test(text) || form.dataset.pwOk) return proceed();
   form.querySelector('#pw').innerHTML = `<div class="banner appt" style="margin:0"><div>ข้อความนี้ดูเหมือนมีข้อมูลผู้ป่วย แนะนำไม่จดในแอปนี้<div class="row" style="margin-top:8px"><button type="button" class="btn small" id="pw-edit">กลับไปแก้</button><button type="button" class="btn small" id="pw-go">บันทึกต่อ</button></div></div></div>`;
@@ -3829,6 +3934,16 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'hol-open': holYear = Number(today().slice(0,4)); holSheet(); break;
+    case 'hol-year': holYear += Number(el.dataset.d); holSheet(); break;
+    case 'hol-edit': holEditSheet(el.dataset.d); break;
+    case 'hol-del': confirmSheet('ลบวันหยุดนี้?', 'ลบ', () => { S.coHol = (S.coHol || []).filter(h => h[0] !== el.dataset.d); commit('ลบวันหยุดบริษัท', {msg:'ลบแล้ว'}); holSheet(); }, true); break;
+    case 'hol-clear': confirmSheet('ลบวันหยุดบริษัททั้งปี ' + (Number(el.dataset.y) + 543) + '? (เก็บข้อมูลเดิมใน สำรองอัตโนมัติ ก่อน)', 'ลบทั้งปี', () => { AutoBak.save('ก่อนลบวันหยุดทั้งปี'); S.coHol = (S.coHol || []).filter(h => !h[0].startsWith(el.dataset.y)); commit('ลบวันหยุดบริษัททั้งปี', {msg:'ลบแล้ว'}); holSheet(); }, true); break;
+    case 'hol-import': holImportSheet(el.dataset.k); break;
+    case 'hol-prompt': { const t = holPrompt(holYear); if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('คัดลอกคำสั่งแล้ว ไปวางในแอป Claude พร้อมรูป'), () => toast('คัดลอกไม่ได้', true)); break; }
+    case 'hol-parse': holPreview(holidaysFromText(($('#hol-txt') || {}).value || '', holYear)); break;
+    case 'hol-apply': holApply(); break;
+    case 'hol-credit-all': { const y = el.dataset.y; const t = today(); let n = 0; (S.coHol || []).filter(h => h[2] && h[0].startsWith(y) && h[0] < t && !S.holCredit[h[0]]).forEach(h => { S.holCredit[h[0]] = true; n++; }); commit('นับ +ชม. วันหยุดบริษัท ' + n + ' วัน', {msg:'นับให้ ' + n + ' วันแล้ว'}); holSheet(); break; }
     case 'diag-open': diagSheet(); break;
     case 'diag-run': { const b = el; b.disabled = true; b.textContent = 'กำลังตรวจ…'; runSelfTest().then(() => { diagRender(); b.disabled = false; b.textContent = 'ตรวจอีกครั้ง'; log('ตรวจระบบ', diagLast.every(r => r.ok !== false)); writeLocal(); }); break; }
     case 'diag-copy': { if (!diagLast) break; const t = 'ผลตรวจระบบ เลขาส่วนตัว v' + APP_VERSION + ' · ' + new Date().toLocaleString('th-TH') + '\n' + diagLast.map(r => `${r.ok === true ? '✅' : r.ok === false ? '❌' : '⚪'} [${r.g}] ${r.name}${r.note ? ' — ' + r.note : ''}`).join('\n'); if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('คัดลอกรายงานแล้ว'), () => toast('คัดลอกไม่ได้', true)); break; }
@@ -4085,6 +4200,11 @@ document.addEventListener('submit', e => {
   } else if (kind === 'profile'){
     S.settings.profile = {name:String(fd.get('name')||'').trim(), id:String(fd.get('id')||'').trim(), pos:String(fd.get('pos')||'').trim(), dept:String(fd.get('dept')||'').trim()};
     commit('แก้ข้อมูลใบลงเวลา', {msg:'บันทึกแล้ว'});
+  } else if (kind === 'hol-save'){
+    const d = fd.get('d'), n = String(fd.get('n') || '').trim(); if (!d || !n) return;
+    const old = f.dataset.d; S.coHol = (S.coHol || []).filter(h => h[0] !== d && h[0] !== old); S.coHol.push([d, n, !!fd.get('on')]);
+    if (old && old !== d && S.holCredit[old]){ delete S.holCredit[old]; }
+    holYear = Number(d.slice(0,4)); commit((old ? 'แก้' : 'เพิ่ม') + 'วันหยุดบริษัท ' + n, {msg:'บันทึกแล้ว'}); holSheet();
   } else if (kind === 'cohol-add'){
     const d = fd.get('d'), n = String(fd.get('n') || '').trim(); if (!d || !n) return;
     S.coHol = (S.coHol || []).filter(h => h[0] !== d); S.coHol.push([d, n, true]);
