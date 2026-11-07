@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.20</title>
+<title>เลขาส่วนตัว v1.21</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -450,7 +450,7 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.20';
+const APP_VERSION = '1.21';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -1263,7 +1263,7 @@ function viewConfig(){
   <h2 class="group-t">ซิงก์มือถือ + คอม (เข้ารหัสก่อนส่ง)</h2>
   <div class="list"><div class="lrow" style="flex-direction:column;align-items:stretch;padding:12px 14px;gap:10px">
     <div class="meta" style="font-size:13px">${esc(sync.text)}</div>
-    ${sync.available ? (sync.on ? `<div class="row" style="flex-wrap:wrap"><button type="button" class="btn small" data-act="sync-now">ซิงก์ตอนนี้</button><button type="button" class="btn small danger" data-act="sync-off">ปิดซิงก์บนเครื่องนี้</button></div>`
+    ${sync.available ? (sync.on ? `<div class="row" style="flex-wrap:wrap"><button type="button" class="btn small" data-act="sync-now">ซิงก์ตอนนี้</button><button type="button" class="btn small" data-act="sync-prev">ดึงรุ่นก่อนหน้าจากคลาวด์</button><button type="button" class="btn small" data-act="diag-open">ทดสอบซิงก์</button><button type="button" class="btn small danger" data-act="sync-off">ปิดซิงก์บนเครื่องนี้</button></div>`
       : `<form data-form="sync-on" style="display:flex;flex-direction:column;gap:8px">
           <label class="f">รหัสผ่านสำหรับเข้ารหัส (ใช้รหัสเดียวกันทุกเครื่อง)<input class="field" type="password" name="pass" minlength="8" required autocomplete="new-password"></label>
           <label class="chip" style="align-self:flex-start"><input type="checkbox" name="remember" checked>จำรหัสบนเครื่องนี้</label>
@@ -1286,6 +1286,9 @@ function viewConfig(){
   </div>` : ''}
   ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div>
       <div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><span style="display:block;font-weight:600">แจ้งเตือนของแอป</span><span class="meta">${'Notification' in window ? (Notification.permission === 'denied' ? 'ถูกบล็อกอยู่ เปิดได้ที่ Chrome › การตั้งค่าเว็บไซต์ › การแจ้งเตือน' : S.settings.noti && Notification.permission === 'granted' ? 'เปิดอยู่ · เด้งเตือนนัดของวันนี้เมื่อเปิดแอป และทุก 5 นาทีระหว่างเปิดอยู่' : 'เด้งเตือนนัดในแถบแจ้งเตือนของมือถือ') : 'เครื่องนี้ไม่รองรับ'}</span></span>${'Notification' in window && Notification.permission !== 'denied' ? (S.settings.noti && Notification.permission === 'granted' ? '<button type="button" class="btn small" data-act="noti-off">ปิด</button>' : '<button type="button" class="btn small primary" data-act="noti-on">เปิดแจ้งเตือน</button>') : ''}</div></div>` : `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow meta" style="padding:12px 14px">แอปบน claude.ai ติดตั้งลงหน้าจอไม่ได้ ให้ใช้เวอร์ชัน GitHub (ดู README) แล้วเปิดใน Chrome</div></div>`}
+
+  <h2 class="group-t">ตรวจระบบ</h2>
+  <div class="list"><div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🩺</span><span class="grow"><b>ตรวจว่าทุกระบบทำงานถูกต้อง</b><span class="meta" style="display:block">เวลา ค่า OT การติ๊ก OT แลกเวร/ย้อนกลับ สำรอง/กู้คืน และซิงก์กับคลาวด์จริง · ทดสอบกับสำเนา ไม่แตะข้อมูลจริง</span></span><button type="button" class="btn small primary" data-act="diag-open">ตรวจระบบ</button></div></div>
 
   <h2 class="group-t">Prompt (คำสั่ง) ให้ AI</h2>
   <div class="list"><div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🔮</span><span class="grow"><b>รู้จักตัวเองแบบไม่โกหก</b><span class="meta" style="display:block">รวมเวร ชั่วโมงงาน เคส รูทีน นัด ไอเดีย และเวลาว่าง 30 วัน จัดเป็นหมวด พร้อมคำสั่งวางถาม AI ได้ทันที</span></span><div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small primary" data-act="ai-open">Prompt สรุปตัวฉัน</button><button type="button" class="btn small" data-act="ai-idea">💡 Prompt สร้างไอเดีย</button></div></div></div>
@@ -1363,7 +1366,8 @@ function viewGuide(){
     ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
     ['อัตรา OT (ตั้งค่า › อัตรา OT)','Major 90 นาทีแรก ฿800 · ทุกชั่วโมงถัดไป +฿400 · Minor 60 นาทีแรก ฿400 · ทุกชั่วโมงถัดไป +฿200 · ยามวิกาล 23:00–05:00 +฿400 · เศษของชั่วโมงถัดไปนับเป็น 1 ชม. · ปิด Major/Minor = ไม่คิดเงินประเภทนั้น (รวมเคสเดิม)'],
-    ['ซิงก์หลายเครื่อง (ลิงก์ claude.ai)','ตั้งค่า › ซิงก์ ใช้รหัสเดียวกันทุกเครื่อง · แก้พร้อมกัน 2 เครื่อง แอปจะไม่เขียนทับเงียบ ๆ แต่ขึ้นแถบให้เลือกชุดข้อมูล ชุดที่ไม่ได้เลือกถูกเก็บใน สำรองอัตโนมัติ · เน็ตหลุดตอนบันทึก ข้อมูลยังอยู่ในเครื่อง และซิงก์เองเมื่อเน็ตกลับ'],
+    ['ตรวจระบบ','ตั้งค่า › ตรวจระบบ › เริ่มตรวจ: ทดสอบเวลา ยามวิกาล ค่า OT การติ๊ก OT แลกเวร/ย้อนกลับ สำรอง/กู้คืน กับสำเนาข้อมูล และทดสอบซิงก์กับคลาวด์จริง (เอกสารทดสอบแยก) · ทำหลังอัปเดตทุกครั้ง ถ้ามี ❌ กดคัดลอกรายงานส่งมาให้แก้'],
+    ['ซิงก์หลายเครื่อง (ลิงก์ claude.ai)','ใช้รหัสเดียวกันทุกเครื่อง · ก่อนเปิดใช้จริง กด “ทดสอบซิงก์” ต้องผ่านทุกข้อ · แก้พร้อมกัน: แอปล็อกก่อนเขียนและอ่านยืนยันหลังเขียน ถ้าชนกันขึ้นแถบให้เลือก ชุดที่ไม่ได้เลือกเก็บใน สำรองอัตโนมัติ · เก็บรุ่นก่อนหน้าบนคลาวด์ 1 ชุด (ดึงรุ่นก่อนหน้าจากคลาวด์) · เน็ตหลุด: ข้อมูลอยู่ในเครื่อง ลองใหม่ 15 วิ/1/5/15 นาที แล้วหยุด รอเน็ตกลับหรือกดซิงก์ตอนนี้ · ซิงก์ไม่ใช่การสำรอง ดาวน์โหลดไฟล์สำรองเก็บไว้เดือนละครั้งเสมอ'],
     ['แลกเวรแล้วย้อนกลับ','ทีม › ประวัติการแลกเวร › ย้อนกลับ คืนเวรเดิมของทั้งสองคนครบทุกวัน รวมรหัสแผนกอื่น และเวรในปฏิทินของคุณ · ถ้าวันนั้นถูกแก้หลังแลก แอปเตือนก่อนย้อน'],
     ['พิมพ์เวลาเคส','Theatre start/finish พิมพ์ตัวเลขได้เลย เช่น 1640 = 16:40, 940 = 09:40, 23.30 = 23:30 · ค่าเคสคิดให้ทันที · ติ๊กยามวิกาลให้เองเมื่อเวลาคาบ 23:00–05:00 · ติ๊ก OT ให้ตามกติกา แก้เองได้'],
     ['นำเข้าเคสจากไฟล์แผนก','ดาวน์โหลดสำเนา “ลงทะเบียนเคสผ่าตัด” (.xlsx) จาก SharePoint เดือนละครั้ง › ใบเวร › ค่าเคส › นำเข้าเคสจาก Excel › แอปรู้จักไฟล์นี้เอง เลือกเดือน › ดูตัวอย่าง › นำเข้า (ไม่ซ้ำ ไม่อ่านชื่อผู้ป่วย) · ไฟล์แบบอื่นจับคู่คอลัมน์เอง · OT ติ๊กให้เองตามช่วง STD 16:00–08:00 และวันหยุด'],
@@ -1386,6 +1390,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.21','ตั้งค่า › ตรวจระบบ: ทดสอบเวลา OT แลกเวร สำรอง และซิงก์กับคลาวด์จริงบนเครื่องของคุณ · ซิงก์: ล็อก + อ่านยืนยันหลังเขียน + เก็บรุ่นก่อนหน้าบนคลาวด์ + ลองใหม่ 4 ครั้งแล้วหยุด · แก้ GitHub ดาวน์โหลดไฟล์สำรอง/.ics ไม่ได้ · นำเข้าไฟล์สำรองเก็บข้อมูลเดิมก่อน · วันหยุดบริษัทที่ทำงาน 8-16 ไม่นับ OT · แจ้งเคสข้ามเที่ยงคืน/เกิน 12 ชม.'],
     ['v1.20','อัตรา OT ใหม่: Major 90 นาที 800 + ชม.ถัดไป 400 · Minor 60 นาที 400 + ชม.ถัดไป 200 · ยามวิกาล 400 · พิมพ์เวลาเป็นตัวเลขได้ (1640 → 16:40) คิดเงินและติ๊กยามวิกาลให้เอง · ปิดประเภท Major/Minor แล้วไม่คิดเงิน · แลกเวรย้อนกลับได้ครบรวมรหัสแผนกอื่น เตือนถ้าแก้หลังแลก · ซิงก์กันเขียนทับพร้อมกัน ซิงก์เองเมื่อเน็ตกลับ เก็บชุดที่ไม่ได้เลือกไว้กู้คืน'],
     ['v1.19','คู่มือ: เพิ่ม “Prompt สร้างแอปนี้ให้แผนกอื่น” คัดลอก/ดาวน์โหลดได้'],
     ['v1.18','ย้าย “แอป” ไปก่อนคู่มือ · เรียกชื่อให้ตรง: Prompt สร้างไอเดีย / Prompt สรุปตัวฉัน · ข้อความที่คัดลอกขึ้นต้นด้วยชื่อ Prompt ตามเรื่องที่เลือก'],
@@ -1592,7 +1597,7 @@ function otAuto(date, start){
   const ref = start < '08:00' ? addDays(date, -1) : date;
   const ts = shiftsOn(ref);
   if (ts.includes('8-00')) return S.settings.otRule.on88 !== false && (start >= '16:00' || start < '08:00');
-  const off = !ts.length || ts.every(k => ['OFF','VAC','SICK'].includes(k)) || isCoHoliday(ref);
+  const off = !ts.length || ts.every(k => ['OFF','VAC','SICK'].includes(k));
   if (off) return true;
   const after16 = start >= '16:00' || start < '08:00';
   if (ts.some(isStd)) return after16 || !ts.some(isWorkType);
@@ -1605,10 +1610,11 @@ function updateCaseCalc(f){
   if (f && f.dataset.d){ const ob = f.querySelector('input[name=ot]'); const st = (f.querySelector('input[name=start]') || {}).value; if (ob && !ob.dataset.touched && st){ const a = otAuto(f.dataset.d, st); if (a != null) ob.checked = a; } }
   const box = f && f.querySelector('#case-calc'); if (!box) return;
   const c = caseFromForm(f); const m = caseMins(c);
-  if (!c.ot){ box.innerHTML = `<span class="meta">ใช้เวลา ${m} นาที · ไม่คิด OT (ติ๊ก “เคส OT” เพื่อคิดเงิน)</span>`; return; }
+  const over = c.start && c.end && c.end < c.start ? ' (ข้ามเที่ยงคืน)' : ''; const longW = m > 720 ? ' · ⚠️ เกิน 12 ชม. ตรวจเวลาอีกครั้ง' : '';
+  if (!c.ot){ box.innerHTML = `<span class="meta">ใช้เวลา ${m} นาที${over}${longW} · ไม่คิด OT (ติ๊ก “เคส OT” เพื่อคิดเงิน)</span>`; return; }
   if (!c.cls){ box.innerHTML = '<span style="color:var(--life-i)">ติ๊ก Major หรือ Minor ก่อน เพื่อคิดเงิน OT</span>'; return; }
   const a = otAmount(c);
-  box.innerHTML = `<b>ค่า OT เคสนี้ ${baht(a.total)}</b><span class="meta">${esc(otExplain(c))}</span>`;
+  box.innerHTML = `<b>ค่า OT เคสนี้ ${baht(a.total)}</b><span class="meta">${esc(otExplain(c))}${over}${longW}</span>`;
 }
 function routineSheet(r){
   r = r || {};
@@ -2003,7 +2009,7 @@ function tsDaySheet(d){
 const XLSX_URL = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
 function loadScript(src){ return new Promise((res, rej) => { if (window.XLSX) return res(); const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
 async function exportTimesheet(ym){
-  const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
+  const dl = await getDL();
   if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
   try{ await loadScript(XLSX_URL); }catch(e){ toast('โหลดตัวสร้างไฟล์ Excel ไม่สำเร็จ', true); return; }
   const H = hoursFor(ym); const pf = S.settings.profile; const [y,m] = ym.split('-').map(Number);
@@ -2458,7 +2464,7 @@ function saveFormCell(el){
 }
 async function loadLib(src, test){ if (test()) return; await new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
 async function formPdf(kind){
-  const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
+  const dl = await getDL();
   if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
   toast('กำลังสร้าง PDF…');
   try{
@@ -2485,7 +2491,7 @@ async function formPdf(kind){
   catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); }
 }
 async function formXlsx(kind){
-  const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
+  const dl = await getDL();
   if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
   try{ await loadScript(XLSX_URL); }catch(e){ toast('โหลดตัวสร้าง Excel ไม่สำเร็จ', true); return; }
   const ym = tsMonth; const aoa = []; const E = fed(kind, ym);
@@ -2550,7 +2556,7 @@ function monthSummaryText(ym){
   return lines.join('\n');
 }
 async function exportAll(scope){
-  const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
+  const dl = await getDL();
   if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
   try{ await loadScript(XLSX_URL); }catch(e){ toast('โหลดตัวสร้าง Excel ไม่สำเร็จ', true); return; }
   const months = monthsInScope(scope); const inScope = d => months.includes(d.slice(0,7));
@@ -2599,7 +2605,7 @@ async function exportIcs(){
     L.push('END:VEVENT');
   });
   L.push('END:VCALENDAR');
-  const dl = await window.claude.use('downloads');
+  const dl = await getDL();
   try{ await dl.save({filename:'secretary-reminders.ics', data:L.join('\r\n'), mimeType:'text/calendar'}); log('ดาวน์โหลดไฟล์ปฏิทิน ' + list.length + ' นัด', true); writeLocal(); toast('ดาวน์โหลดแล้ว เปิดไฟล์เพื่อเพิ่มลงปฏิทินมือถือ'); }
   catch(e){ toast('ดาวน์โหลดไม่สำเร็จ', true); }
 }
@@ -2879,6 +2885,14 @@ function teamSwapSheet(d, otherId){
       <p class="meta" style="margin:0">บันทึกแล้วตารางของทั้งสองคนเปลี่ยนทันที (ถ้าเป็นเวรของคุณ ค่าเวรและใบเบิกเปลี่ยนตาม) ย้อนกลับได้ในประวัติการแลกเวร</p>
     </form>`, sh => swapPreview(sh.querySelector('form')));
 }
+function applySwap(a, b, dates, meta){
+  const before = dates.map(d => ({d, A: teamCodes(a, d), B: teamCodes(b, d), rA: teamRaw(a, d), rB: teamRaw(b, d)}));
+  before.forEach(x => { setTeamCodes(a, x.d, x.B); setTeamCodes(b, x.d, x.A); setTeamRaw(a, x.d, x.rB || ''); setTeamRaw(b, x.d, x.rA || ''); });
+  const after = dates.map(d => ({d, A: teamCodes(a, d), B: teamCodes(b, d)}));
+  return Object.assign({at:new Date().toISOString(), a, b, before, after}, meta || {});
+}
+function swapEditedSince(x){ const same = (p, q) => JSON.stringify(p || []) === JSON.stringify(q || []); return !!(x.after && x.after.some(a => !same(teamCodes(x.a, a.d), a.A) || !same(teamCodes(x.b, a.d), a.B))); }
+function undoSwap(x){ x.before.forEach(b => { setTeamCodes(x.a, b.d, b.A); setTeamCodes(x.b, b.d, b.B); setTeamRaw(x.a, b.d, b.rA || ''); setTeamRaw(x.b, b.d, b.rB || ''); }); x.undone = true; }
 function swapPlan(f){
   const fd = new FormData(f); const a = fd.get('a'), b = fd.get('b'), d1 = fd.get('d1'), d2 = fd.get('d2') || d1;
   const dates = [...new Set([d1, d2].filter(Boolean))];
@@ -3670,6 +3684,92 @@ function caseImportApply(){
   commit('นำเข้าเคสจากไฟล์ ' + n + ' เคส', {msg:'นำเข้า ' + n + ' เคสแล้ว · ดูได้ใน My day ตาราง ใบเวร และใบเบิกค่าเคส'});
 }
 
+
+/* ---------- ตรวจระบบในเครื่อง (ทดสอบกับสำเนาข้อมูล ไม่แตะข้อมูลจริง) ---------- */
+const STD_OT = {majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, minorNext:200, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true, on88:true};
+let diagLast = null;
+async function runSelfTest(){
+  const R0 = []; const add = (g, name, ok, note) => R0.push({g, name, ok, note: note || ''});
+  const J = x => JSON.stringify(x);
+  const saved = S;
+  try{
+    S = migrate(JSON.parse(JSON.stringify(saved))) || JSON.parse(JSON.stringify(saved));
+    S.settings.otRule = Object.assign({}, STD_OT);
+    /* 1) รูปแบบเวลา */
+    [['1640','16:40'],['940','09:40'],['9','09:00'],['16:40','16:40'],['23.30','23:30'],['105','01:05'],['2400','00:00'],['2575',null],['1260',null]]
+      .forEach(([i, e]) => { const r = normTime(i); add('รูปแบบเวลา', `พิมพ์ ${i} → ${e === null ? 'แจ้งว่าผิด' : e}`, r === e, r === e ? '' : 'ได้ ' + r); });
+    /* 2) ช่วงยามวิกาล / ข้ามเที่ยงคืน */
+    [['22:00','23:00',false],['22:00','23:01',true],['05:00','06:00',false],['04:59','05:30',true],['23:30','01:05',true],['10:00','12:00',false],['23:00','',true]]
+      .forEach(([a, b, e]) => { const r = overlapsNight(a, b, 60); add('ยามวิกาล / ข้ามคืน', `${a}–${b || '(ไม่ใส่เวลาเลิก ใช้ 60 นาที)'} ${e ? 'ได้' : 'ไม่ได้'}ค่ายามวิกาล`, r === e); });
+    add('ยามวิกาล / ข้ามคืน', '23:30–01:05 นับ 95 นาที (ข้ามเที่ยงคืน)', caseMins({start:'23:30', end:'01:05'}) === 95);
+    /* 3) ค่า OT */
+    const ot = (cls, mins, night) => otAmount({ot:true, cls, mins, night: !!night}).total;
+    [['major',90,0,800],['major',91,0,1200],['major',150,0,1200],['major',151,0,1600],['minor',60,0,400],['minor',61,0,600],['minor',120,0,600],['minor',121,0,800],['major',95,1,1600],['minor',30,1,800]]
+      .forEach(([c, m, n, e]) => { const r = ot(c, m, n); add('ค่า OT', `${c === 'major' ? 'Major' : 'Minor'} ${m} นาที${n ? ' + ยามวิกาล' : ''} = ฿${e}`, r === e, r === e ? '' : 'ได้ ฿' + r); });
+    add('ค่า OT', 'ไม่ติ๊ก OT = ฿0', otAmount({ot:false, cls:'major', mins:200}).total === 0);
+    add('ค่า OT', 'ติ๊ก OT แต่ไม่เลือก Major/Minor = ฿0 (แจ้งให้เลือก)', otAmount({ot:true, cls:'', mins:200}).total === 0);
+    S.settings.otRule.majorOn = false; add('ค่า OT', 'ปิด Major → เคส Major ไม่คิดเงิน', ot('major', 120) === 0); add('ค่า OT', 'ปิด Major → Minor ยังคิดเงิน', ot('minor', 60) === 400); S.settings.otRule.majorOn = true;
+    S.settings.otRule.minorOn = false; add('ค่า OT', 'ปิด Minor → เคส Minor ไม่คิดเงิน', ot('minor', 60) === 0); S.settings.otRule.minorOn = true;
+    /* 4) ติ๊ก OT อัตโนมัติตามเวร */
+    const D = '2099-01-'; const sh = {'05':['OFF'],'06':['STD'],'07':['8-16','STD'],'08':['8-16'],'09':['8-00'],'11':['8-16','STD'],'14':['VAC']};
+    Object.keys(S.shifts).filter(k => k.startsWith('2099-')).forEach(k => delete S.shifts[k]);
+    Object.entries(sh).forEach(([d, t]) => { S.shifts[D + d] = {types:t}; });
+    [['05','10:00',true,'วันหยุด'],['06','10:00',true,'วัน STD อย่างเดียว'],['07','10:00',false,'8-16+STD ในเวลางาน'],['07','16:30',true,'8-16+STD หลัง 16:00'],['12','07:30',true,'ก่อน 08:00 นับตามเวรเมื่อวาน (STD)'],
+     ['08','17:00',false,'8-16 ไม่มี STD หลังเลิกงาน'],['09','10:00',false,'วัน 8-8 ในเวลางาน'],['09','17:00',true,'วัน 8-8 หลัง 16:00 (เปิดตัวเลือก)'],['10','02:00',true,'ตี 2 หลังวัน 8-8'],['13','10:00',true,'ไม่ได้ลงเวร = ถือเป็นวันหยุด'],['14','10:00',true,'ลาพักร้อน']]
+      .forEach(([d, t, e, why]) => { const r = otAuto(D + d, t); add('ติ๊ก OT อัตโนมัติ', `${why} (${t}) → ${e ? 'OT' : 'ไม่ OT'}`, r === e); });
+    S.settings.otRule.on88 = false; add('ติ๊ก OT อัตโนมัติ', 'ปิดตัวเลือก 8-8 → วัน 8-8 หลัง 16:00 ไม่ OT', otAuto(D + '09', '17:00') === false); S.settings.otRule.on88 = true;
+    /* 5) แลกเวรและย้อนกลับ */
+    const T = team(); const me = meMember();
+    T.members = T.members.filter(m => !String(m.id).startsWith('zz'));
+    T.members.push({id:'zzX', name:'ทดสอบ X', empId:'', phone:''}, {id:'zzY', name:'ทดสอบ Y', empId:'', phone:''});
+    const dA = '2099-01-30', dB = '2099-02-01';
+    S.shifts[dA] = {types:['8-00']}; S.shifts[dB] = {types:['OFF']};
+    setTeamCodes('zzX', dA, ['8-16','STD']); setTeamCodes('zzX', dB, ['8-00']); setTeamRaw('zzX', dA, 'ชSA บSA ดSA');
+    const snap = () => J({me:[teamCodes(me.id, dA), teamCodes(me.id, dB)], x:[teamCodes('zzX', dA), teamCodes('zzX', dB), teamRaw('zzX', dA)], y:[teamCodes('zzY', dA), teamCodes('zzY', dB), teamRaw('zzY', dA)]});
+    const s0 = snap();
+    const w1 = applySwap(me.id, 'zzX', [dA, dB]);
+    add('แลกเวร / ย้อนกลับ', 'ฉัน ↔ เพื่อน 2 วันข้ามเดือน: เวรสลับกันถูก', J(teamCodes(me.id, dA)) === J(['8-16','STD']) && J(teamCodes('zzX', dB)) === J(['OFF']) && J(S.shifts[dA].types) === J(['8-16','STD']));
+    undoSwap(w1); add('แลกเวร / ย้อนกลับ', 'ย้อนกลับแล้วคืนครบทุกวัน รวมรหัสแผนกอื่น', snap() === s0);
+    const w2 = applySwap('zzX', 'zzY', [dA]);
+    add('แลกเวร / ย้อนกลับ', 'แลกกับคนที่วันนั้นว่าง: ย้ายเวรไปอีกคนครบ', J(teamCodes('zzX', dA)) === '[]' && J(teamCodes('zzY', dA)) === J(['8-16','STD']) && teamRaw('zzY', dA) === 'ชSA บSA ดSA');
+    undoSwap(w2); add('แลกเวร / ย้อนกลับ', 'ย้อนกลับกรณีวันว่าง', snap() === s0);
+    const w3 = applySwap(me.id, 'zzX', [dA]); const w4 = applySwap('zzX', 'zzY', [dA]);
+    undoSwap(w4); undoSwap(w3); add('แลกเวร / ย้อนกลับ', 'แลก 2 ครั้งต่อกัน แล้วย้อนจากครั้งหลังไปครั้งแรก → กลับเหมือนเดิม', snap() === s0);
+    const w5 = applySwap(me.id, 'zzX', [dA]); S.shifts[dA] = {types:['VAC']};
+    add('แลกเวร / ย้อนกลับ', 'แก้เวรหลังแลก → แอปรู้และเตือนก่อนย้อน', swapEditedSince(w5) === true);
+    /* 6) สำรองและกู้คืน */
+    const str = JSON.stringify(saved);
+    const back = migrate(JSON.parse(str));
+    const cnt = o => J({sh:Object.keys(o.shifts || {}).length, cs:Object.values(o.cases || {}).reduce((a, x) => a + x.length, 0), ap:(o.appts || []).length, tm:((o.team || {}).members || []).length, mo:((o.money || {}).items || []).length, cap:(o.captures || []).length});
+    add('สำรอง / กู้คืน', 'ไฟล์สำรองอ่านกลับได้', !!back);
+    add('สำรอง / กู้คืน', 'อ่านกลับแล้วจำนวนข้อมูลครบ (เวร เคส นัด ทีม เงิน ไอเดีย)', !!back && cnt(back) === cnt(saved), cnt(saved));
+    add('สำรอง / กู้คืน', 'ข้อมูลเวร เคส ทีม เงิน ตรงทุกตัวอักษร', !!back && J([back.shifts, back.cases, back.team, back.money, back.appts]) === J([saved.shifts, saved.cases, saved.team, saved.money, saved.appts]));
+    const L = AutoBak.list();
+    add('สำรอง / กู้คืน', `สำรองอัตโนมัติในเครื่อง ${L.length} ชุด เปิดได้ทุกชุด`, L.every(b => { try{ return !!migrate(JSON.parse(b.data)); }catch(e){ return false; } }), L.length ? '' : 'ยังไม่มีชุดสำรอง');
+    let quota = true; try{ localStorage.setItem('tmm-quota-test', 'x'.repeat(200000)); localStorage.removeItem('tmm-quota-test'); }catch(e){ quota = false; }
+    add('สำรอง / กู้คืน', 'ที่เก็บในเครื่องยังมีพื้นที่ว่าง', quota, `ข้อมูลตอนนี้ ${Math.round(str.length / 1024)} KB`);
+  }catch(e){ add('ระบบตรวจ', 'ตรวจไม่สำเร็จ', false, String(e && e.message || e)); }
+  finally{ S = saved; }
+  /* 7) ซิงก์กับคลาวด์จริง (เอกสารทดสอบแยก) */
+  try{ (await Sync.selfTest()).forEach(r => add('ซิงก์กับคลาวด์จริง', r.name, r.ok, r.note)); }catch(e){ add('ซิงก์กับคลาวด์จริง', 'ทดสอบไม่สำเร็จ', false, String(e && e.message || e)); }
+  const rates = S.settings.otRule; const diff = Object.keys(STD_OT).filter(k => !['majorOn','minorOn','on88','nightOn'].includes(k) && String(rates[k]) !== String(STD_OT[k]));
+  add('ค่า OT', 'อัตราในตั้งค่าของคุณตรงกับอัตรามาตรฐาน', diff.length === 0, diff.length ? 'ต่างที่: ' + diff.join(', ') : '');
+  diagLast = R0; return R0;
+}
+function diagSheet(){
+  openSheet(`${sheetHead('ตรวจระบบ')}
+    <p class="meta" style="margin:0">ทดสอบรูปแบบเวลา ยามวิกาล ค่า OT การติ๊ก OT การแลกเวรและย้อนกลับ สำรองและกู้คืน กับ<b>สำเนาข้อมูล</b> (ไม่แตะข้อมูลจริง) และทดสอบซิงก์กับคลาวด์จริงด้วยเอกสารทดสอบแยก</p>
+    <button type="button" class="btn primary" data-act="diag-run">เริ่มตรวจ</button><div id="diag-out" aria-live="polite"></div>`);
+}
+function diagRender(){
+  const box = $('#diag-out'); if (!box || !diagLast) return;
+  const groups = [...new Set(diagLast.map(r => r.g))];
+  const pass = diagLast.filter(r => r.ok === true).length, fail = diagLast.filter(r => r.ok === false).length, na = diagLast.filter(r => r.ok == null).length;
+  box.innerHTML = `<p style="margin:8px 0"><b>ผ่าน ${pass} · ไม่ผ่าน ${fail}${na ? ' · ทดสอบไม่ได้ ' + na : ''}</b></p>
+    ${groups.map(g => { const rs = diagLast.filter(r => r.g === g); const ok = rs.every(r => r.ok !== false); return `<details${ok ? '' : ' open'} style="margin-bottom:6px"><summary style="cursor:pointer;font-weight:600">${ok ? '✅' : '❌'} ${esc(g)} (${rs.filter(r => r.ok === true).length}/${rs.length})</summary>${rs.map(r => `<div class="row" style="gap:6px;padding:4px 0;border-top:1px solid var(--soft);font-size:13px;align-items:flex-start"><span>${r.ok === true ? '✅' : r.ok === false ? '❌' : '⚪'}</span><span class="grow">${esc(r.name)}${r.note ? `<span class="meta" style="display:block">${esc(r.note)}</span>` : ''}</span></div>`).join('')}</details>`; }).join('')}
+    <button type="button" class="btn small" data-act="diag-copy" style="margin-top:6px">คัดลอกรายงาน</button>`;
+}
+
 function patientCheck(text, form, proceed){
   if (!S.settings.patientWarn || !PATIENT.test(text) || form.dataset.pwOk) return proceed();
   form.querySelector('#pw').innerHTML = `<div class="banner appt" style="margin:0"><div>ข้อความนี้ดูเหมือนมีข้อมูลผู้ป่วย แนะนำไม่จดในแอปนี้<div class="row" style="margin-top:8px"><button type="button" class="btn small" id="pw-edit">กลับไปแก้</button><button type="button" class="btn small" id="pw-go">บันทึกต่อ</button></div></div></div>`;
@@ -3729,8 +3829,12 @@ document.addEventListener('click', e => {
     case 'roster': Roster.open(); break;
     case 'ts-day': tsDaySheet(el.dataset.d); break;
     case 'share': shareSheet(); break;
+    case 'diag-open': diagSheet(); break;
+    case 'diag-run': { const b = el; b.disabled = true; b.textContent = 'กำลังตรวจ…'; runSelfTest().then(() => { diagRender(); b.disabled = false; b.textContent = 'ตรวจอีกครั้ง'; log('ตรวจระบบ', diagLast.every(r => r.ok !== false)); writeLocal(); }); break; }
+    case 'diag-copy': { if (!diagLast) break; const t = 'ผลตรวจระบบ เลขาส่วนตัว v' + APP_VERSION + ' · ' + new Date().toLocaleString('th-TH') + '\n' + diagLast.map(r => `${r.ok === true ? '✅' : r.ok === false ? '❌' : '⚪'} [${r.g}] ${r.name}${r.note ? ' — ' + r.note : ''}`).join('\n'); if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('คัดลอกรายงานแล้ว'), () => toast('คัดลอกไม่ได้', true)); break; }
+    case 'sync-prev': Sync.recoverPrev(); break;
     case 'bp-copy': { const done = ok => toast(ok ? 'คัดลอก Prompt แล้ว ไปวางในแชตใหม่ของ Claude' : 'คัดลอกไม่ได้ ใช้ดาวน์โหลด .md แทน', !ok); if (navigator.clipboard) navigator.clipboard.writeText(APP_BUILD_PROMPT).then(() => done(true), () => done(false)); else done(false); break; }
-    case 'bp-md': (async () => { const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null; if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; } try{ await dl.save({filename:'prompt-secretary-app-any-department.md', data:APP_BUILD_PROMPT, mimeType:'text/markdown'}); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); } })(); break;
+    case 'bp-md': (async () => { const dl = await getDL(); if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; } try{ await dl.save({filename:'prompt-secretary-app-any-department.md', data:APP_BUILD_PROMPT, mimeType:'text/markdown'}); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); } })(); break;
     case 'case-import': caseImportSheet(); break;
     case 'case-imp-apply': caseImportApply(); break;
     case 'ot-touch': case 'night-touch': el.dataset.touched = '1'; updateCaseCalc(el.closest('form')); break;
@@ -3743,7 +3847,7 @@ document.addEventListener('click', e => {
     case 'ai-open': aiSheet(); break;
     case 'ai-idea': aiSheet('idea'); break;
     case 'ai-copy': { const ta = $('#ai-txt'); if (!ta) break; const done = ok => toast(ok ? 'คัดลอกแล้ว ไปวางในแชต Claude ได้เลย' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => done(true), () => { ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} done(ok); }); else { ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} done(ok); } break; }
-    case 'ai-md': case 'ai-json': { if (!aiLast) break; const isMd = act === 'ai-md'; (async () => { const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null; if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
+    case 'ai-md': case 'ai-json': { if (!aiLast) break; const isMd = act === 'ai-md'; (async () => { const dl = await getDL(); if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; }
       try{ await dl.save({filename:'my-profile-' + today() + (isMd ? '.md' : '.json'), data: isMd ? aiLast.md : JSON.stringify(aiLast.data, null, 2), mimeType: isMd ? 'text/markdown' : 'application/json'}); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); } })(); break; }
     case 'ai-share': { const ta = $('#ai-txt'); if (ta && navigator.share) navigator.share({text: ta.value}).catch(() => {}); break; }
     case 'team-mon': { const [y,m] = teamMonth.split('-').map(Number); teamMonth = ymd(new Date(y, m-1+Number(el.dataset.d), 1)).slice(0,7); teamDay = teamMonth === today().slice(0,7) ? today() : teamMonth + '-01'; render(); break; }
@@ -3762,9 +3866,9 @@ document.addEventListener('click', e => {
     case 'team-history': teamHistorySheet(); break;
     case 'swap-copy': { const f = el.closest('form'); const ta = f && f.elements.msg; if (!ta) break; ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => toast('คัดลอกแล้ว ไปวางใน LINE ได้เลย'), () => toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok)); else toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); break; }
     case 'swap-undo': { const T = team(); const x = T.swaps[Number(el.dataset.i)]; if (!x || x.undone) break;
-      const same = (p, q) => JSON.stringify(p || []) === JSON.stringify(q || []);
-      const edited = x.after && x.after.some(a => !same(teamCodes(x.a, a.d), a.A) || !same(teamCodes(x.b, a.d), a.B));
-      confirmSheet('ย้อนการแลกเวรนี้ กลับเป็นเวรเดิมของทั้งสองคน?' + (edited ? ' ⚠️ วันเหล่านี้ถูกแก้หลังแลกเวรแล้ว การย้อนจะทับสิ่งที่แก้' : ''), 'ย้อนกลับ', () => { x.before.forEach(b => { setTeamCodes(x.a, b.d, b.A); setTeamCodes(x.b, b.d, b.B); if (b.rA != null) setTeamRaw(x.a, b.d, b.rA); if (b.rB != null) setTeamRaw(x.b, b.d, b.rB); }); x.undone = true; closeSheet(); commit('ย้อนการแลกเวร ' + x.aName + ' ↔ ' + x.bName, {msg:'ย้อนกลับแล้ว'}); }); break; }
+      const later = T.swaps.filter(y => y !== x && !y.undone && y.at > x.at && y.before.some(b => x.before.some(c => c.d === b.d) && [y.a, y.b].some(m => [x.a, x.b].includes(m))));
+      const edited = swapEditedSince(x);
+      confirmSheet('ย้อนการแลกเวรนี้ กลับเป็นเวรเดิมของทั้งสองคน?' + (later.length ? ' ⚠️ มีการแลกเวรครั้งหลังในวันเดียวกัน ควรย้อนครั้งหลังก่อน' : edited ? ' ⚠️ วันเหล่านี้ถูกแก้หลังแลกเวรแล้ว การย้อนจะทับสิ่งที่แก้' : ''), 'ย้อนกลับ', () => { undoSwap(x); closeSheet(); commit('ย้อนการแลกเวร ' + x.aName + ' ↔ ' + x.bName, {msg:'ย้อนกลับแล้ว'}); }); break; }
     case 'app-check': Updater.check(true); break;
     case 'app-update': Updater.update(); break;
     case 'bak-restore': { const b = AutoBak.list()[Number(el.dataset.i)]; if (!b) break; confirmSheet('กู้คืนข้อมูลจาก ' + b.at.slice(0,16).replace('T',' ') + ' ? ข้อมูลตอนนี้จะถูกสำรองไว้ก่อน', 'กู้คืน', () => AutoBak.restore(Number(el.dataset.i))); break; }
@@ -4023,9 +4127,7 @@ document.addEventListener('submit', e => {
   } else if (kind === 'team-swap'){
     const P = swapPlan(f); if (P.a === P.b){ toast('เลือกคนละคน', true); return; }
     const T = team(); const A = T.members.find(x => x.id === P.a), B = T.members.find(x => x.id === P.b);
-    P.before.forEach(x => { setTeamCodes(P.a, x.d, x.B); setTeamCodes(P.b, x.d, x.A); setTeamRaw(P.a, x.d, x.rB || ''); setTeamRaw(P.b, x.d, x.rA || ''); });
-    const after = P.dates.map(d => ({d, A: teamCodes(P.a, d), B: teamCodes(P.b, d)}));
-    T.swaps.push({at:new Date().toISOString(), a:P.a, b:P.b, aName:A.name, bName:B.name, before:P.before, after, msg:String(fd.get('msg') || '')});
+    T.swaps.push(applySwap(P.a, P.b, P.dates, {aName:A.name, bName:B.name, msg:String(fd.get('msg') || '')}));
     closeSheet(); commit('แลกเวร ' + A.name + ' ↔ ' + B.name, {msg:'สลับเวรแล้ว ย้อนกลับได้ในประวัติ'});
   } else if (kind === 'team-file'){
     readTeamFile(f);
@@ -4094,10 +4196,20 @@ document.addEventListener('submit', e => {
 });
 $('#fab').addEventListener('click', () => captureSheet(ideaTab));
 
+/* ---------- ดาวน์โหลดไฟล์: claude.ai ใช้ระบบดาวน์โหลดของ claude · GitHub ใช้ดาวน์โหลดของเบราว์เซอร์ ---------- */
+async function getDL(){
+  const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null;
+  if (dl) return dl;
+  return {save: async ({filename, data, mimeType}) => {
+    const blob = data instanceof Blob ? data : new Blob([data instanceof ArrayBuffer || ArrayBuffer.isView(data) ? data : String(data)], {type: mimeType || 'application/octet-stream'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+  }};
+}
 /* ---------- backup ---------- */
 const Backup = {
   async export(){
-    const dl = window.claude && await window.claude.use('downloads').catch(() => null);
+    const dl = await getDL();
     if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้ เปิดแอปผ่านลิงก์ claude.ai แล้วลองใหม่', true); return; }
     try{
       await dl.save({filename:`secretary-backup-${today()}.json`, data:JSON.stringify(S, null, 1)});
@@ -4113,8 +4225,9 @@ const Backup = {
       input.value = '';
       const mp = p ? migrate(p) : null;
       if (!mp){ toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของแอปนี้', true); return; }
-      confirmSheet(`แทนที่ข้อมูลบนเครื่องนี้ด้วยไฟล์สำรอง (นัด ${p.appts.length} รายการ)?`, 'ใช้ไฟล์สำรอง', () => {
-        S = mp; Theme.apply(); commit('นำเข้าไฟล์สำรอง', {msg:'นำเข้าแล้ว'});
+      const cnt = o => `เวร ${Object.keys(o.shifts || {}).length} วัน · เคส ${Object.values(o.cases || {}).reduce((a, x) => a + x.length, 0)} · นัด ${(o.appts || []).length} · ทีม ${((o.team || {}).members || []).length} คน · รายการเงิน ${((o.money || {}).items || []).length}`;
+      confirmSheet(`แทนที่ข้อมูลบนเครื่องนี้ด้วยไฟล์สำรอง? ไฟล์: ${cnt(mp)} · ตอนนี้: ${cnt(S)} · ข้อมูลตอนนี้จะถูกเก็บใน สำรองอัตโนมัติ ก่อน`, 'ใช้ไฟล์สำรอง', () => {
+        AutoBak.save('ก่อนนำเข้าไฟล์สำรอง'); S = mp; Theme.apply(); commit('นำเข้าไฟล์สำรอง', {msg:'นำเข้าแล้ว'});
       }, true);
     };
     rd.readAsText(file);
@@ -4131,7 +4244,7 @@ const Sync = (function(){
   let remote = null, dirty = false, timer = null, chain = Promise.resolve();
   let state = 'init', lastAt = null, conflict = null, pending = 0, editSeq = 0, lastNonce = '', retryT = null, retryN = 0;
   const devId = (() => { try{ let d = localStorage.getItem('tmm-dev-id'); if (!d){ d = 'd' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36); localStorage.setItem('tmm-dev-id', d); } return d; }catch(e){ return 'd' + Math.random().toString(36).slice(2); } })();
-  let lockRef = null;
+  let lockRef = null, prevRef = null, testRef = null, lockMode = 'unknown', stuck = false;
   try{ meta = Object.assign(meta, JSON.parse(localStorage.getItem(LS_SYNC) || '{}')); }catch(e){}
   const saveMeta = () => { try{ localStorage.setItem(LS_SYNC, JSON.stringify(meta)); }catch(e){} };
 
@@ -4174,8 +4287,11 @@ const Sync = (function(){
     }catch(e){ state = 'badkey'; refresh(); }
   }
   function refresh(){ if (route === 'config') render(); }
+  const WAITS = [15e3, 60e3, 300e3, 900e3];
   function scheduleRetry(){
-    clearTimeout(retryT); const waits = [15e3, 60e3, 300e3]; const w = waits[Math.min(retryN, waits.length - 1)]; retryN++;
+    clearTimeout(retryT);
+    if (retryN >= WAITS.length){ stuck = true; state = 'stuck'; refresh(); return; }   /* ลองครบ 4 ครั้งแล้วหยุด ไม่วนตลอดไป */
+    const w = WAITS[retryN]; retryN++;
     retryT = setTimeout(() => { if (dirty && navigator.onLine !== false) queue(); }, w);
   }
   async function push(){
@@ -4186,19 +4302,28 @@ const Sync = (function(){
     let lease = null;
     try{
       /* ล็อกสั้น ๆ กันสองเครื่องเขียนทับกันพร้อมกัน แล้วอ่านของล่าสุดบนคลาวด์ก่อนเขียน */
-      if (lockRef && lockRef.acquire){
-        lease = await lockRef.acquire({holder: devId, ttlMs: 4000});
-        if (!lease.acquired){ state = 'saving'; refresh(); setTimeout(() => queue(), 1500); return; }
-      }
+      const t0 = Date.now(); const TTL = 6000;
+      if (lockRef && typeof lockRef.acquire === 'function'){
+        lease = await lockRef.acquire({holder: devId, ttlMs: TTL});
+        lockMode = 'lease';
+        if (!lease || !lease.acquired){ state = 'saving'; refresh(); setTimeout(() => queue(), 1500); return; }
+      } else lockMode = 'none';
       const cur = await ref.get();
       const curDoc = cur.exists ? cur.data() : null;
       if (curDoc && (curDoc.rev || 0) > meta.base && !(curDoc.dev === devId && curDoc.nonce === lastNonce)){ remote = curDoc; conflict = true; state = 'conflict'; banner(); refresh(); return; }
       if (curDoc && curDoc.dev === devId && curDoc.nonce === lastNonce) meta.base = Math.max(meta.base, curDoc.rev || 0);
+      /* เก็บรุ่นก่อนหน้าบนคลาวด์ไว้ 1 ชุด (กู้ได้ถ้าเกิดเขียนทับ) */
+      if (curDoc && prevRef) await prevRef.set(Object.assign({}, curDoc, {keptAt:new Date().toISOString()})).catch(() => {});
       const sealed = await seal(S);
+      /* ล็อกใกล้หมดอายุ (เน็ตช้า) → ยกเลิกรอบนี้แล้วลองใหม่ ป้องกันเครื่องอื่นเขียนแทรก */
+      if (lockMode === 'lease' && Date.now() - t0 > TTL * 0.7){ state = 'saving'; setTimeout(() => queue(), 1000); return; }
       const rev = meta.base + 1; const nonce = Math.random().toString(36).slice(2) + Date.now().toString(36);
       pending = rev; lastNonce = nonce;
       await ref.set({rev, salt:meta.salt, iv:sealed.iv, ct:sealed.ct, at:new Date().toISOString(), dev:devId, nonce});
-      meta.base = rev; pending = 0; saveMeta(); dirty = editSeq !== seqAtStart; lastAt = new Date(); state = 'ok'; retryN = 0;
+      /* อ่านกลับเพื่อยืนยันว่าเป็นข้อมูลของเครื่องนี้จริง */
+      const chk = await ref.get().catch(() => null); const chkDoc = chk && chk.exists ? chk.data() : null;
+      if (chkDoc && chkDoc.nonce !== nonce){ pending = 0; remote = chkDoc; conflict = true; dirty = true; state = 'conflict'; banner(); refresh(); return; }
+      meta.base = rev; pending = 0; saveMeta(); dirty = editSeq !== seqAtStart; lastAt = new Date(); state = 'ok'; retryN = 0; stuck = false;
       log('ซิงก์ขึ้นคลาวด์', true); writeLocal();
       if (dirty) setTimeout(() => queue(), 800);
     }catch(e){ pending = 0; state = navigator.onLine === false ? 'offline' : 'error'; log('ซิงก์ขึ้นคลาวด์', false); writeLocal(); scheduleRetry(); }
@@ -4215,7 +4340,9 @@ const Sync = (function(){
     if (!db || !userId){ state = 'unavailable'; refresh(); return; }
     ref = db.doc('data/users/' + userId + '/vault');
     lockRef = db.doc('data/users/' + userId + '/vault-lock');
-    window.addEventListener('online', () => { if (meta.on && key && (dirty || state === 'offline' || state === 'error')){ dirty = true; queue(); } });
+    prevRef = db.doc('data/users/' + userId + '/vault-prev');
+    testRef = db.doc('data/users/' + userId + '/sync-test');
+    window.addEventListener('online', () => { if (meta.on && key && (dirty || ['offline','error','stuck'].includes(state))){ retryN = 0; stuck = false; dirty = true; queue(); } });
     window.addEventListener('offline', () => { if (meta.on && key){ state = 'offline'; refresh(); } });
     state = 'off';
     if (meta.on && meta.k){
@@ -4231,7 +4358,7 @@ const Sync = (function(){
     boot,
     reset(){ meta = {on:false, base:0, salt:null, k:null}; key = null; dirty = false; conflict = null; banner(); state = db ? 'off' : 'unavailable'; },
     markDirty(){ if (!meta.on || !key) return; dirty = true; editSeq++; clearTimeout(timer); timer = setTimeout(queue, 1500); },
-    pushNow(){ clearTimeout(timer); dirty = true; queue().then(() => toast(state === 'ok' ? 'ซิงก์แล้ว' : state === 'conflict' ? 'ยังไม่ได้ซิงก์: ข้อมูลสองเครื่องไม่ตรงกัน' : 'ซิงก์ไม่สำเร็จ', state !== 'ok')); },
+    pushNow(){ clearTimeout(timer); dirty = true; retryN = 0; stuck = false; queue().then(() => toast(state === 'ok' ? 'ซิงก์แล้ว' : state === 'conflict' ? 'ยังไม่ได้ซิงก์: ข้อมูลสองเครื่องไม่ตรงกัน' : 'ซิงก์ไม่สำเร็จ', state !== 'ok')); },
     async on(pass, remember){
       if (!ref){ toast('ซิงก์ใช้ไม่ได้ในหน้านี้', true); return; }
       if (pass.length < 8){ toast('รหัสผ่านอย่างน้อย 8 ตัว', true); return; }
@@ -4260,6 +4387,31 @@ const Sync = (function(){
       }catch(e){ state = 'error'; toast('เปิดซิงก์ไม่สำเร็จ', true); refresh(); }
     },
     off(){ meta = {on:false, base:0, salt:null, k:null}; saveMeta(); key = null; conflict = null; banner(); state = 'off'; log('ปิดซิงก์บนเครื่องนี้', true); writeLocal(); render(); toast('ปิดซิงก์บนเครื่องนี้แล้ว ข้อมูลยังอยู่ในเครื่อง'); },
+    /* ทดสอบกับคลาวด์จริง: เขียน/อ่าน และล็อกกันสองเครื่อง (ใช้เอกสารทดสอบแยก ไม่แตะข้อมูลจริง) */
+    async selfTest(){
+      const out = [];
+      if (!db || !userId || !testRef) return [{name:'เชื่อมคลาวด์', ok:null, note:'ใช้ได้เฉพาะตอนเปิดผ่านลิงก์ claude.ai และลงชื่อเข้าใช้'}];
+      try{ const v = Math.random().toString(36).slice(2); await testRef.set({v, at:new Date().toISOString()}); const g = await testRef.get(); out.push({name:'เขียนแล้วอ่านกลับจากคลาวด์', ok: !!(g.exists && g.data().v === v)}); }
+      catch(e){ out.push({name:'เขียนแล้วอ่านกลับจากคลาวด์', ok:false, note:String(e && (e.code || e.message) || e)}); }
+      const lk = db.doc('data/users/' + userId + '/sync-test-lock');
+      if (typeof lk.acquire !== 'function'){ out.push({name:'คลาวด์รองรับระบบล็อก', ok:false, note:'ไม่มีเมธอด acquire'}); return out; }
+      try{
+        const h1 = 'test-a-' + Date.now(), h2 = 'test-b-' + Date.now();
+        const a1 = await lk.acquire({holder:h1, ttlMs:2000}); const a2 = await lk.acquire({holder:h2, ttlMs:2000});
+        out.push({name:'คลาวด์รองรับระบบล็อก (เครื่องแรกได้ล็อก)', ok: !!(a1 && a1.acquired)});
+        out.push({name:'ระบบล็อกกันเครื่องที่สองระหว่างล็อก', ok: !!(a2 && a2.acquired === false)});
+        await new Promise(r => setTimeout(r, 2600));
+        const a3 = await lk.acquire({holder:h2, ttlMs:1000});
+        out.push({name:'ล็อกหมดอายุเองแล้วเครื่องอื่นได้ต่อ', ok: !!(a3 && a3.acquired)});
+      }catch(e){ out.push({name:'คลาวด์รองรับระบบล็อก', ok:false, note:String(e && (e.code || e.message) || e)}); }
+      return out;
+    },
+    async recoverPrev(){
+      if (!prevRef || !key){ toast('ต้องเปิดซิงก์ก่อน', true); return; }
+      try{ const g = await prevRef.get(); if (!g.exists){ toast('ยังไม่มีรุ่นก่อนหน้าบนคลาวด์', true); return; }
+        const data = await open(g.data()); AutoBak.saveData('รุ่นก่อนหน้าบนคลาวด์ (rev ' + (g.data().rev || '?') + ')', JSON.stringify(data)); render(); toast('ดึงรุ่นก่อนหน้ามาไว้ใน สำรองอัตโนมัติ แล้ว กดกู้คืนได้ถ้าต้องการ'); }
+      catch(e){ toast('เปิดรุ่นก่อนหน้าไม่ได้ (รหัสไม่ตรงหรือไม่มีข้อมูล)', true); }
+    },
     async resolve(which){
       if (!conflict) return;
       if (which === 'remote'){
@@ -4287,10 +4439,11 @@ const Sync = (function(){
         off:'ปิดอยู่ ข้อมูลเก็บเฉพาะเครื่องนี้', needpass:'ซิงก์เปิดไว้ แต่เครื่องนี้ยังไม่มีรหัส ใส่รหัสเพื่อซิงก์ต่อ',
         ok:'ซิงก์เปิดอยู่ ข้อมูลถูกเข้ารหัสในเครื่องก่อนส่ง' + t, saving:'กำลังซิงก์…',
         error:'ซิงก์ไม่สำเร็จ ข้อมูลยังอยู่ในเครื่องนี้ แอปจะลองใหม่เอง หรือกด “ซิงก์ตอนนี้”',
-        offline:'ไม่มีอินเทอร์เน็ต ข้อมูลบันทึกในเครื่องแล้ว จะซิงก์เองเมื่อเน็ตกลับมา', conflict:'ข้อมูลสองเครื่องไม่ตรงกัน เลือกชุดที่จะใช้จากแถบด้านบน',
+        offline:'ไม่มีอินเทอร์เน็ต ข้อมูลบันทึกในเครื่องแล้ว จะซิงก์เองเมื่อเน็ตกลับมา',
+        stuck:'ยังไม่ได้ขึ้นคลาวด์ (ลองอัตโนมัติครบ 4 ครั้งแล้ว) ข้อมูลยังอยู่ในเครื่องนี้ กด “ซิงก์ตอนนี้” เพื่อลองอีกครั้ง', conflict:'ข้อมูลสองเครื่องไม่ตรงกัน เลือกชุดที่จะใช้จากแถบด้านบน',
         badkey:'รหัสบนเครื่องนี้เปิดข้อมูลบนคลาวด์ไม่ได้ ปิดซิงก์แล้วเปิดใหม่ด้วยรหัสที่ถูกต้อง'
       };
-      return {available: state !== 'unavailable' && state !== 'init', on: meta.on && !!key && state !== 'needpass', text: map[state] || ''};
+      return {available: state !== 'unavailable' && state !== 'init', on: meta.on && !!key && state !== 'needpass', text: (map[state] || '') + (dirty && meta.on && state !== 'saving' ? ' · มีการแก้ที่ยังไม่ขึ้นคลาวด์' : '') + (lockMode === 'none' ? ' · คลาวด์นี้ไม่มีระบบล็อก (เสี่ยงเขียนทับ)' : ''), lockMode};
     }
   };
 })();
