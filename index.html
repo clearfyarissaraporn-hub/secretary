@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.19</title>
+<title>เลขาส่วนตัว v1.20</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -450,7 +450,7 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.19';
+const APP_VERSION = '1.20';
 const STANDALONE = !(window.claude && window.claude.use);
 let installEvt = null;
 const IS_INSTALLED = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
@@ -621,7 +621,7 @@ function defaults(){
     shiftTypes:SHIFT_TYPES(),
     settings:{remind:{d1:true, morning:false, h2:false}, stopAfter:'20:00', patientWarn:true,
       theme:'auto', accent:'lavender', skin:'angel', bg:'angel', bgColor:'lavender', cardAlpha:70, font:'plex', check:'heart', deductRate:'', push:false, holHours:8,
-      otRule:{majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true},
+      otRule:{majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, minorNext:200, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true},
       profile:{name:'', id:'', pos:'พยาบาลวิชาชีพ ห้องผ่าตัด', dept:'OR'}, gcal:{holiday:true, primary:false}, keepDays:90, lastClean:'',
       rosterName:'', rosterCodes:ROSTER_CODES}
   };
@@ -689,7 +689,8 @@ function migrate(p){
   out.settings = Object.assign(defaults().settings, p.settings || {});
   out.settings.gcal = Object.assign({holiday:false, primary:false}, out.settings.gcal || {});
   out.cases = out.cases || {}; out.hours = out.hours || {}; out.assign = out.assign || {}; out.extra = out.extra || {}; out.money = out.money || {items:[]}; out.money.items = out.money.items || []; out.team = out.team || {members:[], months:{}, swaps:[]}; out.holCredit = out.holCredit || {}; if (out.settings.holHours == null) out.settings.holHours = 8; if (out.shiftTypes && out.shiftTypes.STDM && out.shiftTypes.STDM.label === 'สแตนด์บายเช้า วันหยุด (STD เช้า)'){ out.shiftTypes.STDM = Object.assign({}, SHIFT_TYPES().STDM); } if (out.shiftTypes && !out.shiftTypes.STDM){ const def = SHIFT_TYPES().STDM, nt = {}; Object.keys(out.shiftTypes).forEach(k => { nt[k] = out.shiftTypes[k]; if (k === 'STD') nt.STDM = def; }); if (!nt.STDM) nt.STDM = def; out.shiftTypes = nt; } NON_WORK.forEach(k => { if (out.shiftTypes[k]){ out.shiftTypes[k].start = ''; out.shiftTypes[k].end = ''; } }); out.formEdits = out.formEdits || {}; out.formMeta = out.formMeta || {};
-  out.settings.otRule = Object.assign({majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true}, out.settings.otRule || {});
+  out.settings.otRule = Object.assign({majorFirst:800, majorMins:90, minorFirst:400, minorMins:60, next:400, minorNext:200, nextMins:60, night:400, nightFrom:'23:00', nightTo:'05:00', nightOn:true, majorOn:true, minorOn:true}, out.settings.otRule || {});
+  if (!out.settings.otRule.rate2026){ out.settings.otRule.minorNext = 200; out.settings.otRule.rate2026 = true; }
   if (out.settings.otRule.nightTo === '08:00') out.settings.otRule.nightTo = '05:00';
   out.settings.profile = Object.assign(defaults().settings.profile, out.settings.profile || {});
   return out;
@@ -1226,7 +1227,8 @@ function viewConfig(){
     <div class="row" style="flex-wrap:wrap;gap:6px;padding-left:34px">0–${n('majorMins', R.majorMins, 64)} นาที = ${n('majorFirst', R.majorFirst)} บาท</div>
     <label class="row" style="gap:10px;min-height:40px;cursor:pointer"><input type="checkbox" name="minorOn"${R.minorOn !== false ? ' checked' : ''}><span style="font-weight:600">ทำเคส Minor</span></label>
     <div class="row" style="flex-wrap:wrap;gap:6px;padding-left:34px">0–${n('minorMins', R.minorMins, 64)} นาที = ${n('minorFirst', R.minorFirst)} บาท</div>
-    <div class="row" style="flex-wrap:wrap;gap:6px">ทุก ${n('nextMins', R.nextMins, 64)} นาทีถัดไป + ${n('next', R.next)} บาท</div>
+    <div class="row" style="flex-wrap:wrap;gap:6px;padding-left:34px">Minor ทุก ${R.nextMins} นาทีถัดไป + ${n('minorNext', R.minorNext != null ? R.minorNext : 200)} บาท</div>
+    <div class="row" style="flex-wrap:wrap;gap:6px;padding-left:34px">Major ทุก ${n('nextMins', R.nextMins, 64)} นาทีถัดไป + ${n('next', R.next)} บาท</div>
     <label class="row" style="gap:10px;min-height:44px;cursor:pointer"><input type="checkbox" name="nightOn"${R.nightOn !== false ? ' checked' : ''}><span style="font-weight:600">ค่ายามวิกาล ${esc(R.nightFrom)}–${esc(R.nightTo)} น. +${esc(R.night)} บาท</span></label>
     <div class="row" style="flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted)">ช่วงเวลา ${n('nightFrom', R.nightFrom, 120)} – ${n('nightTo', R.nightTo, 120)}</div>
     <div class="row" style="flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted)">ยอดค่ายามวิกาล ${n('night', R.night, 80)} บาท</div>`; })()}
@@ -1277,9 +1279,9 @@ function viewConfig(){
     <button type="button" class="btn small" data-act="clean-now">ล้างข้อมูลเก่าตอนนี้</button>
   </div></div>
 
-  ${STANDALONE ? `<h2 class="group-t">เวอร์ชันและอัปเดต</h2><div class="list">
-    <div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><b>เวอร์ชันที่ใช้อยู่ v${APP_VERSION}</b><span class="meta" style="display:block">${esc(Updater.msg || 'ข้อมูลบันทึกในเครื่องทุกครั้งที่แก้ และสำรองอัตโนมัติวันละครั้งกับก่อนอัปเดตทุกครั้ง')}</span></span>
-      ${Updater.hasNew() ? `<button type="button" class="btn small primary" data-act="app-update">อัปเดตเป็น v${esc(Updater.latest)}</button>` : '<button type="button" class="btn small" data-act="app-check">ตรวจหาอัปเดต</button>'}</div>
+  ${STANDALONE || AutoBak.list().length ? `<h2 class="group-t">${STANDALONE ? 'เวอร์ชันและอัปเดต' : 'สำรองอัตโนมัติ'}</h2><div class="list">
+    ${STANDALONE ? `<div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><b>เวอร์ชันที่ใช้อยู่ v${APP_VERSION}</b><span class="meta" style="display:block">${esc(Updater.msg || 'ข้อมูลบันทึกในเครื่องทุกครั้งที่แก้ และสำรองอัตโนมัติวันละครั้งกับก่อนอัปเดตทุกครั้ง')}</span></span>
+      ${Updater.hasNew() ? `<button type="button" class="btn small primary" data-act="app-update">อัปเดตเป็น v${esc(Updater.latest)}</button>` : '<button type="button" class="btn small" data-act="app-check">ตรวจหาอัปเดต</button>'}</div>` : ''}
     ${AutoBak.list().length ? `<details class="lrow" style="display:block;padding:10px 14px"><summary style="cursor:pointer;font-weight:600">สำรองอัตโนมัติ (${AutoBak.list().length})</summary>${AutoBak.list().map((b, i) => `<div class="row" style="gap:8px;padding:6px 0;border-top:1px solid var(--soft)"><span class="grow meta">${esc(b.at.slice(0,16).replace('T',' '))} · ${esc(b.reason)} · v${esc(b.ver || '')}</span><button type="button" class="btn small" data-act="bak-restore" data-i="${i}">กู้คืน</button></div>`).join('')}</details>` : ''}
   </div>` : ''}
   ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div>
@@ -1360,6 +1362,10 @@ function viewGuide(){
     ['ทำฟอร์มส่งโรงพยาบาล','ใบเวร › RLA/OT, ค่าเวร, ค่าเคส แตะแถวหรือ “แก้ทีละแถว” เพื่อแก้ แตะหัว/ลายเซ็น/มุมล่างเพื่อแก้ข้อความ'],
     ['ใบเบิกค่าเวรแยกแผ่น','แผ่นแรก = ค่าเวร 2,000 (8-8) · แผ่นถัดไปอย่างน้อย 2 แผ่น = Stand By 200/300 · ใบเบิกค่าเคสอย่างน้อย 3 แผ่น ไม่มี TOTAL ในฟอร์ม'],
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
+    ['อัตรา OT (ตั้งค่า › อัตรา OT)','Major 90 นาทีแรก ฿800 · ทุกชั่วโมงถัดไป +฿400 · Minor 60 นาทีแรก ฿400 · ทุกชั่วโมงถัดไป +฿200 · ยามวิกาล 23:00–05:00 +฿400 · เศษของชั่วโมงถัดไปนับเป็น 1 ชม. · ปิด Major/Minor = ไม่คิดเงินประเภทนั้น (รวมเคสเดิม)'],
+    ['ซิงก์หลายเครื่อง (ลิงก์ claude.ai)','ตั้งค่า › ซิงก์ ใช้รหัสเดียวกันทุกเครื่อง · แก้พร้อมกัน 2 เครื่อง แอปจะไม่เขียนทับเงียบ ๆ แต่ขึ้นแถบให้เลือกชุดข้อมูล ชุดที่ไม่ได้เลือกถูกเก็บใน สำรองอัตโนมัติ · เน็ตหลุดตอนบันทึก ข้อมูลยังอยู่ในเครื่อง และซิงก์เองเมื่อเน็ตกลับ'],
+    ['แลกเวรแล้วย้อนกลับ','ทีม › ประวัติการแลกเวร › ย้อนกลับ คืนเวรเดิมของทั้งสองคนครบทุกวัน รวมรหัสแผนกอื่น และเวรในปฏิทินของคุณ · ถ้าวันนั้นถูกแก้หลังแลก แอปเตือนก่อนย้อน'],
+    ['พิมพ์เวลาเคส','Theatre start/finish พิมพ์ตัวเลขได้เลย เช่น 1640 = 16:40, 940 = 09:40, 23.30 = 23:30 · ค่าเคสคิดให้ทันที · ติ๊กยามวิกาลให้เองเมื่อเวลาคาบ 23:00–05:00 · ติ๊ก OT ให้ตามกติกา แก้เองได้'],
     ['นำเข้าเคสจากไฟล์แผนก','ดาวน์โหลดสำเนา “ลงทะเบียนเคสผ่าตัด” (.xlsx) จาก SharePoint เดือนละครั้ง › ใบเวร › ค่าเคส › นำเข้าเคสจาก Excel › แอปรู้จักไฟล์นี้เอง เลือกเดือน › ดูตัวอย่าง › นำเข้า (ไม่ซ้ำ ไม่อ่านชื่อผู้ป่วย) · ไฟล์แบบอื่นจับคู่คอลัมน์เอง · OT ติ๊กให้เองตามช่วง STD 16:00–08:00 และวันหยุด'],
     ['สรุปเงินของเดือน','เมนู เงิน: ค่าเวรและค่าเคส OT ขึ้นให้อัตโนมัติ · + รายรับ (เงินเดือน ร้าน Affiliate) · + รายจ่าย (ติ๊ก “ประจำทุกเดือน” สำหรับค่าเช่า ผ่อน บิล) · ดูสรุป/รายการ/ทั้งปี'],
     ['ส่งออก / แชร์','Excel เดือนนี้ / ทั้งปี / ทั้งหมด หรือคัดลอกสรุปเป็นข้อความไปส่ง LINE'],
@@ -1380,6 +1386,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.20','อัตรา OT ใหม่: Major 90 นาที 800 + ชม.ถัดไป 400 · Minor 60 นาที 400 + ชม.ถัดไป 200 · ยามวิกาล 400 · พิมพ์เวลาเป็นตัวเลขได้ (1640 → 16:40) คิดเงินและติ๊กยามวิกาลให้เอง · ปิดประเภท Major/Minor แล้วไม่คิดเงิน · แลกเวรย้อนกลับได้ครบรวมรหัสแผนกอื่น เตือนถ้าแก้หลังแลก · ซิงก์กันเขียนทับพร้อมกัน ซิงก์เองเมื่อเน็ตกลับ เก็บชุดที่ไม่ได้เลือกไว้กู้คืน'],
     ['v1.19','คู่มือ: เพิ่ม “Prompt สร้างแอปนี้ให้แผนกอื่น” คัดลอก/ดาวน์โหลดได้'],
     ['v1.18','ย้าย “แอป” ไปก่อนคู่มือ · เรียกชื่อให้ตรง: Prompt สร้างไอเดีย / Prompt สรุปตัวฉัน · ข้อความที่คัดลอกขึ้นต้นด้วยชื่อ Prompt ตามเรื่องที่เลือก'],
     ['v1.17','ย้ายเมนู “ตั้งค่า” ไปไว้ขวาสุดของแถบเมนูด้านล่าง'],
@@ -1534,15 +1541,15 @@ function caseSheet(c, d){
     <fieldset><legend>Type (ติ๊ก 1 ช่อง)</legend>
       ${R.majorOn === false && R.minorOn === false && !c.cls ? '<p class="meta" style="margin:0">ยังไม่ได้เปิด “ทำเคส Major/Minor” ที่ ตั้งค่า › อัตรา OT เรียกเคส</p>' : ''}
       ${R.majorOn === false && c.cls !== 'major' ? '' : box('major', c.cls === 'major', 'Major', `${R.majorMins} นาทีแรก ฿${R.majorFirst} · ทุก ${R.nextMins} นาทีถัดไป +฿${R.next}`, ' data-act="cls"')}
-      ${R.minorOn === false && c.cls !== 'minor' ? '' : box('minor', c.cls === 'minor', 'Minor', `${R.minorMins} นาทีแรก ฿${R.minorFirst} · ทุก ${R.nextMins} นาทีถัดไป +฿${R.next}`, ' data-act="cls"')}
+      ${R.minorOn === false && c.cls !== 'minor' ? '' : box('minor', c.cls === 'minor', 'Minor', `${R.minorMins} นาทีแรก ฿${R.minorFirst} · ทุก ${R.nextMins} นาทีถัดไป +฿${R.minorNext != null ? R.minorNext : 200}`, ' data-act="cls"')}
     </fieldset>
     <fieldset><legend>คิดเงิน OT</legend>
       ${box('ot', c.ot, 'เคส OT (ถูกเรียกมาทำนอกเวลา)', 'OT = หลัง 16:00–08:00 น. ของวัน STD / 8-8 และวันหยุด · แอปติ๊กให้เองตามเวลา Theatre start แก้เองได้', ' data-act="ot-touch"')}
-      ${R.nightOn !== false ? box('night', c.night, `ค่ายามวิกาล ${esc(R.nightFrom)}–${esc(R.nightTo)} น. +฿${esc(R.night)}`, 'ติ๊กเองเมื่อได้ค่ายามวิกาล') : ''}
+      ${R.nightOn !== false ? box('night', c.night, `ค่ายามวิกาล ${esc(R.nightFrom)}–${esc(R.nightTo)} น. +฿${esc(R.night)}`, 'ติ๊กให้เองเมื่อเวลาเคสคาบช่วงยามวิกาล แก้เองได้', ' data-act="night-touch"') : ''}
     </fieldset>
     <div class="row" style="align-items:flex-start">
-      <label class="f" style="flex:1">Theatre start<input class="field" type="time" name="start" value="${esc(c.start || '')}"></label>
-      <label class="f" style="flex:1">Theatre finish<input class="field" type="time" name="end" value="${esc(c.end || '')}"></label>
+      <label class="f" style="flex:1">Theatre start<input class="field tm" type="text" inputmode="numeric" maxlength="5" placeholder="เช่น 1640" name="start" value="${esc(c.start || '')}" autocomplete="off"></label>
+      <label class="f" style="flex:1">Theatre finish<input class="field tm" type="text" inputmode="numeric" maxlength="5" placeholder="เช่น 1855" name="end" value="${esc(c.end || '')}" autocomplete="off"></label>
     </div>
     <label class="f">Total time (นาที) · คิดเองจาก start–finish ถ้ายังไม่รู้เวลาเลิกให้ใส่ประมาณ<input class="field" type="number" inputmode="numeric" min="5" step="5" name="mins" value="${esc(c.mins || 60)}"></label>
     <div class="wrap">${[30,60,90,120,180].map(n => `<button type="button" class="btn small" data-act="mins" data-n="${n}">${n} นาที</button>`).join('')}</div>
@@ -1558,9 +1565,26 @@ function caseSheet(c, d){
     <div class="row">${c.id ? `<button type="button" class="btn danger" data-act="case-del" data-id="${c.id}" data-d="${d}">ลบ</button>` : '<button type="button" class="btn" data-act="close">ยกเลิก</button>'}<button class="btn primary" type="submit" style="flex:1">บันทึกเคส</button></div>
   </form>`, sh => updateCaseCalc(sh.querySelector('form')));
 }
+/* พิมพ์เวลาแบบตัวเลข: 1640 → 16:40 · 940 → 09:40 · 16.40 → 16:40 */
+function normTime(v){
+  const t = String(v || '').trim(); if (!t) return '';
+  let m = t.match(/^(\d{1,2})[:.\s](\d{1,2})$/); let h, mi;
+  if (m){ h = +m[1]; mi = +m[2]; }
+  else { const d = t.replace(/\D/g, ''); if (!d) return ''; if (d.length <= 2){ h = +d; mi = 0; } else { h = +d.slice(0, d.length - 2); mi = +d.slice(-2); } }
+  if (h === 24 && mi === 0) h = 0;
+  if (!(h >= 0 && h <= 23 && mi >= 0 && mi <= 59)) return null;
+  return `${pad(h)}:${pad(mi)}`;
+}
+function overlapsNight(start, end, mins){
+  const R = S.settings.otRule; if (!start) return false;
+  const toM = t => { const [a, b] = t.split(':').map(Number); return a * 60 + b; };
+  const s0 = toM(start); let e0 = end ? toM(end) : s0 + (Number(mins) || 60); if (e0 <= s0) e0 += 1440;
+  let n0 = toM(R.nightFrom || '23:00'), n1 = toM(R.nightTo || '05:00'); if (n1 <= n0) n1 += 1440;
+  return [-1440, 0, 1440].some(sh => s0 < n1 + sh && e0 > n0 + sh);
+}
 function caseFromForm(f){
   const fd = new FormData(f);
-  return {cls: fd.get('major') ? 'major' : fd.get('minor') ? 'minor' : '', ot: !!fd.get('ot'), night: !!fd.get('night'), start: fd.get('start') || '', end: fd.get('end') || '', mins: Math.max(5, Number(fd.get('mins')) || 60)};
+  return {cls: fd.get('major') ? 'major' : fd.get('minor') ? 'minor' : '', ot: !!fd.get('ot'), night: !!fd.get('night'), start: normTime(fd.get('start')) || '', end: normTime(fd.get('end')) || '', mins: Math.max(5, Number(fd.get('mins')) || 60)};
 }
 /* OT = ช่วง Standby: หลัง 16:00–08:00 ของวันที่มี STD และวันหยุด · ไม่นับระหว่างเวร 8-16 และเวรเหมา 8-8 */
 function otAuto(date, start){
@@ -1575,6 +1599,9 @@ function otAuto(date, start){
   return false;
 }
 function updateCaseCalc(f){
+  if (f){ ['start','end'].forEach(n => { const el = f.querySelector('input[name=' + n + ']'); if (!el || el === document.activeElement) return; const v = normTime(el.value); if (v) el.value = v; });
+    const nb = f.querySelector('input[name=night]'); const st0 = normTime((f.querySelector('input[name=start]') || {}).value), en0 = normTime((f.querySelector('input[name=end]') || {}).value);
+    if (nb && !nb.dataset.touched && st0) nb.checked = overlapsNight(st0, en0, (f.querySelector('input[name=mins]') || {}).value); }
   if (f && f.dataset.d){ const ob = f.querySelector('input[name=ot]'); const st = (f.querySelector('input[name=start]') || {}).value; if (ob && !ob.dataset.touched && st){ const a = otAuto(f.dataset.d, st); if (a != null) ob.checked = a; } }
   const box = f && f.querySelector('#case-calc'); if (!box) return;
   const c = caseFromForm(f); const m = caseMins(c);
@@ -1855,15 +1882,18 @@ function isNightStart(t){ const R = S.settings.otRule; if (!t) return false; ret
 function otAmount(c){
   const R = S.settings.otRule; const mins = caseMins(c);
   if (!c.ot || !c.cls) return {mins, first:0, steps:0, extra:0, night:0, total:0};
+  /* ปิดประเภทนี้ในตั้งค่า = ไม่คิดเงินเคสประเภทนั้น (รวมเคสเดิม) จนกว่าจะเปิดกลับ */
+  if ((c.cls === 'major' && R.majorOn === false) || (c.cls === 'minor' && R.minorOn === false)) return {mins, first:0, steps:0, extra:0, night:0, total:0, off:true};
   const first = c.cls === 'major' ? Number(R.majorFirst) : Number(R.minorFirst);
   const firstMins = c.cls === 'major' ? Number(R.majorMins) : Number(R.minorMins);
   const steps = mins > firstMins ? Math.ceil((mins - firstMins) / (Number(R.nextMins) || 60)) : 0;
-  const extra = steps * Number(R.next);
+  const extra = steps * Number(c.cls === 'major' ? R.next : (R.minorNext != null ? R.minorNext : 200));
   const night = R.nightOn !== false && c.night ? Number(R.night) : 0;
   return {mins, first, steps, extra, night, total: first + extra + night};
 }
 function otExplain(c){
   const a = otAmount(c);
+  if (a.off) return `ปิดการคิดเงินเคส ${c.cls === 'major' ? 'Major' : 'Minor'} ไว้ที่ ตั้งค่า › อัตรา OT`;
   return `${c.cls === 'major' ? 'Major' : 'Minor'} ${a.mins} นาที: ช่วงแรก ${baht(a.first)}${a.steps ? ` + ${a.steps} ช่วงถัดไป ${baht(a.extra)}` : ''}${a.night ? ` + ค่ายามวิกาล ${baht(a.night)}` : ''} = ${baht(a.total)}`;
 }
 function otForDay(d){ return (S.cases[d] || []).filter(c => c.ot); }
@@ -2609,6 +2639,7 @@ const AutoBak = {
       localStorage.setItem(LS_AUTOBAK, JSON.stringify(L.slice(0, 5))); return true;
     }catch(e){ try{ const L = this.list().slice(0, 2); localStorage.setItem(LS_AUTOBAK, JSON.stringify(L)); }catch(err){} return false; }
   },
+  saveData(reason, data){ try{ const L = this.list().filter(b => b.data !== data); L.unshift({at: new Date().toISOString(), reason, ver: APP_VERSION, data}); localStorage.setItem(LS_AUTOBAK, JSON.stringify(L.slice(0, 5))); }catch(e){} },
   daily(){ const L = this.list(); if (!L.length || L[0].at.slice(0,10) !== today()) this.save('สำรองรายวัน'); },
   restore(i){
     const b = this.list()[i]; if (!b) return;
@@ -2851,7 +2882,7 @@ function teamSwapSheet(d, otherId){
 function swapPlan(f){
   const fd = new FormData(f); const a = fd.get('a'), b = fd.get('b'), d1 = fd.get('d1'), d2 = fd.get('d2') || d1;
   const dates = [...new Set([d1, d2].filter(Boolean))];
-  return {a, b, d1, d2, dates, before: dates.map(d => ({d, A: teamCodes(a, d), B: teamCodes(b, d)}))};
+  return {a, b, d1, d2, dates, before: dates.map(d => ({d, A: teamCodes(a, d), B: teamCodes(b, d), rA: teamRaw(a, d), rB: teamRaw(b, d)}))};
 }
 function swapPreview(f){
   if (!f) return; const P = swapPlan(f); const T = team();
@@ -3651,7 +3682,7 @@ document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
   if (!el) return;
   const act = el.dataset.act, id = el.dataset.id;
-  if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push','m-opt','ot-touch'].includes(act)) return;
+  if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push','m-opt','ot-touch','night-touch'].includes(act)) return;
   if (el.tagName === 'INPUT' && el.type !== 'checkbox') return;
   switch(act){
     case 'close': closeSheet(); break;
@@ -3702,7 +3733,7 @@ document.addEventListener('click', e => {
     case 'bp-md': (async () => { const dl = window.claude && window.claude.use ? await window.claude.use('downloads').catch(() => null) : null; if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้', true); return; } try{ await dl.save({filename:'prompt-secretary-app-any-department.md', data:APP_BUILD_PROMPT, mimeType:'text/markdown'}); toast('ส่งไฟล์ให้ดาวน์โหลดแล้ว'); }catch(e){ if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ', true); } })(); break;
     case 'case-import': caseImportSheet(); break;
     case 'case-imp-apply': caseImportApply(); break;
-    case 'ot-touch': el.dataset.touched = '1'; updateCaseCalc(el.closest('form')); break;
+    case 'ot-touch': case 'night-touch': el.dataset.touched = '1'; updateCaseCalc(el.closest('form')); break;
     case 'mtab': moneyTab = el.dataset.k; render(); break;
     case 'm-mon': { const [y,m] = moneyMonth.split('-').map(Number); moneyMonth = ymd(new Date(y, m - 1 + Number(el.dataset.d), 1)).slice(0,7); render(); break; }
     case 'm-add': moneySheet(el.dataset.k); break;
@@ -3731,7 +3762,9 @@ document.addEventListener('click', e => {
     case 'team-history': teamHistorySheet(); break;
     case 'swap-copy': { const f = el.closest('form'); const ta = f && f.elements.msg; if (!ta) break; ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => toast('คัดลอกแล้ว ไปวางใน LINE ได้เลย'), () => toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok)); else toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); break; }
     case 'swap-undo': { const T = team(); const x = T.swaps[Number(el.dataset.i)]; if (!x || x.undone) break;
-      confirmSheet('ย้อนการแลกเวรนี้ กลับเป็นเวรเดิมของทั้งสองคน?', 'ย้อนกลับ', () => { x.before.forEach(b => { setTeamCodes(x.a, b.d, b.A); setTeamCodes(x.b, b.d, b.B); }); x.undone = true; closeSheet(); commit('ย้อนการแลกเวร ' + x.aName + ' ↔ ' + x.bName, {msg:'ย้อนกลับแล้ว'}); }); break; }
+      const same = (p, q) => JSON.stringify(p || []) === JSON.stringify(q || []);
+      const edited = x.after && x.after.some(a => !same(teamCodes(x.a, a.d), a.A) || !same(teamCodes(x.b, a.d), a.B));
+      confirmSheet('ย้อนการแลกเวรนี้ กลับเป็นเวรเดิมของทั้งสองคน?' + (edited ? ' ⚠️ วันเหล่านี้ถูกแก้หลังแลกเวรแล้ว การย้อนจะทับสิ่งที่แก้' : ''), 'ย้อนกลับ', () => { x.before.forEach(b => { setTeamCodes(x.a, b.d, b.A); setTeamCodes(x.b, b.d, b.B); if (b.rA != null) setTeamRaw(x.a, b.d, b.rA); if (b.rB != null) setTeamRaw(x.b, b.d, b.rB); }); x.undone = true; closeSheet(); commit('ย้อนการแลกเวร ' + x.aName + ' ↔ ' + x.bName, {msg:'ย้อนกลับแล้ว'}); }); break; }
     case 'app-check': Updater.check(true); break;
     case 'app-update': Updater.update(); break;
     case 'bak-restore': { const b = AutoBak.list()[Number(el.dataset.i)]; if (!b) break; confirmSheet('กู้คืนข้อมูลจาก ' + b.at.slice(0,16).replace('T',' ') + ' ? ข้อมูลตอนนี้จะถูกสำรองไว้ก่อน', 'กู้คืน', () => AutoBak.restore(Number(el.dataset.i))); break; }
@@ -3837,6 +3870,7 @@ document.addEventListener('click', e => {
     case 'conflict-local': Sync.resolve('local'); break;
   }
 });
+document.addEventListener('focusout', e => { const el = e.target; if (el && el.classList && el.classList.contains('tm')){ const v = normTime(el.value); if (v === null){ el.setCustomValidity('เวลาไม่ถูกต้อง เช่น 1640 หรือ 16:40'); el.reportValidity(); } else { el.setCustomValidity(''); if (v) el.value = v; } const f = el.closest('form'); if (f) updateCaseCalc(f); } });
 document.addEventListener('change', e => {
   { const sf = e.target.closest && e.target.closest('form[data-form="team-swap"]'); if (sf && e.target.name !== 'msg') swapPreview(sf); }
   const el = e.target;
@@ -3911,6 +3945,8 @@ document.addEventListener('submit', e => {
     closeSheet(); commit((ts.length ? 'ลงเวร' + ts.join('+') + ' ' : 'ลบเวร ') + thDate(d,{day:'numeric',month:'short'}));
   } else if (kind === 'case'){
     const op = String(fd.get('op') || '').trim(); const surgeon = String(fd.get('surgeon') || '').trim(); const note = String(fd.get('note') || '').trim();
+    const badT = ['start','end'].find(n => fd.get(n) && normTime(fd.get(n)) === null);
+    if (badT){ toast('เวลาไม่ถูกต้อง พิมพ์เช่น 1640 หรือ 16:40', true); return; }
     const k = caseFromForm(f);
     if (k.ot && !k.cls){ toast('ติ๊ก Major หรือ Minor ก่อน เพื่อคิดเงิน OT', true); return; }
     if (k.ot && !k.start){ toast('ใส่เวลาเริ่มของเคส OT', true); return; }
@@ -3987,8 +4023,9 @@ document.addEventListener('submit', e => {
   } else if (kind === 'team-swap'){
     const P = swapPlan(f); if (P.a === P.b){ toast('เลือกคนละคน', true); return; }
     const T = team(); const A = T.members.find(x => x.id === P.a), B = T.members.find(x => x.id === P.b);
-    P.before.forEach(x => { setTeamCodes(P.a, x.d, x.B); setTeamCodes(P.b, x.d, x.A); });
-    T.swaps.push({at:new Date().toISOString(), a:P.a, b:P.b, aName:A.name, bName:B.name, before:P.before, msg:String(fd.get('msg') || '')});
+    P.before.forEach(x => { setTeamCodes(P.a, x.d, x.B); setTeamCodes(P.b, x.d, x.A); setTeamRaw(P.a, x.d, x.rB || ''); setTeamRaw(P.b, x.d, x.rA || ''); });
+    const after = P.dates.map(d => ({d, A: teamCodes(P.a, d), B: teamCodes(P.b, d)}));
+    T.swaps.push({at:new Date().toISOString(), a:P.a, b:P.b, aName:A.name, bName:B.name, before:P.before, after, msg:String(fd.get('msg') || '')});
     closeSheet(); commit('แลกเวร ' + A.name + ' ↔ ' + B.name, {msg:'สลับเวรแล้ว ย้อนกลับได้ในประวัติ'});
   } else if (kind === 'team-file'){
     readTeamFile(f);
@@ -4014,7 +4051,7 @@ document.addEventListener('submit', e => {
     closeSheet(); commit('แก้ข้อความฟอร์ม', {msg:'บันทึกแล้ว'});
   } else if (kind === 'ot-rule'){
     const R = S.settings.otRule;
-    ['majorFirst','majorMins','minorFirst','minorMins','next','nextMins','night'].forEach(k => { const v = fd.get(k); if (v !== null && v !== '') R[k] = Math.max(0, Number(v) || 0); });
+    ['majorFirst','majorMins','minorFirst','minorMins','next','minorNext','nextMins','night'].forEach(k => { const v = fd.get(k); if (v !== null && v !== '') R[k] = Math.max(0, Number(v) || 0); });
     ['nightFrom','nightTo'].forEach(k => { const v = fd.get(k); if (v) R[k] = v; });
     R.nightOn = !!fd.get('nightOn'); R.majorOn = !!fd.get('majorOn'); R.minorOn = !!fd.get('minorOn'); R.on88 = !!fd.get('on88');
     commit('แก้อัตรา OT', {msg:'บันทึกอัตรา OT แล้ว'});
@@ -4092,7 +4129,9 @@ const Sync = (function(){
   let db = null, userId = null, ref = null, unsub = null, key = null;
   let meta = {on:false, base:0, salt:null, k:null};
   let remote = null, dirty = false, timer = null, chain = Promise.resolve();
-  let state = 'init', lastAt = null, conflict = null, pending = 0;
+  let state = 'init', lastAt = null, conflict = null, pending = 0, editSeq = 0, lastNonce = '', retryT = null, retryN = 0;
+  const devId = (() => { try{ let d = localStorage.getItem('tmm-dev-id'); if (!d){ d = 'd' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36); localStorage.setItem('tmm-dev-id', d); } return d; }catch(e){ return 'd' + Math.random().toString(36).slice(2); } })();
+  let lockRef = null;
   try{ meta = Object.assign(meta, JSON.parse(localStorage.getItem(LS_SYNC) || '{}')); }catch(e){}
   const saveMeta = () => { try{ localStorage.setItem(LS_SYNC, JSON.stringify(meta)); }catch(e){} };
 
@@ -4115,7 +4154,7 @@ const Sync = (function(){
     const el = document.createElement('div');
     el.id = 'conflict'; el.className = 'banner appt'; el.setAttribute('role','alert');
     el.style.cssText = 'position:fixed;left:12px;right:12px;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;max-width:520px;margin:0 auto;flex-direction:column';
-    el.innerHTML = `<strong>ข้อมูลบนเครื่องนี้กับอีกเครื่องไม่ตรงกัน</strong><span style="font-size:13px">ทั้งสองเครื่องมีการแก้ไขที่ยังไม่ได้รวมกัน เลือกว่าจะใช้ข้อมูลชุดไหน อีกชุดจะถูกแทนที่</span>
+    el.innerHTML = `<strong>ข้อมูลบนเครื่องนี้กับอีกเครื่องไม่ตรงกัน</strong><span style="font-size:13px">ทั้งสองเครื่องแก้ไขพร้อมกัน เลือกว่าจะใช้ข้อมูลชุดไหน · ชุดที่ไม่ได้เลือกถูกเก็บไว้ใน ตั้งค่า › สำรองอัตโนมัติ กู้คืนได้</span>
       <div class="row" style="flex-wrap:wrap"><button type="button" class="btn small" data-act="conflict-remote">ใช้ของอีกเครื่อง</button><button type="button" class="btn small" data-act="conflict-local">ใช้ของเครื่องนี้</button></div>`;
     document.body.appendChild(el);
   }
@@ -4124,6 +4163,8 @@ const Sync = (function(){
     remote = snap.data();
     if (!key || !meta.on) return;
     if ((remote.rev || 0) <= meta.base || (pending && remote.rev === pending)) return;
+    /* การเขียนของเครื่องนี้เองที่สำเร็จ แต่คำตอบหายระหว่างทาง (เน็ตหลุด) → ยอมรับเป็นของเรา */
+    if (remote.dev === devId && remote.nonce && remote.nonce === lastNonce){ meta.base = remote.rev; saveMeta(); lastAt = new Date(); state = 'ok'; refresh(); return; }
     if (dirty){ conflict = true; state = 'conflict'; banner(); refresh(); return; }
     try{
       const data = await open(remote);
@@ -4133,18 +4174,34 @@ const Sync = (function(){
     }catch(e){ state = 'badkey'; refresh(); }
   }
   function refresh(){ if (route === 'config') render(); }
+  function scheduleRetry(){
+    clearTimeout(retryT); const waits = [15e3, 60e3, 300e3]; const w = waits[Math.min(retryN, waits.length - 1)]; retryN++;
+    retryT = setTimeout(() => { if (dirty && navigator.onLine !== false) queue(); }, w);
+  }
   async function push(){
     if (!key || !meta.on || !ref || conflict) return;
-    if (remote && (remote.rev || 0) > meta.base){ conflict = true; state = 'conflict'; banner(); refresh(); return; }
+    if (navigator.onLine === false){ state = 'offline'; refresh(); return; }
     state = 'saving';
+    const seqAtStart = editSeq;
+    let lease = null;
     try{
+      /* ล็อกสั้น ๆ กันสองเครื่องเขียนทับกันพร้อมกัน แล้วอ่านของล่าสุดบนคลาวด์ก่อนเขียน */
+      if (lockRef && lockRef.acquire){
+        lease = await lockRef.acquire({holder: devId, ttlMs: 4000});
+        if (!lease.acquired){ state = 'saving'; refresh(); setTimeout(() => queue(), 1500); return; }
+      }
+      const cur = await ref.get();
+      const curDoc = cur.exists ? cur.data() : null;
+      if (curDoc && (curDoc.rev || 0) > meta.base && !(curDoc.dev === devId && curDoc.nonce === lastNonce)){ remote = curDoc; conflict = true; state = 'conflict'; banner(); refresh(); return; }
+      if (curDoc && curDoc.dev === devId && curDoc.nonce === lastNonce) meta.base = Math.max(meta.base, curDoc.rev || 0);
       const sealed = await seal(S);
-      const rev = meta.base + 1;
-      pending = rev;
-      await ref.set({rev, salt:meta.salt, iv:sealed.iv, ct:sealed.ct, at:new Date().toISOString()});
-      meta.base = rev; pending = 0; saveMeta(); dirty = false; lastAt = new Date(); state = 'ok';
+      const rev = meta.base + 1; const nonce = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      pending = rev; lastNonce = nonce;
+      await ref.set({rev, salt:meta.salt, iv:sealed.iv, ct:sealed.ct, at:new Date().toISOString(), dev:devId, nonce});
+      meta.base = rev; pending = 0; saveMeta(); dirty = editSeq !== seqAtStart; lastAt = new Date(); state = 'ok'; retryN = 0;
       log('ซิงก์ขึ้นคลาวด์', true); writeLocal();
-    }catch(e){ pending = 0; state = 'error'; log('ซิงก์ขึ้นคลาวด์', false); writeLocal(); }
+      if (dirty) setTimeout(() => queue(), 800);
+    }catch(e){ pending = 0; state = navigator.onLine === false ? 'offline' : 'error'; log('ซิงก์ขึ้นคลาวด์', false); writeLocal(); scheduleRetry(); }
     refresh();
   }
   function queue(){ chain = chain.then(push).catch(() => {}); return chain; }
@@ -4157,6 +4214,9 @@ const Sync = (function(){
     }catch(e){ db = null; }
     if (!db || !userId){ state = 'unavailable'; refresh(); return; }
     ref = db.doc('data/users/' + userId + '/vault');
+    lockRef = db.doc('data/users/' + userId + '/vault-lock');
+    window.addEventListener('online', () => { if (meta.on && key && (dirty || state === 'offline' || state === 'error')){ dirty = true; queue(); } });
+    window.addEventListener('offline', () => { if (meta.on && key){ state = 'offline'; refresh(); } });
     state = 'off';
     if (meta.on && meta.k){
       try{
@@ -4170,7 +4230,7 @@ const Sync = (function(){
   return {
     boot,
     reset(){ meta = {on:false, base:0, salt:null, k:null}; key = null; dirty = false; conflict = null; banner(); state = db ? 'off' : 'unavailable'; },
-    markDirty(){ if (!meta.on || !key) return; dirty = true; clearTimeout(timer); timer = setTimeout(queue, 1500); },
+    markDirty(){ if (!meta.on || !key) return; dirty = true; editSeq++; clearTimeout(timer); timer = setTimeout(queue, 1500); },
     pushNow(){ clearTimeout(timer); dirty = true; queue().then(() => toast(state === 'ok' ? 'ซิงก์แล้ว' : state === 'conflict' ? 'ยังไม่ได้ซิงก์: ข้อมูลสองเครื่องไม่ตรงกัน' : 'ซิงก์ไม่สำเร็จ', state !== 'ok')); },
     async on(pass, remember){
       if (!ref){ toast('ซิงก์ใช้ไม่ได้ในหน้านี้', true); return; }
@@ -4203,6 +4263,7 @@ const Sync = (function(){
     async resolve(which){
       if (!conflict) return;
       if (which === 'remote'){
+        try{ AutoBak.save('ก่อนใช้ข้อมูลของอีกเครื่อง (ซิงก์)'); }catch(e){}
         try{
           const snap = await ref.get(); remote = snap.data();
           const data = await open(remote);
@@ -4212,6 +4273,7 @@ const Sync = (function(){
         }catch(e){ toast('ดึงข้อมูลไม่สำเร็จ', true); return; }
       } else {
         const snap = await ref.get().catch(() => null);
+        if (snap && snap.exists){ try{ const other = await open(snap.data()); AutoBak.saveData('ข้อมูลของอีกเครื่องที่ไม่ได้เลือก (ซิงก์)', JSON.stringify(other)); }catch(e){} }
         meta.base = snap && snap.exists ? (snap.data().rev || 0) : 0; remote = snap && snap.exists ? snap.data() : null;
         saveMeta(); conflict = null; dirty = true; await queue();
         log('เลือกใช้ข้อมูลเครื่องนี้', state === 'ok'); writeLocal();
@@ -4224,7 +4286,8 @@ const Sync = (function(){
         init:'กำลังตรวจว่าซิงก์ได้ไหม…', unavailable: STANDALONE ? 'เวอร์ชัน GitHub ยังไม่มีซิงก์ ย้ายข้อมูลระหว่างเครื่องด้วย “ดาวน์โหลดไฟล์สำรอง” แล้ว “นำเข้าไฟล์สำรอง”' : 'ซิงก์ใช้ไม่ได้ในหน้านี้ (ต้องเปิดผ่านลิงก์ claude.ai และลงชื่อเข้าใช้) ข้อมูลยังเก็บในเครื่องนี้',
         off:'ปิดอยู่ ข้อมูลเก็บเฉพาะเครื่องนี้', needpass:'ซิงก์เปิดไว้ แต่เครื่องนี้ยังไม่มีรหัส ใส่รหัสเพื่อซิงก์ต่อ',
         ok:'ซิงก์เปิดอยู่ ข้อมูลถูกเข้ารหัสในเครื่องก่อนส่ง' + t, saving:'กำลังซิงก์…',
-        error:'ซิงก์ไม่สำเร็จ ข้อมูลยังอยู่ในเครื่องนี้ ลอง “ซิงก์ตอนนี้” อีกครั้ง', conflict:'ข้อมูลสองเครื่องไม่ตรงกัน เลือกชุดที่จะใช้จากแถบด้านบน',
+        error:'ซิงก์ไม่สำเร็จ ข้อมูลยังอยู่ในเครื่องนี้ แอปจะลองใหม่เอง หรือกด “ซิงก์ตอนนี้”',
+        offline:'ไม่มีอินเทอร์เน็ต ข้อมูลบันทึกในเครื่องแล้ว จะซิงก์เองเมื่อเน็ตกลับมา', conflict:'ข้อมูลสองเครื่องไม่ตรงกัน เลือกชุดที่จะใช้จากแถบด้านบน',
         badkey:'รหัสบนเครื่องนี้เปิดข้อมูลบนคลาวด์ไม่ได้ ปิดซิงก์แล้วเปิดใหม่ด้วยรหัสที่ถูกต้อง'
       };
       return {available: state !== 'unavailable' && state !== 'init', on: meta.on && !!key && state !== 'needpass', text: map[state] || ''};
