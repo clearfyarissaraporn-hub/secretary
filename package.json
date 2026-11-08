@@ -1,0 +1,19 @@
+{
+  "name": "secretary-android",
+  "version": "1.27.0",
+  "private": true,
+  "description": "เลขาส่วนตัว — แอป Android (Capacitor) ที่ห่อแอปเว็บเดิม + แจ้งเตือนจากในเครื่อง",
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/local-notifications": "^8.0.0",
+    "@capacitor/share": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.0.0"
+  }
+}

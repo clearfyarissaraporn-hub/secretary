@@ -1,0 +1,9 @@
+{
+  "appId": "app.secretary.nurse",
+  "appName": "เลขาส่วนตัว",
+  "webDir": "www",
+  "android": { "allowMixedContent": false },
+  "plugins": {
+    "LocalNotifications": { "iconColor": "#7A4CC2" }
+  }
+}
