@@ -1,0 +1,19 @@
+เลขาส่วนตัว — ส่วนประกอบภายนอกและสัญญาอนุญาต (Third-party notices)
+
+ซอฟต์แวร์ต่อไปนี้ถูกโหลดหรือรวมไว้ในแอป และเป็นลิขสิทธิ์ของผู้พัฒนาแต่ละราย
+ใช้ตามสัญญาอนุญาตที่ระบุ ไม่อยู่ภายใต้ลิขสิทธิ์ของ “เลขาส่วนตัว”
+
+1. SheetJS Community Edition 0.18.5 — Copyright (C) SheetJS LLC — Apache License 2.0
+   https://www.apache.org/licenses/LICENSE-2.0
+2. PDF.js 4.10.38 — Copyright Mozilla Foundation — Apache License 2.0
+   https://www.apache.org/licenses/LICENSE-2.0
+3. jsPDF 2.5.1 — Copyright (c) James Hall and contributors — MIT License
+   https://opensource.org/licenses/MIT
+4. html2canvas 1.4.1 — Copyright (c) Niklas von Hertzen — MIT License
+   https://opensource.org/licenses/MIT
+5. ฟอนต์ IBM Plex Sans Thai, Kanit, Mali, Sarabun (ผ่าน Google Fonts)
+   — SIL Open Font License 1.1 — https://openfontlicense.org
+6. (เฉพาะแอป Android) Capacitor และปลั๊กอิน @capacitor/app, local-notifications,
+   filesystem, share, assets — Copyright (c) Ionic / Drifty Co. — MIT License
+   https://opensource.org/licenses/MIT
+7. (เฉพาะเซิร์ฟเวอร์แจ้งเตือน) Cloudflare Workers — บริการของ Cloudflare ตามข้อกำหนดของ Cloudflare

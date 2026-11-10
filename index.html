@@ -1,4 +1,11 @@
 <!doctype html>
+<!--
+  เลขาส่วนตัว (Personal Secretary for Nurses)
+  Copyright © 2026 (พ.ศ. 2569) Clear. All rights reserved. สงวนลิขสิทธิ์ทุกประการ
+  เริ่มพัฒนาเวอร์ชันแรก (v0.1) ปี 2569 · ซอฟต์แวร์นี้เป็นกรรมสิทธิ์ของเจ้าของ
+  ห้ามคัดลอก ดัดแปลง เผยแพร่ จำหน่าย หรือให้เช่า ไม่ว่าทั้งหมดหรือบางส่วน โดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษร
+  ส่วนประกอบภายนอกใช้ตามสัญญาอนุญาตของแต่ละรายการ (ดู คู่มือ › เกี่ยวกับแอปและลิขสิทธิ์)
+-->
 <html lang="th">
 <head>
 <meta charset="utf-8">
@@ -10,7 +17,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.27</title>
+<title>เลขาส่วนตัว v1.29</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -452,6 +459,13 @@ nav.tabbar a svg{width:22px !important;height:22px !important}
 .stdm .stdnet{display:block;font-size:11px;line-height:1.3;color:var(--muted);margin-top:2px}.stdm .stdnet b{color:var(--money-i)}
 html.native body{padding-top:max(env(safe-area-inset-top,0px),26px)}
 html.native nav.tabbar{padding-bottom:max(env(safe-area-inset-bottom,0px),14px)}
+.offi{display:block;font-size:15px;line-height:1;margin-top:1px}
+.tdh{margin:4px 0 0;font-size:13px;color:var(--muted);font-weight:700}
+.tdrow{display:flex;flex-direction:column;gap:6px;padding:8px 0;border-top:1px solid var(--soft)}
+.tdchips,.tri{display:flex;flex-wrap:wrap;gap:5px}
+.tdc{min-height:30px;padding:0 10px;border-radius:999px;border:1.5px solid var(--field);background:var(--surface-solid,#fff);font:inherit;font-size:12.5px;cursor:pointer;color:var(--ink)}
+.tdc.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:600}
+.tdc.on.do{background:var(--money);border-color:var(--money)}.tdc.on.didnt{background:var(--life);border-color:var(--life)}.tdc.on.na{background:var(--muted);border-color:var(--muted)}
 </style>
 </head>
 <body>
@@ -466,7 +480,17 @@ html.native nav.tabbar{padding-bottom:max(env(safe-area-inset-bottom,0px),14px)}
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.27';
+const APP_VERSION = '1.29';
+const APP_OWNER = 'Clear';
+const APP_COPYRIGHT = `© 2026 (พ.ศ. 2569) ${APP_OWNER} · สงวนลิขสิทธิ์`;
+const THIRD_PARTY = [
+  ['SheetJS Community Edition 0.18.5','อ่าน/สร้างไฟล์ Excel','Apache License 2.0'],
+  ['PDF.js 4.10.38 (Mozilla)','อ่านไฟล์ PDF','Apache License 2.0'],
+  ['jsPDF 2.5.1','สร้างไฟล์ PDF','MIT License'],
+  ['html2canvas 1.4.1','แปลงหน้าฟอร์มเป็นภาพ','MIT License'],
+  ['ฟอนต์ IBM Plex Sans Thai · Kanit · Mali · Sarabun (Google Fonts)','ตัวอักษร','SIL Open Font License 1.1'],
+  ['Capacitor และปลั๊กอิน (เฉพาะแอป Android)','ห่อแอป Android แจ้งเตือน แชร์ไฟล์','MIT License']
+];
 const STANDALONE = !(window.claude && window.claude.use);
 /* แอป Android (Capacitor) */
 const NATIVE = !!(window.Capacitor && typeof window.Capacitor.isNativePlatform === 'function' && window.Capacitor.isNativePlatform());
@@ -961,11 +985,9 @@ function viewMyDay(){
   ${gToday.filter(e => !e.time).length ? `<div class="banner info" role="note">${ic('cal')}<div><strong>วันสำคัญวันนี้</strong><br>${gToday.filter(e => !e.time).map(e => esc(e.title)).join('<br>')}</div></div>` : ''}
   ${late ? `<div class="banner life" role="note">${ic('day')}<div>เลย ${esc(S.settings.stopAfter)} แล้ว ตามที่ตั้งไว้คือหยุดรับงานเพิ่ม</div></div>` : ''}
   ${isOffDay(t) ? `<section class="shift off"><div><div style="font-size:12px;opacity:.85">วันนี้</div><div class="big">วันหยุด พักให้เต็มที่</div></div></section>` : types.length ? `<section class="shift"><div><div style="font-size:12px;opacity:.85">เวรวันนี้ · งานประจำ</div><div class="big">${types.map(k => { const st = S.shiftTypes[k] || {}; return esc(typeLabel(k)); }).join('<br>')}</div></div>
-     <span class="row" style="gap:4px;font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2)">${ic('lock',13)}ล็อก</span></section>
-     ${types.some(isWorkType) ? `<section class="card" style="gap:8px"><div class="row between"><h2>หน้าที่วันนี้</h2><span class="sub">เลือกได้หลายอย่าง</span></div>
-       <div class="wrap">${ASSIGNS.map(a => `<label class="chip"><input type="checkbox" data-act="assign" data-k="${esc(a)}"${(S.assign[t] || []).includes(a) ? ' checked' : ''}>${esc(a)}</label>`).join('')}</div></section>` : ''}`
+     <span class="row" style="gap:4px;font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2)">${ic('lock',13)}ล็อก</span></section>`
      : `<section class="card"><div class="row between"><span class="sub">วันนี้ยังไม่ได้ลงเวร</span><button type="button" class="btn small" data-act="set-shift" data-d="${t}">ลงเวร</button></div></section>`}
-  ${dutyCard(t)}
+  ${teamDayCard(t)}
   ${(() => { const nx = coHolidays().find(h => h[2] && h[0] > t && h[0] <= addDays(t, 7)); return nx ? `<section class="card" style="flex-direction:row;align-items:center;gap:10px;padding:12px 14px"><span style="font-size:22px">🏖️</span><span class="grow"><b>${esc(nx[1])}</b><span class="meta" style="display:block">${esc(thDate(nx[0],{weekday:'long', day:'numeric', month:'short'}))} · อีก ${Math.round((parse(nx[0]) - parse(t)) / 864e5)} วัน · วันหยุดบริษัท</span></span><button type="button" class="btn small" data-act="hol-open">ดู</button></section>` : ''; })()}
   ${Updater.hasNew() ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px;background:var(--money-t)"><span style="font-size:26px">✨</span><span class="grow"><b>มีเวอร์ชันใหม่ v${esc(Updater.latest)}</b><span class="meta">ข้อมูลจะสำรองให้อัตโนมัติก่อนอัปเดต</span></span><button type="button" class="btn primary small" data-act="app-update">อัปเดตเลย</button></section>` : ''}
   ${!NATIVE && STANDALONE && !IS_INSTALLED && relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>แอปติดตั้งในเครื่องแล้ว</b><span class="meta">ปัดหน้าจอขึ้นเปิดลิ้นชักแอป แล้วหา “เลขาส่วนตัว”</span></span><button type="button" class="btn small" data-act="install-help">ไม่เจอแอป</button></section>` : ''}
@@ -1016,8 +1038,11 @@ function viewAppt(){
   <div class="row" style="flex-wrap:wrap;gap:6px;padding:0 4px 8px">${S.settings.push ? '<button type="button" class="btn small primary" data-act="push-all">ส่งเตือนไป Google Calendar</button>' : '<a class="btn small" href="#config">เปิดเด้งเตือนบนมือถือ</a>'}<button type="button" class="btn small" data-act="claude-remind">ให้ Claude ตั้งเตือนแทน</button>${STANDALONE ? '<button type="button" class="btn small primary" data-act="ics">ไฟล์ปฏิทิน (.ics)</button>' : ''}</div>
   <p class="sub" style="padding:0 4px">เตือนในแอปที่หน้า My day เสมอ และเด้งบนมือถือได้เมื่อเปิด “เด้งเตือนบนมือถือจริง” ในตั้งค่า</p>`;
 }
+const OFF_ICONS = ['🌼','🚀','🌙','🌸','🏖️','🍓','🌈','⭐','🧸','🍰','🎀','🦋','🍦','☁️'];
+const offIcon = d => { let h = 0; for (const ch of d) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return OFF_ICONS[h % OFF_ICONS.length]; };
+const isRestDay = d => shiftsOn(d).some(k => ['OFF','VAC'].includes(k));
 function dotsFor(d){
-  const out = shiftsOn(d).map(k => SHIFT_DOT[k] || 'var(--work)');
+  const out = shiftsOn(d).filter(k => !['OFF','VAC'].includes(k)).map(k => SHIFT_DOT[k] || 'var(--work)');
   const ks = new Set();
   S.appts.forEach(a => { if (a.date === d) ks.add(a.sys || 'appt'); });
   if ((S.cases[d] || []).length) ks.add('work');
@@ -1055,7 +1080,7 @@ function viewCalendar(){
       const ds = `${y}-${pad(m)}-${pad(d)}`;
       const sel = ds === calSel;
       const hol = isCoHoliday(ds);
-      cells += `<button type="button" data-act="cal-pick" data-d="${ds}" aria-pressed="${sel}" class="${ds === t ? 'today' : ''}" aria-label="${esc(thDate(ds,{day:'numeric',month:'long'}))}"${hol && !sel ? ' style="color:var(--life);font-weight:600"' : ''}>${d}<span class="dots">${dotsFor(ds).map(c => `<span style="background:${c};box-shadow:0 0 0 1px ${sel ? '#fff' : 'transparent'}"></span>`).join('')}</span></button>`;
+      cells += `<button type="button" data-act="cal-pick" data-d="${ds}" aria-pressed="${sel}" class="${ds === t ? 'today' : ''}" aria-label="${esc(thDate(ds,{day:'numeric',month:'long'}))}"${hol && !sel ? ' style="color:var(--life);font-weight:600"' : ''}>${d}${isRestDay(ds) ? `<span class="offi" aria-label="วันหยุด">${offIcon(ds)}</span>` : ''}<span class="dots">${dotsFor(ds).map(c => `<span style="background:${c};box-shadow:0 0 0 1px ${sel ? '#fff' : 'transparent'}"></span>`).join('')}</span></button>`;
     }
     const pay = payFor(calMonth);
     payHtml = `<section class="card">
@@ -1067,7 +1092,7 @@ function viewCalendar(){
           : `<div class="empty">เดือนนี้ยังไม่มีเวร กด “ลงตารางเวร” เพื่อลงทั้งเดือนในครั้งเดียว</div>`}
       </section>`;
     body = `<section class="card" style="padding:10px"><div class="cal">${cells}</div>
-      <div class="wrap" style="padding-top:6px;border-top:1px solid var(--soft)">${[['8-16','8-16'],['STD','STD'],['STDM','STD เช้า'],['8-00','8-8'],['OFF','หยุด']].map(([k,l]) => `<span class="row" style="gap:4px;font-size:11.5px;font-weight:600"><span class="dot" style="background:${SHIFT_DOT[k]}"></span>${l}</span>`).join('')}</div>
+      <div class="wrap" style="padding-top:6px;border-top:1px solid var(--soft)">${[['8-16','8-16'],['STD','STD'],['STDM','STD เช้า'],['8-00','8-8']].map(([k,l]) => `<span class="row" style="gap:4px;font-size:11.5px;font-weight:600"><span class="dot" style="background:${SHIFT_DOT[k]}"></span>${l}</span>`).join('')}<span class="row" style="gap:4px;font-size:11.5px;font-weight:600">🌼🚀🌙 วันหยุด</span></div>
       <div class="wrap">${Object.keys(SYS).map(k => `<span class="row" style="gap:4px;font-size:11.5px"><span class="dot" style="background:${sysVar(k)}"></span>${SYS[k].name}</span>`).join('')}${GCal.on() ? `<span class="row" style="gap:4px;font-size:11.5px"><span class="dot" style="background:var(--gcal)"></span>Google</span>` : ''}</div>
       ${GCal.note(calMonth)}</section>`;
   } else if (calMode === 'year'){
@@ -1392,6 +1417,8 @@ function viewConfig(){
   ${STANDALONE ? `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow" style="padding:12px 14px;gap:10px"><img src="${APP_ICON}" alt="" width="40" height="40" style="border-radius:10px"><span class="grow meta">${IS_INSTALLED ? 'ติดตั้งแล้ว กำลังเปิดจากไอคอนบนหน้าจอ' : installEvt ? 'พร้อมติดตั้ง' : 'ยังไม่มีปุ่มติดตั้งจากเบราว์เซอร์ ดูวิธีติดตั้ง'}</span>${!IS_INSTALLED ? (installEvt ? '<button type="button" class="btn primary small" data-act="install">ติดตั้ง</button>' : '<button type="button" class="btn small" data-act="install-help">วิธีติดตั้ง</button>') : ''}</div>
       <div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span class="grow"><span style="display:block;font-weight:600">แจ้งเตือนของแอป</span><span class="meta">${'Notification' in window ? (Notification.permission === 'denied' ? 'ถูกบล็อกอยู่ เปิดได้ที่ Chrome › การตั้งค่าเว็บไซต์ › การแจ้งเตือน' : S.settings.noti && Notification.permission === 'granted' ? 'เปิดอยู่ · เด้งเตือนนัดของวันนี้เมื่อเปิดแอป และทุก 5 นาทีระหว่างเปิดอยู่' : 'เด้งเตือนนัดในแถบแจ้งเตือนของมือถือ') : 'เครื่องนี้ไม่รองรับ'}</span></span>${'Notification' in window && Notification.permission !== 'denied' ? (S.settings.noti && Notification.permission === 'granted' ? '<button type="button" class="btn small" data-act="noti-off">ปิด</button>' : '<button type="button" class="btn small primary" data-act="noti-on">เปิดแจ้งเตือน</button>') : ''}</div></div>` : `<h2 class="group-t">ติดตั้งแอป</h2><div class="list"><div class="lrow meta" style="padding:12px 14px">แอปบน claude.ai ติดตั้งลงหน้าจอไม่ได้ ให้ใช้เวอร์ชัน GitHub (ดู README) แล้วเปิดใน Chrome</div></div>`}
 
+  ${STANDALONE ? `<h2 class="group-t">อ่านรูปด้วย AI ในแอป</h2><div class="list">${aiKeyHtml()}</div>` : ''}
+
   <h2 class="group-t">ตรวจระบบ</h2>
   <div class="list"><div class="lrow" style="padding:12px 14px;gap:10px;flex-wrap:wrap"><span style="font-size:24px">🩺</span><span class="grow"><b>ตรวจว่าทุกระบบทำงานถูกต้อง</b><span class="meta" style="display:block">เวลา ค่า OT การติ๊ก OT แลกเวร/ย้อนกลับ สำรอง/กู้คืน และซิงก์กับคลาวด์จริง · ทดสอบกับสำเนา ไม่แตะข้อมูลจริง</span></span><button type="button" class="btn small primary" data-act="diag-open">ตรวจระบบ</button></div></div>
 
@@ -1472,6 +1499,8 @@ function viewGuide(){
     ['บันทึกเป็น PDF หรือ Excel','ปุ่มด้านบนฟอร์ม ได้ไฟล์ขนาด A4 พร้อมพิมพ์'],
     ['อัตรา OT (ตั้งค่า › อัตรา OT)','Major 90 นาทีแรก ฿800 · ทุกชั่วโมงถัดไป +฿400 · Minor 60 นาทีแรก ฿400 · ทุกชั่วโมงถัดไป +฿200 · ยามวิกาล 23:00–05:00 +฿400 · เศษของชั่วโมงถัดไปนับเป็น 1 ชม. · ปิด Major/Minor = ไม่คิดเงินประเภทนั้น (รวมเคสเดิม)'],
     ['ชั่วโมงทำงานจริงของเดือน','ตั้งค่า › ชั่วโมงทำงาน: ใส่ชั่วโมงมาตรฐานรายเดือน แอปหักวันหยุดบริษัทให้อัตโนมัติ (วันทำงาน − วันหยุด = ชั่วโมงทำงานจริง) แสดงใต้แต่ละเดือน · หน้าตารางบอก “ต้องทำจริง” และ “ทำงานจริง” · วันหยุดใช้คิดชั่วโมงเท่านั้น ไม่ยุ่งกับตารางเวร ค่าเวร ค่าเคส และใบเบิก · ไม่นับวันไหน แตะวันนั้นในปฏิทินแล้วติ๊กออก'],
+    ['ทีมวันนี้ (My day)','ตำแหน่ง: แตะ Anes/RR/Incharge/Assistant/Scrub/Circulate ให้แต่ละคนที่อยู่เวร (ไม่รวมคนที่ STD อย่างเดียว) · หน้าที่ประจำวัน: แตะ “เลือกคนรับผิดชอบ” แล้วติ๊ก ทำแล้ว/ไม่ได้ทำ/N/A · ✏️ เพิ่ม ลบ เปลี่ยนชื่อ เรียงหน้าที่และตำแหน่ง · 📊 สถิติรายเดือน · 📤 แชร์ให้เพื่อนทาง LINE'],
+    ['อ่านรูปตารางเวรในแอป','ตาราง › ลงตารางเวร › จากรูป หรือ ทีม › นำเข้า: claude.ai อ่านให้เลย · GitHub/Android ใส่ API key ที่ ตั้งค่า › อ่านรูปด้วย AI ในแอป แล้วถ่ายรูปได้เลย · หรือคัดลอกคำสั่ง (ตรงเดือนที่เลือก) ไปแอป Claude แล้ววางผลกลับ · อัปเดตเวรของคุณและทีมพร้อมกัน'],
     ['ทำงานตรงวันหยุด','ลงเวรวันนั้นตามปกติ ไม่ต้องแก้อะไร: ต้องทำจริงยังหักวันหยุด ชั่วโมงเวรนับเป็นงานจริง → เกินเพิ่ม · ได้หยุดชดเชย: ติ๊กออก “วันหยุดประจำปี” วันที่ทำ แล้วติ๊กในวันชดเชย · ถือเป็นวันปกติ: ติ๊กออกอย่างเดียว · ค่าทำงานวันหยุดใส่เองที่ เงิน › + รายรับ'],
     ['วันหยุดบริษัท','ตั้งค่า › วันหยุดบริษัท › จัดการ: ดูทั้งปี (นับชั่วโมงให้อัตโนมัติทุกวันหยุด) · แตะวันเพื่อแก้/ลบ · + เพิ่มวันหยุด · อ่านจากรูปประกาศ (Claude อ่านให้) · วางรายการ (เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่”) · เลือก “แทนที่ทั้งปี” เมื่อได้ประกาศจริง · My day เตือนก่อนถึงวันหยุด 7 วัน'],
     ['ตรวจระบบ','ตั้งค่า › ตรวจระบบ › เริ่มตรวจ: ทดสอบเวลา ยามวิกาล ค่า OT การติ๊ก OT แลกเวร/ย้อนกลับ สำรอง/กู้คืน กับสำเนาข้อมูล และทดสอบซิงก์กับคลาวด์จริง (เอกสารทดสอบแยก) · ทำหลังอัปเดตทุกครั้ง ถ้ามี ❌ กดคัดลอกรายงานส่งมาให้แก้'],
@@ -1501,6 +1530,8 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.29','ทีมวันนี้: ตำแหน่ง + หน้าที่ (ทำ/ไม่ทำ/NA) + สถิติ + แชร์ · แก้หน้าที่ได้เอง เอา Stand by ออก · วันหยุดในปฏิทินเป็นไอคอนน่ารัก · อ่านรูปตารางเวรในแอปด้วย API key · แก้คำสั่งอ่านรูปให้ตรงเดือนที่เลือก · ลงตารางเวรจากรูปในเวอร์ชัน GitHub ได้ · นำเข้าไฟล์ .json'],
+    ['v1.28','ระบุลิขสิทธิ์ของแอปตั้งแต่เวอร์ชันแรก (คู่มือ › เกี่ยวกับแอปและลิขสิทธิ์) · รายการส่วนประกอบภายนอกและสัญญาอนุญาต'],
     ['v1.27','รองรับแอป Android: แจ้งเตือนจากในเครื่อง (นัด เวรพรุ่งนี้ วันหยุด รูทีน) ตั้งเวลาเตือนเองได้ · บันทึก/ส่งไฟล์ผ่านเมนูแชร์ · ปุ่มย้อนกลับของมือถือ'],
     ['v1.26','ซิงก์หลายเครื่องในเวอร์ชัน GitHub ผ่านเซิร์ฟเวอร์ Cloudflare ของคุณเอง (เข้ารหัสในเครื่อง เซิร์ฟเวอร์ปฏิเสธการเขียนทับจากข้อมูลรุ่นเก่า เก็บรุ่นก่อนหน้า)'],
     ['v1.25','ทดสอบกรณีทำงานตรงวันหยุดครบ · แก้สรุป “ลงเวรตรงวันหยุด” ให้นับวันที่ลงเวรล่วงหน้าด้วย · ตรวจระบบเพิ่ม 5 ข้อ'],
@@ -1530,7 +1561,7 @@ function viewGuide(){
     ['v1.2','ปุ่มติดตั้งแอป · ไอคอนน่ารัก']
   ];
   return `<div class="guide">
-  <header class="top"><div><h1>คู่มือใช้งาน</h1><div class="sub">v${APP_VERSION} · ${STANDALONE ? 'เวอร์ชัน GitHub' : 'เวอร์ชัน claude.ai'}</div></div></header>
+  <header class="top"><div><h1>คู่มือใช้งาน</h1><div class="sub">v${APP_VERSION} · ${STANDALONE ? (NATIVE ? 'แอป Android' : 'เวอร์ชัน GitHub') : 'เวอร์ชัน claude.ai'} · ${esc(APP_COPYRIGHT)}</div></div></header>
   ${sec('ครั้งแรก (ทำครั้งเดียว)', first)}
   ${sec('ต้นเดือน', monthStart)}
   ${sec('ทุกวัน', daily)}
@@ -1558,6 +1589,13 @@ function viewGuide(){
     <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small primary" data-act="bp-copy">คัดลอก Prompt</button><button type="button" class="btn small" data-act="bp-md">ดาวน์โหลด .md</button></div>
     <details><summary class="meta" style="cursor:pointer">ดู Prompt ทั้งหมด</summary><pre class="bpre">${esc(APP_BUILD_PROMPT)}</pre></details>
     <p class="meta" style="margin:0">ส่วนที่ 2 เป็นตัวอย่าง ยังไม่มีตัวเลขจริง ต้องเติมค่าเวรและกติกาของโรงพยาบาลนั้นเอง · ห้ามแนบไฟล์ที่มีชื่อผู้ป่วย</p></section>
+  <section class="card" id="about"><h2>เกี่ยวกับแอปและลิขสิทธิ์</h2>
+    <p style="margin:0"><b>เลขาส่วนตัว v${APP_VERSION}</b><br>${esc(APP_COPYRIGHT)}</p>
+    <p class="meta" style="margin:0">ซอฟต์แวร์ การออกแบบ และคู่มือนี้เป็นกรรมสิทธิ์ของเจ้าของ ตั้งแต่เวอร์ชันแรก (v0.1) ปี 2569 ห้ามคัดลอก ดัดแปลง เผยแพร่ จำหน่าย หรือให้เช่า ไม่ว่าทั้งหมดหรือบางส่วน โดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษร · ข้อมูลที่ผู้ใช้บันทึกเป็นของผู้ใช้ และเก็บในเครื่องของผู้ใช้</p>
+    <details><summary class="meta" style="cursor:pointer">ส่วนประกอบภายนอกและสัญญาอนุญาต</summary>
+      <table class="map" style="margin-top:6px"><tbody>${THIRD_PARTY.map(r => `<tr><th scope="row" style="text-align:left">${esc(r[0])}</th><td style="text-align:left;font-weight:400">${esc(r[1])} · ${esc(r[2])}</td></tr>`).join('')}</tbody></table>
+      <p class="meta" style="margin:6px 0 0">ส่วนประกอบเหล่านี้เป็นลิขสิทธิ์ของผู้พัฒนาแต่ละราย ใช้ตามสัญญาอนุญาตที่ระบุ ไม่อยู่ภายใต้ลิขสิทธิ์ของแอปนี้</p></details>
+  </section>
   <section class="card"><h2>มีอะไรใหม่</h2><table class="map"><tbody>${changes.map(r => `<tr><th scope="row" style="width:22%">${r[0]}</th><td style="text-align:left;font-weight:400;color:var(--ink)">${r[1]}</td></tr>`).join('')}</tbody></table></section>
   <section class="card"><h2>ถ้าติดปัญหา</h2><table class="map"><tbody>${faq.map(r => `<tr><th scope="row" style="width:40%">${r[0]}</th><td style="text-align:left;font-weight:400;color:var(--ink)">${r[1]}</td></tr>`).join('')}</tbody></table></section>
   </div>`;
@@ -1877,7 +1915,23 @@ const Roster = (function(){
     try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
     const lim = sample ? await sample.limits().catch(() => null) : null;
     if (tab !== 'photo') return;
-    if (!sample){ body.innerHTML = '<p style="margin:0">หน้านี้ส่งรูปให้ Claude อ่านไม่ได้ ใช้แท็บ “ลงทั้งเดือน” แทนได้เลย ใช้เวลาไม่ถึงนาที</p>'; return; }
+    if (!sample){
+      body.innerHTML = `<div style="display:flex;flex-direction:column;gap:10px">
+        <p class="meta" style="margin:0">อ่านรูปตารางเวรทั้งทีม แล้วอัปเดตทั้งเวรของคุณและตารางทีมในครั้งเดียว · เดือน <b>${esc(new Date(+ym.slice(0,4), +ym.slice(5) - 1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}</b> (เปลี่ยนเดือนที่ลูกศรด้านบนของแท็บ “ลงทั้งเดือน”)</p>
+        ${AIKey.has() ? `<label class="f">ถ่ายหรือเลือกรูปตารางเวร<input class="field" type="file" id="rp-img" data-ym="${esc(ym)}" accept="image/*" style="padding:8px"></label>` : '<div class="banner appt" style="margin:0"><div>อยากให้อ่านรูปในแอปได้เลย: ตั้งค่า › <b>อ่านรูปด้วย AI ในแอป</b> › ใส่ API key</div></div>'}
+        <details${AIKey.has() ? '' : ' open'}><summary style="cursor:pointer;font-weight:600">ให้ Claude ในแอป Claude อ่าน (ฟรี)</summary>
+          <ol style="margin:6px 0;padding-left:20px;font-size:13.5px"><li>กด <b>คัดลอกคำสั่ง</b> › เปิดแอป Claude › ส่งรูปพร้อมวางคำสั่ง</li><li>คัดลอกคำตอบทั้งหมดมาวางด้านล่าง › <b>อ่านผล</b></li></ol>
+          <button type="button" class="btn small" data-act="team-prompt" data-ym="${esc(ym)}">คัดลอกคำสั่ง (เดือนนี้)</button>
+          <textarea class="field" id="rp-txt" rows="4" placeholder="วางคำตอบจาก Claude" style="margin-top:6px"></textarea>
+          <button type="button" class="btn small primary" data-act="rp-parse" data-ym="${esc(ym)}" style="margin-top:6px">อ่านผล</button></details>
+        <div id="tf-out" aria-live="polite"></div></div>`;
+      const inp = body.querySelector('#rp-img'); if (inp) inp.addEventListener('change', async () => {
+        const f = inp.files && inp.files[0]; if (!f) return; const out = body.querySelector('#tf-out'); out.innerHTML = '<p class="meta">AI กำลังอ่านรูป อาจใช้เวลาครึ่งนาที…</p>';
+        try{ const r = await aiReadImages([f], inp.dataset.ym); if (!r || !r.people.length) throw new Error('ไม่พบรายชื่อในรูป'); teamPreview(out, Object.assign(r, {how:'AI อ่านจากรูป'}), true); }
+        catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>${e && e.code === 'badkey' ? 'API key ไม่ถูกต้อง' : 'อ่านรูปไม่สำเร็จ ลองถ่ายให้ตรงและชัด หรือครอปเฉพาะตาราง'}${e && e.message ? ' (' + esc(e.message).slice(0, 80) + ')' : ''}</div></div>`; }
+      });
+      return;
+    }
     const types = lim && lim.images && lim.images.mediaTypes ? lim.images.mediaTypes.join(',') : 'image/jpeg,image/png,image/webp';
     body.innerHTML = `<form data-form="roster" style="display:flex;flex-direction:column;gap:12px">
       <label class="f">รูปตารางเวร<input class="field" type="file" name="img" accept="${esc(types)}" required style="padding:8px"></label>
@@ -3231,9 +3285,40 @@ async function peopleFromPdf(buf, ymSel){
   }
   return {ym: ym || ymSel, people, canvas:firstCanvas};
 }
+
+/* ---------- อ่านรูปด้วย AI ในแอป (เวอร์ชัน GitHub/Android ใช้ API key ของผู้ใช้เอง) ---------- */
+const LS_AIKEY = 'tmm-aikey-v1';
+const AIKey = {
+  get(){ try{ return localStorage.getItem(LS_AIKEY) || ''; }catch(e){ return ''; } },
+  has(){ return this.get().length > 20; },
+  async shrink(blob){
+    const url = URL.createObjectURL(blob);
+    try{ const im = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = url; });
+      const sc = Math.min(1, 2000 / Math.max(im.width, im.height)); const c = document.createElement('canvas'); c.width = Math.round(im.width * sc); c.height = Math.round(im.height * sc);
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', 0.85).split(',')[1]; }
+    finally{ URL.revokeObjectURL(url); }
+  },
+  async vision(prompt, blobs){
+    const key = this.get(); if (!key) throw Object.assign(new Error('ยังไม่ได้ใส่ API key'), {code:'nokey'});
+    const imgs = []; for (const b of blobs) imgs.push({type:'image', source:{type:'base64', media_type:'image/jpeg', data: await this.shrink(b)}});
+    const r = await fetch('https://api.anthropic.com/v1/messages', {method:'POST', headers:{'content-type':'application/json', 'x-api-key': key, 'anthropic-version':'2023-06-01', 'anthropic-dangerous-direct-browser-access':'true'},
+      body: JSON.stringify({model:'claude-sonnet-5-5', max_tokens:8000, messages:[{role:'user', content: imgs.concat([{type:'text', text: prompt}])}]})});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw Object.assign(new Error((j.error && j.error.message) || ('HTTP ' + r.status)), {code: r.status === 401 ? 'badkey' : 'api'});
+    return (j.content || []).map(c => c.text || '').join('\n');
+  }
+};
+function aiKeyHtml(){
+  return `<div class="lrow" style="flex-direction:column;align-items:stretch;padding:12px 14px;gap:8px">
+    <span><b>📷 อ่านรูปด้วย AI ในแอป</b><span class="meta" style="display:block">ถ่ายรูปตารางเวรหรือประกาศวันหยุด แล้วแอปอ่านให้เลย ไม่ต้องไปแอป Claude · ใช้ API key ของ Anthropic ของคุณเอง (สมัครที่ console.anthropic.com ต้องเติมเครดิต ประมาณ 1–3 บาทต่อรูป) · key เก็บในเครื่องนี้เท่านั้น ไม่ซิงก์ · รูปจะถูกส่งไปให้ Claude อ่าน</span></span>
+    ${AIKey.has() ? `<div class="row" style="gap:6px;flex-wrap:wrap"><span class="meta grow">ใส่ key แล้ว (…${esc(AIKey.get().slice(-4))})</span><button type="button" class="btn small ghost" data-act="aikey-del">ลบ key</button></div>`
+      : `<form data-form="aikey" class="row" style="gap:6px;flex-wrap:wrap"><input class="field" name="k" type="password" autocomplete="off" placeholder="sk-ant-…" style="flex:1 1 100%"><button class="btn small primary" type="submit">บันทึก key</button></form>`}
+  </div>`;
+}
+
 async function aiReadImages(blobs, ym){
   let sample = null; try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
-  if (!sample) return null;
+  if (!sample){ if (!AIKey.has()) return null; const txt = await AIKey.vision(teamPrompt(ym), blobs); return peopleFromJson(txt, ym); }
   const v = await sample.json(teamPrompt(ym), {images:blobs, modelTier:'default'});
   return peopleFromJson(v, ym);
 }
@@ -3280,6 +3365,8 @@ async function readTeamFile(f){
       });
       const an = peopleFromAnesRows(rows, ym, doc.body ? doc.body.textContent.slice(0, 400) : '');
       res = an.length ? {ym, people: an, how:'ไฟล์ HTML (แบบ ช/บ/ด)'} : {ym, people: peopleFromCells(rows, ym), how:'ไฟล์ HTML'};
+    } else if (/\.json$|\.txt$/i.test(file.name) || /json|text\/plain/.test(file.type)){
+      const r = peopleFromJson(await file.text(), ymSel); res = Object.assign(r, {how:'ไฟล์ข้อมูลตารางเวร'});
     } else if (/\.pdf$/i.test(file.name) || file.type === 'application/pdf'){
       out.innerHTML = '<p class="meta">กำลังอ่าน PDF… (ครั้งแรกต้องต่อเน็ตเพื่อโหลดตัวอ่าน)</p>';
       let P; try{ P = await peopleFromPdf(await file.arrayBuffer(), ymSel); }catch(e){ return fail('เปิด PDF ไม่ได้ (ต่อเน็ตแล้วลองใหม่ หรือไฟล์อาจมีรหัสผ่าน) · ' + esc(String(e && e.message || e).slice(0, 120))); }
@@ -3291,9 +3378,9 @@ async function readTeamFile(f){
         res = Object.assign(r, {how:'Claude อ่านจาก PDF'});
       }
     } else if (/^image\//.test(file.type) || /\.(jpe?g|png|webp|heic)$/i.test(file.name)){
-      if (STANDALONE) return fail('เวอร์ชัน GitHub อ่านรูปเองไม่ได้ ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง (ส่งรูปให้ Claude ในแอป Claude แล้ววางผลกลับมา)');
+      if (STANDALONE && !AIKey.has()) return fail('ยังอ่านรูปในแอปไม่ได้: ใส่ API key ที่ ตั้งค่า › อ่านรูปด้วย AI ในแอป หรือใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง');
       out.innerHTML = '<p class="meta">Claude กำลังอ่านรูปตาราง อาจใช้เวลาครึ่งนาที…</p>';
-      let r = null; try{ r = await aiReadImages([file], ymSel); }catch(e){ return fail(e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตาราง แล้วลองใหม่'); }
+      let r = null; try{ r = await aiReadImages([file], ymSel); }catch(e){ return fail(e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : e && e.code === 'badkey' ? 'API key ไม่ถูกต้อง ตรวจที่ ตั้งค่า › อ่านรูปด้วย AI ในแอป' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตาราง แล้วลองใหม่' + (e && e.message ? ' (' + esc(e.message).slice(0, 80) + ')' : '')); }
       if (!r) return fail('หน้านี้ส่งรูปให้ Claude ไม่ได้ ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง');
       res = Object.assign(r, {how:'Claude อ่านจากรูป'});
     } else return fail('ใช้ไฟล์ .html .xlsx .pdf หรือรูปภาพ');
@@ -3339,7 +3426,7 @@ function teamImportSheet(){
   openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
     <form data-form="team-file" style="display:flex;flex-direction:column;gap:12px">
       <p class="meta" style="margin:0">รับไฟล์ <b>.html .xlsx .pdf</b> และ<b>รูปภาพ</b> · .html/.xlsx/PDF ที่มีข้อความ อ่านในเครื่อง รวมสีช่อง (เหลือง = +STD) · รูปภาพและ PDF สแกน${STANDALONE ? ' ต้องให้ Claude อ่าน (ด้านล่าง)' : ' ให้ Claude อ่าน'}</p>
-      <label class="f">ไฟล์หรือรูปตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls,.pdf,application/pdf,image/*" required style="padding:8px"></label>
+      <label class="f">ไฟล์หรือรูปตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls,.pdf,application/pdf,image/*,.json,.txt" required style="padding:8px"></label>
       <label class="f">เดือน (ใช้เมื่อไฟล์ไม่ได้บอกเดือน)<input class="field" type="month" name="ym" value="${esc(teamMonth)}"></label>
       <label class="chip" style="align-self:flex-start"><input type="checkbox" name="mine">อัปเดตเวรของฉันจากไฟล์นี้ด้วย</label>
       <button class="btn primary" type="submit">อ่านไฟล์</button><div id="tf-out" aria-live="polite"></div>
@@ -3414,6 +3501,8 @@ function aiPackData(o){
   /* หน้าที่ */
   const asg = {}; Object.keys(S.assign || {}).filter(inR).forEach(d => (S.assign[d] || []).forEach(a => { asg[a] = (asg[a] || 0) + 1; }));
   D.duties = asg;
+  const dst = {}; Object.keys(S.dayplan || {}).filter(inR).forEach(d => Object.entries(S.dayplan[d].duties || {}).forEach(([k, v]) => { const x = dst[k] = dst[k] || {ทำ:0, ไม่ได้ทำ:0, NA:0}; if (v.st === 'do') x['ทำ']++; else if (v.st === 'didnt') x['ไม่ได้ทำ']++; else if (v.st === 'na') x.NA++; }));
+  D.dutyStatus = dst;
   /* รูทีน */
   const logDays = Object.keys(S.routineLog || {}).filter(inR);
   D.routines = S.routines.filter(r => r.type !== 'cases').map(r => {
@@ -3502,7 +3591,7 @@ function aiMarkdown(o){
   H('3. รูปแบบเวร'); L.push(`- วันทำงานตามวันในสัปดาห์: ${kv(D.pattern.workDaysByWeekday)}`, `- ทำงานติดกันนานสุด: ${D.pattern.longestWorkStreak} วัน`, `- เวร 24 ชม.: ${D.pattern.shifts24h} ครั้ง · วันถัดไปยังต้องทำงาน: ${D.pattern.workedDayAfter24h} ครั้ง`);
   H('4. เคสผ่าตัดและ OT'); L.push(`- ทั้งหมด ${D.cases.total} เคส · OT ${D.cases.ot} เคส · ค่ายามวิกาล ${D.cases.nightPremium} ครั้ง · เฉลี่ย ${D.cases.avgMinutes} นาที/เคส`, `- ประเภท: ${kv(D.cases.byType)}`, `- หน้าที่: ${kv(D.cases.byRole)}`, `- เวลาเริ่มเคส OT: ${kv(D.cases.otStartTime)}`);
   if (D.cases.list) D.cases.list.slice(-40).forEach(c => L.push(`- ${c.date} ${c.start || ''}${c.end ? '–' + c.end : ''} ${c.type || ''}${c.ot ? ' OT' : ''} ${c.minutes} นาที ${c.op}`));
-  H('5. หน้าที่ที่ได้รับ'); L.push('- ' + kv(D.duties));
+  H('5. หน้าที่ที่ได้รับ'); L.push('- ' + kv(D.duties)); Object.entries(D.dutyStatus || {}).forEach(([k, x]) => L.push(`- ${k}: ทำ ${x['ทำ']} · ไม่ได้ทำ ${x['ไม่ได้ทำ']} · N/A ${x.NA}`));
   H('6. รูทีนประจำวัน'); D.routines.forEach(r => L.push(r.checklist ? `- ${r.name}: ทำ ${r.checklist['ทำ']} · ไม่ได้ทำ ${r.checklist['ไม่ได้ทำ']} · N/A ${r.checklist.NA}${r.oftenMissed.length ? ' · พลาดบ่อย: ' + r.oftenMissed.join(', ') : ''}` : `- ${r.name}${r.time ? ' (' + r.time + ')' : ''}: ทำ ${r.doneDays}/${r.trackedDays} วัน (${r.rate})`));
   H('7. แผนรายชั่วโมง'); L.push('- ช่วงที่จดบ่อย: ' + kv(D.hourly.filledByHour)); (D.hourly.recent || []).forEach(n => L.push('- ' + n));
   H('8. นัดหมายและสิ่งที่ต้องทำ'); L.push(`- ทั้งหมด ${D.appointments.total} · เสร็จ ${D.appointments.done} · เลยกำหนดยังไม่เสร็จ ${D.appointments.overdue}`, `- แยกตามด้านชีวิต: ${kv(D.appointments.bySystem)}`, `- ประเภท: ${kv(D.appointments.byKind)}`);
@@ -4007,7 +4096,7 @@ function holEditSheet(d){
 function holImportSheet(kind){
   const y = holYear;
   openSheet(`${sheetHead(kind === 'img' ? 'อ่านวันหยุดจากรูปประกาศ' : 'วางรายการวันหยุด')}
-    ${kind === 'img' ? `${STANDALONE ? '' : `<label class="f">รูปประกาศวันหยุด (ถ่ายหรือแคปหน้าจอ)<input class="field" type="file" id="hol-img" accept="image/*" style="padding:8px"></label><p class="meta" style="margin:0">Claude อ่านรูปให้ แล้วแสดงรายการให้ตรวจก่อนบันทึก</p>`}
+    ${kind === 'img' ? `${STANDALONE && !AIKey.has() ? '' : `<label class="f">รูปประกาศวันหยุด (ถ่ายหรือแคปหน้าจอ)<input class="field" type="file" id="hol-img" accept="image/*" style="padding:8px"></label><p class="meta" style="margin:0">Claude อ่านรูปให้ แล้วแสดงรายการให้ตรวจก่อนบันทึก</p>`}
       <details${STANDALONE ? ' open' : ''}><summary style="cursor:pointer;font-weight:600">${STANDALONE ? 'ให้ Claude อ่านรูปให้' : 'หรือให้ Claude ในแอป Claude อ่าน'}</summary>
         <ol style="margin:6px 0;padding-left:20px;font-size:13.5px"><li>กด <b>คัดลอกคำสั่ง</b> › เปิดแอป Claude › ส่งรูปประกาศพร้อมวางคำสั่ง</li><li>คัดลอกคำตอบทั้งหมดมาวางในช่องด้านล่าง</li></ol>
         <button type="button" class="btn small" data-act="hol-prompt">คัดลอกคำสั่ง</button></details>` : `<p class="meta" style="margin:0">วางได้ทีละบรรทัด เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่” · “13/04/2570 สงกรานต์” · “2027-05-01 วันแรงงาน” หรือคำตอบ JSON จาก Claude</p>`}
@@ -4017,8 +4106,8 @@ function holImportSheet(kind){
   const inp = $('#hol-img'); if (inp) inp.addEventListener('change', async () => {
     const f = inp.files && inp.files[0]; if (!f) return; const out = $('#hol-out'); out.innerHTML = '<p class="meta">Claude กำลังอ่านรูป อาจใช้เวลาครึ่งนาที…</p>';
     let sample = null; try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
-    if (!sample){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>หน้านี้ส่งรูปให้ Claude ไม่ได้ ใช้ “ให้ Claude ในแอป Claude อ่าน” แทน</div></div>'; return; }
-    try{ const v = await sample.json(holPrompt(y), {images:[f], modelTier:'default'}); holPreview(holidaysFromText(JSON.stringify(v), y)); }
+    if (!sample && !AIKey.has()){ out.innerHTML = '<div class="banner appt" style="margin:0"><div>ใส่ API key ที่ ตั้งค่า › อ่านรูปด้วย AI ในแอป เพื่ออ่านรูปในแอปได้เลย หรือใช้ “ให้ Claude ในแอป Claude อ่าน”</div></div>'; return; }
+    try{ if (!sample){ holPreview(holidaysFromText(await AIKey.vision(holPrompt(y), [f]), y)); return; } const v = await sample.json(holPrompt(y), {images:[f], modelTier:'default'}); holPreview(holidaysFromText(JSON.stringify(v), y)); }
     catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>${e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตารางวันหยุด'}</div></div>`; }
   });
 }
@@ -4062,6 +4151,81 @@ function teamOverview(){
   tryLock();
   const onRs = () => ov.classList.toggle('rot', window.innerHeight > window.innerWidth); window.addEventListener('resize', onRs);
   ov._close = () => { window.removeEventListener('resize', onRs); try{ if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); if (document.fullscreenElement) document.exitFullscreen(); }catch(e){} ov.remove(); };
+}
+
+
+/* ---------- ทีมวันนี้: ตำแหน่ง (Assignment) + หน้าที่ประจำวัน (ทำ/ไม่ทำ/NA) + สถิติ + แชร์ ---------- */
+const DEF_DUTIES = ['OR1','OR2','Sterile','Temp&Gas','เวชภัณฑ์'];
+const DEF_ROLES = ['Anes','RR','Incharge','Assistant','Scrub','Circulate'];
+const dutiesList = () => (S.settings.duties && S.settings.duties.length ? S.settings.duties : DEF_DUTIES);
+const rolesList = () => (S.settings.roles && S.settings.roles.length ? S.settings.roles : DEF_ROLES);
+function dayPlan(d){ S.dayplan = S.dayplan || {}; const P = S.dayplan[d] = S.dayplan[d] || {roles:{}, duties:{}}; P.roles = P.roles || {}; P.duties = P.duties || {}; return P; }
+const peekPlan = d => (S.dayplan || {})[d] || {roles:{}, duties:{}};
+const onSite = cs => cs.some(isWorkType);   /* อยู่ในห้องผ่าตัดจริง (ไม่นับ STD อย่างเดียว) */
+function teamToday(d){
+  const me = meMember(); const L = [];
+  if (shiftsOn(d).some(isWorkType)) L.push({m: me, cs: shiftsOn(d)});
+  team().members.filter(m => !m.me).forEach(m => { const cs = teamCodes(m.id, d); if (onSite(cs)) L.push({m, cs}); });
+  return L;
+}
+const shortName = n => String(n || '').replace(/^(นาย|นางสาว|นาง|น\.ส\.|นส\.)\s*/, '').split(' ')[0];
+function syncMyAssign(d){ const P = peekPlan(d); const me = meMember(); const a = [];
+  Object.entries(P.duties || {}).forEach(([k, v]) => { if ((v.who || []).includes(me.id)) a.push(k); });
+  (P.roles[me.id] || []).forEach(r => a.push(r)); S.assign[d] = a; }
+function teamDayCard(d){
+  const L = teamToday(d); const P = peekPlan(d); const me = meMember();
+  const stdOnly = team().members.filter(m => !m.me).filter(m => { const cs = teamCodes(m.id, d); return cs.length && !onSite(cs) && cs.some(isStd); });
+  if (!L.length) return '';
+  const nameOf = id => { const x = L.find(y => y.m.id === id) || {m: team().members.find(m => m.id === id) || {}}; return shortName(x.m.name) || '?'; };
+  const roleRow = x => `<div class="tdrow"><div class="row" style="gap:6px"><span class="tcode ${codeClass(x.cs)}">${esc(codeText(x.cs))}</span><b class="grow" style="font-size:14px">${esc(x.m.me ? shortName(x.m.name) + ' (ฉัน)' : x.m.name)}</b>${telBtn(x.m, true)}</div>
+    <div class="tdchips">${rolesList().map(r => `<button type="button" class="tdc${(P.roles[x.m.id] || []).includes(r) ? ' on' : ''}" data-act="td-role" data-id="${x.m.id}" data-k="${esc(r)}" data-d="${d}" aria-pressed="${(P.roles[x.m.id] || []).includes(r)}">${esc(r)}</button>`).join('')}</div></div>`;
+  const st = v => v && v.st || '';
+  const dutyRow = k => { const v = P.duties[k] || {}; const who = (v.who || []).map(nameOf);
+    return `<div class="tdrow"><div class="row" style="gap:6px;flex-wrap:wrap"><b style="min-width:84px;font-size:14px">${esc(k)}</b><button type="button" class="btn small ghost grow" data-act="td-who" data-k="${esc(k)}" data-d="${d}" style="justify-content:flex-start;min-height:32px">${who.length ? '👤 ' + esc(who.join(', ')) : '+ เลือกคนรับผิดชอบ'}</button></div>
+      <div class="tri" role="group" aria-label="สถานะ ${esc(k)}">${[['do','ทำแล้ว'],['didnt','ไม่ได้ทำ'],['na','N/A']].map(([v2, l]) => `<button type="button" class="tdc${st(v) === v2 ? ' on ' + v2 : ''}" data-act="td-st" data-k="${esc(k)}" data-v="${v2}" data-d="${d}" aria-pressed="${st(v) === v2}">${l}</button>`).join('')}</div></div>`; };
+  return `<section class="card" style="gap:8px"><div class="row between" style="flex-wrap:wrap;gap:6px"><h2>ทีม${d === today() ? 'วันนี้' : ' ' + esc(thDate(d,{day:'numeric',month:'short'}))} · ${L.length} คน</h2>
+      <div class="row" style="gap:4px"><button type="button" class="btn small primary" data-act="td-share" data-d="${d}">📤 แชร์</button><button type="button" class="btn small" data-act="td-stats">📊</button><button type="button" class="btn small" data-act="td-edit" aria-label="แก้รายการหน้าที่">✏️</button></div></div>
+    <h3 class="tdh">ตำแหน่ง (Assignment)</h3>${L.map(roleRow).join('')}
+    <h3 class="tdh">หน้าที่ประจำวัน</h3>${dutiesList().map(dutyRow).join('')}
+    ${stdOnly.length ? `<p class="meta" style="margin:0">Standby (ไม่ได้อยู่ในห้อง): ${esc(stdOnly.map(m => shortName(m.name)).join(', '))}</p>` : ''}
+    <a class="btn small" href="#team" style="align-self:flex-start">ตารางทีมทั้งเดือน</a></section>`;
+}
+function tdWhoSheet(d, k){
+  const L = teamToday(d); const P = peekPlan(d); const cur = (P.duties[k] || {}).who || [];
+  openSheet(`${sheetHead('ใครรับผิดชอบ ' + k)}<form data-form="td-who" data-d="${d}" data-k="${esc(k)}" style="display:flex;flex-direction:column;gap:8px">
+    ${L.map(x => `<label class="chip"><input type="checkbox" name="w" value="${x.m.id}"${cur.includes(x.m.id) ? ' checked' : ''}>${esc(x.m.me ? shortName(x.m.name) + ' (ฉัน)' : x.m.name)} · ${esc(codeText(x.cs))}</label>`).join('')}
+    <button class="btn primary" type="submit">บันทึก</button></form>`);
+}
+function tdEditSheet(){
+  const row = (kind, v, i) => `<div class="row" style="gap:6px"><input class="field" data-ed="${kind}" data-i="${i}" value="${esc(v)}" style="flex:1;min-height:38px"><button type="button" class="btn small ghost" data-act="td-mv" data-kind="${kind}" data-i="${i}" data-d="-1" aria-label="เลื่อนขึ้น">↑</button><button type="button" class="btn small danger" data-act="td-rm" data-kind="${kind}" data-i="${i}" aria-label="ลบ">✕</button></div>`;
+  openSheet(`${sheetHead('แก้หน้าที่และตำแหน่ง')}
+    <h3 class="tdh">หน้าที่ประจำวัน (มีสถานะ ทำ/ไม่ทำ/NA)</h3><div style="display:flex;flex-direction:column;gap:6px">${dutiesList().map((v, i) => row('duties', v, i)).join('')}</div>
+    <button type="button" class="btn small" data-act="td-add" data-kind="duties">+ เพิ่มหน้าที่</button>
+    <h3 class="tdh">ตำแหน่ง (Assignment)</h3><div style="display:flex;flex-direction:column;gap:6px">${rolesList().map((v, i) => row('roles', v, i)).join('')}</div>
+    <button type="button" class="btn small" data-act="td-add" data-kind="roles">+ เพิ่มตำแหน่ง</button>
+    <button type="button" class="btn primary" data-act="td-save">บันทึก</button>
+    <p class="meta" style="margin:0">เปลี่ยนชื่อแล้วกดบันทึก · ข้อมูลของวันก่อน ๆ ยังอยู่ (สถิติใช้ชื่อเดิม)</p>`);
+}
+function tdStatsSheet(ym){
+  ym = ym || today().slice(0,7); const me = meMember();
+  const days = Object.keys(S.dayplan || {}).filter(d => d.startsWith(ym)).sort();
+  const D = {}, R = {};
+  days.forEach(d => { const P = S.dayplan[d];
+    Object.entries(P.duties || {}).forEach(([k, v]) => { const x = D[k] = D[k] || {do:0, didnt:0, na:0, mine:0}; if (v.st) x[v.st]++; if ((v.who || []).includes(me.id)) x.mine++; });
+    (P.roles[me.id] || []).forEach(r => { R[r] = (R[r] || 0) + 1; }); });
+  const [y,m] = ym.split('-').map(Number); const prev = ymd(new Date(y, m - 2, 1)).slice(0,7), next = ymd(new Date(y, m, 1)).slice(0,7);
+  openSheet(`${sheetHead('สถิติหน้าที่ ' + new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}
+    <div class="row between"><button type="button" class="btn small" data-act="td-stats" data-m="${prev}">‹</button><span class="meta">${days.length} วันที่จัดทีม</span><button type="button" class="btn small" data-act="td-stats" data-m="${next}">›</button></div>
+    <table class="map"><tbody><tr><th>หน้าที่</th><td>ทำแล้ว · ไม่ได้ทำ · N/A · ฉันรับผิดชอบ</td></tr>${Object.keys(D).length ? Object.entries(D).map(([k, x]) => `<tr><th scope="row">${esc(k)}</th><td style="text-align:left;font-weight:400">✅ ${x.do} · ❌ ${x.didnt} · ⚪ ${x.na} · 👤 ${x.mine}${x.do + x.didnt ? ' · ทำได้ ' + Math.round(x.do * 100 / (x.do + x.didnt)) + '%' : ''}</td></tr>`).join('') : '<tr><td colspan="2" class="meta">ยังไม่มีข้อมูล</td></tr>'}</tbody></table>
+    <table class="map"><tbody><tr><th>ตำแหน่งของฉัน</th><td>จำนวนวัน</td></tr>${Object.keys(R).length ? Object.entries(R).sort((a, b) => b[1] - a[1]).map(([k, n]) => `<tr><th scope="row">${esc(k)}</th><td>${n}</td></tr>`).join('') : '<tr><td colspan="2" class="meta">ยังไม่มีข้อมูล</td></tr>'}</tbody></table>
+    <p class="meta" style="margin:0">สถิตินี้รวมอยู่ใน Prompt สรุปตัวฉันให้ AI ด้วย</p>`);
+}
+function tdShareText(d){
+  const L = teamToday(d); const P = peekPlan(d); const nameOf = id => shortName((team().members.find(m => m.id === id) || {}).name);
+  const lines = [`📋 ทีม${d === today() ? 'วันนี้' : ''} ${thDate(d,{weekday:'short', day:'numeric', month:'short'})}`, ''];
+  lines.push('ตำแหน่ง'); L.forEach(x => { const r = P.roles[x.m.id] || []; lines.push(`• ${shortName(x.m.name)} (${codeText(x.cs)})${r.length ? ': ' + r.join(', ') : ''}`); });
+  lines.push('', 'หน้าที่'); dutiesList().forEach(k => { const v = P.duties[k] || {}; const who = (v.who || []).map(nameOf).filter(Boolean); lines.push(`• ${k}: ${who.join(', ') || '-'}${v.st === 'do' ? ' ✅' : v.st === 'didnt' ? ' ❌' : v.st === 'na' ? ' (N/A)' : ''}`); });
+  return lines.join('\n');
 }
 
 function patientCheck(text, form, proceed){
@@ -4175,7 +4339,20 @@ document.addEventListener('click', e => {
     case 'team-swap': teamSwapSheet(el.dataset.d || teamDay, el.dataset.id || ''); break;
     case 'team-import': teamImportSheet(); break;
     case 'team-apply': applyTeamPending(); break;
-    case 'team-prompt': { const txt = teamPrompt(teamMonth); const done = ok => toast(ok ? 'คัดลอกคำสั่งแล้ว ไปวางในแอป Claude พร้อมรูป' : 'คัดลอกไม่ได้ ลองกดค้างที่ข้อความ', !ok);
+    case 'td-role': { const d = el.dataset.d; const P = dayPlan(d); const a = new Set(P.roles[el.dataset.id] || []); if (a.has(el.dataset.k)) a.delete(el.dataset.k); else a.add(el.dataset.k); P.roles[el.dataset.id] = [...a]; syncMyAssign(d); commit('ตำแหน่ง: ' + el.dataset.k, {silent:true}); break; }
+    case 'td-st': { const d = el.dataset.d; const P = dayPlan(d); const v = P.duties[el.dataset.k] = P.duties[el.dataset.k] || {who:[]}; v.st = v.st === el.dataset.v ? '' : el.dataset.v; commit('หน้าที่ ' + el.dataset.k + ': ' + (v.st || 'ล้าง'), {silent:true}); break; }
+    case 'td-who': tdWhoSheet(el.dataset.d, el.dataset.k); break;
+    case 'td-edit': tdEditSheet(); break;
+    case 'td-stats': tdStatsSheet(el.dataset.m); break;
+    case 'td-share': { const t2 = tdShareText(el.dataset.d); if (navigator.share) navigator.share({text: t2}).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(t2).then(() => toast('คัดลอกแล้ว ไปวางใน LINE ได้เลย'), () => toast('คัดลอกไม่ได้', true)); break; }
+    case 'td-add': { const box = el.previousElementSibling; const i = box.children.length; box.insertAdjacentHTML('beforeend', `<div class="row" style="gap:6px"><input class="field" data-ed="${el.dataset.kind}" data-i="${i}" value="" placeholder="ชื่อใหม่" style="flex:1;min-height:38px"></div>`); box.lastElementChild.querySelector('input').focus(); break; }
+    case 'td-rm': { const r = el.closest('.row'); if (r) r.remove(); break; }
+    case 'td-mv': { const r = el.closest('.row'); if (r && r.previousElementSibling) r.parentNode.insertBefore(r, r.previousElementSibling); break; }
+    case 'td-save': { const get = k => [...document.querySelectorAll(`#layer input[data-ed="${k}"]`)].map(x => x.value.trim()).filter(Boolean); const du = [...new Set(get('duties'))], ro = [...new Set(get('roles'))];
+      S.settings.duties = du; S.settings.roles = ro; closeSheet(); commit('แก้รายการหน้าที่/ตำแหน่ง', {msg:'บันทึกแล้ว'}); break; }
+    case 'rp-parse': { const out = $('#tf-out'); try{ const r = peopleFromJson(($('#rp-txt') || {}).value || '', el.dataset.ym); if (!r.people.length) throw new Error('ไม่พบรายชื่อ'); teamPreview(out, Object.assign(r, {how:'ผลจาก Claude'}), true); }catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>อ่านผลไม่ได้: ${esc(e.message || '')}</div></div>`; } break; }
+    case 'aikey-del': confirmSheet('ลบ API key จากเครื่องนี้?', 'ลบ', () => { try{ localStorage.removeItem(LS_AIKEY); }catch(e){} render(); toast('ลบแล้ว'); }); break;
+    case 'team-prompt': { const fm = document.querySelector('form[data-form=team-file] input[name=ym]'); const txt = teamPrompt((fm && fm.value) || el.dataset.ym || teamMonth); const done = ok => toast(ok ? 'คัดลอกคำสั่งแล้ว ไปวางในแอป Claude พร้อมรูป' : 'คัดลอกไม่ได้ ลองกดค้างที่ข้อความ', !ok);
       if (navigator.clipboard) navigator.clipboard.writeText(txt).then(() => done(true), () => done(false)); else done(false); break; }
     case 'team-history': teamHistorySheet(); break;
     case 'swap-copy': { const f = el.closest('form'); const ta = f && f.elements.msg; if (!ta) break; ta.select(); let ok = false; try{ ok = document.execCommand('copy'); }catch(e){} if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(() => toast('คัดลอกแล้ว ไปวางใน LINE ได้เลย'), () => toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok)); else toast(ok ? 'คัดลอกแล้ว' : 'กดค้างที่ข้อความแล้วเลือกคัดลอก', !ok); break; }
@@ -4400,6 +4577,11 @@ document.addEventListener('submit', e => {
   } else if (kind === 'profile'){
     S.settings.profile = {name:String(fd.get('name')||'').trim(), id:String(fd.get('id')||'').trim(), pos:String(fd.get('pos')||'').trim(), dept:String(fd.get('dept')||'').trim()};
     commit('แก้ข้อมูลใบลงเวลา', {msg:'บันทึกแล้ว'});
+  } else if (kind === 'td-who'){
+    const d = f.dataset.d, k = f.dataset.k; const P = dayPlan(d); const v = P.duties[k] = P.duties[k] || {}; v.who = fd.getAll('w'); syncMyAssign(d); closeSheet(); commit('หน้าที่ ' + k + ': ' + v.who.length + ' คน', {silent:true});
+  } else if (kind === 'aikey'){
+    const k = String(fd.get('k') || '').trim(); if (!/^sk-ant-/.test(k)){ toast('API key ต้องขึ้นต้นด้วย sk-ant-', true); return; }
+    try{ localStorage.setItem(LS_AIKEY, k); }catch(e){} render(); toast('บันทึก key แล้ว ลองอ่านรูปได้เลย');
   } else if (kind === 'syncsrv'){
     const url = String(fd.get('url') || '').trim().replace(/\/+$/, ''), key = String(fd.get('key') || '').trim();
     if (!/^https:\/\//.test(url) && !/^http:\/\/localhost/.test(url)){ toast('ใส่ลิงก์เซิร์ฟเวอร์ที่ขึ้นต้นด้วย https://', true); return; }
