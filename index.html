@@ -17,7 +17,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.31</title>
+<title>เลขาส่วนตัว v1.33</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -486,6 +486,7 @@ html.native nav.tabbar{padding-bottom:max(env(safe-area-inset-bottom,0px),14px)}
 .stkb.on{border-color:var(--primary);background:var(--primary-tint);box-shadow:0 0 0 2px var(--primary)}
 img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align:middle}.offi img.stk{width:18px;height:18px}
 .shopt{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:var(--surface-solid,#fff);border:1px solid var(--field)}
+.tmcase{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:var(--primary-tint)}
 </style>
 </head>
 <body>
@@ -500,7 +501,7 @@ img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.31';
+const APP_VERSION = '1.33';
 const APP_OWNER = 'Clear';
 try{ localStorage.removeItem('tmm-aikey-v1'); }catch(e){}   /* ฟีเจอร์ API key ถูกนำออกแล้ว ลบ key ที่เคยเก็บ */
 const APP_COPYRIGHT = `© 2026 (พ.ศ. 2569) ${APP_OWNER} · สงวนลิขสิทธิ์`;
@@ -1115,6 +1116,7 @@ function viewCalendar(){
           <tr class="total"><th scope="row">รวม ${pay.n} เวร</th><td></td><td>${baht(pay.total)}${pay.missing ? '*' : ''}</td></tr></tbody></table>
           <p class="meta" style="margin:0">คิดจากอัตราที่ตั้งไว้ในหน้าตั้งค่า ยังไม่หักภาษีหรือรายการอื่น${pay.missing ? ' · *บางประเภทยังไม่ได้ใส่อัตรา' : ''}</p>`
           : `<div class="empty">เดือนนี้ยังไม่มีเวร กด “ลงตารางเวร” เพื่อลงทั้งเดือนในครั้งเดียว</div>`}
+      ${Object.keys(S.shifts).some(k => k.startsWith(calMonth)) || ((team().months || {})[calMonth]) ? `<button type="button" class="btn small ghost" data-act="shift-clear" data-m="${calMonth}" style="align-self:flex-start">🗑️ ลบเวรทั้งเดือน</button>` : ''}
       </section>`;
     body = `<section class="card" style="padding:10px"><div class="cal">${cells}</div>
       <div class="wrap" style="padding-top:6px;border-top:1px solid var(--soft)">${[['8-16','8-16'],['STD','STD'],['STDM','STD เช้า'],['8-00','8-8']].map(([k,l]) => `<span class="row" style="gap:4px;font-size:11.5px;font-weight:600"><span class="dot" style="background:${SHIFT_DOT[k]}"></span>${l}</span>`).join('')}<span class="row" style="gap:4px;font-size:11.5px;font-weight:600">${stickerCfg().set.slice(0, 3).map(stickerVal).join('')} วันหยุด</span></div>
@@ -1572,8 +1574,10 @@ function viewGuide(){
     ['ชั่วโมงทำงานจริงของเดือน','ตั้งค่า › ชั่วโมงทำงาน: ใส่ชั่วโมงมาตรฐานรายเดือน แอปหักวันหยุดบริษัทให้อัตโนมัติ (วันทำงาน − วันหยุด = ชั่วโมงทำงานจริง) แสดงใต้แต่ละเดือน · หน้าตารางบอก “ต้องทำจริง” และ “ทำงานจริง” · วันหยุดใช้คิดชั่วโมงเท่านั้น ไม่ยุ่งกับตารางเวร ค่าเวร ค่าเคส และใบเบิก · ไม่นับวันไหน แตะวันนั้นในปฏิทินแล้วติ๊กออก'],
     ['สรุปทีม 1 บรรทัด','ติ๊กตำแหน่งแล้วสรุปขึ้นเองด้านบนการ์ด เช่น I=ชื่อ, A=ชื่อ, S=ชื่อ, C1=ชื่อ, C2=ชื่อ (1 คนติ๊กได้หลายตำแหน่ง) · อยู่ในข้อความแชร์และกระดาษพิมพ์ด้วย'],
     ['วางแผนทีมและเคสวันถัดไป','การ์ดทีม › “วางแผนวันถัดไป ›” เลือกวันล่วงหน้าได้ · ส่วน “เคส” ดึงเคสที่ลงไว้ในปฏิทินของวันนั้น แตะ S: / C: เพื่อเลือก Scrub/Circulate ต่อเคส · + เพิ่มเคส ได้ทันที'],
+    ['ลบเวร','ลบรายวัน: ตาราง › แตะวัน › แก้เวร › ลบเวรวันนี้ · ลบทั้งเดือน (เช่น นำเข้าผิดเดือน): ตาราง › มุมมองเดือน › 🗑️ ลบเวรทั้งเดือน › เลือก เวรของฉัน และ/หรือ ตารางทีมของเดือนนั้น · แอปสำรองข้อมูลเดิมก่อนลบ กู้คืนได้ที่ ตั้งค่า › สำรองอัตโนมัติ'],
+    ['ทีมในเคส','ตอนเพิ่ม/แก้เคส มีส่วน 👥 ทีมในเคสนี้ เลือก Scrub และ Circulate จากคนที่อยู่เวรวันนั้น เชื่อมกับการ์ดทีมวันนี้และข้อความแชร์ · Anesthesia มี GA / LA / SB · หน้าที่ของคุณมี Scrub / Circulate / Assistant / Incharge / N/A'],
     ['ส่งเวร','การ์ดทีม › 📝 ส่งเวร: เขียนเรื่องส่งเวรได้อิสระ หรือกด “+ หัวข้อมาตรฐาน” (เคสค้าง · เครื่องมือส่งซ่อม · ยาต้องเติม · ห้องที่ต้องเตรียม · เรื่องแจ้งต่อ) · บันทึกเองเมื่อพิมพ์เสร็จ · ส่งไปพร้อมทีมในข้อความเดียว · แอปเตือนถ้ามีข้อมูลคล้ายชื่อ/HN ผู้ป่วย'],
-    ['แชร์ 2 แบบ','การ์ดทีม › 📤 แชร์: 💬 แบบข้อความ = ส่งเข้า LINE (เปิด LINE ให้เลือกกลุ่ม/เพื่อน) แอปอื่น หรือคัดลอก · 🖨️ แบบพิมพ์ A4 = พิมพ์ออกเครื่องพิมพ์ ส่งไฟล์ PDF เข้า LINE หรือดูตัวอย่าง'],
+    ['แชร์ 2 แบบ','การ์ดทีม › 📤 แชร์: 💬 แบบข้อความ = ส่งเข้า LINE (เปิดแอป LINE ตรง ส่งกี่ครั้งก็ได้ ข้อความมีสรุปตำแหน่ง 1 บรรทัด หน้าที่ เคส และส่งเวร) แอปอื่น หรือคัดลอก · 🖨️ แบบพิมพ์ A4 = พิมพ์ออกเครื่องพิมพ์ ส่งไฟล์ PDF เข้า LINE หรือดูตัวอย่าง'],
     ['เชื่อมเครื่องพิมพ์','ไม่ต้องติดตั้งอะไร ใช้ระบบพิมพ์ของมือถือ: มือถือกับเครื่องพิมพ์อยู่ Wi-Fi เดียวกัน › ครั้งแรก ตั้งค่ามือถือ › การเชื่อมต่อ › การพิมพ์ › เปิด บริการพิมพ์เริ่มต้น › ในแอปกด แชร์ › เชื่อมเครื่องพิมพ์ › ทดสอบพิมพ์ › เลือกเครื่อง › A4 › พิมพ์ · ครั้งต่อไปมือถือจำเครื่องไว้ · แอป Android พิมพ์ตรงได้เหมือนกัน'],
     ['พิมพ์ A4 / ส่งไฟล์','การ์ดทีม › 🖨️ › พิมพ์ A4 (เลือกเครื่องพิมพ์ในหน้าต่างพิมพ์) หรือ ไฟล์ PDF A4 แล้วแชร์ · เชื่อมเครื่องพิมพ์ Android: ตั้งค่ามือถือ › การเชื่อมต่อ/อุปกรณ์ที่เชื่อมต่อ › การพิมพ์ › เปิด “บริการพิมพ์เริ่มต้น” หรือติดตั้ง Mopria Print Service · เครื่องพิมพ์ต้องอยู่ Wi-Fi เดียวกัน (หรือ Wi-Fi Direct) · iPhone ใช้ AirPrint · คอมกด Ctrl+P · แอป Android ใช้ปุ่ม PDF แล้วเลือกแอปพิมพ์จากเมนูแชร์'],
     ['การแจ้งเตือน','ตั้งค่า › การเตือนนัด: 1) ติ๊กหัวข้อ (นัด เคส เวรพรุ่งนี้ วันหยุด รูทีน ทีมพรุ่งนี้) 2) ติ๊กเวลาเตือน (ก่อน 1 วัน เช้าวันนั้น ก่อน 2 ชม. ก่อน 1 ชม. ตรงเวลา) ตั้งเวลาเช้าและเวลาเตือนคืนก่อนได้ · ดูรายการที่จะเตือนใน 14 วัน · 3) ช่องทางเด้งตามเวอร์ชัน'],
@@ -1609,6 +1613,8 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.33','ฟอร์มเคส: หน้าที่ของคุณเพิ่ม Assistant'],
+    ['v1.32','ลบเวรรายวันและทั้งเดือน (มีสำรองก่อนลบ) · ข้อความแชร์ตัดรายการตำแหน่งที่ซ้ำ เหลือสรุป 1 บรรทัด · แก้ส่งเข้า LINE ครั้งที่ 2 ไม่ได้ (เปิดแอป LINE ตรง) · ฟอร์มเคส: ทีมในเคส (Scrub/Circulate) · Anesthesia SB · หน้าที่ N/A'],
     ['v1.31','ส่งเวรในการ์ดทีม (หัวข้อมาตรฐาน · บันทึกเอง · เตือนข้อมูลผู้ป่วย) ส่งพร้อมทีมในข้อความเดียว · แชร์ 2 แบบ: ส่งเข้า LINE โดยตรง / แบบพิมพ์ A4 · พิมพ์ด้วยระบบของมือถือ ไม่ต้องติดตั้ง มีหน้าเชื่อมเครื่องพิมพ์และทดสอบพิมพ์ · แอป Android พิมพ์ตรงได้ · ส่ง PDF เข้า LINE ได้ทันที'],
     ['v1.30','สรุปทีม 1 บรรทัด (I= A= S= C1= C2=) · วางแผนทีมและเคสวันถัดไป (ดึงเคสจากปฏิทิน เลือก Scrub/Circulate ต่อเคส) · พิมพ์ A4 / PDF · การแจ้งเตือนแบบเลือกหัวข้อแล้วเลือกเวลา ใช้ทุกช่องทาง · สติกเกอร์เลือกเอง อัปโหลดรูปได้ ติดวันไหนก็ได้ · นำฟีเจอร์ API key และการคัดลอกคำสั่งไปนอกแอปออก'],
     ['v1.29','ทีมวันนี้: ตำแหน่ง + หน้าที่ (ทำ/ไม่ทำ/NA) + สถิติ + แชร์ · แก้หน้าที่ได้เอง เอา Stand by ออก · วันหยุดในปฏิทินเป็นไอคอนน่ารัก · อ่านรูปตารางเวรในแอปด้วย API key · แก้คำสั่งอ่านรูปให้ตรงเดือนที่เลือก · ลงตารางเวรจากรูปในเวอร์ชัน GitHub ได้ · นำเข้าไฟล์ .json'],
@@ -1767,7 +1773,7 @@ function shiftSheet(d){
     <p class="meta" style="margin:0">ติ๊กได้ 2 ช่อง เช่น 8-16 + STD (ช่องเหลืองที่เขียน 8-16) หรือ หยุด + STD · ในปฏิทินจะมีจุด 2 สี · เวรแก้ได้จากหน้านี้เท่านั้น</p>
     <div class="wrap">${Object.keys(S.shiftTypes).map(k => `<label class="chip"><input type="checkbox" name="t" value="${esc(k)}"${cur.includes(k) ? ' checked' : ''}>${esc(typeLabel(k))}</label>`).join('')}</div>
     ${holBox(d)}
-    <button class="btn primary" type="submit">บันทึกเวร</button>
+    <div class="row" style="gap:8px">${cur.length ? `<button type="button" class="btn danger" data-act="shift-del" data-d="${d}">ลบเวรวันนี้</button>` : ''}<button class="btn primary" type="submit" style="flex:1">บันทึกเวร</button></div>
   </form>`);
 }
 function caseMins(c){ const a = toMin(c.start), b = toMin(c.end); if (a == null || b == null) return Number(c.mins) || 0; let m = b - a; if (m <= 0) m += 1440; return m; }
@@ -1797,8 +1803,10 @@ function caseSheet(c, d){
     <div class="calc" id="case-calc" aria-live="polite"></div>
     <fieldset><legend>ห้อง</legend>${radios('room', ['OR1','OR2','อื่น ๆ'], c.room || 'OR1')}</fieldset>
     <label class="f">Operation<input class="field" name="op" value="${esc(c.op || c.what || '')}" placeholder="เช่น Lap chole"></label>
-    <fieldset><legend>Anesthesia</legend>${radios('anes', ['GA','LA','อื่น ๆ'], c.anes || '')}</fieldset>
-    <fieldset><legend>หน้าที่ของคุณ</legend>${radios('role', ['Scrub','Circulate','Incharge'], c.role || '')}</fieldset>
+    <fieldset><legend>Anesthesia</legend>${radios('anes', ['GA','LA','SB'], c.anes === 'อื่น ๆ' ? 'SB' : (c.anes || ''))}</fieldset>
+    <fieldset><legend>หน้าที่ของคุณ</legend>${radios('role', ['Scrub','Circulate','Assistant','Incharge','N/A'], c.role || '')}</fieldset>
+    ${(() => { const L = teamToday(d); if (!L.length) return ''; const a = ((peekPlan(d).cases || {})[c.id || ''] || {}); const pick = (k, lab) => `<fieldset><legend>${lab}</legend><div class="wrap">${L.map(x => `<label class="chip"><input type="checkbox" name="tm${k}" value="${x.m.id}"${(a[k] || []).includes(x.m.id) ? ' checked' : ''}>${esc(x.m.me ? shortName(x.m.name) + ' (ฉัน)' : shortName(x.m.name))}</label>`).join('')}</div></fieldset>`;
+      return `<div class="tmcase"><b style="font-size:14px">👥 ทีมในเคสนี้</b><span class="meta">เลือกจากคนที่อยู่เวรวันนั้น · เชื่อมกับการ์ดทีมวันนี้</span>${pick('S', 'Scrub')}${pick('C', 'Circulate')}</div>`; })()}
     <label class="f">Surgeon (ไม่บังคับ)<input class="field" name="surgeon" value="${esc(c.surgeon || '')}"></label>
     <label class="f">HN (ไม่บังคับ · เก็บในเครื่องนี้ ไม่ส่งให้ AI)<input class="field" name="hn" value="${esc(c.hn || '')}" inputmode="text" autocomplete="off"></label>
     <label class="f">รายละเอียด / หมายเหตุ<textarea class="field" name="note" rows="2" placeholder="พิมพ์รายละเอียดเพิ่มได้">${esc(c.note || '')}</textarea></label>
@@ -4316,6 +4324,19 @@ function saveHandover(ta, quiet){
   const m = document.getElementById('ho-msg-' + d); if (m) m.textContent = PATIENT.test(v) ? '⚠️ ดูเหมือนมีข้อมูลผู้ป่วย (ชื่อ/HN) ควรลบออกก่อนส่งในกลุ่ม' : 'บันทึกแล้ว ' + new Date().toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'});
   commit('เขียนส่งเวร', {silent:true, norender:true});
 }
+/* เปิดแอป LINE ตรง ๆ ทุกครั้ง (ลิงก์ line.me แบบเดิมเปิดซ้ำครั้งที่ 2 ไม่ขึ้นในบางเครื่อง) */
+function lineShare(text){
+  const enc = encodeURIComponent(text); const ua = navigator.userAgent || '';
+  const web = 'https://line.me/R/share?text=' + enc + '&_=' + Date.now();
+  let url;
+  if (NATIVE) url = 'line://msg/text/' + enc;
+  else if (/Android/i.test(ua)) url = 'intent://msg/text/' + enc + '#Intent;scheme=line;package=jp.naver.line.android;S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
+  else if (/iPhone|iPad|iPod/i.test(ua)) url = 'line://msg/text/' + enc;
+  else { window.open(web, '_blank', 'noopener'); log('ส่งทีมเข้า LINE', true); writeLocal(); return; }
+  const t0 = Date.now(); location.href = url;
+  setTimeout(() => { if (!document.hidden && Date.now() - t0 < 2500){ if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {}); toast('ถ้า LINE ไม่เปิด: คัดลอกข้อความให้แล้ว เปิด LINE แล้ววางในกลุ่มได้เลย'); } }, 1800);
+  log('ส่งทีมเข้า LINE', true); writeLocal();
+}
 function tdShareSheet(d){
   const t = tdShareText(d);
   openSheet(`${sheetHead('แชร์ทีมและส่งเวร')}
@@ -4352,8 +4373,7 @@ function tdShareText(d){
   const L = teamToday(d); const P = peekPlan(d); const nameOf = id => shortName((team().members.find(m => m.id === id) || {}).name);
   const lines = [`📋 ทีม${d === today() ? 'วันนี้' : ''} ${thDate(d,{weekday:'short', day:'numeric', month:'short'})}`, ''];
   const sm = tdSummary(d); if (sm) lines.push(sm, '');
-  lines.push('ตำแหน่ง'); L.forEach(x => { const r = P.roles[x.m.id] || []; lines.push(`• ${shortName(x.m.name)} (${codeText(x.cs)})${r.length ? ': ' + r.join(', ') : ''}`); });
-  lines.push('', 'หน้าที่'); dutiesList().forEach(k => { const v = P.duties[k] || {}; const who = (v.who || []).map(nameOf).filter(Boolean); lines.push(`• ${k}: ${who.join(', ') || '-'}${v.st === 'do' ? ' ✅' : v.st === 'didnt' ? ' ❌' : v.st === 'na' ? ' (N/A)' : ''}`); });
+  lines.push('หน้าที่'); dutiesList().forEach(k => { const v = P.duties[k] || {}; const who = (v.who || []).map(nameOf).filter(Boolean); lines.push(`• ${k}: ${who.join(', ') || '-'}${v.st === 'do' ? ' ✅' : v.st === 'didnt' ? ' ❌' : v.st === 'na' ? ' (N/A)' : ''}`); });
   const cs = (S.cases[d] || []).slice().sort((a, b) => (a.start || '').localeCompare(b.start || ''));
   if (cs.length){ lines.push('', 'เคส'); cs.forEach(c => { const a = (P.cases || {})[c.id] || {}; lines.push(`• ${c.start || ''}${c.end ? '–' + c.end : ''} ${[c.op || c.what, c.room].filter(Boolean).join(' ')}${(a.S || []).length ? ' S=' + a.S.map(nameOf).join('/') : ''}${(a.C || []).length ? ' C=' + a.C.map(nameOf).join('/') : ''}`); }); }
   const ho = String(P.handover || '').trim(); if (ho) lines.push('', '📝 ส่งเวร', ho);
@@ -4387,6 +4407,19 @@ async function stickerUpload(file){
     const c = document.createElement('canvas'); c.width = c.height = 96; const sc = Math.max(96 / im.width, 96 / im.height); c.getContext('2d').drawImage(im, (96 - im.width * sc) / 2, (96 - im.height * sc) / 2, im.width * sc, im.height * sc);
     const id = uid(); S.stickerImgs[id] = c.toDataURL('image/png'); return 'img:' + id; }
   catch(e){ toast('ใช้รูปนี้ไม่ได้', true); return null; } finally{ URL.revokeObjectURL(url); }
+}
+
+
+function shiftClearSheet(ym){
+  const [y,m] = ym.split('-').map(Number); const nm = new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'});
+  const mine = Object.keys(S.shifts).filter(k => k.startsWith(ym)).length; const tm = Object.keys(((team().months || {})[ym]) || {}).length;
+  openSheet(`${sheetHead('ลบเวร ' + nm)}
+    <form data-form="shift-clear" data-m="${ym}" style="display:flex;flex-direction:column;gap:10px">
+      <p class="meta" style="margin:0">ใช้เมื่อนำเข้าผิดเดือน หรืออยากลงใหม่ทั้งเดือน · แอปเก็บข้อมูลเดิมไว้ใน ตั้งค่า › สำรองอัตโนมัติ ก่อนลบ</p>
+      <label class="chip"><input type="checkbox" name="mine"${mine ? ' checked' : ' disabled'}>เวรของฉัน (${mine} วัน)</label>
+      <label class="chip"><input type="checkbox" name="team"${tm ? '' : ' disabled'}>ตารางเวรทีมของเดือนนี้ (${tm} คน)</label>
+      <p class="meta" style="margin:0">ไม่ลบ: เคส นัดหมาย วันหยุดบริษัท การแลกเวร</p>
+      <button class="btn danger" type="submit">ลบที่เลือก</button></form>`);
 }
 
 function patientCheck(text, form, proceed){
@@ -4503,6 +4536,8 @@ document.addEventListener('click', e => {
     case 'td-role': { const d = el.dataset.d; const P = dayPlan(d); const a = new Set(P.roles[el.dataset.id] || []); if (a.has(el.dataset.k)) a.delete(el.dataset.k); else a.add(el.dataset.k); P.roles[el.dataset.id] = [...a]; syncMyAssign(d); commit('ตำแหน่ง: ' + el.dataset.k, {silent:true}); break; }
     case 'td-st': { const d = el.dataset.d; const P = dayPlan(d); const v = P.duties[el.dataset.k] = P.duties[el.dataset.k] || {who:[]}; v.st = v.st === el.dataset.v ? '' : el.dataset.v; commit('หน้าที่ ' + el.dataset.k + ': ' + (v.st || 'ล้าง'), {silent:true}); break; }
     case 'td-who': tdWhoSheet(el.dataset.d, el.dataset.k); break;
+    case 'shift-del': { const d = el.dataset.d; delete S.shifts[d]; closeSheet(); commit('ลบเวร ' + thDate(d,{day:'numeric',month:'short'}), {msg:'ลบเวรวันนี้แล้ว'}); break; }
+    case 'shift-clear': shiftClearSheet(el.dataset.m); break;
     case 'stk-pick': stickerPickSheet(el.dataset.d); break;
     case 'stk-set': { S.daySticker = S.daySticker || {}; S.daySticker[el.dataset.d] = el.dataset.v; closeSheet(); commit('ติดสติกเกอร์', {silent:true}); break; }
     case 'stk-clear': { if (S.daySticker) delete S.daySticker[el.dataset.d]; closeSheet(); commit('เอาสติกเกอร์ออก', {silent:true}); break; }
@@ -4517,7 +4552,7 @@ document.addEventListener('click', e => {
     case 'td-edit': tdEditSheet(); break;
     case 'td-stats': tdStatsSheet(el.dataset.m); break;
     case 'td-share': { const ta = document.querySelector('textarea[data-act=td-ho]'); if (ta) saveHandover(ta, true); tdShareSheet(el.dataset.d); break; }
-    case 'sh-line': { const u = 'https://line.me/R/share?text=' + encodeURIComponent(tdShareText(el.dataset.d)); const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove(); log('ส่งทีมเข้า LINE', true); writeLocal(); break; }
+    case 'sh-line': lineShare(tdShareText(el.dataset.d)); break;
     case 'sh-other': { const t2 = tdShareText(el.dataset.d); if (navigator.share) navigator.share({text: t2}).catch(() => {}); else if (navigator.clipboard) navigator.clipboard.writeText(t2).then(() => toast('คัดลอกแล้ว')); break; }
     case 'sh-copy': { const t2 = tdShareText(el.dataset.d); if (navigator.clipboard) navigator.clipboard.writeText(t2).then(() => toast('คัดลอกแล้ว ไปวางในกลุ่ม LINE ได้เลย'), () => toast('คัดลอกไม่ได้', true)); break; }
     case 'printer-help': printerHelpSheet(); break;
@@ -4731,6 +4766,7 @@ document.addEventListener('submit', e => {
       let saved;
       if (f.dataset.id){ saved = S.cases[d].find(x => x.id === f.dataset.id); if (saved) Object.assign(saved, data); }
       else { saved = Object.assign({id:uid(), done:false}, data); S.cases[d].push(saved); }
+      if (f.querySelector('.tmcase') && saved){ const P = dayPlan(d); P.cases = P.cases || {}; P.cases[saved.id] = {S: fd.getAll('tmS'), C: fd.getAll('tmC')}; }
       closeSheet();
       const ct = caseTimes(d); const last = ct.length ? ct[ct.length-1].end : '';
       const money = saved && saved.ot ? ' · OT ' + baht(otAmount(saved).total) : '';
@@ -4755,6 +4791,12 @@ document.addEventListener('submit', e => {
   } else if (kind === 'profile'){
     S.settings.profile = {name:String(fd.get('name')||'').trim(), id:String(fd.get('id')||'').trim(), pos:String(fd.get('pos')||'').trim(), dept:String(fd.get('dept')||'').trim()};
     commit('แก้ข้อมูลใบลงเวลา', {msg:'บันทึกแล้ว'});
+  } else if (kind === 'shift-clear'){
+    const ym = f.dataset.m; const a = !!fd.get('mine'), b = !!fd.get('team'); if (!a && !b){ toast('ยังไม่ได้เลือก', true); return; }
+    AutoBak.save('ก่อนลบเวรทั้งเดือน ' + ym); let n = 0;
+    if (a) Object.keys(S.shifts).filter(k => k.startsWith(ym)).forEach(k => { delete S.shifts[k]; n++; });
+    if (b){ const T = team(); if (T.months) delete T.months[ym]; if (T.raw) delete T.raw[ym]; }
+    closeSheet(); commit('ลบเวรทั้งเดือน ' + ym, {msg: 'ลบแล้ว' + (a ? ' เวรของฉัน ' + n + ' วัน' : '') + (b ? ' · ตารางทีม' : '') + ' (กู้คืนได้ที่สำรองอัตโนมัติ)'});
   } else if (kind === 'td-cs'){
     const d = f.dataset.d; const P = dayPlan(d); P.cases = P.cases || {}; const a = P.cases[f.dataset.id] = P.cases[f.dataset.id] || {}; a[f.dataset.k] = fd.getAll('w'); closeSheet(); commit('จัดทีมเคส', {silent:true});
   } else if (kind === 'td-who'){
