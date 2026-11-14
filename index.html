@@ -17,7 +17,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="เลขาส่วนตัว">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.36</title>
+<title>เลขาส่วนตัว v1.37</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -487,6 +487,12 @@ html.native nav.tabbar{padding-bottom:max(env(safe-area-inset-bottom,0px),14px)}
 img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align:middle}.offi img.stk{width:18px;height:18px}
 .shopt{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:var(--surface-solid,#fff);border:1px solid var(--field)}
 .tmcase{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:var(--primary-tint)}
+.prwrap{overflow:auto;max-height:58vh;border:1px solid var(--field);border-radius:12px;background:#fff;touch-action:pan-x pan-y}
+.prwrap canvas{display:block;width:100%;height:auto;cursor:crosshair}
+.prgw{overflow:auto;border:1px solid var(--field);border-radius:10px}
+.prg{border-collapse:separate;border-spacing:1px;font-size:11px}
+.prg th{position:sticky;left:0;background:var(--surface-solid,#fff);font-weight:600;padding:2px 4px;white-space:nowrap;z-index:1}.prg thead th{position:static}
+.prg td{min-width:24px;height:26px;text-align:center;border-radius:4px;cursor:pointer;font-weight:700;background:#f3f0fa}
 </style>
 </head>
 <body>
@@ -501,7 +507,7 @@ img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.36';
+const APP_VERSION = '1.37';
 const APP_OWNER = 'Clear';
 try{ localStorage.removeItem('tmm-aikey-v1'); }catch(e){}   /* ฟีเจอร์ API key ถูกนำออกแล้ว ลบ key ที่เคยเก็บ */
 const APP_COPYRIGHT = `© 2026 (พ.ศ. 2569) ${APP_OWNER} · สงวนลิขสิทธิ์`;
@@ -1585,6 +1591,8 @@ function viewGuide(){
     ['การแจ้งเตือน','ตั้งค่า › การเตือนนัด: 1) ติ๊กหัวข้อ (นัด เคส เวรพรุ่งนี้ วันหยุด รูทีน ทีมพรุ่งนี้) 2) ติ๊กเวลาเตือน (ก่อน 1 วัน เช้าวันนั้น ก่อน 2 ชม. ก่อน 1 ชม. ตรงเวลา) ตั้งเวลาเช้าและเวลาเตือนคืนก่อนได้ · ดูรายการที่จะเตือนใน 14 วัน · 3) ช่องทางเด้งตามเวอร์ชัน'],
     ['สติกเกอร์','ตั้งค่า › ธีมและสี › สติกเกอร์วันหยุด: เลือกได้หลายอัน สุ่มหรือใช้อันเดียว อัปโหลดรูปของตัวเองได้ 24 รูป · ติดสติกเกอร์วันไหนก็ได้: ตาราง › แตะวัน › 🏷️ สติกเกอร์ · เอาออก/เปลี่ยนได้'],
     ['ทีมวันนี้ (My day)','ตำแหน่ง: แตะ Anes/RR/Incharge/Assistant/Scrub/Circulate ให้แต่ละคนที่อยู่เวร (ไม่รวมคนที่ STD อย่างเดียว) · หน้าที่ประจำวัน: แตะ “เลือกคนรับผิดชอบ” แล้วติ๊ก ทำแล้ว/ไม่ได้ทำ/N/A · ✏️ เพิ่ม ลบ เปลี่ยนชื่อ เรียงหน้าที่และตำแหน่ง · 📊 สถิติรายเดือน · 📤 แชร์ให้เพื่อนทาง LINE'],
+    ['อ่านรูปถ่ายตารางเวรในแอป','ทีม › นำเข้า › 📷 อ่านจากรูปถ่าย (หรือ ตาราง › ลงตารางเวร › จากรูป): 1) หมุนรูปให้ตารางแนวนอน 2) ซูม แล้วแตะ 4 มุมของช่องเวร: บนซ้ายวันที่ 1 → บนขวาวันสุดท้าย → ล่างขวาวันสุดท้าย → ล่างซ้ายวันที่ 1 (เส้นม่วงต้องทับเส้นตาราง แตะใกล้จุดเพื่อย้าย) 3) แตะชื่อตามลำดับแถวในรูป 4) อ่านสีในรูป › แตะช่องที่ผิดเพื่อแก้ (เหลืองที่เขียน STD และช่องขาวที่เขียน 8-16) › ถัดไป › นำเข้า · อ่านจากสี ไม่ใช้ AI ไม่ต้องใช้เน็ต · ชื่อต้องมีในทีมก่อน'],
+    ['วางข้อมูลตารางเวร','ทีม › นำเข้า › วางข้อมูลตารางเวร (JSON) › วางข้อความ › อ่านข้อมูล · หรือเลือกไฟล์ .json ในช่องไฟล์ได้เลย'],
     ['อ่านรูปตารางเวร','ลิงก์ claude.ai: ตาราง › ลงตารางเวร › จากรูป หรือ ทีม › นำเข้า › เลือกรูป Claude อ่านให้ในแอป · เวอร์ชัน GitHub/Android: ใช้ไฟล์ตารางเวร .html .xlsx .pdf หรือ .json'],
     ['ทำงานตรงวันหยุด','ลงเวรวันนั้นตามปกติ ไม่ต้องแก้อะไร: ต้องทำจริงยังหักวันหยุด ชั่วโมงเวรนับเป็นงานจริง → เกินเพิ่ม · ได้หยุดชดเชย: ติ๊กออก “วันหยุดประจำปี” วันที่ทำ แล้วติ๊กในวันชดเชย · ถือเป็นวันปกติ: ติ๊กออกอย่างเดียว · ค่าทำงานวันหยุดใส่เองที่ เงิน › + รายรับ'],
     ['วันหยุดบริษัท','ตั้งค่า › วันหยุดบริษัท › จัดการ: ดูทั้งปี (นับชั่วโมงให้อัตโนมัติทุกวันหยุด) · แตะวันเพื่อแก้/ลบ · + เพิ่มวันหยุด · อ่านจากรูปประกาศ (Claude อ่านให้) · วางรายการ (เช่น “1 ม.ค. 2570 วันขึ้นปีใหม่”) · เลือก “แทนที่ทั้งปี” เมื่อได้ประกาศจริง · My day เตือนก่อนถึงวันหยุด 7 วัน'],
@@ -1615,6 +1623,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.37','อ่านรูปถ่ายตารางเวรในแอปจากสีของช่อง (ไม่ใช้ AI ใช้ได้ทุกเวอร์ชัน) แตะแก้ก่อนนำเข้า · กลับมามีช่องวางข้อมูลตารางเวร (JSON) · แก้มือถือ Android เลือกไฟล์ .json ไม่ได้'],
     ['v1.36','ส่งเวร: ไม่บันทึกอัตโนมัติแล้วทุกกรณี (รวมตอนแชร์) บันทึกเฉพาะตอนกด 💾 · แชร์/พิมพ์ใช้ข้อความที่เห็นบนจอ'],
     ['v1.35','ส่งเวร: ปุ่ม 💾 บันทึก แทนการบันทึกเอง · ทีมในเคส: เลือกได้ทุกคนในทีม รวมคนที่หยุดมาทำเคส OT'],
     ['v1.34','หน้าเงิน: แสดงที่มาของรายรับอัตโนมัติ ไม่นับรายเดือนได้ ดูเคส OT แล้วแก้/ลบ · ทั้งปีแตะเดือนได้ · ลบเวรทั้งเดือนลบเคสของเดือนได้ด้วย'],
@@ -2009,7 +2018,7 @@ const Roster = (function(){
     try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
     const lim = sample ? await sample.limits().catch(() => null) : null;
     if (tab !== 'photo') return;
-    if (!sample){ body.innerHTML = '<p style="margin:0">อ่านรูปตารางเวรได้ในลิงก์ claude.ai · เวอร์ชันนี้ใช้แท็บ “จากไฟล์” หรือ “ลงทั้งเดือน” หรือ ทีม › นำเข้าไฟล์ตารางเวร</p>'; return; }
+    if (!sample){ body.innerHTML = `<p class="meta" style="margin:0">แอปอ่านจาก<b>สีของช่อง</b>ในรูป ไม่ใช้ AI · อัปเดตเวรของคุณและตารางทีมพร้อมกัน</p><label class="btn primary" style="cursor:pointer;text-align:center">📷 ถ่ายหรือเลือกรูปตารางเวร<input type="file" accept="image/*" class="sr" data-act="pr-file" data-ym="${esc(ym)}"></label>`; return; }
     const types = lim && lim.images && lim.images.mediaTypes ? lim.images.mediaTypes.join(',') : 'image/jpeg,image/png,image/webp';
     body.innerHTML = `<form data-form="roster" style="display:flex;flex-direction:column;gap:12px">
       <label class="f">รูปตารางเวร<input class="field" type="file" name="img" accept="${esc(types)}" required style="padding:8px"></label>
@@ -3424,17 +3433,17 @@ async function readTeamFile(f){
       else {
         out.innerHTML = '<p class="meta">PDF นี้เป็นภาพสแกน กำลังให้ Claude อ่าน…</p>';
         const r = P.canvas ? await aiReadImages([await canvasBlob(P.canvas)], P.ym || ymSel).catch(() => null) : null;
-        if (!r) return fail(STANDALONE ? 'PDF นี้เป็นภาพสแกน ต้องให้ Claude อ่าน: ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง' : 'อ่าน PDF นี้ไม่ได้ ลองถ่ายรูปให้ชัดขึ้น');
+        if (!r) return fail('PDF นี้เป็นภาพสแกน · ใช้ปุ่ม 📷 อ่านจากรูปถ่าย ด้านล่างแทน (ถ่ายหน้าจอ PDF หรือถ่ายรูปตาราง)');
         res = Object.assign(r, {how:'Claude อ่านจาก PDF'});
       }
     } else if (/^image\//.test(file.type) || /\.(jpe?g|png|webp|heic)$/i.test(file.name)){
-      if (STANDALONE) return fail('อ่านรูปได้เฉพาะในลิงก์ claude.ai · เวอร์ชันนี้ใช้ไฟล์ .html .xlsx .pdf หรือ .json');
+      if (STANDALONE){ photoRosterSheet(file, ymSel, mine); return; }
       out.innerHTML = '<p class="meta">Claude กำลังอ่านรูปตาราง อาจใช้เวลาครึ่งนาที…</p>';
       let r = null; try{ r = await aiReadImages([file], ymSel); }catch(e){ return fail(e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตาราง แล้วลองใหม่' + (e && e.message ? ' (' + esc(e.message).slice(0, 80) + ')' : '')); }
-      if (!r) return fail('หน้านี้ส่งรูปให้ Claude ไม่ได้ ใช้ “ให้ Claude อ่านรูปให้” ด้านล่าง');
+      if (!r){ photoRosterSheet(file, ymSel, mine); return; }
       res = Object.assign(r, {how:'Claude อ่านจากรูป'});
     } else return fail('ใช้ไฟล์ .html .xlsx .pdf หรือรูปภาพ');
-    if (!res.people.length) return fail('ไม่พบรายชื่อพร้อมรหัสพนักงานในไฟล์ ลองไฟล์อื่น หรือใช้ “ให้ Claude อ่านรูปให้”');
+    if (!res.people.length) return fail('ไม่พบรายชื่อพร้อมรหัสพนักงานในไฟล์ ลองไฟล์อื่น หรือใช้ 📷 อ่านจากรูปถ่าย');
     teamPreview(out, res, mine);
   }catch(e){ fail('อ่านไฟล์นี้ไม่ได้'); }
 }
@@ -3443,7 +3452,7 @@ function teamPreview(out, res, mine){
   const [y,m] = res.ym.split('-').map(Number);
   out.innerHTML = `<p style="margin:0 0 6px"><b>${esc(res.how || '')} · ${esc(new Date(y, m-1, 1).toLocaleDateString('th-TH',{month:'long', year:'numeric'}))} · พบ ${res.people.length} คน</b></p>
     <p class="meta" style="margin:0 0 6px">ติ๊กออกคนที่ไม่ต้องการ ตรวจจำนวนวันแล้วกดนำเข้า แก้รายช่องได้ภายหลังในตาราง${/Claude/.test(res.how || '') ? ' · Claude อาจอ่านบางช่องผิด ตรวจในตารางอีกครั้ง' : ''}</p>
-    <div class="preview">${res.people.map((p, i) => { const isMe = S.settings.profile.id && p.empId === S.settings.profile.id; return `<label><input type="checkbox" data-i="${i}" checked style="width:20px;height:20px;margin:0"><span class="grow"><b>${esc(p.name || '(ไม่มีชื่อ)')}</b>${isMe ? ' (ฉัน)' : ''}<span class="meta">${esc(p.empId)} · ${p.list.length} วัน · ${esc(p.list.slice(0, 4).map(x => +x.date.slice(8) + ':' + x.types.map(codeName).join('+')).join(' '))}${p.list.length > 4 ? ' …' : ''}</span></span></label>`; }).join('')}</div>
+    <div class="preview">${res.people.map((p, i) => { const isMe = p.isMe || (S.settings.profile.id && p.empId === S.settings.profile.id); return `<label><input type="checkbox" data-i="${i}" checked style="width:20px;height:20px;margin:0"><span class="grow"><b>${esc(p.name || '(ไม่มีชื่อ)')}</b>${isMe ? ' (ฉัน)' : ''}<span class="meta">${esc(p.empId)} · ${p.list.length} วัน · ${esc(p.list.slice(0, 4).map(x => +x.date.slice(8) + ':' + x.types.map(codeName).join('+')).join(' '))}${p.list.length > 4 ? ' …' : ''}</span></span></label>`; }).join('')}</div>
     <label class="f" style="margin-top:8px">แผนกของคนในไฟล์นี้<input class="field" id="tf-dept" value="${esc(teamPending.dept)}" placeholder="เช่น OR หรือ วิสัญญี"></label>
     <label class="chip" style="align-self:flex-start;margin-top:6px"><input type="checkbox" id="tf-replace">ล้างเวรเดิมทั้งเดือนของคนในไฟล์ก่อน (ปกติ: รวมกับของเดิม)</label>
     ${(team().swaps || []).some(x => !x.undone) ? '<label class="chip" style="align-self:flex-start;margin-top:6px"><input type="checkbox" id="tf-keepswap" checked>คงการแลกเวรที่บันทึกไว้ (ไฟล์ยังไม่ได้แก้ตามการแลก)</label>' : ''}
@@ -3458,7 +3467,7 @@ function applyTeamPending(){
   const T = team(); const me = meMember(); let added = 0, mineDays = 0, cells = 0; const ym = P.ym;
   const badName = n => !n || /^[ชบด]\s*\(/.test(n);
   picked.forEach(p => {
-    const isMe = (S.settings.profile.id && p.empId === S.settings.profile.id) || (me.empId && p.empId === me.empId);
+    const isMe = p.isMe || (S.settings.profile.id && p.empId === S.settings.profile.id) || (me.empId && p.empId === me.empId);
     if (isMe){ if (P.mine){ p.list.forEach(x => { S.shifts[x.date] = {types:x.types}; mineDays++; }); } return; }
     let mm = T.members.find(x => !x.me && ((p.empId && x.empId === p.empId) || (!p.empId && x.name === p.name)));
     if (!mm){ mm = {id:'t' + uid(), empId:p.empId, name:p.name, phone:'', dept, pos:p.pos || ''}; T.members.push(mm); added++; }
@@ -3472,15 +3481,118 @@ function applyTeamPending(){
   teamMonth = ym; teamPending = null; closeSheet();
   commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน' + (dept ? ' · ' + dept : '') + ')', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''} · ${cells} ช่อง${replace ? '' : ' รวมกับของเดิม'}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}${kept ? ' · คงการแลกเวรไว้ ' + kept + ' ช่อง' : ''}`});
 }
+
+/* ---------- อ่านรูปตารางเวรในแอป: อ่านจากสีของช่อง (ไม่ใช้ AI ไม่ต้องมีเน็ต) ----------
+   น้ำเงิน = 8-8 · เหลือง = 8-16+STD · แดง = หยุด · เขียว = 8-16 · ขาว = หยุด (X) · ช่องที่สีเหมือนกันแต่ตัวหนังสือต่าง (STD, 8-16 สีขาว) แตะแก้ */
+const PR = {img:null, src:null, rot:0, pts:[], order:[], ym:'', zoom:1, grid:null, mine:true};
+const PR_CYCLE = [['8-16','STD'],['8-16'],['STD'],['8-00'],['OFF'],[]];
+function prClass(H, S, V){
+  if (S >= 0.25){ if (H >= 190 && H <= 260) return ['8-00']; if (H >= 320 || H <= 20) return ['OFF']; if (H >= 30 && H <= 66) return ['8-16','STD']; if (H > 66 && H <= 180) return ['8-16']; }
+  if (V < 0.35) return ['8-00'];
+  return ['OFF'];
+}
+function prHsv(r, g, b){ r /= 255; g /= 255; b /= 255; const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn; let h = 0;
+  if (d){ h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; if (h < 0) h += 360; } return [h, mx ? d / mx : 0, mx]; }
+function prBuildSrc(){
+  const im = PR.img; const sc = Math.min(1, 2400 / Math.max(im.width, im.height)); const w = Math.round(im.width * sc), h = Math.round(im.height * sc);
+  const c = document.createElement('canvas'); const odd = PR.rot % 180 !== 0; c.width = odd ? h : w; c.height = odd ? w : h;
+  const x = c.getContext('2d'); x.translate(c.width / 2, c.height / 2); x.rotate(PR.rot * Math.PI / 180); x.drawImage(im, -w / 2, -h / 2, w, h); PR.src = c;
+}
+const prDays = () => { const [y, m] = PR.ym.split('-').map(Number); return new Date(y, m, 0).getDate(); };
+function prAt(u, v){ const [a, b, c, d] = PR.pts; return [(1-u)*(1-v)*a[0] + u*(1-v)*b[0] + u*v*c[0] + (1-u)*v*d[0], (1-u)*(1-v)*a[1] + u*(1-v)*b[1] + u*v*c[1] + (1-u)*v*d[1]]; }
+function prDraw(){
+  const cv = $('#pr-cv'); if (!cv || !PR.src) return; cv.width = PR.src.width; cv.height = PR.src.height;
+  const x = cv.getContext('2d'); x.drawImage(PR.src, 0, 0);
+  const box = cv.parentElement; cv.style.width = Math.round(box.clientWidth * PR.zoom) + 'px';
+  const k = PR.src.width / Math.max(1, box.clientWidth * PR.zoom);
+  if (PR.pts.length === 4){
+    const R = Math.max(1, PR.order.length), C = prDays(); x.strokeStyle = 'rgba(122,76,194,.85)'; x.lineWidth = 1.5 * k;
+    for (let r = 0; r <= R; r++){ x.beginPath(); for (let c = 0; c <= C; c++){ const [px, py] = prAt(c / C, r / R); c ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); }
+    for (let c = 0; c <= C; c++){ x.beginPath(); for (let r = 0; r <= R; r++){ const [px, py] = prAt(c / C, r / R); r ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); }
+  }
+  PR.pts.forEach((p, i) => { x.fillStyle = '#E0306F'; x.beginPath(); x.arc(p[0], p[1], 9 * k, 0, 7); x.fill(); x.fillStyle = '#fff'; x.font = `bold ${12 * k}px sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(i + 1, p[0], p[1]); });
+  const steps = ['แตะมุม <b>บนซ้าย</b> ของช่องวันที่ 1 (แถวบนสุด)', 'แตะมุม <b>บนขวา</b> ของช่องวันสุดท้าย (แถวบนสุด)', 'แตะมุม <b>ล่างขวา</b> ของช่องวันสุดท้าย (แถวล่างสุด)', 'แตะมุม <b>ล่างซ้าย</b> ของช่องวันที่ 1 (แถวล่างสุด)'];
+  const st = $('#pr-step'); if (st) st.innerHTML = PR.pts.length < 4 ? `ขั้น 2 · ${steps[PR.pts.length]} · ซูม + ช่วยให้แตะแม่น` : (PR.order.length ? `ครบ 4 มุม · เส้นม่วงควรทับเส้นตาราง ถ้าเหลื่อม แตะใกล้จุดที่ต้องการย้าย · แล้วกด “อ่านสีในรูป”` : 'ครบ 4 มุม · ขั้น 3 แตะชื่อตามลำดับแถวในรูป (บนลงล่าง)');
+}
+function prPeopleHtml(){
+  const T = team(); const me = meMember(); const all = [me].concat(T.members.filter(m => !m.me));
+  return `<div class="wrap">${all.map(m => { const n = PR.order.indexOf(m.id); return `<button type="button" class="tdc${n >= 0 ? ' on' : ''}" data-act="pr-pick" data-id="${m.id}">${n >= 0 ? (n + 1) + '. ' : ''}${esc(m.me ? shortName(m.name) + ' (ฉัน)' : shortName(m.name))}</button>`; }).join('')}</div>
+    <div class="row" style="gap:6px;margin-top:6px"><button type="button" class="btn small ghost" data-act="pr-all">ทุกคนตามลำดับในทีม</button><button type="button" class="btn small ghost" data-act="pr-clear">ล้างลำดับ</button></div>`;
+}
+function photoRosterSheet(file, ym, mine){
+  PR.ym = ym || teamMonth; PR.mine = mine !== false; PR.pts = []; PR.grid = null; PR.zoom = 1; PR.rot = 0;
+  const url = URL.createObjectURL(file); const im = new Image();
+  im.onload = () => { PR.img = im; if (im.height > im.width * 1.15) PR.rot = 270; prBuildSrc(); prDraw(); };
+  im.onerror = () => toast('เปิดรูปนี้ไม่ได้ ลองถ่ายใหม่เป็น JPG', true);
+  im.src = url;
+  openSheet(`${sheetHead('อ่านรูปตารางเวร (ในแอป)')}
+    <p class="meta" style="margin:0">อ่านจาก<b>สีของช่อง</b>ในรูป ไม่ใช้ AI ไม่ต้องใช้เน็ต · น้ำเงิน = 8-8 · เหลือง = 8-16+STD · แดง/ขาว (X) = หยุด · เขียว = 8-16 · ช่องที่สีเดียวกันแต่เขียนต่างกัน (เช่น STD) แตะแก้ได้ก่อนนำเข้า</p>
+    <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small" data-act="pr-rot">⟳ หมุนรูป</button><button type="button" class="btn small" data-act="pr-zoom" data-d="-1">ซูม −</button><button type="button" class="btn small" data-act="pr-zoom" data-d="1">ซูม +</button><button type="button" class="btn small ghost" data-act="pr-reset">แตะมุมใหม่</button></div>
+    <div id="pr-step" class="tdsum">ขั้น 1 · หมุนรูปให้ตารางอยู่แนวนอน อ่านตัวหนังสือได้</div>
+    <div class="prwrap"><canvas id="pr-cv"></canvas></div>
+    <label class="f">เดือนในรูป<input class="field" type="month" id="pr-ym" value="${esc(PR.ym)}"></label>
+    <fieldset><legend>ชื่อตามลำดับแถวในรูป (บนลงล่าง)</legend><div id="pr-people">${prPeopleHtml()}</div></fieldset>
+    <label class="chip" style="align-self:flex-start"><input type="checkbox" id="pr-mine"${PR.mine ? ' checked' : ''}>อัปเดตเวรของฉันด้วย</label>
+    <button type="button" class="btn primary" data-act="pr-read">อ่านสีในรูป</button>
+    <div id="pr-out"></div><div id="tf-out" aria-live="polite"></div>`, sh => {
+      const cv = sh.querySelector('#pr-cv');
+      cv.addEventListener('click', e => { if (!PR.src) return; const r = cv.getBoundingClientRect(); const x = (e.clientX - r.left) * PR.src.width / r.width, y = (e.clientY - r.top) * PR.src.height / r.height;
+        if (PR.pts.length < 4) PR.pts.push([x, y]); else { let bi = 0, bd = 1e18; PR.pts.forEach((p, i) => { const d = (p[0] - x) ** 2 + (p[1] - y) ** 2; if (d < bd){ bd = d; bi = i; } }); PR.pts[bi] = [x, y]; }
+        prDraw(); });
+      sh.querySelector('#pr-ym').addEventListener('change', e => { if (/^\d{4}-\d{2}$/.test(e.target.value)){ PR.ym = e.target.value; prDraw(); } });
+      sh.querySelector('#pr-mine').addEventListener('change', e => { PR.mine = e.target.checked; });
+    });
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+function prRead(){
+  if (!PR.src){ toast('ยังไม่มีรูป', true); return; } if (PR.pts.length < 4){ toast('แตะ 4 มุมของช่องเวรก่อน', true); return; } if (!PR.order.length){ toast('แตะชื่อตามลำดับแถวในรูปก่อน', true); return; }
+  const R = PR.order.length, C = prDays(); const W = PR.src.width, H = PR.src.height; const data = PR.src.getContext('2d').getImageData(0, 0, W, H).data;
+  const [a, b, , d] = PR.pts; const cw = Math.hypot(b[0] - a[0], b[1] - a[1]) / C, ch = Math.hypot(d[0] - a[0], d[1] - a[1]) / R;
+  const med = arr => { arr.sort((p, q) => p - q); return arr[arr.length >> 1] || 0; };
+  PR.grid = [];
+  for (let r = 0; r < R; r++){ const row = [];
+    for (let c = 0; c < C; c++){
+      const [cx, cy] = prAt((c + .5) / C, (r + .5) / R); const rs = [], gs = [], bs = [];
+      const hx = cw * .33, hy = ch * .3, st = Math.max(1, Math.floor(hx / 8));
+      for (let y = Math.round(cy - hy); y <= cy + hy; y += st) for (let x = Math.round(cx - hx); x <= cx + hx; x += st){
+        if (x < 0 || y < 0 || x >= W || y >= H) continue; const i = (y * W + x) * 4; rs.push(data[i]); gs.push(data[i + 1]); bs.push(data[i + 2]); }
+      const [h, s2, v] = prHsv(med(rs), med(gs), med(bs)); row.push(rs.length ? prClass(h, s2, v) : []);
+    }
+    PR.grid.push(row);
+  }
+  prGridDraw();
+}
+function prGridDraw(){
+  const out = $('#pr-out'); if (!out || !PR.grid) return; const C = prDays(); const all = [meMember()].concat(team().members.filter(m => !m.me));
+  const nm = id => { const m = all.find(x => x.id === id) || {}; return shortName(m.name) || '?'; };
+  const yel = PR.grid.flat().filter(t => t.join() === '8-16,STD').length;
+  out.innerHTML = `<p style="margin:6px 0"><b>อ่านได้ ${PR.grid.length} คน × ${C} วัน</b> · ตรวจกับรูป แตะช่องเพื่อเปลี่ยน (8S → 8 → S → 24 → X → ว่าง)</p>
+    ${yel ? `<p class="meta" style="margin:0 0 6px">ช่องเหลืองอ่านเป็น 8-16+STD (8S) ทั้งหมด ถ้าในรูปเขียน STD แตะ 2 ครั้งให้เป็น S</p>` : ''}
+    <div class="prgw"><table class="prg"><thead><tr><th></th>${Array.from({length:C}, (_, i) => `<th>${i + 1}</th>`).join('')}</tr></thead>
+    <tbody>${PR.grid.map((row, r) => `<tr><th>${esc(nm(PR.order[r]))}</th>${row.map((t, c) => `<td class="${codeClass(t)}" data-act="pr-cell" data-r="${r}" data-c="${c}">${t.length ? esc(SHORT(t)) : '·'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <button type="button" class="btn primary" data-act="pr-go" style="width:100%;margin-top:8px">ถัดไป: ตรวจรายชื่อแล้วนำเข้า</button>`;
+}
+function prGo(){
+  const all = [meMember()].concat(team().members.filter(m => !m.me)); const C = prDays();
+  const people = PR.order.map((id, r) => { const m = all.find(x => x.id === id) || {}; return {empId: m.empId || '', name: m.name || '', dept: m.dept || '', isMe: !!m.me,
+    list: PR.grid[r].map((t, c) => ({date: `${PR.ym}-${pad(c + 1)}`, types: t})).filter(x => x.types.length).slice(0, C)}; });
+  teamPreview($('#tf-out'), {ym: PR.ym, people, how: 'อ่านสีจากรูป'}, PR.mine);
+  $('#tf-out').scrollIntoView({block:'center'});
+}
+
 function teamImportSheet(){
   openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
     <form data-form="team-file" style="display:flex;flex-direction:column;gap:12px">
-      <p class="meta" style="margin:0">รับไฟล์ <b>.html .xlsx .pdf</b> และ<b>รูปภาพ</b> · .html/.xlsx/PDF ที่มีข้อความ อ่านในเครื่อง รวมสีช่อง (เหลือง = +STD)${STANDALONE ? '' : ' · รูปภาพและ PDF สแกน Claude อ่านให้'}</p>
-      <label class="f">ไฟล์หรือรูปตารางเวร<input class="field" type="file" name="file" accept="${STANDALONE ? '.html,.htm,.xhtml,.xlsx,.xls,.pdf,application/pdf,.json,.txt' : '.html,.htm,.xhtml,.xlsx,.xls,.pdf,application/pdf,image/*,.json,.txt'}" required style="padding:8px"></label>
+      <p class="meta" style="margin:0">รับไฟล์ <b>.html .xlsx .pdf .json</b> และ<b>รูปถ่าย</b> · ไฟล์อ่านในเครื่อง รวมสีช่อง (เหลือง = +STD) · รูปถ่าย${STANDALONE ? ' แอปอ่านจากสีของช่อง' : ' Claude อ่านให้ หรือใช้ปุ่มอ่านจากสีด้านล่าง'}</p>
+      <label class="f">ไฟล์หรือรูปตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls,.pdf,.json,.txt,text/html,application/xhtml+xml,application/pdf,application/json,text/plain,application/octet-stream,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,image/*" required style="padding:8px"></label>
       <label class="f">เดือน (ใช้เมื่อไฟล์ไม่ได้บอกเดือน)<input class="field" type="month" name="ym" value="${esc(teamMonth)}"></label>
       <label class="chip" style="align-self:flex-start"><input type="checkbox" name="mine">อัปเดตเวรของฉันจากไฟล์นี้ด้วย</label>
       <button class="btn primary" type="submit">อ่านไฟล์</button><div id="tf-out" aria-live="polite"></div>
     </form>
+    <label class="btn" style="cursor:pointer;text-align:center">📷 อ่านจากรูปถ่าย (อ่านสีในแอป ไม่ใช้ AI)<input type="file" accept="image/*" class="sr" data-act="pr-file"></label>
+    <details><summary style="cursor:pointer;font-weight:600">วางข้อมูลตารางเวร (ข้อความ JSON)</summary>
+      <textarea class="field" id="tj-txt" rows="4" placeholder='วางข้อมูลที่ขึ้นต้นด้วย { "month": … หรือ { "rows": …' style="margin-top:6px"></textarea>
+      <button type="button" class="btn small primary" data-act="tj-read" style="margin-top:6px">อ่านข้อมูล</button></details>
   `);
 }
 function teamHistorySheet(){
@@ -4563,6 +4675,16 @@ document.addEventListener('click', e => {
     case 'td-role': { const d = el.dataset.d; const P = dayPlan(d); const a = new Set(P.roles[el.dataset.id] || []); if (a.has(el.dataset.k)) a.delete(el.dataset.k); else a.add(el.dataset.k); P.roles[el.dataset.id] = [...a]; syncMyAssign(d); commit('ตำแหน่ง: ' + el.dataset.k, {silent:true}); break; }
     case 'td-st': { const d = el.dataset.d; const P = dayPlan(d); const v = P.duties[el.dataset.k] = P.duties[el.dataset.k] || {who:[]}; v.st = v.st === el.dataset.v ? '' : el.dataset.v; commit('หน้าที่ ' + el.dataset.k + ': ' + (v.st || 'ล้าง'), {silent:true}); break; }
     case 'td-who': tdWhoSheet(el.dataset.d, el.dataset.k); break;
+    case 'pr-rot': if (PR.img){ PR.rot = (PR.rot + 90) % 360; PR.pts = []; prBuildSrc(); prDraw(); } break;
+    case 'pr-zoom': PR.zoom = Math.max(1, Math.min(4, PR.zoom + Number(el.dataset.d))); prDraw(); break;
+    case 'pr-reset': PR.pts = []; prDraw(); break;
+    case 'pr-pick': { const i = PR.order.indexOf(el.dataset.id); if (i >= 0) PR.order.splice(i, 1); else PR.order.push(el.dataset.id); $('#pr-people').innerHTML = prPeopleHtml(); prDraw(); break; }
+    case 'pr-all': PR.order = [meMember()].concat(team().members.filter(m => !m.me)).map(m => m.id); $('#pr-people').innerHTML = prPeopleHtml(); prDraw(); break;
+    case 'pr-clear': PR.order = []; $('#pr-people').innerHTML = prPeopleHtml(); prDraw(); break;
+    case 'pr-read': prRead(); break;
+    case 'pr-cell': { const r = +el.dataset.r, c = +el.dataset.c; const cur = PR.grid[r][c].join(); const i = PR_CYCLE.findIndex(t => t.join() === cur); PR.grid[r][c] = PR_CYCLE[(i + 1) % PR_CYCLE.length].slice(); prGridDraw(); break; }
+    case 'pr-go': prGo(); break;
+    case 'tj-read': { const out = $('#tf-out'); try{ const r = peopleFromJson(($('#tj-txt') || {}).value || '', (document.querySelector('form[data-form=team-file] input[name=ym]') || {}).value || teamMonth); if (!r.people.length) throw new Error('ไม่พบรายชื่อ'); teamPreview(out, Object.assign(r, {how:'ข้อมูลที่วาง'}), !!(document.querySelector('form[data-form=team-file] input[name=mine]') || {}).checked); out.scrollIntoView({block:'center'}); }catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>อ่านข้อมูลไม่ได้: ${esc(e.message || '')} · วางข้อมูลให้ครบทั้งหมด</div></div>`; } break; }
     case 'shift-del': { const d = el.dataset.d; delete S.shifts[d]; closeSheet(); commit('ลบเวร ' + thDate(d,{day:'numeric',month:'short'}), {msg:'ลบเวรวันนี้แล้ว'}); break; }
     case 'shift-clear': shiftClearSheet(el.dataset.m); break;
     case 'stk-pick': stickerPickSheet(el.dataset.d); break;
@@ -4714,6 +4836,7 @@ document.addEventListener('change', e => {
   if (el.dataset && el.dataset.act === 'font'){ S.settings.font = el.value; Theme.apply(); commit('เปลี่ยนฟอนต์', {msg:'เปลี่ยนฟอนต์แล้ว'}); return; }
   if (el.dataset && el.dataset.act === 'alpha'){ S.settings.cardAlpha = Number(el.value); Theme.apply(); commit('ปรับความใสของกรอบ', {silent:true}); return; }
   if (el.dataset && el.dataset.act === 'td-ho'){ hoDraft[el.dataset.d] = el.value; const m = document.getElementById('ho-msg-' + el.dataset.d); if (m) m.textContent = 'ยังไม่ได้บันทึก · กด 💾 บันทึกส่งเวร'; return; }
+  if (el.dataset && el.dataset.act === 'pr-file' && el.files && el.files[0]){ const fm = document.querySelector('form[data-form=team-file]'); const ym = el.dataset.ym || (fm && fm.querySelector('input[name=ym]').value) || teamMonth; const mine = el.dataset.ym ? true : !!(fm && fm.querySelector('input[name=mine]').checked) || true; photoRosterSheet(el.files[0], ym, mine); return; }
   if (el.dataset && el.dataset.act === 'stk-mode'){ stickerCfg().mode = el.value; commit('รูปแบบสติกเกอร์', {silent:true}); return; }
   if (el.dataset && el.dataset.act === 'stk-up' && el.files && el.files[0]){ const d = el.dataset.d; stickerUpload(el.files[0]).then(v => { if (!v) return; if (d){ S.daySticker = S.daySticker || {}; S.daySticker[d] = v; closeSheet(); } else stickerCfg().set.push(v); commit('อัปโหลดสติกเกอร์', {msg:'เพิ่มสติกเกอร์แล้ว'}); }); return; }
   if (el.dataset && el.dataset.act === 'nf-time'){ const n = notifyCfg(); n[el.dataset.k] = el.value; commit('ตั้งเวลาแจ้งเตือน', {silent:true}); return; }
