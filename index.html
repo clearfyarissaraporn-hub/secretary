@@ -480,12 +480,6 @@ html.native nav.tabbar{padding-bottom:max(env(safe-area-inset-bottom,0px),14px)}
 img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align:middle}.offi img.stk{width:18px;height:18px}
 .shopt{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;background:var(--surface-solid,#fff);border:1px solid var(--field)}
 .tmcase{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:var(--primary-tint)}
-.prwrap{overflow:auto;max-height:58vh;border:1px solid var(--field);border-radius:12px;background:#fff;touch-action:pan-x pan-y}
-.prwrap canvas{display:block;width:100%;height:auto;cursor:crosshair}
-.prgw{overflow:auto;border:1px solid var(--field);border-radius:10px}
-.prg{border-collapse:separate;border-spacing:1px;font-size:11px}
-.prg th{position:sticky;left:0;background:var(--surface-solid,#fff);font-weight:600;padding:2px 4px;white-space:nowrap;z-index:1}.prg thead th{position:static}
-.prg td{min-width:24px;height:26px;text-align:center;border-radius:4px;cursor:pointer;font-weight:700;background:#f3f0fa}
 </style>
 </head>
 <body>
@@ -1584,7 +1578,6 @@ function viewGuide(){
     ['การแจ้งเตือน','ตั้งค่า › การเตือนนัด: 1) ติ๊กหัวข้อ (นัด เคส เวรพรุ่งนี้ วันหยุด รูทีน ทีมพรุ่งนี้) 2) ติ๊กเวลาเตือน (ก่อน 1 วัน เช้าวันนั้น ก่อน 2 ชม. ก่อน 1 ชม. ตรงเวลา) ตั้งเวลาเช้าและเวลาเตือนคืนก่อนได้ · ดูรายการที่จะเตือนใน 14 วัน · 3) ช่องทางเด้งตามเวอร์ชัน'],
     ['สติกเกอร์','ตั้งค่า › ธีมและสี › สติกเกอร์วันหยุด: เลือกได้หลายอัน สุ่มหรือใช้อันเดียว อัปโหลดรูปของตัวเองได้ 24 รูป · ติดสติกเกอร์วันไหนก็ได้: ตาราง › แตะวัน › 🏷️ สติกเกอร์ · เอาออก/เปลี่ยนได้'],
     ['ทีมวันนี้ (My day)','ตำแหน่ง: แตะ Anes/RR/Incharge/Assistant/Scrub/Circulate ให้แต่ละคนที่อยู่เวร (ไม่รวมคนที่ STD อย่างเดียว) · หน้าที่ประจำวัน: แตะ “เลือกคนรับผิดชอบ” แล้วติ๊ก ทำแล้ว/ไม่ได้ทำ/N/A · ✏️ เพิ่ม ลบ เปลี่ยนชื่อ เรียงหน้าที่และตำแหน่ง · 📊 สถิติรายเดือน · 📤 แชร์ให้เพื่อนทาง LINE'],
-    ['อ่านรูปถ่ายตารางเวรในแอป','ทีม › นำเข้า › 📷 อ่านจากรูปถ่าย (หรือ ตาราง › ลงตารางเวร › จากรูป): 1) หมุนรูปให้ตารางแนวนอน 2) ซูม แล้วแตะ 4 มุมของช่องเวร: บนซ้ายวันที่ 1 → บนขวาวันสุดท้าย → ล่างขวาวันสุดท้าย → ล่างซ้ายวันที่ 1 (เส้นม่วงต้องทับเส้นตาราง แตะใกล้จุดเพื่อย้าย) 3) แตะชื่อตามลำดับแถวในรูป 4) อ่านสีในรูป › แตะช่องที่ผิดเพื่อแก้ (เหลืองที่เขียน STD และช่องขาวที่เขียน 8-16) › ถัดไป › นำเข้า · ตรวจ: แถบสีใต้แต่ละช่องคือสีที่แอปเห็นจริง และกรอบฟ้าบนรูปคือจุดที่อ่าน ถ้าแถบสีไม่ตรงรูปหรือกรอบไม่อยู่กลางช่อง ให้แตะมุมใหม่ · ถ่ายตรง ๆ ให้ตารางเต็มจอ ไม่มีเงาทับ · แอปปรับแสงจากกระดาษในรูปเอง · อ่านจากสี ไม่ใช้ AI ไม่ต้องใช้เน็ต · ชื่อต้องมีในทีมก่อน'],
     ['วางข้อมูลตารางเวร','ทีม › นำเข้า › วางข้อมูลตารางเวร (JSON) › วางข้อความ › อ่านข้อมูล · หรือเลือกไฟล์ .json ในช่องไฟล์ได้เลย'],
     ['อ่านรูปตารางเวร','ลิงก์ claude.ai: ตาราง › ลงตารางเวร › จากรูป หรือ ทีม › นำเข้า › เลือกรูป Claude อ่านให้ในแอป · เวอร์ชัน GitHub/Android: ใช้ไฟล์ตารางเวร .html .xlsx .pdf หรือ .json'],
     ['ทำงานตรงวันหยุด','ลงเวรวันนั้นตามปกติ ไม่ต้องแก้อะไร: ต้องทำจริงยังหักวันหยุด ชั่วโมงเวรนับเป็นงานจริง → เกินเพิ่ม · ได้หยุดชดเชย: ติ๊กออก “วันหยุดประจำปี” วันที่ทำ แล้วติ๊กในวันชดเชย · ถือเป็นวันปกติ: ติ๊กออกอย่างเดียว · ค่าทำงานวันหยุดใส่เองที่ เงิน › + รายรับ'],
@@ -1616,7 +1609,7 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
-    ['v1.38','อ่านรูปตารางเวรแม่นขึ้นมาก: ปรับสมดุลแสงจากสีกระดาษในรูปเอง และเรียนรู้เกณฑ์สีจากรูปนั้น (แสงเหลือง/แสงฟ้า/รูปซีดก็อ่านได้) · มีแถบสีใต้ช่องและกรอบบนรูปให้เห็นว่าแอปอ่านตรงไหน'],
+    ['v1.38','เอาการอ่านรูปตารางเวรจากสีออก (อ่านไม่แม่นในรูปจริง) · เวอร์ชัน GitHub/Android ใช้ไฟล์ตารางเวร .html .xlsx .pdf .json หรือวางข้อมูล JSON · ลิงก์ claude.ai ยังให้ Claude อ่านรูปได้'],
     ['v1.37','อ่านรูปถ่ายตารางเวรในแอปจากสีของช่อง (ไม่ใช้ AI ใช้ได้ทุกเวอร์ชัน) แตะแก้ก่อนนำเข้า · กลับมามีช่องวางข้อมูลตารางเวร (JSON) · แก้มือถือ Android เลือกไฟล์ .json ไม่ได้'],
     ['v1.36','ส่งเวร: ไม่บันทึกอัตโนมัติแล้วทุกกรณี (รวมตอนแชร์) บันทึกเฉพาะตอนกด 💾 · แชร์/พิมพ์ใช้ข้อความที่เห็นบนจอ'],
     ['v1.35','ส่งเวร: ปุ่ม 💾 บันทึก แทนการบันทึกเอง · ทีมในเคส: เลือกได้ทุกคนในทีม รวมคนที่หยุดมาทำเคส OT'],
@@ -2012,7 +2005,7 @@ const Roster = (function(){
     try{ sample = window.claude && window.claude.use ? await window.claude.use('sample') : null; }catch(e){}
     const lim = sample ? await sample.limits().catch(() => null) : null;
     if (tab !== 'photo') return;
-    if (!sample){ body.innerHTML = `<p class="meta" style="margin:0">แอปอ่านจาก<b>สีของช่อง</b>ในรูป ไม่ใช้ AI · อัปเดตเวรของคุณและตารางทีมพร้อมกัน</p><label class="btn primary" style="cursor:pointer;text-align:center">📷 ถ่ายหรือเลือกรูปตารางเวร<input type="file" accept="image/*" class="sr" data-act="pr-file" data-ym="${esc(ym)}"></label>`; return; }
+    if (!sample){ body.innerHTML = `<p class="meta" style="margin:0">เวอร์ชันนี้อ่านรูปไม่ได้ · ใช้แท็บ <b>จากไฟล์</b> (ไฟล์ .html .xlsx .pdf .json จากระบบของโรงพยาบาล) หรือ<b>ลงทั้งเดือน</b>ด้วยมือ · ถ้าต้องการให้อ่านรูป เปิดแอปผ่านลิงก์ claude.ai</p>`; return; }
     const types = lim && lim.images && lim.images.mediaTypes ? lim.images.mediaTypes.join(',') : 'image/jpeg,image/png,image/webp';
     body.innerHTML = `<form data-form="roster" style="display:flex;flex-direction:column;gap:12px">
       <label class="f">รูปตารางเวร<input class="field" type="file" name="img" accept="${esc(types)}" required style="padding:8px"></label>
@@ -3427,17 +3420,17 @@ async function readTeamFile(f){
       else {
         out.innerHTML = '<p class="meta">PDF นี้เป็นภาพสแกน กำลังให้ Claude อ่าน…</p>';
         const r = P.canvas ? await aiReadImages([await canvasBlob(P.canvas)], P.ym || ymSel).catch(() => null) : null;
-        if (!r) return fail('PDF นี้เป็นภาพสแกน · ใช้ปุ่ม 📷 อ่านจากรูปถ่าย ด้านล่างแทน (ถ่ายหน้าจอ PDF หรือถ่ายรูปตาราง)');
+        if (!r) return fail('PDF นี้เป็นภาพสแกน · ลองไฟล์ .html หรือ .xlsx จากระบบแทน');
         res = Object.assign(r, {how:'Claude อ่านจาก PDF'});
       }
     } else if (/^image\//.test(file.type) || /\.(jpe?g|png|webp|heic)$/i.test(file.name)){
-      if (STANDALONE){ photoRosterSheet(file, ymSel, mine); return; }
+      if (STANDALONE) return fail('เวอร์ชันนี้อ่านรูปไม่ได้ · ใช้ไฟล์ตารางเวร .html .xlsx .pdf .json จากระบบของโรงพยาบาล หรือเปิดผ่านลิงก์ claude.ai ให้ Claude อ่านรูป');
       out.innerHTML = '<p class="meta">Claude กำลังอ่านรูปตาราง อาจใช้เวลาครึ่งนาที…</p>';
       let r = null; try{ r = await aiReadImages([file], ymSel); }catch(e){ return fail(e && e.code === 'not_granted' ? 'ยังไม่ได้อนุญาตให้ส่งรูปให้ Claude' : 'อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตาราง แล้วลองใหม่' + (e && e.message ? ' (' + esc(e.message).slice(0, 80) + ')' : '')); }
-      if (!r){ photoRosterSheet(file, ymSel, mine); return; }
+      if (!r) return fail('อ่านรูปไม่สำเร็จ ลองครอปให้เหลือแค่ตาราง แล้วลองใหม่');
       res = Object.assign(r, {how:'Claude อ่านจากรูป'});
     } else return fail('ใช้ไฟล์ .html .xlsx .pdf หรือรูปภาพ');
-    if (!res.people.length) return fail('ไม่พบรายชื่อพร้อมรหัสพนักงานในไฟล์ ลองไฟล์อื่น หรือใช้ 📷 อ่านจากรูปถ่าย');
+    if (!res.people.length) return fail('ไม่พบรายชื่อพร้อมรหัสพนักงานในไฟล์ ลองไฟล์อื่น');
     teamPreview(out, res, mine);
   }catch(e){ fail('อ่านไฟล์นี้ไม่ได้'); }
 }
@@ -3476,135 +3469,15 @@ function applyTeamPending(){
   commit('นำเข้าตารางเวรทีม ' + ym + ' (' + picked.length + ' คน' + (dept ? ' · ' + dept : '') + ')', {msg:`นำเข้าแล้ว ${picked.length} คน${added ? ' (เพิ่มใหม่ ' + added + ')' : ''} · ${cells} ช่อง${replace ? '' : ' รวมกับของเดิม'}${P.mine ? ' · อัปเดตเวรของคุณ ' + mineDays + ' วัน' : ''}${kept ? ' · คงการแลกเวรไว้ ' + kept + ' ช่อง' : ''}`});
 }
 
-/* ---------- อ่านรูปตารางเวรในแอป: อ่านจากสีของช่อง (ไม่ใช้ AI ไม่ต้องมีเน็ต) ----------
-   น้ำเงิน = 8-8 · เหลือง = 8-16+STD · แดง = หยุด · เขียว = 8-16 · ขาว = หยุด (X) · ช่องที่สีเหมือนกันแต่ตัวหนังสือต่าง (STD, 8-16 สีขาว) แตะแก้ */
-const PR = {img:null, src:null, rot:0, pts:[], order:[], ym:'', zoom:1, grid:null, mine:true};
-const PR_CYCLE = [['8-16','STD'],['8-16'],['STD'],['8-00'],['OFF'],[]];
-function prClass(H, S, V){
-  if (S >= 0.25){ if (H >= 190 && H <= 260) return ['8-00']; if (H >= 320 || H <= 20) return ['OFF']; if (H >= 30 && H <= 66) return ['8-16','STD']; if (H > 66 && H <= 180) return ['8-16']; }
-  if (V < 0.35) return ['8-00'];
-  return ['OFF'];
-}
-function prHsv(r, g, b){ r /= 255; g /= 255; b /= 255; const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn; let h = 0;
-  if (d){ h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; if (h < 0) h += 360; } return [h, mx ? d / mx : 0, mx]; }
-function prBuildSrc(){
-  const im = PR.img; const sc = Math.min(1, 2400 / Math.max(im.width, im.height)); const w = Math.round(im.width * sc), h = Math.round(im.height * sc);
-  const c = document.createElement('canvas'); const odd = PR.rot % 180 !== 0; c.width = odd ? h : w; c.height = odd ? w : h;
-  const x = c.getContext('2d'); x.translate(c.width / 2, c.height / 2); x.rotate(PR.rot * Math.PI / 180); x.drawImage(im, -w / 2, -h / 2, w, h); PR.src = c;
-}
-const prDays = () => { const [y, m] = PR.ym.split('-').map(Number); return new Date(y, m, 0).getDate(); };
-function prAt(u, v){ const [a, b, c, d] = PR.pts; return [(1-u)*(1-v)*a[0] + u*(1-v)*b[0] + u*v*c[0] + (1-u)*v*d[0], (1-u)*(1-v)*a[1] + u*(1-v)*b[1] + u*v*c[1] + (1-u)*v*d[1]]; }
-function prDraw(){
-  const cv = $('#pr-cv'); if (!cv || !PR.src) return; cv.width = PR.src.width; cv.height = PR.src.height;
-  const x = cv.getContext('2d'); x.drawImage(PR.src, 0, 0);
-  const box = cv.parentElement; cv.style.width = Math.round(box.clientWidth * PR.zoom) + 'px';
-  const k = PR.src.width / Math.max(1, box.clientWidth * PR.zoom);
-  if (PR.pts.length === 4){
-    const R = Math.max(1, PR.order.length), C = prDays(); x.strokeStyle = 'rgba(122,76,194,.85)'; x.lineWidth = 1.5 * k;
-    for (let r = 0; r <= R; r++){ x.beginPath(); for (let c = 0; c <= C; c++){ const [px, py] = prAt(c / C, r / R); c ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); }
-    for (let c = 0; c <= C; c++){ x.beginPath(); for (let r = 0; r <= R; r++){ const [px, py] = prAt(c / C, r / R); r ? x.lineTo(px, py) : x.moveTo(px, py); } x.stroke(); }
-  }
-  if (PR.boxes && PR.pts.length === 4){ x.strokeStyle = '#00C2FF'; x.lineWidth = 1.2 * k; PR.boxes.forEach(b => x.strokeRect(b[0], b[1], b[2], b[3])); }
-  PR.pts.forEach((p, i) => { x.fillStyle = '#E0306F'; x.beginPath(); x.arc(p[0], p[1], 9 * k, 0, 7); x.fill(); x.fillStyle = '#fff'; x.font = `bold ${12 * k}px sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(i + 1, p[0], p[1]); });
-  const steps = ['แตะมุม <b>บนซ้าย</b> ของช่องวันที่ 1 (แถวบนสุด)', 'แตะมุม <b>บนขวา</b> ของช่องวันสุดท้าย (แถวบนสุด)', 'แตะมุม <b>ล่างขวา</b> ของช่องวันสุดท้าย (แถวล่างสุด)', 'แตะมุม <b>ล่างซ้าย</b> ของช่องวันที่ 1 (แถวล่างสุด)'];
-  const st = $('#pr-step'); if (st) st.innerHTML = PR.pts.length < 4 ? `ขั้น 2 · ${steps[PR.pts.length]} · ซูม + ช่วยให้แตะแม่น` : (PR.order.length ? `ครบ 4 มุม · เส้นม่วงควรทับเส้นตาราง ถ้าเหลื่อม แตะใกล้จุดที่ต้องการย้าย · แล้วกด “อ่านสีในรูป”` : 'ครบ 4 มุม · ขั้น 3 แตะชื่อตามลำดับแถวในรูป (บนลงล่าง)');
-}
-function prPeopleHtml(){
-  const T = team(); const me = meMember(); const all = [me].concat(T.members.filter(m => !m.me));
-  return `<div class="wrap">${all.map(m => { const n = PR.order.indexOf(m.id); return `<button type="button" class="tdc${n >= 0 ? ' on' : ''}" data-act="pr-pick" data-id="${m.id}">${n >= 0 ? (n + 1) + '. ' : ''}${esc(m.me ? shortName(m.name) + ' (ฉัน)' : shortName(m.name))}</button>`; }).join('')}</div>
-    <div class="row" style="gap:6px;margin-top:6px"><button type="button" class="btn small ghost" data-act="pr-all">ทุกคนตามลำดับในทีม</button><button type="button" class="btn small ghost" data-act="pr-clear">ล้างลำดับ</button></div>`;
-}
-function photoRosterSheet(file, ym, mine){
-  PR.ym = ym || teamMonth; PR.mine = mine !== false; PR.pts = []; PR.grid = null; PR.zoom = 1; PR.rot = 0;
-  const url = URL.createObjectURL(file); const im = new Image();
-  im.onload = () => { PR.img = im; if (im.height > im.width * 1.15) PR.rot = 270; prBuildSrc(); prDraw(); };
-  im.onerror = () => toast('เปิดรูปนี้ไม่ได้ ลองถ่ายใหม่เป็น JPG', true);
-  im.src = url;
-  openSheet(`${sheetHead('อ่านรูปตารางเวร (ในแอป)')}
-    <p class="meta" style="margin:0">อ่านจาก<b>สีของช่อง</b>ในรูป ไม่ใช้ AI ไม่ต้องใช้เน็ต · น้ำเงิน = 8-8 · เหลือง = 8-16+STD · แดง/ขาว (X) = หยุด · เขียว = 8-16 · ช่องที่สีเดียวกันแต่เขียนต่างกัน (เช่น STD) แตะแก้ได้ก่อนนำเข้า</p>
-    <div class="row" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn small" data-act="pr-rot">⟳ หมุนรูป</button><button type="button" class="btn small" data-act="pr-zoom" data-d="-1">ซูม −</button><button type="button" class="btn small" data-act="pr-zoom" data-d="1">ซูม +</button><button type="button" class="btn small ghost" data-act="pr-reset">แตะมุมใหม่</button></div>
-    <div id="pr-step" class="tdsum">ขั้น 1 · หมุนรูปให้ตารางอยู่แนวนอน อ่านตัวหนังสือได้</div>
-    <div class="prwrap"><canvas id="pr-cv"></canvas></div>
-    <label class="f">เดือนในรูป<input class="field" type="month" id="pr-ym" value="${esc(PR.ym)}"></label>
-    <fieldset><legend>ชื่อตามลำดับแถวในรูป (บนลงล่าง)</legend><div id="pr-people">${prPeopleHtml()}</div></fieldset>
-    <label class="chip" style="align-self:flex-start"><input type="checkbox" id="pr-mine"${PR.mine ? ' checked' : ''}>อัปเดตเวรของฉันด้วย</label>
-    <button type="button" class="btn primary" data-act="pr-read">อ่านสีในรูป</button>
-    <div id="pr-out"></div><div id="tf-out" aria-live="polite"></div>`, sh => {
-      const cv = sh.querySelector('#pr-cv');
-      cv.addEventListener('click', e => { if (!PR.src) return; const r = cv.getBoundingClientRect(); const x = (e.clientX - r.left) * PR.src.width / r.width, y = (e.clientY - r.top) * PR.src.height / r.height;
-        PR.boxes = null; if (PR.pts.length < 4) PR.pts.push([x, y]); else { let bi = 0, bd = 1e18; PR.pts.forEach((p, i) => { const d = (p[0] - x) ** 2 + (p[1] - y) ** 2; if (d < bd){ bd = d; bi = i; } }); PR.pts[bi] = [x, y]; }
-        prDraw(); });
-      sh.querySelector('#pr-ym').addEventListener('change', e => { if (/^\d{4}-\d{2}$/.test(e.target.value)){ PR.ym = e.target.value; prDraw(); } });
-      sh.querySelector('#pr-mine').addEventListener('change', e => { PR.mine = e.target.checked; });
-    });
-  setTimeout(() => URL.revokeObjectURL(url), 60000);
-}
-function prOtsu(vals){ let best = 0, bt = .25; const n = vals.length; if (!n) return bt;
-  for (let t = .08; t < .6; t += .01){ let na = 0, sa = 0, sb = 0; for (const v of vals){ if (v < t){ na++; sa += v; } else sb += v; } const nb = n - na; if (!na || !nb) continue;
-    const g = (na / n) * (nb / n) * (sa / na - sb / nb) ** 2; if (g > best){ best = g; bt = t; } }
-  return bt; }
-function prRead(){
-  if (!PR.src){ toast('ยังไม่มีรูป', true); return; } if (PR.pts.length < 4){ toast('แตะ 4 มุมของช่องเวรก่อน', true); return; } if (!PR.order.length){ toast('แตะชื่อตามลำดับแถวในรูปก่อน', true); return; }
-  const R = PR.order.length, C = prDays(); const W = PR.src.width, H = PR.src.height; const data = PR.src.getContext('2d', {willReadFrequently:true}).getImageData(0, 0, W, H).data;
-  const [a, b, , d] = PR.pts; const cw = Math.hypot(b[0] - a[0], b[1] - a[1]) / C, ch = Math.hypot(d[0] - a[0], d[1] - a[1]) / R;
-  const med = arr => { arr.sort((p, q) => p - q); return arr[arr.length >> 1] || 0; };
-  // 1) median colour of the middle of every cell
-  const rgb = []; PR.boxes = [];
-  for (let r = 0; r < R; r++){ const row = [];
-    for (let c = 0; c < C; c++){
-      const [cx, cy] = prAt((c + .5) / C, (r + .5) / R); const rs = [], gs = [], bs = [];
-      const hx = cw * .33, hy = ch * .3, st = Math.max(1, Math.floor(Math.min(hx, hy) / 6));
-      PR.boxes.push([cx - hx, cy - hy, hx * 2, hy * 2]);
-      for (let y = Math.round(cy - hy); y <= cy + hy; y += st) for (let x = Math.round(cx - hx); x <= cx + hx; x += st){
-        if (x < 0 || y < 0 || x >= W || y >= H) continue; const i = (y * W + x) * 4; rs.push(data[i]); gs.push(data[i + 1]); bs.push(data[i + 2]); }
-      row.push(rs.length ? [med(rs), med(gs), med(bs)] : null);
-    }
-    rgb.push(row);
-  }
-  // 2) paper white = the whitest 10% of cells → white balance (fixes yellow/blue room light)
-  const flat = rgb.flat().filter(Boolean); if (!flat.length){ toast('จุดที่แตะอยู่นอกรูป ลองแตะมุมใหม่', true); return; }
-  const top = flat.slice().sort((p, q) => Math.min(...q) - Math.min(...p)).slice(0, Math.max(3, Math.round(flat.length / 10)));
-  const white = [0, 1, 2].map(k => Math.max(40, med(top.map(c => c[k]))));
-  const hsv = rgb.map(row => row.map(c => c && prHsv(...c.map((v, k) => Math.min(255, v * 255 / white[k])))));
-  // 3) colourful vs plain threshold learnt from this photo (faded photo / low-saturation camera)
-  const thr = Math.min(.35, Math.max(.12, prOtsu(hsv.flat().filter(Boolean).map(x => x[1]))));
-  const ref = [[220, ['8-00']], [55, ['8-16','STD']], [355, ['OFF']], [120, ['8-16']]];
-  const hd = (x, y) => { const t = Math.abs(x - y) % 360; return Math.min(t, 360 - t); };
-  PR.rgb = rgb; PR.grid = hsv.map(row => row.map(x => { if (!x) return []; const [h, s2, v] = x;
-    if (s2 < thr) return v < .3 ? ['8-00'] : ['OFF'];
-    let best = ref[0]; for (const rf of ref) if (hd(h, rf[0]) < hd(h, best[0])) best = rf; return best[1].slice(); }));
-  PR.dbg = `ขาวอ้างอิง rgb(${white.map(Math.round)}) · เกณฑ์สี ${thr.toFixed(2)}`;
-  prDraw(); prGridDraw();
-}
-function prGridDraw(){
-  const out = $('#pr-out'); if (!out || !PR.grid) return; const C = prDays(); const all = [meMember()].concat(team().members.filter(m => !m.me));
-  const nm = id => { const m = all.find(x => x.id === id) || {}; return shortName(m.name) || '?'; };
-  const yel = PR.grid.flat().filter(t => t.join() === '8-16,STD').length;
-  out.innerHTML = `<p style="margin:6px 0"><b>อ่านได้ ${PR.grid.length} คน × ${C} วัน</b> · ตรวจกับรูป แตะช่องเพื่อเปลี่ยน (8S → 8 → S → 24 → X → ว่าง)</p>
-    <p class="meta" style="margin:0 0 6px">แถบสีใต้แต่ละช่อง = สีที่แอปเห็นจริงจากรูป ถ้าแถบสีไม่ตรงกับรูป แปลว่าแตะมุมคลาดไป กด "แตะมุมใหม่" · กรอบเล็กบนรูป = จุดที่อ่าน · ${esc(PR.dbg || '')}</p>
-    ${yel ? `<p class="meta" style="margin:0 0 6px">ช่องเหลืองอ่านเป็น 8-16+STD (8S) ทั้งหมด ถ้าในรูปเขียน STD แตะ 2 ครั้งให้เป็น S</p>` : ''}
-    <div class="prgw"><table class="prg"><thead><tr><th></th>${Array.from({length:C}, (_, i) => `<th>${i + 1}</th>`).join('')}</tr></thead>
-    <tbody>${PR.grid.map((row, r) => `<tr><th>${esc(nm(PR.order[r]))}</th>${row.map((t, c) => `<td class="${codeClass(t)}" data-act="pr-cell" data-r="${r}" data-c="${c}"${PR.rgb && PR.rgb[r] && PR.rgb[r][c] ? ` style="box-shadow:inset 0 -5px 0 rgb(${PR.rgb[r][c].join()})"` : ''}>${t.length ? esc(SHORT(t)) : '·'}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <button type="button" class="btn primary" data-act="pr-go" style="width:100%;margin-top:8px">ถัดไป: ตรวจรายชื่อแล้วนำเข้า</button>`;
-}
-function prGo(){
-  const all = [meMember()].concat(team().members.filter(m => !m.me)); const C = prDays();
-  const people = PR.order.map((id, r) => { const m = all.find(x => x.id === id) || {}; return {empId: m.empId || '', name: m.name || '', dept: m.dept || '', isMe: !!m.me,
-    list: PR.grid[r].map((t, c) => ({date: `${PR.ym}-${pad(c + 1)}`, types: t})).filter(x => x.types.length).slice(0, C)}; });
-  teamPreview($('#tf-out'), {ym: PR.ym, people, how: 'อ่านสีจากรูป'}, PR.mine);
-  $('#tf-out').scrollIntoView({block:'center'});
-}
-
 function teamImportSheet(){
   openSheet(`${sheetHead('นำเข้าตารางเวรทีม')}
     <form data-form="team-file" style="display:flex;flex-direction:column;gap:12px">
-      <p class="meta" style="margin:0">รับไฟล์ <b>.html .xlsx .pdf .json</b> และ<b>รูปถ่าย</b> · ไฟล์อ่านในเครื่อง รวมสีช่อง (เหลือง = +STD) · รูปถ่าย${STANDALONE ? ' แอปอ่านจากสีของช่อง' : ' Claude อ่านให้ หรือใช้ปุ่มอ่านจากสีด้านล่าง'}</p>
-      <label class="f">ไฟล์หรือรูปตารางเวร<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls,.pdf,.json,.txt,text/html,application/xhtml+xml,application/pdf,application/json,text/plain,application/octet-stream,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,image/*" required style="padding:8px"></label>
+      <p class="meta" style="margin:0">รับไฟล์ <b>.html .xlsx .pdf .json</b> ${STANDALONE ? '' : 'และ<b>รูปถ่าย</b> '}· ไฟล์อ่านในเครื่อง รวมสีช่อง (เหลือง = +STD)${STANDALONE ? '' : ' · รูปถ่าย Claude อ่านให้'}</p>
+      <label class="f">${STANDALONE ? 'ไฟล์ตารางเวร' : 'ไฟล์หรือรูปตารางเวร'}<input class="field" type="file" name="file" accept=".html,.htm,.xhtml,.xlsx,.xls,.pdf,.json,.txt,text/html,application/xhtml+xml,application/pdf,application/json,text/plain,application/octet-stream,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel${STANDALONE ? '' : ',image/*'}" required style="padding:8px"></label>
       <label class="f">เดือน (ใช้เมื่อไฟล์ไม่ได้บอกเดือน)<input class="field" type="month" name="ym" value="${esc(teamMonth)}"></label>
       <label class="chip" style="align-self:flex-start"><input type="checkbox" name="mine">อัปเดตเวรของฉันจากไฟล์นี้ด้วย</label>
       <button class="btn primary" type="submit">อ่านไฟล์</button><div id="tf-out" aria-live="polite"></div>
     </form>
-    <label class="btn" style="cursor:pointer;text-align:center">📷 อ่านจากรูปถ่าย (อ่านสีในแอป ไม่ใช้ AI)<input type="file" accept="image/*" class="sr" data-act="pr-file"></label>
     <details><summary style="cursor:pointer;font-weight:600">วางข้อมูลตารางเวร (ข้อความ JSON)</summary>
       <textarea class="field" id="tj-txt" rows="4" placeholder='วางข้อมูลที่ขึ้นต้นด้วย { "month": … หรือ { "rows": …' style="margin-top:6px"></textarea>
       <button type="button" class="btn small primary" data-act="tj-read" style="margin-top:6px">อ่านข้อมูล</button></details>
@@ -4690,15 +4563,6 @@ document.addEventListener('click', e => {
     case 'td-role': { const d = el.dataset.d; const P = dayPlan(d); const a = new Set(P.roles[el.dataset.id] || []); if (a.has(el.dataset.k)) a.delete(el.dataset.k); else a.add(el.dataset.k); P.roles[el.dataset.id] = [...a]; syncMyAssign(d); commit('ตำแหน่ง: ' + el.dataset.k, {silent:true}); break; }
     case 'td-st': { const d = el.dataset.d; const P = dayPlan(d); const v = P.duties[el.dataset.k] = P.duties[el.dataset.k] || {who:[]}; v.st = v.st === el.dataset.v ? '' : el.dataset.v; commit('หน้าที่ ' + el.dataset.k + ': ' + (v.st || 'ล้าง'), {silent:true}); break; }
     case 'td-who': tdWhoSheet(el.dataset.d, el.dataset.k); break;
-    case 'pr-rot': if (PR.img){ PR.rot = (PR.rot + 90) % 360; PR.pts = []; PR.boxes = null; prBuildSrc(); prDraw(); } break;
-    case 'pr-zoom': PR.zoom = Math.max(1, Math.min(4, PR.zoom + Number(el.dataset.d))); prDraw(); break;
-    case 'pr-reset': PR.pts = []; PR.boxes = null; prDraw(); break;
-    case 'pr-pick': { const i = PR.order.indexOf(el.dataset.id); if (i >= 0) PR.order.splice(i, 1); else PR.order.push(el.dataset.id); $('#pr-people').innerHTML = prPeopleHtml(); prDraw(); break; }
-    case 'pr-all': PR.order = [meMember()].concat(team().members.filter(m => !m.me)).map(m => m.id); $('#pr-people').innerHTML = prPeopleHtml(); prDraw(); break;
-    case 'pr-clear': PR.order = []; $('#pr-people').innerHTML = prPeopleHtml(); prDraw(); break;
-    case 'pr-read': prRead(); break;
-    case 'pr-cell': { const r = +el.dataset.r, c = +el.dataset.c; const cur = PR.grid[r][c].join(); const i = PR_CYCLE.findIndex(t => t.join() === cur); PR.grid[r][c] = PR_CYCLE[(i + 1) % PR_CYCLE.length].slice(); prGridDraw(); break; }
-    case 'pr-go': prGo(); break;
     case 'tj-read': { const out = $('#tf-out'); try{ const r = peopleFromJson(($('#tj-txt') || {}).value || '', (document.querySelector('form[data-form=team-file] input[name=ym]') || {}).value || teamMonth); if (!r.people.length) throw new Error('ไม่พบรายชื่อ'); teamPreview(out, Object.assign(r, {how:'ข้อมูลที่วาง'}), !!(document.querySelector('form[data-form=team-file] input[name=mine]') || {}).checked); out.scrollIntoView({block:'center'}); }catch(e){ out.innerHTML = `<div class="banner appt" style="margin:0"><div>อ่านข้อมูลไม่ได้: ${esc(e.message || '')} · วางข้อมูลให้ครบทั้งหมด</div></div>`; } break; }
     case 'shift-del': { const d = el.dataset.d; delete S.shifts[d]; closeSheet(); commit('ลบเวร ' + thDate(d,{day:'numeric',month:'short'}), {msg:'ลบเวรวันนี้แล้ว'}); break; }
     case 'shift-clear': shiftClearSheet(el.dataset.m); break;
@@ -4851,7 +4715,6 @@ document.addEventListener('change', e => {
   if (el.dataset && el.dataset.act === 'font'){ S.settings.font = el.value; Theme.apply(); commit('เปลี่ยนฟอนต์', {msg:'เปลี่ยนฟอนต์แล้ว'}); return; }
   if (el.dataset && el.dataset.act === 'alpha'){ S.settings.cardAlpha = Number(el.value); Theme.apply(); commit('ปรับความใสของกรอบ', {silent:true}); return; }
   if (el.dataset && el.dataset.act === 'td-ho'){ hoDraft[el.dataset.d] = el.value; const m = document.getElementById('ho-msg-' + el.dataset.d); if (m) m.textContent = 'ยังไม่ได้บันทึก · กด 💾 บันทึกส่งเวร'; return; }
-  if (el.dataset && el.dataset.act === 'pr-file' && el.files && el.files[0]){ const fm = document.querySelector('form[data-form=team-file]'); const ym = el.dataset.ym || (fm && fm.querySelector('input[name=ym]').value) || teamMonth; const mine = el.dataset.ym ? true : !!(fm && fm.querySelector('input[name=mine]').checked) || true; photoRosterSheet(el.files[0], ym, mine); return; }
   if (el.dataset && el.dataset.act === 'stk-mode'){ stickerCfg().mode = el.value; commit('รูปแบบสติกเกอร์', {silent:true}); return; }
   if (el.dataset && el.dataset.act === 'stk-up' && el.files && el.files[0]){ const d = el.dataset.d; stickerUpload(el.files[0]).then(v => { if (!v) return; if (d){ S.daySticker = S.daySticker || {}; S.daySticker[d] = v; closeSheet(); } else stickerCfg().set.push(v); commit('อัปโหลดสติกเกอร์', {msg:'เพิ่มสติกเกอร์แล้ว'}); }); return; }
   if (el.dataset && el.dataset.act === 'nf-time'){ const n = notifyCfg(); n[el.dataset.k] = el.value; commit('ตั้งเวลาแจ้งเตือน', {silent:true}); return; }
