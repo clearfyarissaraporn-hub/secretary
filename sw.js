@@ -2,14 +2,25 @@
 /* เลขาส่วนตัว · service worker
    - ไฟล์ของแอปโหลดจากเน็ตแบบไม่ใช้แคชของเบราว์เซอร์ (no-store) ทุกครั้ง เพื่อให้อัปเดตทันที ถ้าไม่มีเน็ตใช้ของที่เก็บไว้
    - รับแจ้งเตือน (Push) จากเซิร์ฟเวอร์ Cloudflare ของคุณ แล้วเด้งแม้ปิดแอป */
-const CACHE = 'secretary-v1.38';
+const CACHE = 'secretary-v1.39';
 const CFG = 'tmm-cfg';
 const CORE = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => Promise.all(CORE.map(u => fetch(u, {cache:'no-store'}).then(r => c.put(u, r)).catch(() => {})))).then(() => self.skipWaiting())); });
-self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== CFG).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
+self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== CFG && k !== 'share-inbox').map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
-  const req = e.request; if (req.method !== 'GET') return;
-  const url = new URL(req.url);
+  const req = e.request; const url = new URL(req.url);
+  /* รับไฟล์ที่แชร์เข้าแอป (Excel/OneDrive › แชร์ › เลขาส่วนตัว): เก็บไว้ชั่วคราวแล้วเปิดหน้านำเข้า */
+  if (req.method === 'POST' && url.origin === location.origin && url.pathname.endsWith('/share-target')){
+    e.respondWith((async () => {
+      try{
+        const fd = await req.formData(); const f = fd.get('file');
+        if (f && f.size){ const c = await caches.open('share-inbox'); await c.put('shared-case-file', new Response(f, {headers:{'x-file-name': encodeURIComponent(f.name || 'file.xlsx'), 'content-type': f.type || 'application/octet-stream'}})); }
+      }catch(err){}
+      return Response.redirect('./?shared=1', 303);
+    })());
+    return;
+  }
+  if (req.method !== 'GET') return;
   if (url.origin === location.origin){
     if (url.pathname.endsWith('version.json')) return; /* ให้ตรวจเวอร์ชันจากเน็ตตรง ๆ */
     e.respondWith(fetch(req, {cache:'no-store'}).then(r => { if (r.ok){ const copy = r.clone(); caches.open(CACHE).then(c => c.put(url.pathname.endsWith('/') ? './' : req, copy)); } return r; })

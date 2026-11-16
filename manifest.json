@@ -35,5 +35,25 @@
       "platform": "webapp",
       "url": "https://clearfyarissaraporn-hub.github.io/secretary/manifest.json"
     }
-  ]
+  ],
+  "share_target": {
+    "action": "./share-target",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "file",
+          "accept": [
+            ".xlsx",
+            ".xls",
+            ".csv",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/vnd.ms-excel",
+            "text/csv"
+          ]
+        }
+      ]
+    }
+  }
 }
