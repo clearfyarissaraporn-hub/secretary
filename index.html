@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.52</title>
+<title>เลขาส่วนตัว v1.54</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -488,7 +488,7 @@ img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.52';
+const APP_VERSION = '1.54';
 const APP_OWNER = 'Clear';
 try{ localStorage.removeItem('tmm-aikey-v1'); }catch(e){}   /* ฟีเจอร์ API key ถูกนำออกแล้ว ลบ key ที่เคยเก็บ */
 const APP_COPYRIGHT = `© 2026 (พ.ศ. 2569) ${APP_OWNER} · สงวนลิขสิทธิ์`;
@@ -558,7 +558,7 @@ const ICON = {
   x:'<path d="M6 6l12 12M18 6L6 18"/>'
 };
 
-const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['timesheet','ts','ใบเวร'],['money','money','เงิน'],['links','link','แอป'],['guide','guide','คู่มือ'],['config','set','ตั้งค่า']];
+const TABS = [['myday','day','My day'],['appt','appt','นัดหมาย'],['calendar','cal','ตาราง'],['team','team','ทีม'],['timesheet','ts','ใบเวร'],['money','money','เงิน'],['links','link','แอป'],['body','body','ฟังร่างกาย'],['guide','guide','คู่มือ'],['config','set','ตั้งค่า']];
 const PATIENT = /(\bHN\b|\bAN\b\s*\d|เตียง\s*\d|ผู้ป่วย|คนไข้|เลขประจำตัวผู้ป่วย)/i;
 const LS_STATE = 'tmm-state-v1', LS_SYNC = 'tmm-sync-v1';
 
@@ -911,7 +911,7 @@ const TAB_GROUPS = [
   {id:'calendar', icon:'cal', label:'ตาราง', routes:[['calendar','ปฏิทิน'],['appt','นัดหมาย']]},
   {id:'team', icon:'team', label:'ทีม', routes:[['team','ทีม']]},
   {id:'money', icon:'money', label:'เงิน', routes:[['money','เงิน'],['timesheet','ใบเวร']]},
-  {id:'more', icon:'set', label:'เพิ่มเติม', routes:[['config','ตั้งค่า'],['links','แอป'],['guide','คู่มือ']]}
+  {id:'more', icon:'set', label:'เพิ่มเติม', routes:[['config','ตั้งค่า'],['body','ฟังร่างกาย'],['links','แอป'],['guide','คู่มือ']]}
 ];
 const groupOf = r => TAB_GROUPS.find(g => g.routes.some(x => x[0] === r)) || TAB_GROUPS[0];
 const lastInGroup = {};
@@ -1071,6 +1071,281 @@ function otAskCard(){
   return `<section class="card" aria-label="ค่า OT"><b>ค่า OT เคส ใช้ค่ามาตรฐานไหม</b><span class="meta">ตอนนี้: Major ฿${R.majorFirst}/${R.majorMins} นาทีแรก · Minor ฿${R.minorFirst}/${R.minorMins} นาทีแรก · เลยแล้วเพิ่มชั่วโมงละ ฿${R.next}/฿${R.minorNext} · ดึก +฿${R.night}</span>
     <div class="row" style="gap:8px"><button type="button" class="btn primary small" data-act="ot-default">ใช้ค่านี้</button><button type="button" class="btn small" data-act="ot-own">ตั้งค่าเอง</button></div></section>`;
 }
+/* ---------- ฟังร่างกาย (v1.53): ประจำเดือน บันทึกรายวัน เช็กเช้า · ข้อมูลอยู่ใน S.body ซิงก์เข้ารหัสไปกับข้อมูลอื่น ไม่ออกไปกับไฟล์สำรองหรือการแชร์ ---------- */
+const BODY_PAL = {
+  red:{bg:'#F9E3E6', fg:'#8E2437', ln:'#C4455A', name:'แดง · ประจำเดือน'},
+  g1:{bg:'#CFE9DB', fg:'#17573A', ln:'#3E9B6A', name:'เขียวเข้ม · แรงดี'},
+  g2:{bg:'#E8F2D5', fg:'#3F5A10', ln:'#8DB84A', name:'เขียวอ่อน · ปกติ'},
+  y:{bg:'#FBEBC8', fg:'#6E4800', ln:'#E0A21B', name:'เหลือง · PMS'}
+};
+const BODY_TIER = {
+  rest:{name:'พักหรือย้ายวัน', bg:'#F9E3E6', fg:'#8E2437', lines:['ไม่ต้องออกกำลังกาย ไม่นับว่าพลาด','ถ้าอยากขยับ เดินช้า ๆ 10–15 นาที','ย้ายไปวันหยุดเช้าถัดไปได้']},
+  light:{name:'เบา', bg:'#FBEBC8', fg:'#6E4800', lines:['เดินเร็วหรือยืดเหยียด 20–30 นาที','หรือคลาสเต้นเบา เลือกท่าตามไหว','คุยได้สบายตลอด ไม่ต้องดันตัวเอง']},
+  mid:{name:'ปานกลาง', bg:'#E8F2D5', fg:'#3F5A10', lines:['คลาสเต้น body combat หรือ bodypump','ลดน้ำหนักหรือแรงลง 1 ระดับ','เหนื่อยแต่ยังคุยเป็นประโยคสั้นได้']},
+  full:{name:'เต็มที่', bg:'#CFE9DB', fg:'#17573A', lines:['เวทหนัก: คลาสแนวยกหนัก หรือเวทนอกคลาส','เหนื่อยแต่ฟอร์มยังสวย ฟอร์มเสียให้ลดน้ำหนัก','ใช้วันหยุดเช้าที่มีน้อยให้คุ้มที่สุด']}
+};
+const BODY_Q = [
+  {k:'q1', title:'เมื่อคืนนอนเป็นยังไง', o:[[2,'นอนพอ','7 ชม. ขึ้นไป'],[1,'ปานกลาง','5–7 ชม.'],[0,'น้อย','ไม่ถึง 5 ชม.']]},
+  {k:'q2', title:'พลังงานตอนตื่น', o:[[2,'เต็มที่','พร้อมลุย'],[1,'พอไหว','ขยับได้'],[0,'หมดแรง','อยากนอนต่อ']]},
+  {k:'q3', title:'อาการและอารมณ์วันนี้', o:[[2,'ปกติ','สบายดี'],[1,'มีบ้าง','เมื่อย หงุดหงิด'],[0,'หนัก','ปวดมาก/อารมณ์ตก']]}
+];
+const BODY_SX = ['ปวดท้อง','ปวดหลัง','ปวดหัว','บวมน้ำ','เพลีย','อยากกินเยอะ'];
+const BODY_MOODTAG = ['สงบ','หงุดหงิด','กังวล','ซึมเศร้า','ร้องไห้ง่าย'];
+const BODY_WHY = ['เคสผ่าตัด/OT','ร้านค้า','เรื่องส่วนตัว','ไม่มีสาเหตุชัด'];
+const BODY_EX = ['คลาสเต้น','Body combat','Bodypump','เวทนอกคลาส','เดิน/ยืดเหยียด'];
+let bodyMonth = today().slice(0,7);
+let bodyDraft = null, bodyDraftDate = '';
+function bd(){
+  if (!S.body) S.body = {};
+  const b = S.body;
+  if (!(b.cycleLen >= 18 && b.cycleLen <= 60)) b.cycleLen = 28;
+  b.flowLen = 6;
+  if (!b.profile) b.profile = {age:34, sex:'female', heightCm:160, weightKg:48.1, weightHistory:[], scan:{date:'', bodyFatPct:14.1, skeletalMuscle:23.1, bmr:1262, tee:1943}};
+  b.profile.weightHistory = b.profile.weightHistory || []; b.profile.scan = b.profile.scan || {};
+  if (!Array.isArray(b.periods)) b.periods = [];
+  if (!b.logs) b.logs = {}; if (!b.check) b.check = {}; if (!b.exDays) b.exDays = {};
+  return b;
+}
+const dayDiff = (a, b) => Math.round((parse(b) - parse(a)) / 86400000);
+function bodyCycle(date){
+  /* คืนวันที่ของรอบ + สี (ประมาณจากวันที่เท่านั้น) · null ถ้ายังไม่มีวันแรกของประจำเดือนที่บันทึก */
+  const b = bd(); const ps = b.periods.slice().sort();
+  let i = -1; ps.forEach((p, k) => { if (p <= date) i = k; });
+  if (i < 0) return null;
+  const start = ps[i]; const next = ps[i + 1];
+  let L = next ? dayDiff(start, next) : b.cycleLen; if (!(L >= 18 && L <= 60)) L = b.cycleLen;
+  let diff = dayDiff(start, date);
+  if (!next) diff = diff % L;            /* เลยรอบที่คาดไว้ ให้นับรอบต่อไปแบบประมาณ */
+  const cd = diff + 1;
+  if (cd > L) return {cd, L, phase:null, pred:date > today()};
+  const ovu = L - 14;
+  let phase = cd <= b.flowLen ? 'red' : cd <= ovu ? 'g1' : cd <= L - 5 ? 'g2' : 'y';
+  return {cd, L, phase, pred: date > today() && !(next && date < next), ovu};
+}
+function bodyTier(c){
+  if (!c || c.q1 == null || c.q2 == null || c.q3 == null) return null;
+  const s = c.q1 + c.q2 + c.q3;
+  return c.q3 === 0 || s <= 1 ? 'rest' : s <= 3 ? 'light' : s === 4 ? 'mid' : 'full';
+}
+function bodyPrivacyNote(){
+  const on = /ซิงก์เปิดอยู่/.test(Sync.status());
+  return `<p class="meta" style="margin:0">${ic('lock',13)} ข้อมูลสุขภาพเก็บเฉพาะในเครื่องและบนคลาวด์ของบัญชีคุณ${on ? ' (ซิงก์เปิดอยู่ ข้อมูลเข้ารหัสก่อนส่ง)' : ' · ตอนนี้ซิงก์ยังปิดอยู่ ข้อมูลอยู่เฉพาะเครื่องนี้ เปิดซิงก์ได้ที่ ตั้งค่า'} · ไม่รวมในไฟล์สำรองหรือปุ่มแชร์</p>`;
+}
+const bodyChip = (act, k, v, label, on) => `<button type="button" class="chip" data-act="${act}" data-k="${k}" data-v="${esc(String(v))}" aria-pressed="${on ? 'true' : 'false'}" style="${on ? 'border:2px solid var(--primary);background:var(--primary-tint);color:var(--primary-ink);font-weight:600' : ''}">${esc(label)}</button>`;
+function bodyTodayCard(){
+  const t = today(); const b = bd(); const cy = bodyCycle(t); const tr = bodyTier(b.check[t]);
+  const P = cy && cy.phase ? BODY_PAL[cy.phase] : null; const T = tr ? BODY_TIER[tr] : null;
+  const bg = T ? T.bg : P ? P.bg : 'var(--surface)'; const fg = T ? T.fg : P ? P.fg : 'var(--ink)';
+  const hasPeriod = b.periods.length > 0;
+  return `<section class="card" style="gap:6px;background:${bg};color:${fg}">
+    <div class="row between"><h2 style="color:inherit">${route === 'body' ? 'วันนี้' : 'ฟังร่างกาย'}</h2>${route === 'body' ? '' : '<a class="btn small" href="#body">เปิด</a>'}</div>
+    ${hasPeriod && cy ? `<div style="font-weight:600">${P ? 'วันที่ ' + cy.cd + ' ของรอบ · ' + esc(P.name) : 'วันที่ ' + cy.cd + ' ของรอบ (เลยรอบที่คาดไว้)'}</div>` : `<div>ยังไม่ได้ลงวันแรกของประจำเดือน ลงแล้วสีของวันจะขึ้นให้</div>`}
+    ${T ? `<div>เช็กเช้าแล้ว: วันนี้เหมาะกับ <b>${esc(T.name)}</b></div>` : `<div class="meta" style="color:inherit;opacity:.85">ยังไม่ได้เช็กเช้า</div>`}
+    <div class="row" style="flex-wrap:wrap;gap:6px"><button type="button" class="btn small primary" data-act="body-check">${T ? 'เช็กเช้าอีกครั้ง' : 'เช็กเช้า 3 ข้อ'}</button><button type="button" class="btn small" data-act="body-log" data-d="${t}">บันทึกวันนี้</button></div>
+    <p class="meta" style="margin:0;color:inherit;opacity:.8">สีเป็นตัวช่วย ไม่ใช่กฎ · ประมาณจากวันที่ ไม่ได้วัดฮอร์โมน</p></section>`;
+}
+function viewBody(){
+  const t = today(); const b = bd(); const L = b.logs[t] || {}; const cy = bodyCycle(t);
+  const [y, m] = bodyMonth.split('-').map(Number); const first = new Date(y, m - 1, 1); const days = new Date(y, m, 0).getDate(); const lead = first.getDay();
+  let cells = ['อา','จ','อ','พ','พฤ','ศ','ส'].map(h => `<span class="h" style="text-align:center;font-size:12px;opacity:.7">${h}</span>`).join('');
+  for (let i = 0; i < lead; i++) cells += '<span></span>';
+  for (let d = 1; d <= days; d++){
+    const ds = `${y}-${pad(m)}-${pad(d)}`; const c = bodyCycle(ds); const P = c && c.phase ? BODY_PAL[c.phase] : null; const lg = b.logs[ds];
+    const isStart = b.periods.includes(ds);
+    cells += `<button type="button" data-act="body-log" data-d="${ds}" aria-label="${esc(thDate(ds,{day:'numeric',month:'long'}))}${P ? ' ' + esc(P.name) : ''}" style="min-height:44px;border-radius:12px;border:${P && c.pred ? '1.5px dashed ' + P.ln : '0'};background:${P ? P.bg : 'transparent'};color:${P ? P.fg : 'var(--ink)'};font-weight:${ds === t ? 700 : 500};box-shadow:${ds === t ? '0 0 0 2px var(--ink)' : 'none'};position:relative">${d}${lg || isStart ? `<span style="position:absolute;bottom:3px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:3px;background:${isStart ? '#C4455A' : 'currentColor'};opacity:.7"></span>` : ''}</button>`;
+  }
+  const ps = b.periods.slice().sort().reverse();
+  const nextP = (() => { if (!ps.length) return null; const last = ps[0]; let n = addDays(last, b.cycleLen); while (n < t) n = addDays(n, b.cycleLen); return n; })();
+  const ovu = (() => { if (!ps.length) return null; const last = ps[0]; let n = addDays(last, b.cycleLen - 15); while (n < t && addDays(n, 0) < addDays(t, -2)) n = addDays(n, b.cycleLen); return n; })();
+  const sum = (k, l, fmt) => `<div style="flex:1;min-width:90px;border-radius:12px;background:var(--soft);padding:8px 10px"><div class="meta" style="margin:0">${l}</div><div style="font-weight:600">${L[k] != null && L[k] !== '' ? esc(fmt ? fmt(L[k]) : String(L[k])) : '–'}</div></div>`;
+  return `<header class="top"><h1>ฟังร่างกาย</h1></header>
+  ${bodyTodayCard()}
+  ${bodyWarnings()}
+  <section class="card" style="gap:8px"><h2>อารมณ์ · ความเครียด · การนอน</h2>
+    <div class="row" style="flex-wrap:wrap;gap:8px">${sum('mood','อารมณ์', v => v + '/5')}${sum('stress','ความเครียด', v => v + '/5')}${sum('sleepH','การนอน', v => v + ' ชม.')}</div>
+    <div class="row" style="flex-wrap:wrap;gap:6px"><button type="button" class="btn small primary" data-act="body-log" data-d="${t}">บันทึกวันนี้ (ไม่เกิน 1 นาที)</button><button type="button" class="btn small" data-act="body-check">เช็กเช้า 3 ข้อ</button></div>
+  </section>
+  <section class="card" style="gap:8px"><div class="row between"><h2>ปฏิทินประจำเดือน</h2>
+    <div class="row" style="gap:4px"><button type="button" class="btn small" data-act="body-mon" data-d="-1" aria-label="เดือนก่อน">‹</button><button type="button" class="btn small" data-act="body-mon" data-d="1" aria-label="เดือนถัดไป">›</button></div></div>
+    <strong>${esc(first.toLocaleDateString('th-TH',{month:'long', year:'numeric'}))}</strong>
+    <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px">${cells}</div>
+    <div class="wrap">${Object.keys(BODY_PAL).map(k => `<span class="tag" style="background:${BODY_PAL[k].bg};color:${BODY_PAL[k].fg}">${esc(BODY_PAL[k].name)}</span>`).join('')}</div>
+    <p class="meta" style="margin:0">วงดำ = วันนี้ · ขอบประ = คาดการณ์ · จุดแดง = วันแรกของประจำเดือน · แตะวันที่เพื่อบันทึกย้อนหลังได้ · สีเป็นตัวช่วย ไม่ใช่กฎ แอปประมาณจากวันที่ ไม่ได้วัดฮอร์โมนจริง</p>
+    ${nextP ? `<p class="meta" style="margin:0">รอบหน้าคาดว่า ~${esc(thDate(nextP,{day:'numeric',month:'short'}))} · อีก ${dayDiff(t, nextP)} วัน · ไข่ตกโดยประมาณ ~${esc(thDate(ovu,{day:'numeric',month:'short'}))}</p>` : ''}
+  </section>
+  <section class="card" style="gap:8px"><h2>วันแรกของประจำเดือน</h2>
+    <div class="row" style="flex-wrap:wrap;gap:6px"><button type="button" class="btn small primary" data-act="body-period" data-d="${t}">วันนี้เป็นวันแรก</button><label class="row" style="gap:6px"><span class="meta">หรือเลือกวัน</span><input class="field" type="date" id="bp-date" value="${t}" max="${t}" style="width:auto;min-height:36px"></label><button type="button" class="btn small" data-act="body-period-pick">เพิ่ม</button></div>
+    ${ps.length ? `<div class="wrap">${ps.slice(0, 8).map(p => `<span class="chip" style="gap:4px">${esc(thDate(p,{day:'numeric',month:'short',year:'2-digit'}))}<button type="button" class="btn small ghost" data-act="body-period-del" data-d="${p}" aria-label="ลบ ${esc(p)}" style="min-height:24px;padding:0 6px">${ic('x',14)}</button></span>`).join('')}</div>` : '<div class="empty">ยังไม่มีข้อมูล ลงวันแรกของรอบล่าสุดก่อน แล้วปฏิทินจะคำนวณให้</div>'}
+    <div class="row" style="gap:8px"><span class="grow"><b>ความยาวรอบ</b><span class="meta" style="display:block">ค่าเริ่มต้น 28 วัน แก้ได้ถ้ารอบคุณสั้นหรือยาวกว่านี้</span></span>
+      <button type="button" class="btn small" data-act="body-len" data-d="-1" aria-label="ลด">−</button><b style="min-width:28px;text-align:center">${b.cycleLen}</b><button type="button" class="btn small" data-act="body-len" data-d="1" aria-label="เพิ่ม">+</button></div>
+  </section>
+  ${bodyInsights()}
+  <section class="card" style="gap:6px"><h2>ออกกำลังกายวันหยุดเช้า</h2>${bodyExCard(today().slice(0,7))}</section>
+  ${bodyProfileCard()}
+  <section class="card" style="gap:4px">${bodyPrivacyNote()}<p class="meta" style="margin:0">ส่วนนี้เป็นคำแนะนำเท่านั้น ไม่แก้เวร นัด หรือตารางอัตโนมัติ คุณตัดสินใจเอง</p></section>`;
+}
+function bodyExCard(ym){
+  const b = bd(); const chosen = (b.exDays[ym] || []).slice().sort();
+  const [y, m] = ym.split('-').map(Number); const n = new Date(y, m, 0).getDate(); const cand = [];
+  for (let d = 1; d <= n; d++){ const ds = `${ym}-${pad(d)}`; const ts = shiftsOn(ds); if (ts.length && !ts.some(k => k === '8-16' || k === '8-00') && ts.some(k => k === 'OFF' || k === 'STDM' || k === 'VAC')) cand.push(ds); }
+  const hasRoster = Object.keys(S.shifts).some(k => k.startsWith(ym));
+  return `<p class="meta" style="margin:0">เลือกได้ 4 วัน/เดือน (เป้า 4 ครั้ง) แตะเพื่อเลือกหรือเอาออก · แอปแค่แนะนำวันที่ว่างเช้าจากตารางเวร ไม่เปลี่ยนเวรให้</p>
+    ${hasRoster ? (cand.length ? `<div class="wrap">${cand.map(ds => { const on = chosen.includes(ds); const c = bodyCycle(ds); const P = c && c.phase ? BODY_PAL[c.phase] : null; return `<button type="button" class="chip" data-act="body-ex" data-ym="${ym}" data-d="${ds}" aria-pressed="${on}" style="${on ? 'border:2px solid var(--primary);background:var(--primary-tint);font-weight:600' : ''}">${P ? `<span class="dot" style="background:${P.ln}"></span>` : ''}${esc(thDate(ds,{weekday:'short',day:'numeric',month:'short'}))}${S.appts.some(a => a.date === ds && !a.done) ? ' · มีนัด' : ''}</button>`; }).join('')}</div>` : '<div class="empty">เดือนนี้ไม่มีวันหยุดเช้าในตารางเวร</div>') : '<div class="empty">ยังไม่ได้ลงตารางเวรเดือนนี้ ลงตารางเวรแล้วจะแนะนำวันที่ว่างเช้าให้</div>'}
+    <p class="meta" style="margin:0">เลือกแล้ว ${chosen.length}/4 วัน${chosen.length > 4 ? ' (เกินเป้า ไม่เป็นไร)' : ''}${chosen.some(ds => S.appts.some(a => a.date === ds && !a.done)) ? ' · บางวันที่เลือกมีนัด แอปไม่ย้ายนัดให้ ตัดสินใจเองได้' : ''}</p>`;
+}
+function bodyLogSheet(date){
+  const b = bd(); const cur = b.logs[date] || {};
+  bodyDraft = JSON.parse(JSON.stringify(cur)); bodyDraft.sx = bodyDraft.sx || []; bodyDraftDate = date; if (!b.logs[date]){ const c0 = bodyCycle(date); if (c0 && c0.phase === 'red') bodyDraft.flow = 1; }
+  const D = bodyDraft; const cy = bodyCycle(date);
+  const one = (act, k, opts) => `<div class="wrap">${opts.map(([v, l]) => bodyChip(act, k, v, l, D[k] === v)).join('')}</div>`;
+  const multi = (k, opts) => `<div class="wrap">${opts.map(l => bodyChip('bl-multi', k, l, l, (D[k] || []).includes(l))).join('')}</div>`;
+  const n5 = k => one('bl-set', k, [1,2,3,4,5].map(i => [i, String(i)]));
+  openSheet(`${sheetHead('บันทึก ' + thDate(date, {weekday:'long', day:'numeric', month:'short'}))}
+    <p class="meta" style="margin:0">${cy && cy.phase ? 'วันที่ ' + cy.cd + ' ของรอบ · ไม่เกิน 1 นาที' : 'ไม่เกิน 1 นาที'} · ข้ามช่องที่ไม่อยากตอบได้ · แตะซ้ำเพื่อเอาออก</p>
+    <h3 style="margin:6px 0 0">ประจำเดือน</h3>${one('bl-set', 'flow', [[0,'ไม่มี'],[1,'น้อย'],[2,'กลาง'],[3,'มาก']])}
+    <h3 style="margin:6px 0 0">อาการทางกาย</h3>${multi('sx', BODY_SX.map(x => x))}
+    <h3 style="margin:6px 0 0">อารมณ์ <span class="meta">1 = ต่ำมาก · 5 = ดีมาก</span></h3>${n5('mood')}${multi('moodTag', BODY_MOODTAG)}
+    <h3 style="margin:6px 0 0">ความเครียด <span class="meta">1 = น้อย · 5 = มาก</span></h3>${n5('stress')}
+    <div class="meta" style="margin:0">ที่มาของความเครียด</div>${one('bl-set', 'why', BODY_WHY.map(x => [x, x]))}
+    <h3 style="margin:6px 0 0">การนอนเมื่อคืน</h3>${one('bl-set', 'sleepH', [['<5','< 5'],['5-6','5–6'],['7-8','7–8'],['9+','9+']])}
+    <div class="meta" style="margin:0">คุณภาพการนอน</div>${one('bl-set', 'sleepQ', [['แย่','แย่'],['พอใช้','พอใช้'],['ดี','ดี']])}
+    <h3 style="margin:6px 0 0">ออกกำลังกาย</h3>${multi('ex', BODY_EX)}
+    <div class="meta" style="margin:0">ความรู้สึกหลังเล่น · วันที่ไม่ได้เล่น ไม่ต้องกรอก ไม่นับว่าพลาด</div>${one('bl-set', 'exFeel', [['เบาไป','เบาไป'],['พอดี','พอดี'],['หนักไป','หนักไป']])}
+    <div class="row" style="position:sticky;bottom:0;background:var(--surface);padding-top:8px"><button type="button" class="btn" data-act="close" style="flex:1">ยกเลิก</button><button type="button" class="btn primary" data-act="bl-save" style="flex:2">บันทึก</button></div>
+    ${bodyPrivacyNote()}`);
+}
+function bodyCheckSheet(){
+  const t = today(); const b = bd(); const saved = b.check[t]; if (!saved && !bodyCheckDraft) bodyCheckDraft = {q1:2, q2:1, q3:1}; const c = saved || bodyCheckDraft; const tr = bodyTier(c); const T = tr ? BODY_TIER[tr] : null;
+  openSheet(`${sheetHead('เช็กเช้า 3 ข้อ')}
+    <p class="meta" style="margin:0">ติ๊กให้ครบ 3 ข้อ แล้วดูว่าวันนี้ควรออกกำลังกายแบบไหน</p>
+    ${BODY_Q.map((q, i) => `<div><h3 style="margin:6px 0">${i + 1}. ${q.title}</h3><div class="wrap">${q.o.map(([v, l, s]) => `<button type="button" class="chip" data-act="bc-set" data-k="${q.k}" data-v="${v}" aria-pressed="${c[q.k] === v}" style="flex-direction:column;align-items:flex-start;min-height:52px;padding:6px 14px;${c[q.k] === v ? 'border:2px solid var(--primary);background:var(--primary-tint);font-weight:600' : ''}"><span>${l}</span><span class="meta" style="margin:0">${s}</span></button>`).join('')}</div></div>`).join('')}
+    ${T ? `<div style="border-radius:14px;padding:12px;background:${T.bg};color:${T.fg}"><div class="meta" style="color:inherit;margin:0">ผลเช็กวันนี้</div><div style="font-weight:700;font-size:18px">วันนี้เหมาะกับ: ${T.name}</div>${T.lines.map(x => `<div>• ${x}</div>`).join('')}<p class="meta" style="color:inherit;margin:6px 0 0">ใช้ประกอบการตัดสินใจ ไม่ใช่คำสั่ง คุณเปลี่ยนใจได้เสมอ</p></div>` : `<div class="empty">ตอบให้ครบ 3 ข้อเพื่อดูผล</div>`}
+    ${saved ? `<p class="meta" style="margin:0">บันทึกผลแล้ว แตะตัวเลือกเพื่อแก้ได้</p><div class="row"><button type="button" class="btn" data-act="close" style="flex:1">ปิด</button><button type="button" class="btn primary" data-act="body-log" data-d="${t}" style="flex:2">บันทึกวันนี้</button></div>` : `<p class="meta" style="margin:0">ที่เลือกไว้เป็นค่าเริ่มต้น ปรับให้ตรงกับเช้านี้ แล้วกดบันทึก</p><div class="row"><button type="button" class="btn" data-act="close" style="flex:1">ปิด</button><button type="button" class="btn primary" data-act="bc-save" style="flex:2">บันทึกผลเช็กเช้า</button></div>`}`);
+}
+function bodyHandle(act, el){
+  const b = bd();
+  switch (act){
+    case 'body-check': bodyCheckSheet(); return true;
+    case 'body-log': bodyLogSheet(el.dataset.d || today()); return true;
+    case 'body-mon': { const [y, m] = bodyMonth.split('-').map(Number); const d = new Date(y, m - 1 + Number(el.dataset.d), 1); bodyMonth = `${d.getFullYear()}-${pad(d.getMonth() + 1)}`; render(); return true; }
+    case 'bc-set': { const t = today(); const v = Number(el.dataset.v); if (b.check[t]){ b.check[t][el.dataset.k] = v; b.check[t].at = new Date().toISOString(); b.check[t].tier = bodyTier(b.check[t]); writeLocal(); } else bodyCheckDraft = Object.assign({q1:2, q2:1, q3:1}, bodyCheckDraft || {}, {[el.dataset.k]: v}); bodyCheckSheet(); return true; }
+    case 'bc-save': { const c = Object.assign({q1:2, q2:1, q3:1}, bodyCheckDraft || {}); c.at = new Date().toISOString(); c.tier = bodyTier(c); b.check[today()] = c; bodyCheckDraft = null; closeSheet(); commit('เช็กเช้า 3 ข้อ', {msg:'บันทึกผลเช็กเช้าแล้ว'}); return true; }
+    case 'bpf-num': { const p = b.profile; const k = el.dataset.k; const st = k === 'weightKg' ? 0.1 : 1; const lim = {age:[10,100], heightCm:[100,220], weightKg:[25,200]}[k]; if (!lim) return true; p[k] = Math.round(Math.min(lim[1], Math.max(lim[0], Number(p[k]) + st * Number(el.dataset.d))) * 10) / 10; if (k === 'weightKg') bodyWeightLog(p); commit('แก้โปรไฟล์ร่างกาย', {silent:true}); return true; }
+    case 'bpf-sex': b.profile.sex = el.dataset.v === 'male' ? 'male' : 'female'; commit('แก้โปรไฟล์ร่างกาย', {silent:true}); return true;
+    case 'bpf-edit': bodyProfileSheet(); return true;
+    case 'bpf-save': { const p = b.profile; const g = id => { const x = document.getElementById('bpe-' + id); return x ? x.value.trim() : ''; }; const num = (id, lo, hi) => { const v = Number(g(id)); return g(id) !== '' && v >= lo && v <= hi ? Math.round(v * 10) / 10 : null; };
+      const a = num('age', 10, 100), h = num('heightCm', 100, 220), w = num('weightKg', 25, 200);
+      if (a != null) p.age = a; if (h != null) p.heightCm = h; if (w != null && w !== p.weightKg){ p.weightKg = w; bodyWeightLog(p); }
+      p.scan = {date: /^\d{4}-\d{2}-\d{2}$/.test(g('date')) ? g('date') : '', bodyFatPct:num('bodyFatPct', 1, 70), skeletalMuscle:num('skeletalMuscle', 5, 80), bmr:num('bmr', 500, 5000), tee:num('tee', 500, 8000)};
+      closeSheet(); commit('แก้โปรไฟล์ร่างกาย', {msg:'บันทึกแล้ว'}); return true; }
+    case 'bl-set': { const k = el.dataset.k; let v = el.dataset.v; if (['flow','mood','stress'].includes(k)) v = Number(v); bodyDraft[k] = bodyDraft[k] === v ? undefined : v; el.parentElement.querySelectorAll('button').forEach(x => { const on = x === el && bodyDraft[k] === v; x.setAttribute('aria-pressed', on); x.style.cssText = on ? 'border:2px solid var(--primary);background:var(--primary-tint);color:var(--primary-ink);font-weight:600' : ''; }); return true; }
+    case 'bl-multi': { const k = el.dataset.k, v = el.dataset.v; const a = bodyDraft[k] = bodyDraft[k] || []; const i = a.indexOf(v); if (i >= 0) a.splice(i, 1); else a.push(v); const on = i < 0; el.setAttribute('aria-pressed', on); el.style.cssText = on ? 'border:2px solid var(--primary);background:var(--primary-tint);color:var(--primary-ink);font-weight:600' : ''; return true; }
+    case 'bl-save': {
+      const D = bodyDraft, d = bodyDraftDate; const out = {};
+      Object.keys(D).forEach(k => { const v = D[k]; if (v === undefined || v === '' || (Array.isArray(v) && !v.length)) return; out[k] = v; });
+      if (Object.keys(out).length) b.logs[d] = out; else delete b.logs[d];
+      if (out.flow > 0){ /* มีประจำเดือนวันนี้ แต่ยังไม่มีวันแรกในช่วง 10 วันก่อนหน้า → ถามเสนอเป็นวันแรก (แค่แนะนำ) */
+        const near = b.periods.some(p => p <= d && dayDiff(p, d) <= 9);
+        if (!near){ closeSheet(); commit('บันทึกฟังร่างกาย', {silent:true}); confirmSheet('วันนี้มีประจำเดือน ให้ตั้งเป็นวันแรกของรอบใหม่ไหม? (ถ้าไม่ตั้ง ปฏิทินจะไม่ขยับ)', 'ตั้งเป็นวันแรก', () => { b.periods.push(d); b.periods = [...new Set(b.periods)].sort(); commit('ตั้งวันแรกของประจำเดือน', {silent:true}); render(); }); return true; }
+      }
+      closeSheet(); commit('บันทึกฟังร่างกาย', {msg:'บันทึกแล้ว'}); return true; }
+    case 'body-period': { b.periods.push(el.dataset.d); b.periods = [...new Set(b.periods)].sort(); commit('ลงวันแรกของประจำเดือน', {msg:'ลงวันแรกของรอบแล้ว'}); return true; }
+    case 'body-period-pick': { const v = (document.getElementById('bp-date') || {}).value; if (!/^\d{4}-\d{2}-\d{2}$/.test(v || '')){ toast('เลือกวันก่อน', true); return true; } b.periods.push(v); b.periods = [...new Set(b.periods)].sort(); commit('ลงวันแรกของประจำเดือน', {msg:'ลงวันแรกของรอบแล้ว'}); return true; }
+    case 'body-period-del': confirmSheet('ลบวันแรกของประจำเดือนวันนี้ออกจากรายการ? (บันทึกรายวันไม่หาย)', 'ลบ', () => { b.periods = b.periods.filter(p => p !== el.dataset.d); commit('ลบวันแรกของประจำเดือน', {msg:'ลบแล้ว'}); }, true); return true;
+    case 'body-len': { b.cycleLen = Math.min(60, Math.max(18, b.cycleLen + Number(el.dataset.d))); commit('ความยาวรอบ ' + b.cycleLen, {silent:true}); return true; }
+    case 'body-ex': { const ym = el.dataset.ym, d = el.dataset.d; const a = b.exDays[ym] = b.exDays[ym] || []; const i = a.indexOf(d); if (i >= 0) a.splice(i, 1); else a.push(d); commit('เลือกวันออกกำลังกาย', {silent:true}); return true; }
+    case 'body-clear': confirmSheet('ลบข้อมูลฟังร่างกายทั้งหมด (วันแรกของรอบ บันทึกรายวัน เช็กเช้า) บนเครื่องนี้และคลาวด์? ลบแล้วกู้คืนไม่ได้', 'ลบทั้งหมด', () => { S.body = {}; bodyCheckDraft = null; bd(); commit('ลบข้อมูลฟังร่างกายทั้งหมด', {msg:'ลบแล้ว'}); }, true); return true;
+  }
+  return false;
+}
+let bodyCheckDraft = null;
+const bmiOf = p => p.heightCm > 0 && p.weightKg > 0 ? p.weightKg / Math.pow(p.heightCm / 100, 2) : null;
+const bmiBand = v => v == null ? null : v < 18.5 ? {t:'ต่ำกว่าเกณฑ์', c:'#6E4800', bg:'#FBEBC8'} : v < 23 ? {t:'ปกติ', c:'#17573A', bg:'#CFE9DB'} : v < 25 ? {t:'น้ำหนักเกิน', c:'#6E4800', bg:'#FBEBC8'} : {t:'อ้วน', c:'#8E2437', bg:'#F9E3E6'};
+function bodyWeightLog(p){ const t = today(); p.weightHistory = (p.weightHistory || []).filter(x => x.date !== t); p.weightHistory.push({date:t, kg:p.weightKg}); p.weightHistory.sort((x, y) => x.date.localeCompare(y.date)); }
+function bodyProfileCard(){
+  const p = bd().profile; const v = bmiOf(p); const B = bmiBand(v); const sc = p.scan || {};
+  const near = v != null && v >= 18.5 && v < 19 ? ' (ใกล้ขอบล่าง)' : v != null && v >= 22.5 && v < 23 ? ' (ใกล้ขอบบน)' : '';
+  const pos = v == null ? 0 : Math.max(0, Math.min(100, (v - 15) / 15 * 100));
+  const row = (k, label, val, unit) => `<div class="row" style="gap:8px"><span class="grow"><b>${label}</b></span><button type="button" class="btn small" data-act="bpf-num" data-k="${k}" data-d="-1" aria-label="ลด${label}" style="min-width:44px;min-height:44px">−</button><b style="min-width:72px;text-align:center">${val}${unit}</b><button type="button" class="btn small" data-act="bpf-num" data-k="${k}" data-d="1" aria-label="เพิ่ม${label}" style="min-width:44px;min-height:44px">+</button></div>`;
+  return `<section class="card" style="gap:8px"><div class="row between"><h2>โปรไฟล์ร่างกาย</h2><button type="button" class="btn small" data-act="bpf-edit">แก้ตัวเลข</button></div>
+   ${row('age', 'อายุ', p.age, ' ปี')}
+   <div class="row" style="gap:8px"><span class="grow"><b>เพศ</b></span>${bodyChip('bpf-sex', 'sex', 'female', 'หญิง', p.sex === 'female')}${bodyChip('bpf-sex', 'sex', 'male', 'ชาย', p.sex === 'male')}</div>
+   ${row('heightCm', 'ส่วนสูง', p.heightCm, ' ซม.')}${row('weightKg', 'น้ำหนัก', Number(p.weightKg).toFixed(1), ' กก.')}
+   ${v != null ? `<div style="border-radius:14px;padding:10px 12px;background:${B.bg};color:${B.c}"><div style="font-weight:700">BMI ${v.toFixed(1)} · ${B.t}${near}</div>
+     <div style="position:relative;height:10px;border-radius:5px;margin:8px 0 4px;background:linear-gradient(90deg,#E0A21B 0 23.3%,#3E9B6A 23.3% 53.3%,#E0A21B 53.3% 66.7%,#C4455A 66.7%)" aria-hidden="true"><span style="position:absolute;top:-3px;left:calc(${pos}% - 2px);width:4px;height:16px;border-radius:2px;background:#2B2623"></span></div>
+     <div class="meta" style="color:inherit;margin:0">เกณฑ์คนเอเชีย: ต่ำกว่า 18.5 ต่ำกว่าเกณฑ์ · 18.5–22.9 ปกติ · 23–24.9 น้ำหนักเกิน · 25 ขึ้นไป อ้วน · BMI อย่างเดียวบอกไม่ได้ทั้งหมด ดูคู่กับไขมันและกล้ามเนื้อด้านล่าง</div></div>` : ''}
+   <div style="border-radius:14px;padding:10px 12px;background:var(--soft)"><div class="row between"><b>ผลสแกน EVOLT 360</b><span class="meta" style="margin:0">${sc.date ? esc(thDate(sc.date, {day:'numeric', month:'short', year:'2-digit'})) : 'ยังไม่ระบุวันที่สแกน'}</span></div>
+     <div class="row" style="flex-wrap:wrap;gap:6px;margin-top:6px">${[['ไขมัน', sc.bodyFatPct, '%'], ['กล้ามเนื้อโครงร่าง', sc.skeletalMuscle, ' กก.'], ['BMR', sc.bmr, ' kcal'], ['TEE', sc.tee, ' kcal']].map(([l, x, u]) => `<span class="tag" style="background:var(--surface)">${l} ${x != null && x !== '' ? esc(String(x)) + u : '–'}</span>`).join('')}</div>
+     ${p.sex === 'female' && sc.bodyFatPct ? '<p class="meta" style="margin:6px 0 0">ช่วงไขมันทั่วไปของผู้หญิงราว 20–30% · เป้าหมาย: รักษาน้ำหนักและเพิ่มกล้ามเนื้อ ไม่ลดแคลอรี</p>' : ''}</div>
+  </section>`;
+}
+function bodyProfileSheet(){
+  const p = bd().profile, sc = p.scan || {};
+  const f = (id, label, v, step) => `<label class="f">${label}<input class="field" id="bpe-${id}" type="${id === 'date' ? 'date' : 'number'}"${step ? ` step="${step}" inputmode="decimal"` : ''} value="${esc(v == null ? '' : String(v))}"></label>`;
+  openSheet(`${sheetHead('แก้โปรไฟล์ร่างกาย')}${f('age', 'อายุ (ปี)', p.age, '1')}${f('heightCm', 'ส่วนสูง (ซม.)', p.heightCm, '0.1')}${f('weightKg', 'น้ำหนัก (กก.)', p.weightKg, '0.1')}
+    <h3 style="margin:6px 0 0">ผลสแกน EVOLT 360</h3>${f('date', 'วันที่สแกน', sc.date)}${f('bodyFatPct', 'ไขมัน (%)', sc.bodyFatPct, '0.1')}${f('skeletalMuscle', 'กล้ามเนื้อโครงร่าง (กก.)', sc.skeletalMuscle, '0.1')}${f('bmr', 'BMR (kcal)', sc.bmr, '1')}${f('tee', 'TEE (kcal)', sc.tee, '1')}
+    <div class="row"><button type="button" class="btn" data-act="close" style="flex:1">ยกเลิก</button><button type="button" class="btn primary" data-act="bpf-save" style="flex:2">บันทึก</button></div>`);
+}
+function bodyWarnings(){
+  const b = bd(); const out = []; const t = today();
+  const wh = (b.profile.weightHistory || []).slice().sort((x, y) => x.date.localeCompare(y.date));
+  if (wh.length >= 3){ const l = wh.slice(-3); if (l[0].kg > l[1].kg && l[1].kg > l[2].kg) out.push('น้ำหนักลดลงต่อเนื่อง 3 ครั้งที่ชั่ง ถ้าไม่ได้ตั้งใจลด ลองปรึกษาแพทย์เพื่อความสบายใจ'); }
+  const ps = b.periods.slice().sort(); let gap = false;
+  for (let i = 1; i < ps.length; i++) if (dayDiff(ps[i - 1], ps[i]) > 35) gap = true;
+  if (ps.length && dayDiff(ps[ps.length - 1], t) > 35) gap = true;
+  if (gap) out.push('มีช่วงที่ประจำเดือนห่างกันเกิน 35 วัน ถ้าเป็นแบบนี้หลายรอบ ลองปรึกษาแพทย์');
+  let streak = 0; for (let i = b.logs[t] ? 0 : 1; i < 10; i++){ const L = b.logs[addDays(t, -i)]; if (L && ((L.mood != null && L.mood <= 2) || (L.stress != null && L.stress >= 4))) streak++; else break; }
+  if (streak >= 5) out.push('อารมณ์ตกหรือเครียดสูงติดกันหลายวัน ถ้ากระทบการทำงานหรือชีวิตประจำวัน ลองคุยกับแพทย์หรือคนที่ไว้ใจ');
+  return out.length ? `<section class="card" style="gap:6px"><h2>ข้อควรสังเกต</h2>${out.map(x => `<div class="banner info" style="margin:0"><div>${esc(x)}</div></div>`).join('')}<p class="meta" style="margin:0">แอปไม่ได้วินิจฉัยโรค แค่ชี้ให้สังเกต</p></section>` : '';
+}
+const SLEEP_N = {'<5':4.5, '5-6':5.5, '7-8':7.5, '9+':9};
+const phaseOfCd = cd => cd <= 6 ? 'red' : cd <= 14 ? 'g1' : cd <= 23 ? 'g2' : 'y';
+const PH_RANGE = {red:'1–6', g1:'7–14', g2:'15–23', y:'24–28'};
+function bodyInsights(){
+  const b = bd(); const ps = b.periods.slice().sort();
+  let done = 0; for (let i = 1; i < ps.length; i++) if (dayDiff(ps[i - 1], ps[i]) >= 18) done++;
+  const logged = Object.keys(b.logs).length;
+  if (done < 2){
+    const pct = Math.min(100, Math.round(logged / 56 * 100));
+    return `<section class="card" style="gap:8px"><h2>ภาพรวมสุขภาพ</h2><p style="margin:0">กราฟจะขึ้นเมื่อบันทึกครบอย่างน้อย 2 รอบ (ราว 56 วัน)</p>
+      <div style="height:12px;border-radius:6px;background:var(--soft);overflow:hidden" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="ความคืบหน้าการบันทึก"><div style="height:100%;width:${pct}%;background:#2F6F5E"></div></div>
+      <p class="meta" style="margin:0">บันทึกแล้ว ${logged}/56 วัน · รอบที่ครบแล้ว ${done}/2 รอบ · ตอนนี้ยังไม่แสดงกราฟ เพื่อไม่ให้ข้อมูลน้อยชวนเข้าใจผิด · บันทึกรายวันเชื่อถือได้กว่าความจำ</p></section>`;
+  }
+  const agg = {}; for (let i = 1; i <= 28; i++) agg[i] = {m:0, mn:0, s:0, sn:0};
+  const ph = {}; Object.keys(PH_RANGE).forEach(k => { ph[k] = {m:0, mn:0, s:0, sn:0, sl:0, sln:0}; });
+  Object.keys(b.logs).forEach(d => { const c = bodyCycle(d); if (!c || c.cd > 28) return; const L = b.logs[d]; const A = agg[c.cd], P = ph[phaseOfCd(c.cd)];
+    if (L.mood != null){ A.m += L.mood; A.mn++; P.m += L.mood; P.mn++; }
+    if (L.stress != null){ A.s += L.stress; A.sn++; P.s += L.stress; P.sn++; }
+    if (SLEEP_N[L.sleepH]){ P.sl += SLEEP_N[L.sleepH]; P.sln++; } });
+  const X = cd => 30 + (cd - 1) * (300 / 27), Y = v => 12 + (5 - v) * 30;
+  const line = (k, n, dash, col) => { const pts = []; for (let i = 1; i <= 28; i++) if (agg[i][n]) pts.push(X(i).toFixed(1) + ',' + Y(agg[i][k] / agg[i][n]).toFixed(1)); return pts.length > 1 ? `<polyline points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="2.5"${dash ? ' stroke-dasharray="6 4"' : ''}/>` : ''; };
+  const bands = [['red', 1, 6], ['g1', 7, 14], ['g2', 15, 23], ['y', 24, 28]].map(([k, a, z]) => `<rect x="${(X(a) - 150 / 27).toFixed(1)}" y="12" width="${((z - a + 1) * 300 / 27).toFixed(1)}" height="120" fill="${BODY_PAL[k].bg}"/>`).join('');
+  const ticks = [1, 2, 3, 4, 5].map(v => `<text x="18" y="${Y(v) + 4}" font-size="10" text-anchor="end" fill="#6F655F">${v}</text>`).join('') + [1, 7, 14, 21, 28].map(c => `<text x="${X(c).toFixed(1)}" y="150" font-size="10" text-anchor="middle" fill="#6F655F">${c}</text>`).join('');
+  const svg = `<svg viewBox="0 0 340 156" width="100%" role="img" aria-label="อารมณ์และความเครียดเฉลี่ยตามวันของรอบ">${bands}${ticks}${line('m', 'mn', false, '#2F6F5E')}${line('s', 'sn', true, '#8E2437')}</svg>`;
+  const sleep = Object.keys(PH_RANGE).map(k => { const P = ph[k]; return `<div style="flex:1;min-width:70px;border-radius:12px;padding:8px;background:${BODY_PAL[k].bg};color:${BODY_PAL[k].fg}"><div style="font-size:12px">${esc(BODY_PAL[k].name)}<br>วันที่ ${PH_RANGE[k]}</div><b>${P.sln ? (P.sl / P.sln).toFixed(1) + ' ชม.' : '–'}</b></div>`; }).join('');
+  const av = k => Object.keys(ph).filter(x => ph[x][k + 'n']).map(x => [x, ph[x][k] / ph[x][k + 'n']]);
+  const ms = av('m'), ss = av('s'); let summary = '<p class="meta" style="margin:0">ยังไม่เห็นความต่างชัดระหว่างช่วง</p>';
+  if (ms.length >= 2 && ss.length >= 2){
+    const lo = ms.slice().sort((x, y) => x[1] - y[1])[0], hi = ss.slice().sort((x, y) => y[1] - x[1])[0];
+    const mAll = ms.reduce((a, x) => a + x[1], 0) / ms.length, sAll = ss.reduce((a, x) => a + x[1], 0) / ss.length; const parts = [];
+    if (mAll - lo[1] >= 0.5) parts.push(`ช่วงวันที่ ${PH_RANGE[lo[0]]} อารมณ์มักต่ำกว่าช่วงอื่น (เฉลี่ย ${lo[1].toFixed(1)}/5)`);
+    if (hi[1] - sAll >= 0.5) parts.push(`ช่วงวันที่ ${PH_RANGE[hi[0]]} ความเครียดมักสูงกว่าช่วงอื่น (เฉลี่ย ${hi[1].toFixed(1)}/5)`);
+    if (parts.length) summary = `<p style="margin:0">${esc(parts.join(' · '))}</p><div class="meta" style="margin:0"><b>เตรียมตัวล่วงหน้า (คุณเลือกเอง)</b><br>• จองคลาสเบาไว้ในช่วงนั้น เผื่อวันที่ไม่ไหว<br>• ถ้าเลือกได้ เลี่ยงนัดสำคัญหรืองานเพิ่มในช่วงนั้น<br>• นอนให้พอในคืนก่อนเวร</div>`;
+  }
+  return `<section class="card" style="gap:8px"><h2>ภาพรวมสุขภาพ</h2><p class="meta" style="margin:0">ข้อมูลจริงของคุณ จาก ${logged} วันที่บันทึก · แกนนอน = วันที่ของรอบ</p>${svg}
+    <div class="wrap meta" style="margin:0"><span>เส้นทึบเขียว = อารมณ์ (5 = ดี)</span><span>เส้นประแดง = ความเครียด (5 = สูง)</span><span>พื้นหลัง = ช่วงของรอบ</span></div>
+    <b>นอนเฉลี่ยแต่ละช่วง</b><div class="row" style="flex-wrap:wrap;gap:6px">${sleep}</div>${summary}</section>`;
+}
+
+function bodyConfigCard(){
+  const b = bd();
+  return `<section class="card" style="gap:8px"><h2>ฟังร่างกาย</h2>
+    <div class="row" style="gap:8px"><span class="grow"><b>ความยาวรอบ</b><span class="meta" style="display:block">ค่าเริ่มต้น 28 วัน</span></span>
+      <button type="button" class="btn small" data-act="body-len" data-d="-1" aria-label="ลด">−</button><b style="min-width:28px;text-align:center">${b.cycleLen}</b><button type="button" class="btn small" data-act="body-len" data-d="1" aria-label="เพิ่ม">+</button></div>
+    <div class="row" style="flex-wrap:wrap;gap:6px"><a class="btn small" href="#body">เปิดฟังร่างกาย</a><button type="button" class="btn small danger" data-act="body-clear">ลบข้อมูลฟังร่างกาย</button></div>
+    <p class="meta" style="margin:0">การแจ้งเตือนจะมาในเวอร์ชันถัดไป · ${/ซิงก์เปิดอยู่/.test(Sync.status()) ? 'ซิงก์เปิดอยู่ ข้อมูลนี้ขึ้นคลาวด์แบบเข้ารหัส' : 'ซิงก์ยังปิดอยู่ ข้อมูลนี้อยู่เฉพาะเครื่องนี้'} · ไม่รวมในไฟล์สำรอง</p></section>`;
+}
+
 function viewMyDay(){
   const t = today();
   const types = shiftsOn(t);
@@ -1106,6 +1381,7 @@ function viewMyDay(){
      <span class="row" style="gap:4px;font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.2)">${ic('lock',13)}ล็อก</span></section>`
      : `<section class="card"><div class="row between"><span class="sub">วันนี้ยังไม่ได้ลงเวร</span><button type="button" class="btn small" data-act="set-shift" data-d="${t}">ลงเวร</button></div></section>`}
   ${teamDayCard(t)}
+  ${bodyTodayCard()}
   ${(() => { const nx = coHolidays().find(h => h[2] && h[0] > t && h[0] <= addDays(t, 7)); return nx ? `<section class="card" style="flex-direction:row;align-items:center;gap:10px;padding:12px 14px"><span style="font-size:22px">🏖️</span><span class="grow"><b>${esc(nx[1])}</b><span class="meta" style="display:block">${esc(thDate(nx[0],{weekday:'long', day:'numeric', month:'short'}))} · อีก ${Math.round((parse(nx[0]) - parse(t)) / 864e5)} วัน · วันหยุดบริษัท</span></span><button type="button" class="btn small" data-act="hol-open">ดู</button></section>` : ''; })()}
   ${Updater.hasNew() ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px;background:var(--money-t)"><span style="font-size:26px">✨</span><span class="grow"><b>มีเวอร์ชันใหม่ v${esc(Updater.latest)}</b><span class="meta">ข้อมูลจะสำรองให้อัตโนมัติก่อนอัปเดต</span></span><button type="button" class="btn primary small" data-act="app-update">อัปเดตเลย</button></section>` : ''}
   ${!NATIVE && STANDALONE && !IS_INSTALLED && relInstalled ? `<section class="card" style="flex-direction:row;align-items:center;gap:12px"><img src="${APP_ICON}" alt="" width="44" height="44" style="border-radius:12px;flex:none"><span class="grow"><b>แอปติดตั้งในเครื่องแล้ว</b><span class="meta">ปัดหน้าจอขึ้นเปิดลิ้นชักแอป แล้วหา “เลขาส่วนตัว”</span></span><button type="button" class="btn small" data-act="install-help">ไม่เจอแอป</button></section>` : ''}
@@ -1229,6 +1505,7 @@ function viewCalendar(){
     }
     body = `<section class="card"><div class="year">${tiles}</div></section>`;
   }
+  if (calMode === 'month') body += `<section class="card" style="gap:6px"><div class="row between"><h2>ออกกำลังกายวันหยุดเช้า</h2><a class="btn small" href="#body">ฟังร่างกาย</a></div>${bodyExCard(calMonth)}</section>`;
   const dayList = () => {
     const types = shiftsOn(calSel);
     const items = S.appts.filter(a => a.date === calSel).sort((x,y) => (x.time||'').localeCompare(y.time||''));
@@ -1477,6 +1754,7 @@ function viewConfig(){
   const g = st.gcal;
   return `
   <header class="top"><h1>ตั้งค่า</h1></header>
+  ${bodyConfigCard()}
 
   <h2 class="group-t">การเตือนนัด (ค่าเริ่มต้นของนัดใหม่)</h2>
   <div class="list"><div class="lrow"><div class="wrap">
@@ -1716,6 +1994,8 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.54','ฟังร่างกายตามใบสั่งงาน: ประจำเดือนวัน 1–6 · ไข่ตกวันที่ 14 · ชื่อสีคู่ข้อความ · เช็กเช้าเริ่มที่ 2/1/1 แล้วกดบันทึก · ระดับ “พักหรือย้ายวัน” · โปรไฟล์ร่างกาย + BMI + ผลสแกน · ข้อควรสังเกต (ไม่วินิจฉัย) · ภาพรวมสุขภาพ (แถบความคืบหน้าจนครบ 2 รอบ แล้วจึงขึ้นกราฟ) · วันออกกำลังกายที่มีนัดแจ้งให้ทราบ'],
+    ['v1.53','เพิ่ม “ฟังร่างกาย”: บันทึกรายวัน (ประจำเดือน อาการ อารมณ์ เครียด นอน ออกกำลังกาย) · เช็กเช้า 3 ข้อ → พัก/เบา/ปานกลาง/เต็มที่ · ปฏิทินประจำเดือนพร้อมสี · การ์ดสีวันนี้ที่ My day · เลือกวันหยุดเช้า 4 วัน/เดือนที่หน้าตาราง · ตั้งความยาวรอบที่ตั้งค่า · ข้อมูลซิงก์แบบเข้ารหัสไปกับบัญชี ไม่รวมในไฟล์สำรอง'],
     ['v1.52','ลงตารางเวร › จากไฟล์: ตัวเลือกไฟล์รับ .json ได้เหมือนหน้าทีม (แก้ไฟล์ .json ถูกเทาบน Android) · เพิ่มช่องวางข้อมูล JSON ถ้ายังเลือกไฟล์ไม่ได้'],
     ['v1.51','ลงตารางเวร › จากไฟล์: รับไฟล์ .json และ .pdf ด้วย (เดิมเลือกได้แค่ .html .xlsx) · ข้อความบอกชัดว่าแท็บจากรูปต้องเปิดผ่านลิงก์ claude.ai'],
     ['v1.50','ใบเบิกค่าเวร: STD = 16:00–08:00 (200) · STD เช้า = 08:00–16:00 (100) · วันที่มีทั้งคู่ลงช่วง 08:00–08:00 รวม 300'],
@@ -1836,7 +2116,7 @@ function viewLinks(){
 let hoursScrolled = false;
 function render(){
   renderTabs();
-  const v = {myday:viewMyDay, appt:viewAppt, calendar:viewCalendar, config:viewConfig, guide:viewGuide, links:viewLinks, timesheet:viewTimesheet, team:viewTeam, money:viewMoney}[route];
+  const v = {myday:viewMyDay, appt:viewAppt, calendar:viewCalendar, config:viewConfig, guide:viewGuide, links:viewLinks, timesheet:viewTimesheet, team:viewTeam, money:viewMoney, body:viewBody}[route];
   const hs = $('#hours'); const keep = hs ? hs.scrollTop : null;
   $('#view').innerHTML = subNav() + v();
   $('#fab').hidden = route !== 'myday';
@@ -4767,6 +5047,7 @@ document.addEventListener('click', e => {
   const act = el.dataset.act, id = el.dataset.id;
   if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['tick','def-remind','pw-toggle','case-done','skin','gcal','assign','tri','cohol','cls','push','m-opt','ot-touch','night-touch','nn-opt','nf'].includes(act)) return;
   if (el.tagName === 'INPUT' && el.type !== 'checkbox') return;
+  if (/^(body|bl|bc|bpf)-/.test(act) && bodyHandle(act, el)) return;
   switch(act){
     case 'close': closeSheet(); break;
     case 'new-appt': apptForm(null, {date: el.dataset.date}); break;
@@ -5294,7 +5575,7 @@ const Backup = {
     const dl = await getDL();
     if (!dl){ toast('ดาวน์โหลดไม่ได้ในหน้านี้ เปิดแอปผ่านลิงก์ claude.ai แล้วลองใหม่', true); return; }
     try{
-      await dl.save({filename:`secretary-backup-${today()}.json`, data:JSON.stringify(S, null, 1)});
+      await dl.save({filename:`secretary-backup-${today()}.json`, data:JSON.stringify(Object.assign({}, S, {body:undefined}), null, 1)});
       log('ดาวน์โหลดไฟล์สำรอง', true); writeLocal(); toast('ส่งไฟล์สำรองให้ดาวน์โหลดแล้ว');
     }catch(err){ log('ดาวน์โหลดไฟล์สำรอง', false); writeLocal(); toast('ไม่ได้ดาวน์โหลดไฟล์สำรอง', true); }
     render();
@@ -5309,7 +5590,7 @@ const Backup = {
       if (!mp){ toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของแอปนี้', true); return; }
       const cnt = o => `เวร ${Object.keys(o.shifts || {}).length} วัน · เคส ${Object.values(o.cases || {}).reduce((a, x) => a + x.length, 0)} · นัด ${(o.appts || []).length} · ทีม ${((o.team || {}).members || []).length} คน · รายการเงิน ${((o.money || {}).items || []).length}`;
       confirmSheet(`แทนที่ข้อมูลบนเครื่องนี้ด้วยไฟล์สำรอง? ไฟล์: ${cnt(mp)} · ตอนนี้: ${cnt(S)} · ข้อมูลตอนนี้จะถูกเก็บใน สำรองอัตโนมัติ ก่อน`, 'ใช้ไฟล์สำรอง', () => {
-        AutoBak.save('ก่อนนำเข้าไฟล์สำรอง'); S = mp; Theme.apply(); commit('นำเข้าไฟล์สำรอง', {msg:'นำเข้าแล้ว'});
+        AutoBak.save('ก่อนนำเข้าไฟล์สำรอง'); const keepBody = S.body; S = mp; if (!S.body && keepBody) S.body = keepBody; Theme.apply(); commit('นำเข้าไฟล์สำรอง', {msg:'นำเข้าแล้ว'});
       }, true);
     };
     rd.readAsText(file);
