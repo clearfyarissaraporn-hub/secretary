@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.56</title>
+<title>เลขาส่วนตัว v1.57</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -488,7 +488,7 @@ img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.56';
+const APP_VERSION = '1.57';
 const APP_OWNER = 'Clear';
 try{ localStorage.removeItem('tmm-aikey-v1'); }catch(e){}   /* ฟีเจอร์ API key ถูกนำออกแล้ว ลบ key ที่เคยเก็บ */
 const APP_COPYRIGHT = `© 2026 (พ.ศ. 2569) ${APP_OWNER} · สงวนลิขสิทธิ์`;
@@ -1151,12 +1151,20 @@ const BODY_CLASSES = [
   {id:'pump', name:'BODYPUMP', lv:3, fit:'ปานกลาง', now:true, tiers:['mid','full'], d:'บาร์เบลล์ทั้งตัว น้ำหนักเบาถึงปานกลาง ทำซ้ำเยอะ มี 30, 45 หรือ 55 นาที'},
   {id:'heavy', name:'BODYPUMP HEAVY', lv:4, fit:'เต็มที่', now:false, tiers:['full'], d:'จังหวะช้ากว่า พักนานกว่า ยกหนักขึ้น เน้นสร้างแรง ลองถามฟิตเนสว่ามีไหม'},
   {id:'strdev', name:'STRENGTH DEVELOPMENT', lv:4, fit:'ปานกลาง–เต็มที่', now:false, tiers:['mid','full'], d:'ผสมแรง การเผาผลาญ และสภาพร่างกายในคลาสเดียว ลองถามฟิตเนสว่ามีไหม'},
-  {id:'planb', name:'เวทนอกคลาส 30 นาที (แผน B)', lv:3, fit:'ปานกลาง–เต็มที่', now:false, tiers:['mid','full'], d:'ใช้เมื่อคลาสเต็มหรือคนเยอะ ท่าและน้ำหนักจะจัดให้ตอนสร้างโปรแกรม'}
+  {id:'bodystep', name:'BODYSTEP', lv:3, fit:'ปานกลาง', now:false, tiers:['mid'], d:'คาร์ดิโอก้าวขึ้นลงบนสเต็ปตามจังหวะเพลง ใช้ขา ก้น และหัวใจ'},
+  {id:'core', name:'CORE', lv:2, fit:'เบา–ปานกลาง', now:false, tiers:['light','mid'], d:'เน้นหน้าท้อง หลัง และสะโพก ใช้น้ำหนักตัว เป็นเวทเบาในวันที่ไม่ไหว'},
+  {id:'hype', name:'HYPE', lv:3, fit:'ปานกลาง', now:false, tiers:['mid'], d:'คลาสกลุ่มของ Jetts ยังยืนยันรูปแบบไม่ได้ ถามครูก่อนเข้า ระดับความหนักเป็นการเดา'},
+  {id:'hyrox', name:'HYROX Foundational', lv:4, fit:'ปานกลาง–เต็มที่', now:false, tiers:['mid','full'], d:'ฝึกพื้นฐานสไตล์ HYROX ผสมคาร์ดิโอกับสถานีออกแรง ตามชื่อคลาส ถามครูเรื่องรูปแบบ'},
+  {id:'balance', name:'BODYBALANCE', lv:1, fit:'เบา', now:false, tiers:['light'], d:'ยืดเหยียด สมดุล ผสมแนวโยคะ ไทชิ พิลาทิส เหมาะวันพลังงานต่ำ'},
+  {id:'yoga', name:'YOGA (Hatha / Vinyasa)', lv:1, fit:'เบา', now:false, tiers:['light'], d:'ยืดเหยียดและหายใจ Hatha ช้ากว่า Vinyasa ที่เคลื่อนต่อเนื่อง'},
+  {id:'zumba', name:'ZUMBA', lv:2, fit:'เบา–ปานกลาง', now:false, tiers:['light','mid'], d:'เต้นตามเพลง สนุก แรงกระแทกเบา'},
+  {id:'planb', name:'เวทนอกคลาส 30 นาที (แผน B)', lv:3, fit:'ปานกลาง–เต็มที่', now:false, tiers:['mid','full'], d:'ใช้เมื่อคลาสเต็มหรือคนเยอะ มี 2 โปรแกรมทั้งตัวสลับกัน กดดูขั้นตอนในการ์ดแผน B ด้านล่าง'}
 ];
-const BODY_HAVE0 = {dance:true, combat:true, pump:true, heavy:false, strdev:false, planb:true};
+const BODY_HAVE0 = {dance:true, combat:true, pump:true, heavy:false, strdev:false, planb:true, bodystep:true, core:true, hype:true, hyrox:true, balance:true, yoga:true, zumba:true};
 
 function bodyClassesCard(){
   const b = bd(); if (!b.have) b.have = Object.assign({}, BODY_HAVE0);
+  Object.keys(BODY_HAVE0).forEach(k => { if (b.have[k] == null) b.have[k] = BODY_HAVE0[k]; });
   const tr = bodyTier(b.check[today()]);
   let tip;
   if (!tr) tip = 'เช็กเช้า 3 ข้อก่อน แล้วจะแนะนำคลาสที่ตรงกับวันนี้';
@@ -1186,6 +1194,65 @@ function bodyClassesCard(){
   </section>`;
 }
 
+/* แผน B: เวทนอกคลาส 30 นาที หมุน A → B → C · เก็บสถานะใน S.body.pb และ S.body.pbLog */
+const BODY_PB_TIER = {
+  full:{n:'เต็มที่', rest:'75–90 วินาที', fe:'ยกจนรู้สึกว่าเหลืออีก 1–2 ครั้งก่อนฟอร์มเสีย', mv:5},
+  mid:{n:'ปานกลาง', rest:'60 วินาที', fe:'เลือกน้ำหนักที่ครั้งสุดท้ายยังเหลืออีก 2–3 ครั้ง', mv:5},
+  light:{n:'เบา', rest:'45 วินาที', fe:'น้ำหนักเบา คุยได้สบาย เหลืออีก 4 ครั้งขึ้นไป', mv:4}
+};
+const BODY_PB_WARM = {n:'อุ่นเครื่อง', how:'เดินเร็วหรือปั่นจักรยานเบาๆ 3 นาที แล้วย่อตัวไม่ถือน้ำหนัก 10 ครั้ง + หมุนไหล่ 10 ครั้ง', min:4};
+const BODY_PB_COOL = {n:'ยืดเหยียด', how:'ยืดต้นขาหน้า สะโพก และอก ท่าละ 30 วินาที หายใจช้าๆ', min:3};
+/* 2 โปรแกรมทั้งตัวสลับกัน: ขา + ดัน + ดึง ทุกครั้ง เพื่อให้แต่ละกลุ่มกล้ามเนื้อโดน 2 ครั้ง/สัปดาห์ */
+const BODY_PB = {
+  X:{name:'ทั้งตัว · เน้นสควอต', mv:[
+    {n:'Goblet squat', q:'goblet squat form', cue:['ส้นเท้าติดพื้น เข่าไปทางเดียวกับปลายเท้า','หลังตรง อกเชิด'], how:'ถือดัมเบลชิดอก ย่อลงจนต้นขาขนานพื้น แล้วดันส้นเท้าลุกขึ้น', r:{full:[3,8],mid:[3,10],light:[2,12]}, u:'ครั้ง'},
+    {n:'Romanian deadlift (ดัมเบล)', q:'dumbbell romanian deadlift form', cue:['ดันสะโพกไปด้านหลัง หลังตรง','ตึงต้นขาด้านหลังแล้วค่อยดันกลับ'], how:'ปล่อยดัมเบลไถลตามขาถึงใต้เข่า แล้วดันสะโพกกลับ', r:{full:[3,8],mid:[3,10],light:[2,12]}, u:'ครั้ง'},
+    {n:'Dumbbell bench press', q:'dumbbell bench press form', cue:['สะบักแนบม้า','ศอกทำมุมราว 45° ไม่กางสุด'], how:'ลดดัมเบลถึงระดับอกช้าๆ แล้วดันขึ้น ถ้าม้าไม่ว่างทำ push-up วางมือบนที่สูงแทน', r:{full:[3,8],mid:[3,10],light:[2,12]}, u:'ครั้ง'},
+    {n:'Seated cable row', q:'seated cable row form', cue:['บีบสะบักเข้าหากันค้าง 1 วินาที','ไม่โยกตัว'], how:'นั่งหลังตรง ดึงมือเข้าหาท้อง แล้วปล่อยช้าๆ', r:{full:[3,8],mid:[3,10],light:[2,12]}, u:'ครั้ง'}],
+    core:{n:'Plank', q:'plank proper form', cue:['ศอกอยู่ใต้ไหล่','ท้องเกร็ง ไม่แอ่นหลัง'], how:'ลำตัวเป็นเส้นตรงตั้งแต่ศีรษะถึงส้นเท้า', r:{full:[2,40],mid:[2,30],light:[2,20]}, u:'วินาที'}},
+  Y:{name:'ทั้งตัว · เน้นสะโพก', mv:[
+    {n:'Split squat (อยู่กับที่)', q:'dumbbell split squat form', cue:['ลดตัวลงตรงๆ ลำตัวตั้ง','เข่าหน้าไปทางเดียวกับปลายเท้า'], how:'ยืนเท้าหน้า-หลังห่างกัน ถือดัมเบลสองข้าง ทำครบข้างหนึ่งแล้วสลับ', r:{full:[3,8],mid:[3,10],light:[2,10]}, u:'ครั้ง/ข้าง'},
+    {n:'Hip thrust', q:'dumbbell hip thrust form', cue:['คางชิดอก ซี่โครงลง','บีบก้นค้าง 1 วินาทีที่ด้านบน'], how:'พิงหลังส่วนบนกับม้านั่ง วางดัมเบลบนสะโพก ดันขึ้นจนลำตัวเป็นเส้นตรง', r:{full:[3,10],mid:[3,12],light:[2,15]}, u:'ครั้ง'},
+    {n:'Dumbbell shoulder press', q:'dumbbell shoulder press form', cue:['ซี่โครงไม่ยื่น ท้องเกร็ง','ลดลงถึงระดับหู'], how:'นั่งหรือยืน ดันดัมเบลเหนือศีรษะ', r:{full:[3,8],mid:[3,10],light:[2,12]}, u:'ครั้ง'},
+    {n:'Lat pulldown', q:'lat pulldown form', cue:['ดึงศอกลงข้างลำตัว','ไม่โยกตัว ดึงบาร์ถึงระดับคาง'], how:'ดึงบาร์ลงถึงระดับคาง แล้วปล่อยกลับช้าๆ', r:{full:[3,8],mid:[3,10],light:[2,12]}, u:'ครั้ง'}],
+    core:{n:'Dead bug', q:'dead bug exercise form', cue:['หลังแนบพื้นตลอด','เคลื่อนช้าๆ หายใจออกตอนเหยียด'], how:'นอนหงาย ยกแขนขาขึ้น เหยียดแขนซ้ายกับขาขวาออก แล้วสลับ', r:{full:[2,10],mid:[2,8],light:[2,6]}, u:'ครั้ง/ข้าง'}}
+};
+function bodyPbSteps(s, t){
+  const Q = BODY_PB[s], T = BODY_PB_TIER[t]; const fmt = x => x.r[t][0] + ' เซ็ต × ' + x.r[t][1] + ' ' + x.u;
+  return [Object.assign({}, BODY_PB_WARM, {reps:'4 นาที'})]
+    .concat(Q.mv.map(x => Object.assign({}, x, {reps:fmt(x), min:T.mv, rest:T.rest})))
+    .concat([Object.assign({}, Q.core, {reps:fmt(Q.core), min:3, rest:T.rest}), Object.assign({}, BODY_PB_COOL, {reps:'3 นาที'})]);
+}
+function bodyPbWeek(){
+  const b = bd(), t = today(), from = addDays(t, -6); const days = new Set();
+  (b.pbLog || []).forEach(x => { if (x.d >= from && x.d <= t) days.add(x.d); });
+  Object.keys(b.logs).forEach(d => { if (d >= from && d <= t && (b.logs[d].ex || []).some(e => /pump|heavy|strength|เวท/i.test(e))) days.add(d); });
+  const n = days.size, last = [...days].sort().pop(); const cy = bodyCycle(t);
+  const PH = {red:'ช่วงประจำเดือน: เบาลง 1–2 เซ็ต แต่ยังนับว่าเข้า 2 ครั้ง', g1:'ช่วงเขียวเข้ม: หนักได้เต็มที่', g2:'ช่วงเขียวอ่อน: ทำตามปกติ', y:'ช่วงเหลือง: ลดเหลือ 2 เซ็ต ไม่ต้องฝืน'};
+  const ph = cy && cy.phase ? PH[cy.phase] : '';
+  return `<div class="banner info" style="margin:0"><div><b>เป้า 2 ครั้งต่อสัปดาห์</b> · 7 วันที่ผ่านมาทำแล้ว ${n}/2${n >= 2 ? ' · ครบแล้ว' : last ? ' · ครั้งถัดไปเริ่มได้ตั้งแต่ ' + esc(thDate(addDays(last, 2), {weekday:'short', day:'numeric', month:'short'})) : ''}${ph ? '<br>' + esc(ph) : ''}</div></div>
+    <p class="meta" style="margin:0">คลาส BODYPUMP หรือ HEAVY นับเป็นเวท 1 ครั้ง · เว้นห่างกันอย่างน้อย 2 วัน เช่น จันทร์–พฤหัส หรือ อังคาร–ศุกร์ · ถ้ามีเวลาน้อยจริงๆ ให้ทำแค่ 2 ครั้งนี้ให้ครบ ที่เหลือเป็นแดนซ์ คอมแบท หรือโยคะ</p>`;
+}
+function bodyPlanBCard(){
+  const b = bd(); const done = (b.pbLog || []).length; const next = ['X','Y'][done % 2]; const tr = bodyTier(b.check[today()]);
+  const note = !tr ? 'เช็กเช้า 3 ข้อก่อน แผนจะปรับความหนักให้' : tr === 'rest' ? 'วันนี้เช็กเช้าแล้วว่าควรพัก ถ้ายังอยากขยับ เลือกระดับเบา' : 'วันนี้เช็กเช้าได้ระดับ ' + BODY_TIER[tr].name;
+  return `<section class="card" style="gap:6px"><h2>แผน B · เวทนอกคลาส 30 นาที</h2>
+    <p class="meta" style="margin:0">ใช้เมื่อคลาสเต็มหรืออยากเล่นเวทตรงๆ ในวันหยุดเช้า · 2 โปรแกรมทั้งตัวสลับกัน X → Y ทำให้ขา ดัน ดึง โดนทั้ง 2 ครั้งต่อสัปดาห์ · ${esc(note)}</p>
+    ${bodyPbWeek()}
+    ${['X','Y'].map(k => `<div class="row" style="align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--soft)"><div class="grow"><b>โปรแกรม ${k} · ${esc(BODY_PB[k].name)}</b>${k === next ? ' <span class="tag" style="background:var(--primary-tint);color:var(--primary-ink)">ครั้งต่อไป</span>' : ''}<div class="meta">${BODY_PB[k].mv.length} ท่าหลัก + แกนกลาง · ราว 30 นาที</div></div><button type="button" class="btn small${k === next ? ' primary' : ''}" data-act="body-pb-open" data-s="${k}">ดูขั้นตอน</button></div>`).join('')}
+    <p class="meta" style="margin:0">เล่นแผน B ไปแล้ว ${done} ครั้ง · แต่ละท่าบอกจำนวนเซ็ต ครั้ง หรือเวลา · เป็นคำแนะนำทั่วไป ไม่ใช่คำสั่งแพทย์</p></section>`;
+}
+function bodyPbSheet(){
+  const b = bd(); const P = b.pb; if (!P) return; const Q = BODY_PB[P.s]; const T = BODY_PB_TIER[P.t]; const steps = bodyPbSteps(P.s, P.t);
+  const total = steps.reduce((a, x) => a + x.min, 0); const ON = 'border:2px solid var(--primary);background:var(--primary-tint);color:var(--primary-ink);font-weight:600';
+  openSheet(`${sheetHead('แผน B · โปรแกรม ' + P.s + ' ' + Q.name)}
+    <p class="meta" style="margin:0">รวมราว ${total} นาที · <span id="pb-prog">ทำแล้ว ${P.done.length}/${steps.length} ขั้น</span></p>
+    <div class="wrap">${['light','mid','full'].map(k => `<button type="button" class="chip" data-act="body-pb-tier" data-v="${k}" aria-pressed="${P.t === k}" style="${P.t === k ? ON : ''}">${BODY_PB_TIER[k].n}</button>`).join('')}</div>
+    <div class="banner info" style="margin:0"><div>พักระหว่างเซ็ต ${T.rest} · ${esc(T.fe)}</div></div>
+    ${steps.map((x, i) => `<div class="row" style="align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--soft)"><div class="grow" style="gap:2px"><b>${i + 1}. ${esc(x.n)}</b><div style="font-weight:600">${esc(x.reps)}${x.rest && i > 0 && i < steps.length - 1 ? ' · พัก ' + x.rest : ''}</div><div class="meta">${esc(x.how)}</div>${x.cue ? `<div class="meta">จุดสำคัญ: ${x.cue.map(esc).join(' · ')}</div>` : ''}<div class="meta">ใช้เวลาราว ${x.min} นาที${x.q ? ` · <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(x.q)}" target="_blank" rel="noopener" style="text-decoration:underline">ดูท่า (วิดีโอ)</a>` : ''}</div></div><button type="button" class="chip" data-act="body-pb-chk" data-i="${i}" aria-pressed="${P.done.includes(i)}" style="flex:none;${P.done.includes(i) ? ON : ''}">${P.done.includes(i) ? '✓ ทำแล้ว' : 'ทำแล้ว'}</button></div>`).join('')}
+    <p class="meta" style="margin:0">ปวดแหลม เวียนหัว หรือหายใจไม่ทัน ให้หยุดพัก · ไม่มั่นใจฟอร์ม ถามเทรนเนอร์ที่ Jetts ได้ · วันที่ไม่ไหว ลดเป็นระดับเบาแทนการฝืน</p>
+    <div class="row" style="position:sticky;bottom:0;background:var(--surface);padding-top:8px"><button type="button" class="btn" data-act="close" style="flex:1">ปิด</button><button type="button" class="btn primary" data-act="body-pb-done" style="flex:2">เสร็จแล้ว บันทึกว่าออกกำลังกาย</button></div>`);
+}
 const BODY_REFS = [
   ['Schmidt PJ และคณะ. Differential behavioral effects of gonadal steroids in women with and in those without premenstrual syndrome. N Engl J Med 1998;338(4):209–216.', 'https://pubmed.ncbi.nlm.nih.gov/9435325/'],
   ['Rubinow DR และคณะ. Dialogues in Clinical Neuroscience 2018;20(3):187–196.', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6296393/'],
@@ -1197,7 +1264,10 @@ const BODY_REFS = [
   ['Mountjoy M และคณะ. 2023 IOC consensus statement on Relative Energy Deficiency in Sport (REDs). Br J Sports Med 2023;57:1073–1098.', 'https://pubmed.ncbi.nlm.nih.gov/37752011/'],
   ['Psychoneuroendocrinology 2003 · APA, Speaking of Psychology ตอนที่ 252 (ความชุกของ PMS/PMDD และการบันทึกรายวัน)', ''],
   ['Systematic review of the effects of different resistance training volumes on muscle hypertrophy. J Hum Kinet 2022;81:199–210.', 'https://pubmed.ncbi.nlm.nih.gov/35291645/'],
-  ['Office on Women\'s Health (สหรัฐฯ) เรื่องการออกกำลังกายตอนมีประจำเดือน', '']
+  ['Office on Women\'s Health (สหรัฐฯ) เรื่องการออกกำลังกายตอนมีประจำเดือน', ''],
+  ['Schoenfeld BJ, Ogborn D, Krieger JW. Effects of resistance training frequency on measures of muscle hypertrophy: a systematic review and meta-analysis. Sports Med 2016;46(11):1689–1697.', ''],
+  ['Bickel CS และคณะ. Exercise dosing to retain resistance training adaptations in young and older adults. Med Sci Sports Exerc 2011;43(7):1177–1187.', ''],
+  ['Spiering BA และคณะ. Maintaining physical performance: the minimal dose of exercise needed to preserve endurance and strength over time. J Strength Cond Res 2021;35(5):1449–1458.', '']
 ];
 
 function bodyKnowledgeCard(){
@@ -1258,6 +1328,7 @@ function bodyKnowledgeCard(){
         <p ${p}><b>3. น้ำหนัก เบาหรือหนักก็ได้ผล:</b> ความแข็งแรงสูงสุดได้จากน้ำหนักมาก ส่วนกล้ามโตได้พอๆ กันทั้งน้ำหนักเบาและหนัก [6] จึงเหมาะที่ BODYPUMP และ HEAVY ผสมกัน</p>
         <p ${p}><b>4. ค่อยๆ เพิ่ม ไม่หักโหม:</b> เพิ่มน้ำหนักหรือจำนวนรอบทีละนิดเมื่อรู้สึกเบาลง เป็นหลักพื้นฐานของการฝึก ถ้านอนน้อยหรือหมดแรง ให้ลดความหนักแทนการฝืน</p>
         <p ${p}><b>5. กินให้พอกับที่ใช้ไป:</b> กินน้อยกว่าที่ใช้นานๆ เสี่ยงประจำเดือนผิดปกติ กระดูกบาง และกล้ามเนื้ออ่อนแรง [8]</p>
+        <p ${p}><b>6. เวลาน้อย ทำ 2 ครั้ง/สัปดาห์ให้ครบ:</b> งานรวมวิจัยพบว่าฝึกกล้ามกลุ่มเดิม 2 ครั้งต่อสัปดาห์ ได้ผลดีกว่า 1 ครั้ง เมื่อไม่ได้ปรับปริมาณรวมให้เท่ากัน [12] ส่วนการคงกำลังและกล้ามไว้ ใช้ปริมาณน้อยกว่าตอนสร้างได้มาก ขอแค่ยังยกในระดับหนักพอ [13][14] จึงเลือก 2 วันทั้งตัวสลับกัน เว้นห่างอย่างน้อย 2 วัน</p>
       </div>
     </details>
 
@@ -1307,6 +1378,7 @@ function viewBody(){
   ${bodyInsights()}
   <section class="card" style="gap:6px"><h2>ออกกำลังกายวันหยุดเช้า</h2>${bodyExCard(today().slice(0,7))}</section>
   ${bodyClassesCard()}
+  ${bodyPlanBCard()}
   ${bodyKnowledgeCard()}
   ${bodyProfileCard()}
   <section class="card" style="gap:4px">${bodyPrivacyNote()}<p class="meta" style="margin:0">ส่วนนี้เป็นคำแนะนำเท่านั้น ไม่แก้เวร นัด หรือตารางอัตโนมัติ คุณตัดสินใจเอง</p></section>`;
@@ -1382,6 +1454,10 @@ function bodyHandle(act, el){
     case 'body-period-del': confirmSheet('ลบวันแรกของประจำเดือนวันนี้ออกจากรายการ? (บันทึกรายวันไม่หาย)', 'ลบ', () => { b.periods = b.periods.filter(p => p !== el.dataset.d); commit('ลบวันแรกของประจำเดือน', {msg:'ลบแล้ว'}); }, true); return true;
     case 'body-len': { b.cycleLen = Math.min(60, Math.max(18, b.cycleLen + Number(el.dataset.d))); commit('ความยาวรอบ ' + b.cycleLen, {silent:true}); return true; }
     case 'body-ex': { const ym = el.dataset.ym, d = el.dataset.d; const a = b.exDays[ym] = b.exDays[ym] || []; const i = a.indexOf(d); if (i >= 0) a.splice(i, 1); else a.push(d); commit('เลือกวันออกกำลังกาย', {silent:true}); return true; }
+    case 'body-pb-open': { const s = el.dataset.s; const tr0 = bodyTier(b.check[today()]); const same = b.pb && b.pb.d === today() && b.pb.s === s; if (!same) b.pb = {d:today(), s, t:(tr0 && tr0 !== 'rest' ? tr0 : tr0 === 'rest' ? 'light' : 'mid'), done:[]}; bodyPbSheet(); return true; }
+    case 'body-pb-tier': { if (!b.pb) return true; b.pb.t = el.dataset.v; b.pb.done = []; commit('แผน B เปลี่ยนระดับ', {silent:true, norender:true}); bodyPbSheet(); return true; }
+    case 'body-pb-chk': { if (!b.pb) return true; const i = Number(el.dataset.i); const a = b.pb.done; const k = a.indexOf(i); if (k >= 0) a.splice(k, 1); else a.push(i); commit('แผน B ทำท่า', {silent:true, norender:true}); const on = k < 0; el.setAttribute('aria-pressed', on ? 'true' : 'false'); el.textContent = on ? '✓ ทำแล้ว' : 'ทำแล้ว'; el.style.cssText = 'flex:none;' + (on ? 'border:2px solid var(--primary);background:var(--primary-tint);color:var(--primary-ink);font-weight:600' : ''); const pg = document.getElementById('pb-prog'); if (pg) pg.textContent = 'ทำแล้ว ' + a.length + '/' + bodyPbSteps(b.pb.s, b.pb.t).length + ' ขั้น'; return true; }
+    case 'body-pb-done': { if (!b.pb) return true; const d = b.pb.d; const L = b.logs[d] = b.logs[d] || {}; L.ex = L.ex || []; if (!L.ex.includes('เวทนอกคลาส')) L.ex.push('เวทนอกคลาส'); b.pbLog = (b.pbLog || []).filter(x => x.d !== d); b.pbLog.push({d, s:b.pb.s, t:b.pb.t}); closeSheet(); commit('แผน B เสร็จ', {msg:'บันทึกว่าออกกำลังกายแล้ว'}); return true; }
     case 'body-have': { if (!b.have) b.have = Object.assign({}, BODY_HAVE0); const k = el.dataset.k; b.have[k] = !b.have[k]; commit('คลาสที่ฟิตเนสมี', {silent:true}); return true; }
     case 'body-clear': confirmSheet('ลบข้อมูลฟังร่างกายทั้งหมด (วันแรกของรอบ บันทึกรายวัน เช็กเช้า) บนเครื่องนี้และคลาวด์? ลบแล้วกู้คืนไม่ได้', 'ลบทั้งหมด', () => { S.body = {}; bodyCheckDraft = null; bd(); commit('ลบข้อมูลฟังร่างกายทั้งหมด', {msg:'ลบแล้ว'}); }, true); return true;
   }
@@ -2137,6 +2213,8 @@ function viewGuide(){
     ['แอปช้า / ข้อมูลเยอะ','ตั้งค่า › เก็บข้อมูลไม่ให้หนักเครื่อง (เวรและเคส OT เก็บ 400 วัน)']
   ];
   const changes = [
+    ['v1.57','ฟังร่างกาย: คลาสเวทเพิ่ม BODYSTEP CORE HYPE HYROX BODYBALANCE YOGA ZUMBA · แผน B เวทนอกคลาส 30 นาที (โปรแกรม X/Y สลับกัน ปรับตามผลเช็กเช้า ติ๊กทีละท่า เป้า 2 ครั้ง/สัปดาห์) · ความรู้ข้อ 6 และอ้างอิงเพิ่ม 3 รายการ'],
+    ['v1.56','ฟังร่างกาย: เพิ่มการ์ดคลาสเวท (ติ๊กคลาสที่ฟิตเนสมี แนะนำตามผลเช็กเช้า) และความรู้ (4 หัวข้อ พร้อมกราฟและเอกสารอ้างอิง) · ป้ายสีช่วงวัน 7–14 เป็น “เขียวเข้ม”'],
     ['v1.55','สีรอบประจำเดือนรวมเข้ากับปฏิทินหน้าตาราง (แถบใต้วันที่ ปิดได้) · เอาการ์ดออกกำลังกายออกจากหน้าตาราง · หน้าฟังร่างกายไม่มีปฏิทินแยกแล้ว · แตะวันในตาราง › บันทึกฟังร่างกาย'],
     ['v1.54','ฟังร่างกายตามใบสั่งงาน: ประจำเดือนวัน 1–6 · ไข่ตกวันที่ 14 · ชื่อสีคู่ข้อความ · เช็กเช้าเริ่มที่ 2/1/1 แล้วกดบันทึก · ระดับ “พักหรือย้ายวัน” · โปรไฟล์ร่างกาย + BMI + ผลสแกน · ข้อควรสังเกต (ไม่วินิจฉัย) · ภาพรวมสุขภาพ (แถบความคืบหน้าจนครบ 2 รอบ แล้วจึงขึ้นกราฟ) · วันออกกำลังกายที่มีนัดแจ้งให้ทราบ'],
     ['v1.53','เพิ่ม “ฟังร่างกาย”: บันทึกรายวัน (ประจำเดือน อาการ อารมณ์ เครียด นอน ออกกำลังกาย) · เช็กเช้า 3 ข้อ → พัก/เบา/ปานกลาง/เต็มที่ · ปฏิทินประจำเดือนพร้อมสี · การ์ดสีวันนี้ที่ My day · เลือกวันหยุดเช้า 4 วัน/เดือนที่หน้าตาราง · ตั้งความยาวรอบที่ตั้งค่า · ข้อมูลซิงก์แบบเข้ารหัสไปกับบัญชี ไม่รวมในไฟล์สำรอง'],
