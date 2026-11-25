@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>เลขาส่วนตัว v1.55</title>
+<title>เลขาส่วนตัว v1.56</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Kanit:wght@500&family=Mali:wght@600&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -488,7 +488,7 @@ img.stk{width:22px;height:22px;object-fit:cover;border-radius:6px;vertical-align
 'use strict';
 /* ---------- ทำงานได้ทั้งบน claude.ai และเวอร์ชัน GitHub Pages (standalone) ---------- */
 const APP_ICON = 'data:image/png;base64,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';
-const APP_VERSION = '1.55';
+const APP_VERSION = '1.56';
 const APP_OWNER = 'Clear';
 try{ localStorage.removeItem('tmm-aikey-v1'); }catch(e){}   /* ฟีเจอร์ API key ถูกนำออกแล้ว ลบ key ที่เคยเก็บ */
 const APP_COPYRIGHT = `© 2026 (พ.ศ. 2569) ${APP_OWNER} · สงวนลิขสิทธิ์`;
@@ -1074,7 +1074,7 @@ function otAskCard(){
 /* ---------- ฟังร่างกาย (v1.53): ประจำเดือน บันทึกรายวัน เช็กเช้า · ข้อมูลอยู่ใน S.body ซิงก์เข้ารหัสไปกับข้อมูลอื่น ไม่ออกไปกับไฟล์สำรองหรือการแชร์ ---------- */
 const BODY_PAL = {
   red:{bg:'#F9E3E6', fg:'#8E2437', ln:'#C4455A', name:'แดง · ประจำเดือน'},
-  g1:{bg:'#CFE9DB', fg:'#17573A', ln:'#3E9B6A', name:'เขียวเข้ม · แรงดี'},
+  g1:{bg:'#CFE9DB', fg:'#17573A', ln:'#3E9B6A', name:'เขียวเข้ม'},
   g2:{bg:'#E8F2D5', fg:'#3F5A10', ln:'#8DB84A', name:'เขียวอ่อน · ปกติ'},
   y:{bg:'#FBEBC8', fg:'#6E4800', ln:'#E0A21B', name:'เหลือง · PMS'}
 };
@@ -1144,6 +1144,136 @@ function bodyTodayCard(){
     <div class="row" style="flex-wrap:wrap;gap:6px"><button type="button" class="btn small primary" data-act="body-check">${T ? 'เช็กเช้าอีกครั้ง' : 'เช็กเช้า 3 ข้อ'}</button><button type="button" class="btn small" data-act="body-log" data-d="${t}">บันทึกวันนี้</button></div>
     <p class="meta" style="margin:0;color:inherit;opacity:.8">สีเป็นตัวช่วย ไม่ใช่กฎ · ประมาณจากวันที่ ไม่ได้วัดฮอร์โมน</p></section>`;
 }
+/* BODY-ADDON START (v1.56): คลาสเวท + ความรู้ */
+const BODY_CLASSES = [
+  {id:'dance', name:'คลาสเต้น', lv:2, fit:'เบา–ปานกลาง', now:true, tiers:['light','mid'], d:'เคลื่อนไหวต่อเนื่อง สนุก แรงกระแทกเบา เหมาะวันพลังงานปานกลาง'},
+  {id:'combat', name:'Body combat', lv:4, fit:'ปานกลาง', now:true, tiers:['mid'], d:'คาร์ดิโอหนักสไตล์ศิลปะการต่อสู้ ได้เหงื่อเยอะ แต่ไม่ใช่การเล่นเวท'},
+  {id:'pump', name:'BODYPUMP', lv:3, fit:'ปานกลาง', now:true, tiers:['mid','full'], d:'บาร์เบลล์ทั้งตัว น้ำหนักเบาถึงปานกลาง ทำซ้ำเยอะ มี 30, 45 หรือ 55 นาที'},
+  {id:'heavy', name:'BODYPUMP HEAVY', lv:4, fit:'เต็มที่', now:false, tiers:['full'], d:'จังหวะช้ากว่า พักนานกว่า ยกหนักขึ้น เน้นสร้างแรง ลองถามฟิตเนสว่ามีไหม'},
+  {id:'strdev', name:'STRENGTH DEVELOPMENT', lv:4, fit:'ปานกลาง–เต็มที่', now:false, tiers:['mid','full'], d:'ผสมแรง การเผาผลาญ และสภาพร่างกายในคลาสเดียว ลองถามฟิตเนสว่ามีไหม'},
+  {id:'planb', name:'เวทนอกคลาส 30 นาที (แผน B)', lv:3, fit:'ปานกลาง–เต็มที่', now:false, tiers:['mid','full'], d:'ใช้เมื่อคลาสเต็มหรือคนเยอะ ท่าและน้ำหนักจะจัดให้ตอนสร้างโปรแกรม'}
+];
+const BODY_HAVE0 = {dance:true, combat:true, pump:true, heavy:false, strdev:false, planb:true};
+
+function bodyClassesCard(){
+  const b = bd(); if (!b.have) b.have = Object.assign({}, BODY_HAVE0);
+  const tr = bodyTier(b.check[today()]);
+  let tip;
+  if (!tr) tip = 'เช็กเช้า 3 ข้อก่อน แล้วจะแนะนำคลาสที่ตรงกับวันนี้';
+  else if (tr === 'rest') tip = 'วันนี้พักหรือย้ายวัน ไม่ต้องเข้าคลาส ไม่นับว่าพลาด';
+  else {
+    const pick = BODY_CLASSES.filter(c => b.have[c.id] && c.tiers.includes(tr)).map(c => c.name);
+    if (pick.length) tip = 'วันนี้ตัวเลือกที่ตรงและฟิตเนสคุณมี: ' + pick.join(' · ');
+    else if (tr === 'light') tip = 'วันนี้เดินเร็วหรือยืดเหยียด 20–30 นาที';
+    else tip = 'ไม่มีคลาสที่ตรงกับวันนี้ ใช้แผน B: เวทนอกคลาส 30 นาที';
+  }
+  const rows = BODY_CLASSES.map(c => {
+    const on = !!b.have[c.id];
+    const dots = [1,2,3,4,5].map(n => `<span style="width:8px;height:8px;border-radius:4px;display:inline-block;background:${n <= c.lv ? '#2F6F5E' : 'var(--field)'}"></span>`).join('');
+    return `<div class="row" style="align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--soft)">
+      <div class="grow" style="gap:4px">
+        <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center"><b>${esc(c.name)}</b>${c.now ? '<span class="tag" style="background:var(--money-t);color:var(--money-i)">ที่เล่นอยู่</span>' : ''}</div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="display:inline-flex;gap:3px" aria-hidden="true">${dots}</span><span class="meta">ความหนัก ${c.lv}/5 · เหมาะกับระดับ ${esc(c.fit)}</span></div>
+        <div class="meta">${esc(c.d)}</div>
+      </div>
+      <button type="button" class="chip" data-act="body-have" data-k="${c.id}" aria-pressed="${on ? 'true' : 'false'}" style="flex:none;${on ? 'border:2px solid var(--primary);background:var(--primary-tint);color:var(--primary-ink);font-weight:600' : ''}">${on ? 'มีที่ฟิตเนส ✓' : 'มีที่ฟิตเนส'}</button>
+    </div>`;
+  }).join('');
+  return `<section class="card" style="gap:6px"><h2>คลาสเวท</h2>
+    <div class="banner info" style="margin:0"><div>${esc(tip)}</div></div>
+    <p class="meta" style="margin:0">ติ๊กคลาสที่ฟิตเนสคุณมี ระดับความหนักเป็นการประมาณ ไม่ใช่ข้อมูลทางการของ Les Mills · แผน A = เข้าคลาส · แผน B = เวทนอกคลาสเมื่อคลาสเต็ม</p>
+    ${rows}
+  </section>`;
+}
+
+const BODY_REFS = [
+  ['Schmidt PJ และคณะ. Differential behavioral effects of gonadal steroids in women with and in those without premenstrual syndrome. N Engl J Med 1998;338(4):209–216.', 'https://pubmed.ncbi.nlm.nih.gov/9435325/'],
+  ['Rubinow DR และคณะ. Dialogues in Clinical Neuroscience 2018;20(3):187–196.', 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6296393/'],
+  ['Colenso-Semple LM และคณะ. 2023. Frontiers in Sports and Active Living (รีวิวช่วงรอบกับการเล่นเวท)', ''],
+  ['Mikkonen และ Häkkinen. 2025. Strength and Conditioning Journal', ''],
+  ['Bull FC และคณะ. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. Br J Sports Med 2020;54:1451–1462.', 'https://bjsm.bmj.com/content/54/24/1451'],
+  ['Schoenfeld BJ และคณะ. Low- vs high-load resistance training: systematic review and meta-analysis. J Strength Cond Res 2017;31(12):3508–3523.', 'https://pubmed.ncbi.nlm.nih.gov/28834797/'],
+  ['Schoenfeld BJ, Ogborn D, Krieger JW. Dose-response relationship between weekly resistance training volume and increases in muscle mass. J Sports Sci 2017.', 'https://doi.org/10.1080/02640414.2016.1210197'],
+  ['Mountjoy M และคณะ. 2023 IOC consensus statement on Relative Energy Deficiency in Sport (REDs). Br J Sports Med 2023;57:1073–1098.', 'https://pubmed.ncbi.nlm.nih.gov/37752011/'],
+  ['Psychoneuroendocrinology 2003 · APA, Speaking of Psychology ตอนที่ 252 (ความชุกของ PMS/PMDD และการบันทึกรายวัน)', ''],
+  ['Systematic review of the effects of different resistance training volumes on muscle hypertrophy. J Hum Kinet 2022;81:199–210.', 'https://pubmed.ncbi.nlm.nih.gov/35291645/'],
+  ['Office on Women\'s Health (สหรัฐฯ) เรื่องการออกกำลังกายตอนมีประจำเดือน', '']
+];
+
+function bodyKnowledgeCard(){
+  const sum = 'style="min-height:44px;display:flex;align-items:center;font-weight:600;cursor:pointer"';
+  const p = 'style="margin:0;line-height:1.7"';
+  const refs = BODY_REFS.map((r, i) => `<div style="padding:6px 0;font-size:13px;line-height:1.6"><b>[${i + 1}]</b> ${esc(r[0])}${r[1] ? ` <a href="${esc(r[1])}" target="_blank" rel="noopener" style="text-decoration:underline">เปิดที่มา</a>` : ''}</div>`).join('');
+  return `<section class="card" style="gap:6px"><h2>ความรู้</h2>
+    <p class="meta" style="margin:0">ทฤษฎีสั้นๆ พร้อมที่มา [เลข] ดูในเอกสารอ้างอิงท้ายส่วนนี้ · ข้อมูลทั่วไป ไม่ใช่คำแนะนำทางการแพทย์</p>
+    <div class="banner life" style="margin:0;background:var(--primary-tint);color:var(--primary-ink)"><div><b>จำ 3 ข้อ</b><br>1) ฮอร์โมนขึ้นลงตามวัน แต่ความรู้สึกแต่ละคนไม่เหมือนกัน<br>2) ช่วงของรอบไม่ได้ทำให้กล้ามเนื้อเก่งขึ้นหรือแย่ลงชัดเจน ความสม่ำเสมอสำคัญกว่า<br>3) กล้ามขึ้นจาก เวทพอดี + พัก + กินพอ ไม่ใช่จากการอดหรือหักโหม</div></div>
+
+    <details class="rt"><summary ${sum}>1 · ทฤษฎีวัฏจักรประจำเดือน</summary>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:4px 0 12px">
+        <p ${p}>ใน 1 รอบ (ราว 28 วัน) ร่างกายผลิตฮอร์โมนหลัก 2 ตัวขึ้นลงเป็นจังหวะ คือ เอสโตรเจน และ โปรเจสเตอโรน</p>
+        <svg viewBox="0 0 330 190" width="100%" style="color:var(--ink)" role="img" aria-label="กราฟแบบง่ายของเอสโตรเจนและโปรเจสเตอโรนใน 28 วัน เอสโตรเจนสูงก่อนตกไข่ โปรเจสเตอโรนสูงหลังตกไข่ แล้วทั้งคู่ลดลงก่อนมีประจำเดือน">
+          <rect x="30" y="14" width="61.2" height="136" fill="#F9E3E6"/><rect x="91.2" y="14" width="81.6" height="136" fill="#CFE9DB"/><rect x="172.8" y="14" width="91.8" height="136" fill="#E8F2D5"/><rect x="264.6" y="14" width="51" height="136" fill="#FBEBC8"/>
+          <line x1="30" y1="150" x2="315.6" y2="150" stroke="#B8AEA6"/><line x1="162.6" y1="14" x2="162.6" y2="150" stroke="#6F655F" stroke-dasharray="3 3"/>
+          <polyline fill="none" stroke="#2F6F5E" stroke-width="2.5" stroke-linejoin="round" points="30,125 70.8,120 111.6,90 142.2,45 152.4,30 162.6,60 183,95 234,65 264.6,85 305.4,120"/>
+          <polyline fill="none" stroke="#B4572B" stroke-width="2.5" stroke-dasharray="6 4" stroke-linejoin="round" points="30,136 162.6,136 193.2,100 234,38 264.6,60 295.2,120 305.4,134"/>
+          <g font-size="10" fill="#2B2623"><text x="60" y="28" text-anchor="middle">ประจำเดือน</text><text x="132" y="28" text-anchor="middle">เขียวเข้ม</text><text x="218" y="28" text-anchor="middle">เขียวอ่อน</text><text x="290" y="28" text-anchor="middle">PMS</text><text x="166" y="164">ตกไข่ ~วัน 14</text></g>
+          <g font-size="10" fill="currentColor"><text x="30" y="182">วัน 1</text><text x="91" y="182">7</text><text x="234" y="182">21</text><text x="300" y="182">28</text></g>
+        </svg>
+        <div class="meta" style="margin:0">เส้นทึบ = เอสโตรเจน · เส้นประ = โปรเจสเตอโรน · ภาพแบบง่าย ไม่ใช่ค่าของคุณ</div>
+        <p ${p}><b>วัน 1–6 ประจำเดือน:</b> ฮอร์โมนต่ำทั้งคู่ บางคนล้า ปวดท้อง บางคนโล่งสบาย</p>
+        <p ${p}><b>วัน 7–14 เขียวเข้ม:</b> เอสโตรเจนไต่ขึ้นสูงสุดก่อนตกไข่ หลายคนรู้สึกสดชื่นขึ้น</p>
+        <p ${p}><b>วัน 15–23 เขียวอ่อน:</b> โปรเจสเตอโรนสูงขึ้นหลังตกไข่</p>
+        <p ${p}><b>วัน 24–28 PMS:</b> ฮอร์โมนทั้งคู่ลดลงเร็ว อาการก่อนมีประจำเดือนเกิดบ่อยในช่วงนี้ [1][2]</p>
+      </div>
+    </details>
+
+    <details class="rt"><summary ${sum}>2 · ทฤษฎีอารมณ์กับฮอร์โมน</summary>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:4px 0 12px">
+        <p ${p}>งานวิจัยของ NIH: ผู้หญิงที่มี PMS ถูกทำให้ฮอร์โมนนิ่งด้วยยา อาการดีขึ้น พอเติมเอสโตรเจนหรือโปรเจสเตอโรนกลับ อาการกลับมา ส่วนผู้หญิงที่ไม่มี PMS ได้ฮอร์โมนแบบเดียวกันแล้วอารมณ์ไม่เปลี่ยน [1]</p>
+        <svg viewBox="0 0 330 170" width="100%" style="color:var(--ink)" role="img" aria-label="ภาพอธิบาย ฮอร์โมนเปลี่ยนเท่ากัน คนที่ไวต่อฮอร์โมนมีอารมณ์ตกช่วงก่อนมีประจำเดือน อีกคนอารมณ์คงที่">
+          <rect x="250" y="14" width="66" height="120" fill="#FBEBC8"/><line x1="30" y1="134" x2="316" y2="134" stroke="#B8AEA6"/>
+          <g font-size="10" fill="currentColor"><text x="22" y="30" text-anchor="end">ดี</text><text x="22" y="132" text-anchor="end">แย่</text><text x="30" y="156">วัน 1</text><text x="296" y="156">28</text></g>
+          <text x="283" y="28" font-size="10" fill="#2B2623" text-anchor="middle">PMS</text>
+          <polyline fill="none" stroke="#2F6F5E" stroke-width="2.5" stroke-linejoin="round" points="30,50 90,46 150,52 210,48 250,52 290,56 316,54"/>
+          <polyline fill="none" stroke="#C0485A" stroke-width="2.5" stroke-dasharray="6 4" stroke-linejoin="round" points="30,52 90,48 150,54 210,56 250,80 285,115 316,120"/>
+        </svg>
+        <div class="meta" style="margin:0">เส้นทึบ = ไม่ไวต่อฮอร์โมน · เส้นประ = ไวต่อฮอร์โมน · ภาพอธิบายแนวคิด ไม่ใช่ข้อมูลจริงของใคร</div>
+        <p ${p}><b>สรุปง่ายๆ:</b> ไม่ใช่ว่าฮอร์โมนคุณ "เพี้ยน" แต่สมองของบางคนไวต่อการเปลี่ยนแปลงปกติของฮอร์โมนมากกว่า จึงเป็นเรื่องจริง ไม่ใช่คิดไปเอง [1][2]</p>
+        <p ${p}>อาการ PMS พบบ่อยและต่างกันมาก ส่วนใหญ่เป็นเบาถึงปานกลาง ส่วนน้อยราว 3–8% เข้าเกณฑ์ PMDD ที่กระทบชีวิตหนัก ความจำย้อนหลังมักคิดว่าอาการเยอะกว่าจริง การบันทึกรายวันอย่างน้อย 2 รอบจึงเชื่อถือได้กว่า [9]</p>
+      </div>
+    </details>
+
+    <details class="rt"><summary ${sum}>3 · ทฤษฎีออกกำลังกายให้ได้ผล</summary>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:4px 0 12px">
+        <p ${p}>กล้ามเนื้อไม่ได้โตตอนยกเวท แต่โตตอนร่างกายซ่อมแซมหลังจากนั้น หลักพื้นฐานคือ กระตุ้น แล้วพัก แล้วร่างกายจะฟื้นตัวสูงกว่าเดิมเล็กน้อย</p>
+        <svg viewBox="0 0 330 180" width="100%" style="color:var(--ink)" role="img" aria-label="วงจรการฝึก ความสามารถลดลงหลังฝึก ฟื้นตัวสูงกว่าเดิมเมื่อพักและกินพอ แล้วฝึกครั้งถัดไป">
+          <line x1="20" y1="90" x2="316" y2="90" stroke="#B8AEA6" stroke-dasharray="4 4"/>
+          <path d="M20 90 L70 90 L98 128 Q150 70 205 52 L262 78 L312 90" fill="none" stroke="#2F6F5E" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="70" y1="40" x2="70" y2="150" stroke="#6F655F" stroke-dasharray="3 3"/><line x1="205" y1="30" x2="205" y2="150" stroke="#6F655F" stroke-dasharray="3 3"/>
+          <g font-size="10" fill="currentColor" text-anchor="middle"><text x="40" y="82">ระดับเดิม</text><text x="70" y="34">ฝึกเวท</text><text x="98" y="148">ล้า</text><text x="150" y="124">พัก + กินพอ</text><text x="205" y="24">แข็งแรงกว่าเดิม</text><text x="262" y="104">ถ้าห่างนานเกิน</text><text x="262" y="117">ก็กลับมาเท่าเดิม</text><text x="205" y="166">ฝึกครั้งถัดไป</text></g>
+        </svg>
+        <div class="meta" style="margin:0">ภาพอธิบายแนวคิด ระยะเวลาจริงต่างกันตามคนและท่าที่ฝึก</div>
+        <p ${p}><b>1. ความถี่ อย่างน้อย 2 วัน/สัปดาห์:</b> WHO แนะนำกิจกรรมเสริมกล้ามเนื้อสำหรับผู้ใหญ่อย่างน้อย 2 วันต่อสัปดาห์ [5] ถ้าวันหยุดเช้ามีน้อย เติมเวทสั้นๆ ที่บ้านได้</p>
+        <p ${p}><b>2. ปริมาณ จำนวนเซ็ตต่อสัปดาห์:</b> งานรวมวิจัยพบว่ายิ่งทำเซ็ตต่อกลุ่มกล้ามเนื้อต่อสัปดาห์มากขึ้น กล้ามยิ่งโตมากขึ้น ตามระดับที่ศึกษา [7] ถ้าออกแรงหนักพอ ปริมาณเป็นตัวแปรสำคัญที่สุด จึงควรเพิ่มทีละน้อย [10]</p>
+        <p ${p}><b>3. น้ำหนัก เบาหรือหนักก็ได้ผล:</b> ความแข็งแรงสูงสุดได้จากน้ำหนักมาก ส่วนกล้ามโตได้พอๆ กันทั้งน้ำหนักเบาและหนัก [6] จึงเหมาะที่ BODYPUMP และ HEAVY ผสมกัน</p>
+        <p ${p}><b>4. ค่อยๆ เพิ่ม ไม่หักโหม:</b> เพิ่มน้ำหนักหรือจำนวนรอบทีละนิดเมื่อรู้สึกเบาลง เป็นหลักพื้นฐานของการฝึก ถ้านอนน้อยหรือหมดแรง ให้ลดความหนักแทนการฝืน</p>
+        <p ${p}><b>5. กินให้พอกับที่ใช้ไป:</b> กินน้อยกว่าที่ใช้นานๆ เสี่ยงประจำเดือนผิดปกติ กระดูกบาง และกล้ามเนื้ออ่อนแรง [8]</p>
+      </div>
+    </details>
+
+    <details class="rt"><summary ${sum}>4 · ฝึกตามช่วงประจำเดือนดีไหม</summary>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:4px 0 12px">
+        <p ${p}><b>หลักฐานยังไม่ชัด:</b> รีวิวงานวิจัยใหญ่ยังไม่พบว่าช่วงของรอบเปลี่ยนแรงหรือผลของการเล่นเวทอย่างสม่ำเสมอ บางงานพบว่าวันแรกๆ ของประจำเดือนแรงลดลงเล็กน้อย สีของวันจึงเป็นแค่ตัวช่วย ให้ฟังร่างกายเป็นหลัก [3][4]</p>
+        <p ${p}><b>ออกกำลังกายตอนมีประจำเดือนปลอดภัย:</b> ถ้าไม่มีปัญหาสุขภาพและรู้สึกไหว ออกกำลังกายได้ตามปกติ ถ้าไม่ไหว เดินเบาหรือพักก็ได้ [11]</p>
+      </div>
+    </details>
+
+    <details class="rt"><summary ${sum}>เอกสารอ้างอิง (${BODY_REFS.length} รายการ)</summary>
+      <div style="padding:4px 0 12px">${refs}</div>
+    </details>
+  </section>`;
+}
+/* BODY-ADDON END */
 function viewBody(){
   const t = today(); const b = bd(); const L = b.logs[t] || {}; const cy = bodyCycle(t);
   const [y, m] = bodyMonth.split('-').map(Number); const first = new Date(y, m - 1, 1); const days = new Date(y, m, 0).getDate(); const lead = first.getDay();
@@ -1176,6 +1306,8 @@ function viewBody(){
   </section>
   ${bodyInsights()}
   <section class="card" style="gap:6px"><h2>ออกกำลังกายวันหยุดเช้า</h2>${bodyExCard(today().slice(0,7))}</section>
+  ${bodyClassesCard()}
+  ${bodyKnowledgeCard()}
   ${bodyProfileCard()}
   <section class="card" style="gap:4px">${bodyPrivacyNote()}<p class="meta" style="margin:0">ส่วนนี้เป็นคำแนะนำเท่านั้น ไม่แก้เวร นัด หรือตารางอัตโนมัติ คุณตัดสินใจเอง</p></section>`;
 }
@@ -1250,6 +1382,7 @@ function bodyHandle(act, el){
     case 'body-period-del': confirmSheet('ลบวันแรกของประจำเดือนวันนี้ออกจากรายการ? (บันทึกรายวันไม่หาย)', 'ลบ', () => { b.periods = b.periods.filter(p => p !== el.dataset.d); commit('ลบวันแรกของประจำเดือน', {msg:'ลบแล้ว'}); }, true); return true;
     case 'body-len': { b.cycleLen = Math.min(60, Math.max(18, b.cycleLen + Number(el.dataset.d))); commit('ความยาวรอบ ' + b.cycleLen, {silent:true}); return true; }
     case 'body-ex': { const ym = el.dataset.ym, d = el.dataset.d; const a = b.exDays[ym] = b.exDays[ym] || []; const i = a.indexOf(d); if (i >= 0) a.splice(i, 1); else a.push(d); commit('เลือกวันออกกำลังกาย', {silent:true}); return true; }
+    case 'body-have': { if (!b.have) b.have = Object.assign({}, BODY_HAVE0); const k = el.dataset.k; b.have[k] = !b.have[k]; commit('คลาสที่ฟิตเนสมี', {silent:true}); return true; }
     case 'body-clear': confirmSheet('ลบข้อมูลฟังร่างกายทั้งหมด (วันแรกของรอบ บันทึกรายวัน เช็กเช้า) บนเครื่องนี้และคลาวด์? ลบแล้วกู้คืนไม่ได้', 'ลบทั้งหมด', () => { S.body = {}; bodyCheckDraft = null; bd(); commit('ลบข้อมูลฟังร่างกายทั้งหมด', {msg:'ลบแล้ว'}); }, true); return true;
   }
   return false;
